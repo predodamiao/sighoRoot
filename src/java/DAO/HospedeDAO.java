@@ -28,7 +28,7 @@ public class HospedeDAO {
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery ("select * from hospede");
             while(rs.next()){
-                hospede = (Hospede) (rs);
+                hospede = instanciarHospede(rs);
                 hospedes.add(hospede);
             }
             

@@ -5,9 +5,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Pesquisa de Hóspedes</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <table border="1">
+            <tr>
+                <th>CPF</th>
+                <th>Nome</th>
+            </tr>
+            <c:forEach items="${hospedes}" var="hospede">
+                <tr>
+                    <td><c:out value="${hospede.cpf}"/></td>
+                    <td><c:out value="${hospede.nome}"/></td>
+                </tr>
+            </c:forEach>
+        </table>
     </body>
 </html>
