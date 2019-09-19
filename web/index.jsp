@@ -6,7 +6,7 @@
 </head>
 <body>
 	<h1></h1>
-	<a href="ManterHospedeController">Manter Hospede</a><br>
+	<a href="PesquisaHospedeController">Manter Hospede</a><br>
 	<a href="ManterFuncionarioController">Manter Funcionário</a><br>
 	<a href="ManterItemConsumoController">Manter Item Consumo</a><br>
 	<a href="ManterOpcaoRestauranteController">Manter Opção Restaurante</a><br>
