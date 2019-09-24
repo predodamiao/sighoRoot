@@ -28,7 +28,7 @@ public class PagamentoDAO {
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery ("select * from pagamento");
             while(rs.next()){
-                pagamento = (Pagamento) (rs);
+                pagamento = instanciarPagamento(rs);
                 pagamentos.add(pagamento);
             }
             

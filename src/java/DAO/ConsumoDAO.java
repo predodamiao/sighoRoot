@@ -28,7 +28,7 @@ public class ConsumoDAO {
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery ("select * from consumo");
             while(rs.next()){
-                consumo = (Consumo) (rs);
+                consumo = instanciarConsumo(rs);
                 consumos.add(consumo);
             }
             

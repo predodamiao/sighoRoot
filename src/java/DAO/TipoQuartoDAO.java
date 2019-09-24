@@ -29,7 +29,7 @@ public class TipoQuartoDAO {
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("select * from tipoQuarto");
             while (rs.next()) {
-                tipoQuarto = (TipoQuarto) (rs);
+                tipoQuarto = instanciarTipoQuarto(rs);
                 tiposQuarto.add(tipoQuarto);
             }
 

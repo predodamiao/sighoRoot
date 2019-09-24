@@ -19,7 +19,7 @@ public class FuncionarioDAO {
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery ("select * from funcionario");
             while(rs.next()){
-                funcionario = (Funcionario) (rs);
+                funcionario = instanciarFuncionario(rs);
                 funcionarios.add(funcionario);
             }
             

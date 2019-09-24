@@ -28,7 +28,7 @@ public class AcompanhanteDAO {
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery ("select * from acompanhante");
             while(rs.next()){
-                acompanhante = (Acompanhante) (rs);
+                acompanhante = instanciarAcompanhante(rs); 
                 acompanhantes.add(acompanhante);
             }
             
@@ -59,7 +59,6 @@ public class AcompanhanteDAO {
     public static Acompanhante instanciarAcompanhante (ResultSet rs)throws ClassNotFoundException, SQLException{
         Acompanhante acompanhante = new Acompanhante(rs.getString("nome"),
                 rs.getDate("dataNascimento"),
-                rs.getInt("idade"),
                 rs.getBoolean("ocupaCama"),
                 null);
         

@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import Model.ItemPadraoFrigobar;
+import Model.ItemFrigobar;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,17 +19,17 @@ import java.util.List;
  */
 public class ItemPadraoFrigobarDAO {
 
-    public static List<ItemPadraoFrigobar> obterItensPadraoFrigobar() throws ClassNotFoundException, SQLException {
+    public static List<ItemFrigobar> obterItensPadraoFrigobar() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<ItemPadraoFrigobar> itensPadroesFrigobar = new ArrayList<ItemPadraoFrigobar>();
-        ItemPadraoFrigobar itensPadraoFrigobar = null;
+        List<ItemFrigobar> itensPadroesFrigobar = new ArrayList<ItemFrigobar>();
+        ItemFrigobar itensPadraoFrigobar = null;
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from itensPadraoFrigobar");
+            ResultSet rs = comando.executeQuery("select * from itemFrigobar");
             while (rs.next()) {
-                itensPadraoFrigobar = (ItemPadraoFrigobar) (rs);
+                itensPadraoFrigobar = instanciarItemPadraoFrigobar(rs);
                 itensPadroesFrigobar.add(itensPadraoFrigobar);
             }
 
@@ -40,10 +40,10 @@ public class ItemPadraoFrigobarDAO {
         return itensPadroesFrigobar;
     }
     
-    public static ItemPadraoFrigobar obterItensPadraoFrigobar(int codItem) throws ClassNotFoundException, SQLException{
+    public static ItemFrigobar obterItensPadraoFrigobar(int codItem) throws ClassNotFoundException, SQLException{
         Connection conexao = null;
         Statement comando = null;
-        ItemPadraoFrigobar item = null;
+        ItemFrigobar item = null;
         try{
             conexao = BD.getConexao();
             comando = conexao.createStatement();
@@ -57,8 +57,8 @@ public class ItemPadraoFrigobarDAO {
         return item;
     }    
 
-    public static ItemPadraoFrigobar instanciarItemPadraoFrigobar(ResultSet rs) throws ClassNotFoundException, SQLException {
-        ItemPadraoFrigobar item = new ItemPadraoFrigobar(rs.getInt("quantidade"),
+    public static ItemFrigobar instanciarItemPadraoFrigobar(ResultSet rs) throws ClassNotFoundException, SQLException {
+        ItemFrigobar item = new ItemFrigobar(rs.getInt("quantidade"),
                 null);
 
         item.setIdItemConsumo(rs.getInt("idItem"));

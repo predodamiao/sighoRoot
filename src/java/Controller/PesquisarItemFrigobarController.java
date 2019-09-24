@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Model.ItemPadraoFrigobar;
+import Model.ItemFrigobar;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Lavínia
  */
-public class PesqisarItemPadraoFrigobarController extends HttpServlet {
+public class PesquisarItemFrigobarController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,8 +35,8 @@ public class PesqisarItemPadraoFrigobarController extends HttpServlet {
    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         try {
-            request.setAttribute("itensPadraoFrigobar", ItemPadraoFrigobar.obterItensPadraoFrigobar());
-            RequestDispatcher view = request.getRequestDispatcher("/pesquisaItemPadraoFrigobar.jsp");
+            request.setAttribute("itensPadraoFrigobar", ItemFrigobar.obterItensPadraoFrigobar());
+            RequestDispatcher view = request.getRequestDispatcher("/pesquisaItemFrigobar.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException e){
             throw new ServletException(e);
@@ -60,7 +60,7 @@ public class PesqisarItemPadraoFrigobarController extends HttpServlet {
        try {
            processRequest(request, response);
        } catch (SQLException ex) {
-           Logger.getLogger(PesqisarItemPadraoFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(PesquisarItemFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
        }
     }
 
@@ -78,7 +78,7 @@ public class PesqisarItemPadraoFrigobarController extends HttpServlet {
        try {
            processRequest(request, response);
        } catch (SQLException ex) {
-           Logger.getLogger(PesqisarItemPadraoFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(PesquisarItemFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
        }
     }
 

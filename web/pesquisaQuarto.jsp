@@ -5,16 +5,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Pesquisa de Hospedagens</title>
+        <title>Pesquisa de Quartos</title>
     </head>
     <body>
         <table border="1">
             <tr>
-                <th>ID</th>
+                <th>Número</th>
+                <th>Ocupado</th>
             </tr>
-            <c:forEach items="${hospedagens}" var="hospedagem">
+            <c:forEach items="${quartos}" var="quarto">
                 <tr>
-                    <td><c:out value="${hospedagem.id}"/></td>
+                    <td><c:out value="${quarto.identificacao}"/></td>
+                    <td><c:out value="${quarto.ocupado}"/></td>
                 </tr>
             </c:forEach>
         </table>

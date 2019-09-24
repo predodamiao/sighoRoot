@@ -37,7 +37,7 @@ public class PesquisarTipoQuartoController extends HttpServlet {
             throws ServletException, IOException, SQLException {
         try {
             request.setAttribute("tiposQuarto", TipoQuarto.obterTiposQuarto());
-            RequestDispatcher view = request.getRequestDispatcher("/pesquisaHospede.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("/pesquisaTipoQuarto.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException e){
             throw new ServletException(e);

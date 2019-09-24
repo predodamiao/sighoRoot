@@ -28,7 +28,7 @@ public class HospedagemDAO {
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery ("select * from hospedagem");
             while(rs.next()){
-                hospedagem = (Hospedagem) (rs);
+                hospedagem = instanciarHospedagem(rs);
                 hospedagens.add(hospedagem);
             }
             
@@ -57,9 +57,9 @@ public class HospedagemDAO {
     }
 
     public static Hospedagem instanciarHospedagem (ResultSet rs)throws ClassNotFoundException, SQLException{
-        Hospedagem hospedagem = new Hospedagem(rs.getDate("dataChegada"),
+        Hospedagem hospedagem = new Hospedagem(rs.getDate("dataEntrada"),
                 rs.getDate("dataSaida"),
-                rs.getDate("dataEstimadaChegada"),
+                rs.getDate("dataEstimadaEntrada"),
                 rs.getDate("dataEstimadaSaida"),
                 rs.getBoolean("checked"),
                 null,

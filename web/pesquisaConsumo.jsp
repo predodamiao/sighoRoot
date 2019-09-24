@@ -10,13 +10,13 @@
     <body>
         <table border="1">
             <tr>
-                <th>ID</th>
-                <th>Descrição</th>
+                <th>Data</th>
+                <th>Quantidade</th>
             </tr>
             <c:forEach items="${consumos}" var="consumo">
                 <tr>
-                    <td><c:out value="${consumo.id}"/></td>
-                    <td><c:out value="${consumo.descricao}"/></td>
+                    <td><c:out value="${consumo.data}"/></td>
+                    <td><c:out value="${consumo.quantidade}"/></td>
                 </tr>
             </c:forEach>
         </table>

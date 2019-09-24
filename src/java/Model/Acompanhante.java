@@ -9,19 +9,16 @@ public class Acompanhante {
     private String nome;
 
     private Date dataNascimento;
-
-    private int idade;
-
+    
     private boolean ocupaCama;
 
     private Hospedagem hospedagem;
 
     private int idHospedagem;
 
-    public Acompanhante(String nome, Date dataNascimento, int idade, boolean ocupaCama, Hospedagem hospedagem) {
+    public Acompanhante(String nome, Date dataNascimento,boolean ocupaCama, Hospedagem hospedagem) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
-        this.idade = idade;
         this.ocupaCama = ocupaCama;
         this.hospedagem = hospedagem;
     }
@@ -48,14 +45,6 @@ public class Acompanhante {
 
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
     }
 
     public boolean isOcupaCama() {

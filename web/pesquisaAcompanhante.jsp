@@ -5,18 +5,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Pesquisa de Padrão Frigobar</title>
+        <title>Pesquisa de Acompanhantes</title>
     </head>
     <body>
         <table border="1">
             <tr>
-                <th>ID</th>
-                <th>Descrição</th>
+                <th>Nome</th>
+                <th>Ocupa Campa</th>
             </tr>
-            <c:forEach items="${tiposQuarto}" var="tipoQuarto">
+            <c:forEach items="${acompanhantes}" var="acompanhante">
                 <tr>
-                    <td><c:out value="${tipoQuarto.id}"/></td>
-                    <td><c:out value="${tipoQuarto.descricao}"/></td>
+                    <td><c:out value="${acompanhante.nome}"/></td>
+                    <td><c:out value="${acompanhante.ocupaCama}"/></td>
                 </tr>
             </c:forEach>
         </table>

@@ -25,15 +25,15 @@
         <servlet-class>Controller.PesquisarItemConsumoController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PesqisarItemPadraoFrigobarController</servlet-name>
-        <servlet-class>Controller.PesqisarItemPadraoFrigobarController</servlet-class>
+        <servlet-name>PesquisarItemFrigobarController</servlet-name>
+        <servlet-class>Controller.PesquisarItemFrigobarController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PesquisaItemRestauranteController</servlet-name>
-        <servlet-class>Controller.PesquisaItemRestauranteController</servlet-class>
+        <servlet-name>PesquisaOpcaoRestauranteController</servlet-name>
+        <servlet-class>Controller.PesquisaOpcaoRestauranteController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PesquisarPagamentosController</servlet-name>
+        <servlet-name>PesquisarPagamentoController</servlet-name>
         <servlet-class>Controller.PesquisarPagamentoController</servlet-class>
     </servlet>
     <servlet>
@@ -77,16 +77,16 @@
         <url-pattern>/PesquisarItemConsumoController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PesqisarItemPadraoFrigobarController</servlet-name>
-        <url-pattern>/PesqisarItemPadraoFrigobarController</url-pattern>
+        <servlet-name>PesquisarItemFrigobarController</servlet-name>
+        <url-pattern>/PesquisarItemFrigobarController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PesquisaItemRestauranteController</servlet-name>
-        <url-pattern>/PesquisaItemRestauranteController</url-pattern>
+        <servlet-name>PesquisaOpcaoRestauranteController</servlet-name>
+        <url-pattern>/PesquisaOpcaoRestauranteController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PesquisarPagamentosController</servlet-name>
-        <url-pattern>/PesquisarPagamentosController</url-pattern>
+        <servlet-name>PesquisarPagamentoController</servlet-name>
+        <url-pattern>/PesquisarPagamentoController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PesquisaQuartoController</servlet-name>

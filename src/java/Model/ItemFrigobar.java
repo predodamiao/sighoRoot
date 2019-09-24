@@ -4,22 +4,22 @@ import DAO.ItemPadraoFrigobarDAO;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ItemPadraoFrigobar {
+public class ItemFrigobar {
 
     private int quantidade;
     private ItemConsumo item;
     private int idItemConsumo;
 
-    public ItemPadraoFrigobar(int quantidade, ItemConsumo item) {
+    public ItemFrigobar(int quantidade, ItemConsumo item) {
         this.quantidade = quantidade;
         this.item = item;
     }
 
-        public static ItemPadraoFrigobar obterItemPadraoFrigobar(int codItem) throws ClassNotFoundException, SQLException{
+        public static ItemFrigobar obterItemPadraoFrigobar(int codItem) throws ClassNotFoundException, SQLException{
         return ItemPadraoFrigobarDAO.obterItensPadraoFrigobar(codItem);
     }
     
-    public static List<ItemPadraoFrigobar> obterItensPadraoFrigobar() throws ClassNotFoundException, SQLException{
+    public static List<ItemFrigobar> obterItensPadraoFrigobar() throws ClassNotFoundException, SQLException{
         return ItemPadraoFrigobarDAO.obterItensPadraoFrigobar();
     }
     

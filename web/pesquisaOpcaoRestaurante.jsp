@@ -10,13 +10,13 @@
     <body>
         <table border="1">
             <tr>
-                <th>ID</th>
                 <th>Descrição</th>
+                <th>Preço Venda</th>
             </tr>
             <c:forEach items="${itensRestaurante}" var="itemRestaurante">
                 <tr>
-                    <td><c:out value="${itemRestaurante.cpf}"/></td>
-                    <td><c:out value="${itemRestaurante.nome}"/></td>
+                    <td><c:out value="${itemRestaurante.descricao}"/></td>
+                    <td><c:out value="${itemRestaurante.precoVenda}"/></td>
                 </tr>
             </c:forEach>
         </table>

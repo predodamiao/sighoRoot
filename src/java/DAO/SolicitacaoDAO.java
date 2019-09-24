@@ -29,7 +29,7 @@ public class SolicitacaoDAO {
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("select * from solicitacao");
             while (rs.next()) {
-                solicitacao = (Solicitacao) (rs);
+                solicitacao = instanciarSolicitacao(rs);
                 solicitacoes.add(solicitacao);
             }
 
@@ -59,6 +59,7 @@ public class SolicitacaoDAO {
     
     public static Solicitacao instanciarSolicitacao(ResultSet rs) throws ClassNotFoundException, SQLException {
         Solicitacao solicitacao = new Solicitacao(rs.getDate("data"),
+                rs.getInt("quantidade"),
                 null,
                 null,
                 null,

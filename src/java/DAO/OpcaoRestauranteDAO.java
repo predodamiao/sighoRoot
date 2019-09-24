@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import Model.ItemRestaurante;
+import Model.OpcaoRestaurante;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,19 +17,19 @@ import java.util.List;
  *
  * @author Lavínia Beghini
  */
-public class ItemRestauranteDAO {
+public class OpcaoRestauranteDAO {
 
-    public static List<ItemRestaurante> obterItensRestaurante() throws ClassNotFoundException, SQLException {
+    public static List<OpcaoRestaurante> obterItensRestaurante() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<ItemRestaurante> itensRestaurante = new ArrayList<ItemRestaurante>();
-        ItemRestaurante itemRestaurante = null;
+        List<OpcaoRestaurante> itensRestaurante = new ArrayList<OpcaoRestaurante>();
+        OpcaoRestaurante itemRestaurante = null;
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("select * from opcaoRestaurante");
             while (rs.next()) {
-                itemRestaurante = (ItemRestaurante) (rs);
+                itemRestaurante = instanciarOpcaoRestaurante(rs);
                 itensRestaurante.add(itemRestaurante);
             }
 
@@ -40,16 +40,16 @@ public class ItemRestauranteDAO {
         return itensRestaurante;
     }
     
-    public static ItemRestaurante obterItensRestaurante(int codItem) throws ClassNotFoundException, SQLException{
+    public static OpcaoRestaurante obterItensRestaurante(int codOpcao) throws ClassNotFoundException, SQLException{
         Connection conexao = null;
         Statement comando = null;
-        ItemRestaurante item = null;
+        OpcaoRestaurante item = null;
         try{
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery ("select * from ItemRestaurante where id = "+ codItem);
+            ResultSet rs = comando.executeQuery ("select * from OpcaoRestaurante where id = "+ codOpcao);
             rs.first();
-            item = instanciarItemRestaurante(rs); 
+            item = instanciarOpcaoRestaurante(rs); 
         } finally{
             DAO.fecharConexao(conexao, comando);
         }
@@ -57,8 +57,8 @@ public class ItemRestauranteDAO {
         return item;
     }
     
-     public static ItemRestaurante instanciarItemRestaurante(ResultSet rs) throws ClassNotFoundException, SQLException {
-        ItemRestaurante opcao = new ItemRestaurante(rs.getFloat("codigo"),
+     public static OpcaoRestaurante instanciarOpcaoRestaurante(ResultSet rs) throws ClassNotFoundException, SQLException {
+        OpcaoRestaurante opcao = new OpcaoRestaurante(rs.getFloat("id"),
                 rs.getString("descricao"),
                 rs.getFloat("precoVenda"),
                 null,

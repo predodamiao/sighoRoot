@@ -5,18 +5,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Pesquisa de Acompanhantes</title>
+        <title>Pesquisa de Padrão Frigobar</title>
     </head>
     <body>
         <table border="1">
             <tr>
-                <th>CPF</th>
-                <th>Nome</th>
+                <th>quantidade</th>
             </tr>
-            <c:forEach items="${acompanhantes}" var="acompanhante">
+            <c:forEach items="${itensFrigobar}" var="itemFrigobar">
                 <tr>
-                    <td><c:out value="${acompanhante.cpf}"/></td>
-                    <td><c:out value="${acompanhante.nome}"/></td>
+                    <td><c:out value="${itemFrigobar.quantidade}"/></td>
                 </tr>
             </c:forEach>
         </table>

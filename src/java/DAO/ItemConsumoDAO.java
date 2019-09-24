@@ -28,7 +28,7 @@ public class ItemConsumoDAO {
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery ("select * from itemConsumo");
             while(rs.next()){
-                itemConsumo = (ItemConsumo) (rs);
+                itemConsumo = instanciarItemConsumo(rs);
                 itensConsumo.add(itemConsumo);
             }
             
@@ -59,7 +59,7 @@ public class ItemConsumoDAO {
     }
 
         public static ItemConsumo instanciarItemConsumo (ResultSet rs)throws ClassNotFoundException, SQLException{
-        ItemConsumo item = new ItemConsumo(rs.getFloat("codigo"),
+        ItemConsumo item = new ItemConsumo(rs.getFloat("id"),
                 rs.getString("descricao"),
                 rs.getFloat("precoVenda"),
                 null);

@@ -28,7 +28,7 @@ public class QuartoDAO {
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery ("select * from quarto");
             while(rs.next()){
-                quarto = (Quarto) (rs);
+                quarto = instanciarQuarto(rs);
                 quartos.add(quarto);
             }
             

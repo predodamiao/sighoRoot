@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Model.ItemRestaurante;
+import Model.OpcaoRestaurante;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Lavínia
  */
-public class PesquisaItemRestauranteController extends HttpServlet {
+public class PesquisaOpcaoRestauranteController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,8 +36,8 @@ public class PesquisaItemRestauranteController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         try {
-            request.setAttribute("itensRestaurante", ItemRestaurante.obterItensRestaurante());
-            RequestDispatcher view = request.getRequestDispatcher("/pesquisaItemRestaurante.jsp");
+            request.setAttribute("itensRestaurante", OpcaoRestaurante.obterItensRestaurante());
+            RequestDispatcher view = request.getRequestDispatcher("/pesquisaOpcaoRestaurante.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException e){
             throw new ServletException(e);
@@ -61,7 +61,7 @@ public class PesquisaItemRestauranteController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisaItemRestauranteController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaOpcaoRestauranteController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -79,7 +79,7 @@ public class PesquisaItemRestauranteController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisaItemRestauranteController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaOpcaoRestauranteController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

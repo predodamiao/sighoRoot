@@ -15,8 +15,9 @@ public class Solicitacao {
     private int idPessoa;
     private int idHospedagem;
 
-    public Solicitacao(Date data, StatusSolicitacao status, Pessoa responsavel, Hospedagem hospedagem, ItemConsumo item) {
+    public Solicitacao(Date data, int quantidade, StatusSolicitacao status, Pessoa responsavel, Hospedagem hospedagem, ItemConsumo item) {
         this.data = data;
+        this.quantidade = quantidade;
         this.status = status;
         this.responsavel = responsavel;
         this.hospedagem = hospedagem;
