@@ -40,7 +40,7 @@ public class ItemPadraoFrigobarDAO {
         return itensPadroesFrigobar;
     }
     
-    public static ItemPadraoFrigobar obterItemPadraoFrigobar(int codItem) throws ClassNotFoundException, SQLException{
+    public static ItemPadraoFrigobar obterItensPadraoFrigobar(int codItem) throws ClassNotFoundException, SQLException{
         Connection conexao = null;
         Statement comando = null;
         ItemPadraoFrigobar item = null;

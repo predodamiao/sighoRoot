@@ -40,7 +40,7 @@ public class ItemRestauranteDAO {
         return itensRestaurante;
     }
     
-    public static ItemRestaurante obterItemRestaurante(int codItem) throws ClassNotFoundException, SQLException{
+    public static ItemRestaurante obterItensRestaurante(int codItem) throws ClassNotFoundException, SQLException{
         Connection conexao = null;
         Statement comando = null;
         ItemRestaurante item = null;

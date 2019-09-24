@@ -16,7 +16,7 @@ public class ItemRestaurante extends ItemConsumo {
     }
 
     public static ItemRestaurante obterItemRestaurante(int codItem) throws ClassNotFoundException, SQLException{
-        return ItemRestauranteDAO.obterItemRestaurante(codItem);
+        return ItemRestauranteDAO.obterItensRestaurante(codItem);
     }
     
     public static List<ItemRestaurante> obterItensRestaurante() throws ClassNotFoundException, SQLException{

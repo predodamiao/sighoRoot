@@ -16,7 +16,7 @@ public class ItemPadraoFrigobar {
     }
 
         public static ItemPadraoFrigobar obterItemPadraoFrigobar(int codItem) throws ClassNotFoundException, SQLException{
-        return ItemPadraoFrigobarDAO.obterItemPadraoFrigobar(codItem);
+        return ItemPadraoFrigobarDAO.obterItensPadraoFrigobar(codItem);
     }
     
     public static List<ItemPadraoFrigobar> obterItensPadraoFrigobar() throws ClassNotFoundException, SQLException{
