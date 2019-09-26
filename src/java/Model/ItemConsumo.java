@@ -6,13 +6,13 @@ import java.util.List;
 
 public class ItemConsumo {
 
-    private float codigo;
+    private float id;
     private String descricao;
     private float precoVenda;
     private CategoriaItemConsumo categoria;
 
-    public ItemConsumo(float codigo, String descricao, float precoVenda, CategoriaItemConsumo categoria) {
-        this.codigo = codigo;
+    public ItemConsumo(float id, String descricao, float precoVenda, CategoriaItemConsumo categoria) {
+        this.id = id;
         this.descricao = descricao;
         this.precoVenda = precoVenda;
     }
@@ -25,12 +25,12 @@ public class ItemConsumo {
         return ItemConsumoDAO.obterItensConsumo();
     }
     
-    public float getCodigo() {
-        return codigo;
+    public float getId() {
+        return id;
     }
 
-    public void setCodigo(float codigo) {
-        this.codigo = codigo;
+    public void setId(float id) {
+        this.id = id;
     }
 
     public String getDescricao() {

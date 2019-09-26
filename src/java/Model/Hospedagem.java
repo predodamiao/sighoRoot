@@ -6,6 +6,7 @@ import java.util.*;
 
 public class Hospedagem {
 
+    private int id;
     private Date dataChegada;
     private Date dataSaida;
     private Date dataEstimadaChegada;
@@ -18,7 +19,8 @@ public class Hospedagem {
     private int idQuarto;
     private int idHospedeResponsavel;
 
-    public Hospedagem(Date dataChegada, Date dataSaida, Date dataEstimadaChegada, Date dataEstimadaSaida, boolean checked, TipoQuarto tipoQuarto, Quarto quarto, Hospede hospedeResponsavel) {
+    public Hospedagem(int id, Date dataChegada, Date dataSaida, Date dataEstimadaChegada, Date dataEstimadaSaida, boolean checked, TipoQuarto tipoQuarto, Quarto quarto, Hospede hospedeResponsavel) {
+        this.id = id;
         this.dataChegada = dataChegada;
         this.dataSaida = dataSaida;
         this.dataEstimadaChegada = dataEstimadaChegada;
@@ -135,6 +137,14 @@ public class Hospedagem {
 
     public void setIdHospedeResponsavel(int idHospedeResponsavel) {
         this.idHospedeResponsavel = idHospedeResponsavel;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }

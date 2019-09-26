@@ -6,17 +6,15 @@ import java.util.*;
 
 public class Acompanhante {
 
+    private int id;
     private String nome;
-
     private Date dataNascimento;
-    
     private boolean ocupaCama;
-
     private Hospedagem hospedagem;
-
     private int idHospedagem;
 
-    public Acompanhante(String nome, Date dataNascimento,boolean ocupaCama, Hospedagem hospedagem) {
+    public Acompanhante(int id, String nome, Date dataNascimento,boolean ocupaCama, Hospedagem hospedagem) {
+        this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.ocupaCama = ocupaCama;
@@ -49,6 +47,14 @@ public class Acompanhante {
 
     public boolean isOcupaCama() {
         return ocupaCama;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setOcupaCama(boolean ocupaCama) {

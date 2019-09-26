@@ -6,6 +6,15 @@ import java.util.*;
 
 public class Consumo {
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
     private Date data;
     private int quantidade;
     private Funcionario funcionarioResponsavel;
@@ -15,7 +24,8 @@ public class Consumo {
     private int idHospedagem;
     private int idItemConsumido;
 
-    public Consumo(Date data, int quantidade, Funcionario funcionarioResponsavel, Hospedagem hospedagem, ItemConsumo itemConsumido) {
+    public Consumo(int id, Date data, int quantidade, Funcionario funcionarioResponsavel, Hospedagem hospedagem, ItemConsumo itemConsumido) {
+        this.id = id;
         this.data = data;
         this.quantidade = quantidade;
         this.funcionarioResponsavel = funcionarioResponsavel;
