@@ -57,7 +57,8 @@ public class AcompanhanteDAO {
     }
     
     public static Acompanhante instanciarAcompanhante (ResultSet rs)throws ClassNotFoundException, SQLException{
-        Acompanhante acompanhante = new Acompanhante(rs.getString("nome"),
+        Acompanhante acompanhante = new Acompanhante(rs.getInt("id"),
+                rs.getString("nome"),
                 rs.getDate("dataNascimento"),
                 rs.getBoolean("ocupaCama"),
                 null);

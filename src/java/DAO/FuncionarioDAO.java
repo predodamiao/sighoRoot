@@ -48,7 +48,8 @@ public class FuncionarioDAO {
     }
     
     public static Funcionario instanciarFuncionario (ResultSet rs)throws ClassNotFoundException, SQLException{
-        Funcionario funcionario = new Funcionario(rs.getString("nome"),
+        Funcionario funcionario = new Funcionario(rs.getInt("id"),
+                rs.getString("nome"),
                 rs.getString("telefone"),
                 rs.getString("email"),
                 rs.getString("rg"),

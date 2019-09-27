@@ -57,7 +57,8 @@ public class HospedeDAO {
     }
     
     public static Hospede instanciarHospede (ResultSet rs)throws ClassNotFoundException, SQLException{
-        Hospede hospede = new Hospede(rs.getString("nome"),
+        Hospede hospede = new Hospede(rs.getInt("id"),
+                rs.getString("nome"),
                 rs.getString("telefone"),
                 rs.getString("email"),
                 rs.getString("rg"),

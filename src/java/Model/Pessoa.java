@@ -4,6 +4,7 @@ import java.util.*;
 
 public abstract class Pessoa {
 
+    private int id;
     private String nome;
     private String telefone;
     private String email;
@@ -18,9 +19,10 @@ public abstract class Pessoa {
     private String estado;
     private String pais;
     private String cep;
-    
+   
 
-    public Pessoa(String nome, String telefone, String email, String rg, String cpf, Date dataNascimento, String logradouro, int numeroResidencia, String complemento, String bairro, String cidade, String estado, String pais, String cep) {
+    public Pessoa(int id, String nome, String telefone, String email, String rg, String cpf, Date dataNascimento, String logradouro, int numeroResidencia, String complemento, String bairro, String cidade, String estado, String pais, String cep) {
+        this.id = id;
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
@@ -147,6 +149,14 @@ public abstract class Pessoa {
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }

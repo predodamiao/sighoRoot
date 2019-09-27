@@ -57,7 +57,8 @@ public class ConsumoDAO {
     }
       
     public static Consumo instanciarConsumo (ResultSet rs)throws ClassNotFoundException, SQLException{
-        Consumo consumo = new Consumo(rs.getDate("dataConsumo"),
+        Consumo consumo = new Consumo(rs.getInt("id"),
+                rs.getDate("dataConsumo"),
                 rs.getInt("quantidade"),
                 null,
                 null,

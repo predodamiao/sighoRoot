@@ -9,8 +9,8 @@ public class Funcionario extends Pessoa {
     private Date dataAdmissao;
     private CategoriaFuncionario categoria;
     
-    public Funcionario(String nome, String telefone, String email, String rg, String cpf, Date dataNascimento, String logradouro, int numeroResidencia, String complemento, String bairro, String cidade, String estado, String pais, String cep, Date dataAdmissao, CategoriaFuncionario categoria) {
-        super(nome, telefone, email, rg, cpf, dataNascimento, logradouro, numeroResidencia, complemento, bairro, cidade, estado, pais, cep);
+    public Funcionario(int id, String nome, String telefone, String email, String rg, String cpf, Date dataNascimento, String logradouro, int numeroResidencia, String complemento, String bairro, String cidade, String estado, String pais, String cep, Date dataAdmissao, CategoriaFuncionario categoria) {
+        super(id, nome, telefone, email, rg, cpf, dataNascimento, logradouro, numeroResidencia, complemento, bairro, cidade, estado, pais, cep);
         this.dataAdmissao = dataAdmissao;
         this.categoria = categoria;
     }
