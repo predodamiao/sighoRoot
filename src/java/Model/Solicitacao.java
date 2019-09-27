@@ -6,6 +6,7 @@ import java.util.*;
 
 public class Solicitacao {
 
+    private int id;
     private Date data;
     private int quantidade;
     private StatusSolicitacao status;
@@ -15,7 +16,8 @@ public class Solicitacao {
     private int idPessoa;
     private int idHospedagem;
 
-    public Solicitacao(Date data, int quantidade, StatusSolicitacao status, Pessoa responsavel, Hospedagem hospedagem, ItemConsumo item) {
+    public Solicitacao(int id, Date data, int quantidade, StatusSolicitacao status, Pessoa responsavel, Hospedagem hospedagem, ItemConsumo item) {
+        this.id = id;
         this.data = data;
         this.quantidade = quantidade;
         this.status = status;
@@ -94,6 +96,14 @@ public class Solicitacao {
 
     public void setItem(ItemConsumo item) {
         this.item = item;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 

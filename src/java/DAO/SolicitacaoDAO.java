@@ -58,7 +58,8 @@ public class SolicitacaoDAO {
     }
     
     public static Solicitacao instanciarSolicitacao(ResultSet rs) throws ClassNotFoundException, SQLException {
-        Solicitacao solicitacao = new Solicitacao(rs.getDate("data"),
+        Solicitacao solicitacao = new Solicitacao(rs.getInt("id"),
+                rs.getDate("data"),
                 rs.getInt("quantidade"),
                 null,
                 null,

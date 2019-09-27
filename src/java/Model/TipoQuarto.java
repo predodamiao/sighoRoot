@@ -6,10 +6,12 @@ import java.util.List;
 
 public class TipoQuarto {
 
+    private int id;
     private String descricao;
     private float preco;
 
-    public TipoQuarto(String descricao, float preco) {
+    public TipoQuarto(int id, String descricao, float preco) {
+        this.id = id;
         this.descricao = descricao;
         this.preco = preco;
     }
@@ -20,6 +22,14 @@ public class TipoQuarto {
     
     public static List<TipoQuarto> obterTiposQuarto() throws ClassNotFoundException, SQLException{
         return TipoQuartoDAO.obterTiposQuarto();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     public String getDescricao() {
