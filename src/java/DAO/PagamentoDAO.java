@@ -57,7 +57,8 @@ public class PagamentoDAO {
     }
      
     public static Pagamento instanciarPagamento (ResultSet rs)throws ClassNotFoundException, SQLException{
-        Pagamento pagamento = new Pagamento(rs.getFloat("valor"),
+        Pagamento pagamento = new Pagamento(rs.getInt("id"),
+                rs.getFloat("valor"),
                 rs.getDate("data"),
                 rs.getInt("parcelas"),
                 null,

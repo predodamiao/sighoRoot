@@ -7,11 +7,13 @@ import java.util.List;
 public class TipoQuarto {
 
     private int id;
+    private String nome;
     private String descricao;
     private float preco;
 
-    public TipoQuarto(int id, String descricao, float preco) {
+    public TipoQuarto(int id, String nome, String descricao, float preco) {
         this.id = id;
+        this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;
     }
@@ -46,6 +48,14 @@ public class TipoQuarto {
 
     public void setPreco(float preco) {
         this.preco = preco;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
 }

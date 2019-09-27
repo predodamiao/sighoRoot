@@ -6,11 +6,12 @@ import java.util.List;
 
 public class ItemFrigobar {
 
+    private int id;
     private int quantidade;
     private ItemConsumo item;
     private int idItemConsumo;
 
-    public ItemFrigobar(int quantidade, ItemConsumo item) {
+    public ItemFrigobar(int id, int quantidade, ItemConsumo item) {
         this.quantidade = quantidade;
         this.item = item;
     }
@@ -49,6 +50,14 @@ public class ItemFrigobar {
 
     public void setIdItemConsumo(int idItemConsumo) {
         this.idItemConsumo = idItemConsumo;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }

@@ -6,14 +6,6 @@ import java.util.*;
 
 public class Consumo {
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     private int id;
     private Date data;
     private int quantidade;
@@ -40,6 +32,15 @@ public class Consumo {
     public static List<Consumo> obterConsumos() throws ClassNotFoundException, SQLException{
         return ConsumoDAO.obterConsumos();
     }
+
+        public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     
     public Date getData() {
         return data;

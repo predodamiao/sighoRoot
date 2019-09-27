@@ -58,7 +58,8 @@ public class ItemPadraoFrigobarDAO {
     }    
 
     public static ItemFrigobar instanciarItemPadraoFrigobar(ResultSet rs) throws ClassNotFoundException, SQLException {
-        ItemFrigobar item = new ItemFrigobar(rs.getInt("quantidade"),
+        ItemFrigobar item = new ItemFrigobar(rs.getInt("id"),
+                rs.getInt("quantidade"),
                 null);
 
         item.setIdItemConsumo(rs.getInt("idItem"));

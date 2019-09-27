@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Pagamento {
     
+    private int id;
     private float valor;
     private Date data;
     private int quantidadeParcelas;
@@ -15,7 +16,8 @@ public class Pagamento {
     private Hospedagem hospedagem;
     private int idHospedagem;
     
-    public Pagamento(float valor, Date data, int parcelas, TipoPagamento tipo, MomentoPagamento momento, Hospedagem hospedagem){
+    public Pagamento(int id, float valor, Date data, int parcelas, TipoPagamento tipo, MomentoPagamento momento, Hospedagem hospedagem){
+        this.id = id;
         this.valor = valor;
         this.data = data;
         this.quantidadeParcelas = parcelas;
@@ -90,6 +92,14 @@ public class Pagamento {
 
     public void setIdHospedagem(int idHospedagem) {
         this.idHospedagem = idHospedagem;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
 }

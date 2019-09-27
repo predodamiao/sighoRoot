@@ -59,6 +59,7 @@ public class TipoQuartoDAO {
 
     public static TipoQuarto instanciarTipoQuarto(ResultSet rs) throws ClassNotFoundException, SQLException {
         TipoQuarto tipo = new TipoQuarto(rs.getInt("id"),
+                rs.getString("nome"),
                 rs.getString("descricao"),
                 rs.getFloat("preco"));
 
