@@ -52,6 +52,50 @@
         <servlet-name>PesquisarTipoQuartoController</servlet-name>
         <servlet-class>Controller.PesquisarTipoQuartoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManterAcompanhanteController</servlet-name>
+        <servlet-class>Controller.ManterAcompanhanteController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterConsumoController</servlet-name>
+        <servlet-class>Controller.ManterConsumoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterFuncionarioController</servlet-name>
+        <servlet-class>Controller.ManterFuncionarioController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterOpcaoRestauranteController</servlet-name>
+        <servlet-class>Controller.ManterOpcaoRestauranteController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterQuartoController</servlet-name>
+        <servlet-class>Controller.ManterQuartoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterHospedagemController</servlet-name>
+        <servlet-class>Controller.ManterHospedagemController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterItemConsumoController</servlet-name>
+        <servlet-class>Controller.ManterItemConsumoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterItemFrigobarController</servlet-name>
+        <servlet-class>Controller.ManterItemFrigobarController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterPagamentoController</servlet-name>
+        <servlet-class>Controller.ManterPagamentoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterSolicitacaoController</servlet-name>
+        <servlet-class>Controller.ManterSolicitacaoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterTipoQuartoController</servlet-name>
+        <servlet-class>Controller.ManterTipoQuartoController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaHospedeController</servlet-name>
         <url-pattern>/PesquisaHospedeController</url-pattern>
@@ -103,6 +147,50 @@
     <servlet-mapping>
         <servlet-name>PesquisarTipoQuartoController</servlet-name>
         <url-pattern>/PesquisarTipoQuartoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterAcompanhanteController</servlet-name>
+        <url-pattern>/ManterAcompanhanteController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterConsumoController</servlet-name>
+        <url-pattern>/ManterConsumoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterFuncionarioController</servlet-name>
+        <url-pattern>/ManterFuncionarioController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterOpcaoRestauranteController</servlet-name>
+        <url-pattern>/ManterOpcaoRestauranteController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterQuartoController</servlet-name>
+        <url-pattern>/ManterQuartoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterHospedagemController</servlet-name>
+        <url-pattern>/ManterHospedagemController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterItemConsumoController</servlet-name>
+        <url-pattern>/ManterItemConsumoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterItemFrigobarController</servlet-name>
+        <url-pattern>/ManterItemFrigobarController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterPagamentoController</servlet-name>
+        <url-pattern>/ManterPagamentoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterSolicitacaoController</servlet-name>
+        <url-pattern>/ManterSolicitacaoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterTipoQuartoController</servlet-name>
+        <url-pattern>/ManterTipoQuartoController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

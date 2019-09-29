@@ -7,7 +7,6 @@ package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,9 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Pedro Henrique
+ * @author Lavínia Beghini
  */
-public class ManterHospedeController extends HttpServlet {
+public class ManterPagamentoController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,7 +43,7 @@ public class ManterHospedeController extends HttpServlet {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
             //request.setAttribute("professores", Professor.obterProfessores());
-            RequestDispatcher view = request.getRequestDispatcher("/manterHospede.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("/manterPagamento.jsp");
             view.forward(request, response);
         }catch(ServletException e){
             throw e;
