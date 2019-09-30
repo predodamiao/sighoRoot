@@ -58,9 +58,9 @@ public class HospedagemDAO {
 
     public static Hospedagem instanciarHospedagem (ResultSet rs)throws ClassNotFoundException, SQLException{
         Hospedagem hospedagem = new Hospedagem(rs.getInt("id"),
-                rs.getDate("dataEntrada"),
+                rs.getDate("dataChegada"),
                 rs.getDate("dataSaida"),
-                rs.getDate("dataEstimadaEntrada"),
+                rs.getDate("dataEstimadaChegada"),
                 rs.getDate("dataEstimadaSaida"),
                 rs.getBoolean("checked"),
                 null,

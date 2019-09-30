@@ -58,8 +58,8 @@ public class QuartoDAO {
           
     public static Quarto instanciarQuarto(ResultSet rs) throws ClassNotFoundException, SQLException {
         Quarto quarto = new Quarto(rs.getInt("identificacao"),
-                rs.getInt("numeroCamasCasal"),
-                rs.getInt("numeroCamasSolteiro"),
+                rs.getInt("quantidadeCamasCasal"),
+                rs.getInt("quantidadeCamasSolteiro"),
                 rs.getBoolean("ocupado"),
                 null);
 
