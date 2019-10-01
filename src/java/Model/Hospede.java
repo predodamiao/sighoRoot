@@ -9,8 +9,8 @@ public class Hospede extends Pessoa {
 
     private String passaporte;
 
-    public Hospede(int id, String nome, String telefone, String email, String rg, String cpf, Date dataNascimento, String logradouro, int numeroResidencia, String complemento, String bairro, String cidade, String estado, String pais, String cep, String passaporte) {
-        super(id, nome, telefone, email, rg, cpf, dataNascimento, logradouro, numeroResidencia, complemento, bairro, cidade, estado, pais, cep);
+    public Hospede(int id, String nome, String telefone, String email, String rg, String cpf, Date dataNascimento, String passaporte) {
+        super(id, nome, telefone, email, rg, cpf, dataNascimento);
         this.passaporte = passaporte;
     }
 

@@ -64,14 +64,6 @@ public class HospedeDAO {
                 rs.getString("rg"),
                 rs.getString("cpf"),
                 rs.getDate("dataNascimento"),
-                rs.getString("logradouro"),
-                rs.getInt("numero"),
-                rs.getString("complemento"),
-                rs.getString("bairro"),
-                rs.getString("cidade"),
-                rs.getString("estado"),
-                rs.getString("pais"),
-                rs.getString("cep"),
                 rs.getString("passaporte"));
        
         return hospede;

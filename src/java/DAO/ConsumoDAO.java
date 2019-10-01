@@ -62,9 +62,11 @@ public class ConsumoDAO {
                 rs.getInt("quantidade"),
                 null,
                 null,
+                null,
                 null);
         
         consumo.setIdFuncionario(rs.getInt("idFuncionario"));
+        consumo.setIdFuncionario(rs.getInt("idHospede"));
         consumo.setIdItemConsumido(rs.getInt("idItem"));
         consumo.setIdHospedagem(rs.getInt("idHospedagem"));
         return consumo;

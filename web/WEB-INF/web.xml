@@ -21,6 +21,10 @@
         <servlet-class>Controller.PesquisarHospedagemController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ManterHospedeController</servlet-name>
+        <servlet-class>Controller.ManterHospedeController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>PesquisarItemConsumoController</servlet-name>
         <servlet-class>Controller.PesquisarItemConsumoController</servlet-class>
     </servlet>
@@ -115,6 +119,10 @@
     <servlet-mapping>
         <servlet-name>PesquisarHospedagemController</servlet-name>
         <url-pattern>/PesquisarHospedagemController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterHospedeController</servlet-name>
+        <url-pattern>/ManterHospedeController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PesquisarItemConsumoController</servlet-name>

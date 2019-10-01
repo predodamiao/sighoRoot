@@ -10,17 +10,20 @@ public class Consumo {
     private Date data;
     private int quantidade;
     private Funcionario funcionarioResponsavel;
+    private Hospede hospedeResponsavel;
     private Hospedagem hospedagem;
     private ItemConsumo itemConsumido;
     private int idFuncionario;
+    private int idHospede;
     private int idHospedagem;
     private int idItemConsumido;
 
-    public Consumo(int id, Date data, int quantidade, Funcionario funcionarioResponsavel, Hospedagem hospedagem, ItemConsumo itemConsumido) {
+    public Consumo(int id, Date data, int quantidade, Funcionario funcionarioResponsavel, Hospede hospedeResponsavel, Hospedagem hospedagem, ItemConsumo itemConsumido) {
         this.id = id;
         this.data = data;
         this.quantidade = quantidade;
         this.funcionarioResponsavel = funcionarioResponsavel;
+        this.hospedeResponsavel = hospedeResponsavel;
         this.hospedagem = hospedagem;
         this.itemConsumido = itemConsumido;
     }
@@ -115,6 +118,22 @@ public class Consumo {
 
     public void setIdItemConsumido(int idItemConsumido) {
         this.idItemConsumido = idItemConsumido;
+    }
+
+    public Hospede getHospedeResponsavel() {
+        return hospedeResponsavel;
+    }
+
+    public void setHospedeResponsavel(Hospede hospedeResponsavel) {
+        this.hospedeResponsavel = hospedeResponsavel;
+    }
+
+    public int getIdHospede() {
+        return idHospede;
+    }
+
+    public void setIdHospede(int idHospede) {
+        this.idHospede = idHospede;
     }
 
 }
