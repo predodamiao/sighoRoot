@@ -5,18 +5,17 @@
  */
 package DAO;
 
+import static DAO.DAO.fecharConexao;
 import Model.TipoQuarto;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Lavínia Beghini
- */
 public class TipoQuartoDAO {
 
     public static List<TipoQuarto> obterTiposQuarto() throws ClassNotFoundException, SQLException {
@@ -64,6 +63,26 @@ public class TipoQuartoDAO {
                 rs.getFloat("preco"));
 
         return tipo;
+    }
+
+    public static void gravar(TipoQuarto tipo) throws SQLException {
+        Connection conexao = null;
+        PreparedStatement comando = null;
+
+        try {
+
+            comando = conexao.prepareStatement("insert into tipoQuarto (id, nome, descricao, preco) values (?,?,?,?)");
+            comando.setInt(1, tipo.getId());
+            comando.setString(2, tipo.getNome());
+            comando.setString(3, tipo.getDescricao());
+            comando.setFloat(4, tipo.getPreco());
+
+            comando.executeUpdate();
+
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+
     }
 
 }

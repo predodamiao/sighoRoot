@@ -8,7 +8,7 @@ public class Quarto {
 
     private int identificacao;
     private int quantidadeCamasCasal;
-    private int quantidadesCamasSolteiro;
+    private int quantidadeCamasSolteiro;
     private boolean ocupado;
     private TipoQuarto tipo;
     private int idTipoQuarto;
@@ -16,7 +16,7 @@ public class Quarto {
     public Quarto(int identificacao, int quantidadeCamasCasal, int quantidadesCamaSolteiro, boolean ocupado, TipoQuarto tipo) {
         this.identificacao = identificacao;
         this.quantidadeCamasCasal = quantidadeCamasCasal;
-        this.quantidadesCamasSolteiro = quantidadesCamaSolteiro;
+        this.quantidadeCamasSolteiro = quantidadesCamaSolteiro;
         this.tipo = tipo;
     }
 
@@ -44,12 +44,12 @@ public class Quarto {
         this.quantidadeCamasCasal = quantidadeCamasCasal;
     }
 
-    public int getQuantidadesCamasSolteiro() {
-        return quantidadesCamasSolteiro;
+    public int getQuantidadeCamasSolteiro() {
+        return quantidadeCamasSolteiro;
     }
 
-    public void setQuantidadesCamasSolteiro(int quantidadesCamasSolteiro) {
-        this.quantidadesCamasSolteiro = quantidadesCamasSolteiro;
+    public void setQuantidadeCamasSolteiro(int quantidadeCamasSolteiro) {
+        this.quantidadeCamasSolteiro = quantidadeCamasSolteiro;
     }
 
     public boolean isOcupado() {

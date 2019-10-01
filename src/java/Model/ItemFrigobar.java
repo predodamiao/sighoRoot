@@ -1,6 +1,6 @@
 package Model;
 
-import DAO.ItemPadraoFrigobarDAO;
+import DAO.ItemFrigobarDAO;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -17,11 +17,11 @@ public class ItemFrigobar {
     }
 
         public static ItemFrigobar obterItemPadraoFrigobar(int codItem) throws ClassNotFoundException, SQLException{
-        return ItemPadraoFrigobarDAO.obterItensPadraoFrigobar(codItem);
+        return ItemFrigobarDAO.obterItensPadraoFrigobar(codItem);
     }
     
     public static List<ItemFrigobar> obterItensPadraoFrigobar() throws ClassNotFoundException, SQLException{
-        return ItemPadraoFrigobarDAO.obterItensPadraoFrigobar();
+        return ItemFrigobarDAO.obterItensPadraoFrigobar();
     }
     
     public int getQuantidade() {

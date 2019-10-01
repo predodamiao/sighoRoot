@@ -5,18 +5,16 @@
  */
 package DAO;
 
+import static DAO.DAO.fecharConexao;
 import Model.OpcaoRestaurante;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Lavínia Beghini
- */
 public class OpcaoRestauranteDAO {
 
     public static List<OpcaoRestaurante> obterItensRestaurante() throws ClassNotFoundException, SQLException {
@@ -39,25 +37,25 @@ public class OpcaoRestauranteDAO {
 
         return itensRestaurante;
     }
-    
-    public static OpcaoRestaurante obterItensRestaurante(int codOpcao) throws ClassNotFoundException, SQLException{
+
+    public static OpcaoRestaurante obterItensRestaurante(int codOpcao) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         OpcaoRestaurante item = null;
-        try{
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery ("select * from OpcaoRestaurante where id = "+ codOpcao);
+            ResultSet rs = comando.executeQuery("select * from OpcaoRestaurante where id = " + codOpcao);
             rs.first();
-            item = instanciarOpcaoRestaurante(rs); 
-        } finally{
+            item = instanciarOpcaoRestaurante(rs);
+        } finally {
             DAO.fecharConexao(conexao, comando);
         }
-        
+
         return item;
     }
-    
-     public static OpcaoRestaurante instanciarOpcaoRestaurante(ResultSet rs) throws ClassNotFoundException, SQLException {
+
+    public static OpcaoRestaurante instanciarOpcaoRestaurante(ResultSet rs) throws ClassNotFoundException, SQLException {
         OpcaoRestaurante opcao = new OpcaoRestaurante(rs.getFloat("id"),
                 rs.getString("descricao"),
                 rs.getFloat("precoVenda"),
@@ -66,6 +64,28 @@ public class OpcaoRestauranteDAO {
                 rs.getInt("tempoPreparo"));
 
         return opcao;
+    }
+
+    public static void gravar(OpcaoRestaurante opcao) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        PreparedStatement comando = null;
+
+        try {
+
+            comando = conexao.prepareStatement("insert into opcaoRestaurante (id, descricao, precoVenda, categoria, acrescimo, tempoPreparo) values (?,?,?,?,?,?)");
+            comando.setFloat(1, opcao.getCodigo());
+            comando.setString(2, opcao.getDescricao());
+            comando.setFloat(3, opcao.getPrecoVenda());
+//            comando.setInt(4, opcao.getCategoria());
+            comando.setFloat(5, opcao.getAcrescimo());
+            comando.setInt(6, opcao.getTempoPreparo());
+
+            comando.executeUpdate();
+
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+
     }
 
 }

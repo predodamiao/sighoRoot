@@ -5,57 +5,57 @@
  */
 package DAO;
 
+import static DAO.DAO.fecharConexao;
 import Model.Quarto;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Lavínia Beghini
- */
 public class QuartoDAO {
-    public static List<Quarto> obterQuartos() throws ClassNotFoundException, SQLException{
+
+    public static List<Quarto> obterQuartos() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         List<Quarto> quartos = new ArrayList<Quarto>();
         Quarto quarto = null;
-        try{
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery ("select * from quarto");
-            while(rs.next()){
+            ResultSet rs = comando.executeQuery("select * from quarto");
+            while (rs.next()) {
                 quarto = instanciarQuarto(rs);
                 quartos.add(quarto);
             }
-            
-        } finally{
+
+        } finally {
             DAO.fecharConexao(conexao, comando);
         }
-        
+
         return quartos;
     }
-    
-    public static Quarto obterQuarto(int codQuarto) throws ClassNotFoundException, SQLException{
+
+    public static Quarto obterQuarto(int codQuarto) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         Quarto quarto = null;
-        try{
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery ("select * from quarto where id = "+ codQuarto);
+            ResultSet rs = comando.executeQuery("select * from quarto where id = " + codQuarto);
             rs.first();
-            quarto = instanciarQuarto(rs); 
-        } finally{
+            quarto = instanciarQuarto(rs);
+        } finally {
             DAO.fecharConexao(conexao, comando);
         }
-        
+
         return quarto;
     }
-          
+
     public static Quarto instanciarQuarto(ResultSet rs) throws ClassNotFoundException, SQLException {
         Quarto quarto = new Quarto(rs.getInt("identificacao"),
                 rs.getInt("quantidadeCamasCasal"),
@@ -64,8 +64,33 @@ public class QuartoDAO {
                 null);
 
         quarto.setIdTipoQuarto(rs.getInt("tipoQuarto"));
-        
+
         return quarto;
     }
-    
+
+    public static void gravar(Quarto quarto) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        PreparedStatement comando = null;
+
+        try {
+
+            comando = conexao.prepareStatement("insert into solicitacao (identificacao, quantidadeCamasCasal, quantidadeCamasSolteiro, ocupado, tipoQuarto) values (?,?,?,?,?)");
+            comando.setInt(1, quarto.getIdentificacao());
+            comando.setInt(2, quarto.getQuantidadeCamasCasal());
+            comando.setInt(3, quarto.getQuantidadeCamasSolteiro());
+            comando.setBoolean(4, quarto.isOcupado());
+
+            if (quarto.getTipo() == null) {
+                comando.setNull(4, Types.INTEGER);
+            } else {
+                comando.setInt(4, quarto.getTipo().getId());
+            }
+
+            comando.executeUpdate();
+
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+
+    }
 }

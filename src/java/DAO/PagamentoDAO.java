@@ -5,58 +5,59 @@
  */
 package DAO;
 
+import static DAO.DAO.fecharConexao;
 import Model.Pagamento;
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Pedro Henrique
- */
 public class PagamentoDAO {
-    public static List<Pagamento> obterPagamentos() throws ClassNotFoundException, SQLException{
+
+    public static List<Pagamento> obterPagamentos() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         List<Pagamento> pagamentos = new ArrayList<Pagamento>();
         Pagamento pagamento = null;
-        try{
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery ("select * from pagamento");
-            while(rs.next()){
+            ResultSet rs = comando.executeQuery("select * from pagamento");
+            while (rs.next()) {
                 pagamento = instanciarPagamento(rs);
                 pagamentos.add(pagamento);
             }
-            
-        } finally{
+
+        } finally {
             DAO.fecharConexao(conexao, comando);
         }
-        
+
         return pagamentos;
     }
-    
-    public static Pagamento obterPagamento(int codPagamento) throws ClassNotFoundException, SQLException{
+
+    public static Pagamento obterPagamento(int codPagamento) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         Pagamento pagamento = null;
-        try{
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery ("select * from pagamento where id = "+ codPagamento);
+            ResultSet rs = comando.executeQuery("select * from pagamento where id = " + codPagamento);
             rs.first();
-            pagamento = instanciarPagamento(rs); 
-        } finally{
+            pagamento = instanciarPagamento(rs);
+        } finally {
             DAO.fecharConexao(conexao, comando);
         }
-        
+
         return pagamento;
     }
-     
-    public static Pagamento instanciarPagamento (ResultSet rs)throws ClassNotFoundException, SQLException{
+
+    public static Pagamento instanciarPagamento(ResultSet rs) throws ClassNotFoundException, SQLException {
         Pagamento pagamento = new Pagamento(rs.getInt("id"),
                 rs.getFloat("valor"),
                 rs.getDate("data"),
@@ -64,8 +65,36 @@ public class PagamentoDAO {
                 null,
                 null,
                 null);
-        
+
         pagamento.setIdHospedagem(rs.getInt("idHospedagem"));
         return pagamento;
     }
+
+    public static void gravar(Pagamento pagamento) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        PreparedStatement comando = null;
+
+        try {
+
+            comando = conexao.prepareStatement("insert into pagamento (id, valor, data, parcelas, tipo, momento, idHospedagem) values (?,?,?,?,?,?,?)");
+            comando.setInt(1, pagamento.getId());
+            comando.setFloat(2, pagamento.getValor());
+            comando.setDate(3, (Date) pagamento.getData());
+            comando.setInt(4, pagamento.getQuantidadeParcelas());
+//            comando.setString(5, pagamento.getMomento());
+
+            if (pagamento.getHospedagem() == null) {
+                comando.setNull(6, Types.INTEGER);
+            } else {
+                comando.setInt(4, pagamento.getHospedagem().getId());
+            }
+
+            comando.executeUpdate();
+
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+
+    }
+
 }

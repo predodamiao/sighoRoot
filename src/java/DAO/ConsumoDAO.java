@@ -5,58 +5,59 @@
  */
 package DAO;
 
+import static DAO.DAO.fecharConexao;
 import Model.Consumo;
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Lavínia Beghini
- */
 public class ConsumoDAO {
-    public static List<Consumo> obterConsumos() throws ClassNotFoundException, SQLException{
+
+    public static List<Consumo> obterConsumos() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<Consumo> consumos  = new ArrayList<Consumo>();
+        List<Consumo> consumos = new ArrayList<Consumo>();
         Consumo consumo = null;
-        try{
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery ("select * from consumo");
-            while(rs.next()){
+            ResultSet rs = comando.executeQuery("select * from consumo");
+            while (rs.next()) {
                 consumo = instanciarConsumo(rs);
                 consumos.add(consumo);
             }
-            
-        } finally{
+
+        } finally {
             DAO.fecharConexao(conexao, comando);
         }
-        
+
         return consumos;
     }
-    
-    public static Consumo obterConsumo(int codConsumo) throws ClassNotFoundException, SQLException{
+
+    public static Consumo obterConsumo(int codConsumo) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         Consumo consumo = null;
-        try{
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery ("select * from consumo where id = " + codConsumo);
+            ResultSet rs = comando.executeQuery("select * from consumo where id = " + codConsumo);
             rs.first();
-            consumo = instanciarConsumo(rs); 
-        } finally{
+            consumo = instanciarConsumo(rs);
+        } finally {
             DAO.fecharConexao(conexao, comando);
         }
-        
+
         return consumo;
     }
-      
-    public static Consumo instanciarConsumo (ResultSet rs)throws ClassNotFoundException, SQLException{
+
+    public static Consumo instanciarConsumo(ResultSet rs) throws ClassNotFoundException, SQLException {
         Consumo consumo = new Consumo(rs.getInt("id"),
                 rs.getDate("dataConsumo"),
                 rs.getInt("quantidade"),
@@ -64,11 +65,55 @@ public class ConsumoDAO {
                 null,
                 null,
                 null);
-        
+
         consumo.setIdFuncionario(rs.getInt("idFuncionario"));
         consumo.setIdFuncionario(rs.getInt("idHospede"));
         consumo.setIdItemConsumido(rs.getInt("idItem"));
         consumo.setIdHospedagem(rs.getInt("idHospedagem"));
         return consumo;
     }
+
+    public static void gravar(Consumo consumo) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        PreparedStatement comando = null;
+
+        try {
+
+            comando = conexao.prepareStatement("insert into consumo (id, data, quantidade, idFuncionario, idHospede, idHospedagem, idItem) values (?,?,?,?,?,?,?)");
+            comando.setInt(1, consumo.getId());
+            comando.setDate(2, (Date) consumo.getData());
+            comando.setInt(3, consumo.getQuantidade());
+
+            if (consumo.getFuncionarioResponsavel() == null) {
+                comando.setNull(4, Types.INTEGER);
+            } else {
+                comando.setInt(4, consumo.getFuncionarioResponsavel().getId());
+            }
+
+            if (consumo.getHospedeResponsavel() == null) {
+                comando.setNull(5, Types.INTEGER);
+            } else {
+                comando.setInt(5, consumo.getHospedeResponsavel().getId());
+            }
+
+            if (consumo.getHospedagem() == null) {
+                comando.setNull(6, Types.INTEGER);
+            } else {
+                comando.setInt(6, consumo.getHospedagem().getId());
+            }
+
+            if (consumo.getItemConsumido() == null) {
+                comando.setNull(7, Types.FLOAT);
+            } else {
+                comando.setFloat(7, consumo.getItemConsumido().getCodigo());
+            }
+
+            comando.executeUpdate();
+
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+
+    }
+
 }

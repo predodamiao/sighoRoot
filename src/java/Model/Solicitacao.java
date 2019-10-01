@@ -10,18 +10,21 @@ public class Solicitacao {
     private Date data;
     private int quantidade;
     private StatusSolicitacao status;
-    private Pessoa responsavel;
+    private Funcionario funcionario;
+    private Hospede hospede;
     private Hospedagem hospedagem;
     private ItemConsumo item;
-    private int idPessoa;
+    private int idFuncionario;
+    private int idHospede;
     private int idHospedagem;
 
-    public Solicitacao(int id, Date data, int quantidade, StatusSolicitacao status, Pessoa responsavel, Hospedagem hospedagem, ItemConsumo item) {
+    public Solicitacao(int id, Date data, int quantidade, StatusSolicitacao status, Funcionario funcionario, Hospede hospede, Hospedagem hospedagem, ItemConsumo item) {
         this.id = id;
         this.data = data;
         this.quantidade = quantidade;
         this.status = status;
-        this.responsavel = responsavel;
+        this.funcionario = funcionario;
+        this.hospede = hospede;
         this.hospedagem = hospedagem;
         this.item = item;
     }
@@ -58,28 +61,12 @@ public class Solicitacao {
         this.status = status;
     }
 
-    public Pessoa getResponsavel() {
-        return responsavel;
-    }
-
-    public void setResponsavel(Pessoa responsavel) {
-        this.responsavel = responsavel;
-    }
-
     public Hospedagem getHospedagem() {
         return hospedagem;
     }
 
     public void setHospedagem(Hospedagem hospedagem) {
         this.hospedagem = hospedagem;
-    }
-
-    public int getIdPessoa() {
-        return idPessoa;
-    }
-
-    public void setIdPessoa(int idPessoa) {
-        this.idPessoa = idPessoa;
     }
 
     public int getIdHospedagem() {
@@ -104,6 +91,38 @@ public class Solicitacao {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public Hospede getHospede() {
+        return hospede;
+    }
+
+    public void setHospede(Hospede hospede) {
+        this.hospede = hospede;
+    }
+
+    public int getIdFuncionario() {
+        return idFuncionario;
+    }
+
+    public void setIdFuncionario(int idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
+
+    public int getIdHospede() {
+        return idHospede;
+    }
+
+    public void setIdHospede(int idHospede) {
+        this.idHospede = idHospede;
     }
 
 

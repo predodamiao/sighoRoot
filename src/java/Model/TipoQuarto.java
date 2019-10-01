@@ -57,5 +57,9 @@ public class TipoQuarto {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    
+    public void gravar() throws SQLException{
+        TipoQuartoDAO.gravar(this);
+    }
 
 }
