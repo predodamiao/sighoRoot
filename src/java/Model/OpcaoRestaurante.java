@@ -10,19 +10,19 @@ public class OpcaoRestaurante extends ItemConsumo {
     private int tempoPreparo;
 
     public OpcaoRestaurante(float codigo, String descricao, float precoVenda, CategoriaItemConsumo categoria, float acrescimo, int tempoPreparo) {
-        super (codigo, descricao, precoVenda, CategoriaItemConsumo.Restaurante);
+        super(codigo, descricao, precoVenda, CategoriaItemConsumo.Restaurante);
         this.acrescimo = acrescimo;
         this.tempoPreparo = tempoPreparo;
     }
 
-    public static OpcaoRestaurante obterItemRestaurante(int codItem) throws ClassNotFoundException, SQLException{
+    public static OpcaoRestaurante obterItemRestaurante(int codItem) throws ClassNotFoundException, SQLException {
         return OpcaoRestauranteDAO.obterItensRestaurante(codItem);
     }
-    
-    public static List<OpcaoRestaurante> obterItensRestaurante() throws ClassNotFoundException, SQLException{
+
+    public static List<OpcaoRestaurante> obterItensRestaurante() throws ClassNotFoundException, SQLException {
         return OpcaoRestauranteDAO.obterItensRestaurante();
     }
-    
+
     public float getAcrescimo() {
         return acrescimo;
     }
@@ -37,6 +37,11 @@ public class OpcaoRestaurante extends ItemConsumo {
 
     public void setTempoPreparo(int tempoPreparo) {
         this.tempoPreparo = tempoPreparo;
+    }
+
+    @Override
+    public void gravar() throws SQLException, ClassNotFoundException {
+        OpcaoRestauranteDAO.gravar(this);
     }
 
 }

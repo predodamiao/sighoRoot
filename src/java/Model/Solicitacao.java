@@ -29,14 +29,14 @@ public class Solicitacao {
         this.item = item;
     }
 
-        public static Solicitacao obterSolicitacao(int codSolicitacao) throws ClassNotFoundException, SQLException{
+    public static Solicitacao obterSolicitacao(int codSolicitacao) throws ClassNotFoundException, SQLException {
         return SolicitacaoDAO.obterSolicitacao(codSolicitacao);
     }
-    
-    public static List<Solicitacao> obterSolicitacoes() throws ClassNotFoundException, SQLException{
+
+    public static List<Solicitacao> obterSolicitacoes() throws ClassNotFoundException, SQLException {
         return SolicitacaoDAO.obterSolicitacoes();
     }
-    
+
     public Date getData() {
         return data;
     }
@@ -125,5 +125,8 @@ public class Solicitacao {
         this.idHospede = idHospede;
     }
 
+    public void gravar() throws SQLException {
+        SolicitacaoDAO.gravar(this);
+    }
 
 }

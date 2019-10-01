@@ -14,14 +14,14 @@ public class Hospede extends Pessoa {
         this.passaporte = passaporte;
     }
 
-    public static Hospede obterHospede(int codHospede) throws ClassNotFoundException, SQLException{
+    public static Hospede obterHospede(int codHospede) throws ClassNotFoundException, SQLException {
         return HospedeDAO.obterHospede(codHospede);
     }
-    
-    public static List<Hospede> obterHospedes() throws ClassNotFoundException, SQLException{
+
+    public static List<Hospede> obterHospedes() throws ClassNotFoundException, SQLException {
         return HospedeDAO.obterHospedes();
     }
-    
+
     public String getPassaporte() {
         return passaporte;
     }
@@ -29,7 +29,9 @@ public class Hospede extends Pessoa {
     public void setPassaporte(String passaporte) {
         this.passaporte = passaporte;
     }
-    
-    
+
+    public void gravar() throws SQLException, ClassNotFoundException {
+        HospedeDAO.gravar(this);
+    }
 
 }

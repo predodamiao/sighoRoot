@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Pagamento {
-    
+
     private int id;
     private float valor;
     private Date data;
@@ -15,8 +15,8 @@ public class Pagamento {
     private MomentoPagamento momento;
     private Hospedagem hospedagem;
     private int idHospedagem;
-    
-    public Pagamento(int id, float valor, Date data, int parcelas, TipoPagamento tipo, MomentoPagamento momento, Hospedagem hospedagem){
+
+    public Pagamento(int id, float valor, Date data, int parcelas, TipoPagamento tipo, MomentoPagamento momento, Hospedagem hospedagem) {
         this.id = id;
         this.valor = valor;
         this.data = data;
@@ -26,14 +26,14 @@ public class Pagamento {
         this.hospedagem = hospedagem;
     }
 
-    public static Pagamento obterPagamento(int codPagamento) throws ClassNotFoundException, SQLException{
+    public static Pagamento obterPagamento(int codPagamento) throws ClassNotFoundException, SQLException {
         return PagamentoDAO.obterPagamento(codPagamento);
     }
-    
-    public static List<Pagamento> obterPagamentos() throws ClassNotFoundException, SQLException{
+
+    public static List<Pagamento> obterPagamentos() throws ClassNotFoundException, SQLException {
         return PagamentoDAO.obterPagamentos();
     }
-    
+
     public float getValor() {
         return valor;
     }
@@ -75,10 +75,10 @@ public class Pagamento {
     }
 
     public Hospedagem getHospedagem() throws ClassNotFoundException, SQLException {
-        if((this.idHospedagem != 0) && (this.hospedagem == null)){
+        if ((this.idHospedagem != 0) && (this.hospedagem == null)) {
             this.hospedagem = Hospedagem.obterHospedagem(this.idHospedagem);
         }
-        
+
         return hospedagem;
     }
 
@@ -101,5 +101,9 @@ public class Pagamento {
     public void setId(int id) {
         this.id = id;
     }
-    
+
+    public void gravar() throws SQLException, ClassNotFoundException {
+        PagamentoDAO.gravar(this);
+    }
+
 }

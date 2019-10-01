@@ -16,14 +16,14 @@ public class ItemFrigobar {
         this.item = item;
     }
 
-        public static ItemFrigobar obterItemPadraoFrigobar(int codItem) throws ClassNotFoundException, SQLException{
+    public static ItemFrigobar obterItemPadraoFrigobar(int codItem) throws ClassNotFoundException, SQLException {
         return ItemFrigobarDAO.obterItensPadraoFrigobar(codItem);
     }
-    
-    public static List<ItemFrigobar> obterItensPadraoFrigobar() throws ClassNotFoundException, SQLException{
+
+    public static List<ItemFrigobar> obterItensPadraoFrigobar() throws ClassNotFoundException, SQLException {
         return ItemFrigobarDAO.obterItensPadraoFrigobar();
     }
-    
+
     public int getQuantidade() {
         return quantidade;
     }
@@ -33,10 +33,10 @@ public class ItemFrigobar {
     }
 
     public ItemConsumo getItem() throws ClassNotFoundException, SQLException {
-        if((this.idItemConsumo != 0) && (this.item == null)){
+        if ((this.idItemConsumo != 0) && (this.item == null)) {
             this.item = ItemConsumo.obterItemConsumo(this.idItemConsumo);
         }
-      
+
         return item;
     }
 
@@ -58,6 +58,10 @@ public class ItemFrigobar {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void gravar() throws SQLException, ClassNotFoundException {
+        ItemFrigobarDAO.gravar(this);
     }
 
 }

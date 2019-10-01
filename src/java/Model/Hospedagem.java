@@ -31,14 +31,14 @@ public class Hospedagem {
         this.hospedeResponsavel = hospedeResponsavel;
     }
 
-    public static Hospedagem obterHospedagem(int codHospedagem) throws ClassNotFoundException, SQLException{
+    public static Hospedagem obterHospedagem(int codHospedagem) throws ClassNotFoundException, SQLException {
         return HospedagemDAO.obterHospedagem(codHospedagem);
     }
-    
-    public static List<Hospedagem> obterHospedagens() throws ClassNotFoundException, SQLException{
+
+    public static List<Hospedagem> obterHospedagens() throws ClassNotFoundException, SQLException {
         return HospedagemDAO.obterHospedagens();
     }
-     
+
     public Date getDataChegada() {
         return dataChegada;
     }
@@ -80,10 +80,10 @@ public class Hospedagem {
     }
 
     public TipoQuarto getTipoQuarto() throws ClassNotFoundException, SQLException {
-        if((this.idTipoQuarto != 0) && (this.tipoQuarto == null)){
+        if ((this.idTipoQuarto != 0) && (this.tipoQuarto == null)) {
             this.tipoQuarto = TipoQuarto.obterTipoQuarto(this.idTipoQuarto);
         }
-        
+
         return tipoQuarto;
     }
 
@@ -92,10 +92,10 @@ public class Hospedagem {
     }
 
     public Quarto getQuarto() throws ClassNotFoundException, SQLException {
-        if((this.idQuarto != 0) && (this.quarto == null)){
+        if ((this.idQuarto != 0) && (this.quarto == null)) {
             this.quarto = Quarto.obterQuarto(this.idQuarto);
         }
-        
+
         return quarto;
     }
 
@@ -104,10 +104,10 @@ public class Hospedagem {
     }
 
     public Hospede getHospedeResponsavel() throws ClassNotFoundException, SQLException {
-        if((this.idHospedeResponsavel != 0) && (this.hospedeResponsavel == null)){
+        if ((this.idHospedeResponsavel != 0) && (this.hospedeResponsavel == null)) {
             this.hospedeResponsavel = Hospede.obterHospede(this.idHospedeResponsavel);
         }
-        
+
         return hospedeResponsavel;
     }
 
@@ -145,6 +145,10 @@ public class Hospedagem {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void gravar() throws SQLException, ClassNotFoundException {
+        HospedagemDAO.gravar(this);
     }
 
 }

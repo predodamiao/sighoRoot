@@ -17,14 +17,14 @@ public class ItemConsumo {
         this.precoVenda = precoVenda;
     }
 
-    public static ItemConsumo obterItemConsumo(int codItemConsumo) throws ClassNotFoundException, SQLException{
+    public static ItemConsumo obterItemConsumo(int codItemConsumo) throws ClassNotFoundException, SQLException {
         return ItemConsumoDAO.obterItemConsumo(codItemConsumo);
     }
-    
-    public static List<ItemConsumo> obterItensConsumo() throws ClassNotFoundException, SQLException{
+
+    public static List<ItemConsumo> obterItensConsumo() throws ClassNotFoundException, SQLException {
         return ItemConsumoDAO.obterItensConsumo();
     }
-    
+
     public float getCodigo() {
         return codigo;
     }
@@ -57,5 +57,8 @@ public class ItemConsumo {
         this.categoria = categoria;
     }
 
-    
+    public void gravar() throws SQLException, ClassNotFoundException {
+        ItemConsumoDAO.gravar(this);
+    }
+
 }

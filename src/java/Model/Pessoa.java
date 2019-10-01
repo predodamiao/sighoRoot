@@ -20,8 +20,6 @@ public abstract class Pessoa {
     private String cpf;
     private Date dataNascimento;
 
-   
-
     public Pessoa(int id, String nome, String telefone, String email, String rg, String cpf, Date dataNascimento) {
         this.id = id;
         this.nome = nome;

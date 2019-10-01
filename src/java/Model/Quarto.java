@@ -20,14 +20,14 @@ public class Quarto {
         this.tipo = tipo;
     }
 
-    public static Quarto obterQuarto(int codQuarto) throws ClassNotFoundException, SQLException{
+    public static Quarto obterQuarto(int codQuarto) throws ClassNotFoundException, SQLException {
         return QuartoDAO.obterQuarto(codQuarto);
     }
-    
-    public static List<Quarto> obterQuartos() throws ClassNotFoundException, SQLException{
+
+    public static List<Quarto> obterQuartos() throws ClassNotFoundException, SQLException {
         return QuartoDAO.obterQuartos();
     }
-    
+
     public int getIdentificacao() {
         return identificacao;
     }
@@ -61,10 +61,10 @@ public class Quarto {
     }
 
     public TipoQuarto getTipo() throws ClassNotFoundException, SQLException {
-        if((this.idTipoQuarto != 0) && (this.tipo == null)){
+        if ((this.idTipoQuarto != 0) && (this.tipo == null)) {
             this.tipo = TipoQuarto.obterTipoQuarto(this.idTipoQuarto);
         }
-        
+
         return tipo;
     }
 
@@ -78,6 +78,10 @@ public class Quarto {
 
     public void setIdTipoQuarto(int idTipoQuarto) {
         this.idTipoQuarto = idTipoQuarto;
+    }
+
+    public void gravar() throws SQLException, ClassNotFoundException {
+        QuartoDAO.gravar(this);
     }
 
 }

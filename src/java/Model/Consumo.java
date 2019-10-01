@@ -28,15 +28,15 @@ public class Consumo {
         this.itemConsumido = itemConsumido;
     }
 
-    public static Consumo obterConsumo(int codConsumo) throws ClassNotFoundException, SQLException{
+    public static Consumo obterConsumo(int codConsumo) throws ClassNotFoundException, SQLException {
         return ConsumoDAO.obterConsumo(codConsumo);
     }
-    
-    public static List<Consumo> obterConsumos() throws ClassNotFoundException, SQLException{
+
+    public static List<Consumo> obterConsumos() throws ClassNotFoundException, SQLException {
         return ConsumoDAO.obterConsumos();
     }
 
-        public int getId() {
+    public int getId() {
         return id;
     }
 
@@ -44,7 +44,6 @@ public class Consumo {
         this.id = id;
     }
 
-    
     public Date getData() {
         return data;
     }
@@ -62,10 +61,10 @@ public class Consumo {
     }
 
     public Funcionario getFuncionarioResponsavel() throws ClassNotFoundException, SQLException {
-        if((this.idFuncionario != 0) && (this.funcionarioResponsavel == null)){
+        if ((this.idFuncionario != 0) && (this.funcionarioResponsavel == null)) {
             this.funcionarioResponsavel = Funcionario.obterFuncionario(this.idFuncionario);
         }
-         return funcionarioResponsavel;
+        return funcionarioResponsavel;
     }
 
     public void setFuncionarioResponsavel(Funcionario funcionarioResponsavel) {
@@ -73,10 +72,10 @@ public class Consumo {
     }
 
     public Hospedagem getHospedagem() throws ClassNotFoundException, SQLException {
-        if((this.idHospedagem != 0) && (this.hospedagem == null)){
+        if ((this.idHospedagem != 0) && (this.hospedagem == null)) {
             this.hospedagem = Hospedagem.obterHospedagem(this.idHospedagem);
         }
-        
+
         return hospedagem;
     }
 
@@ -85,10 +84,10 @@ public class Consumo {
     }
 
     public ItemConsumo getItemConsumido() throws ClassNotFoundException, SQLException {
-        if((this.idItemConsumido != 0) && (this.itemConsumido == null)){
+        if ((this.idItemConsumido != 0) && (this.itemConsumido == null)) {
             this.itemConsumido = ItemConsumo.obterItemConsumo(this.idItemConsumido);
         }
-        
+
         return itemConsumido;
     }
 
@@ -134,6 +133,10 @@ public class Consumo {
 
     public void setIdHospede(int idHospede) {
         this.idHospede = idHospede;
+    }
+
+    public void gravar() throws SQLException, ClassNotFoundException {
+        ConsumoDAO.gravar(this);
     }
 
 }
