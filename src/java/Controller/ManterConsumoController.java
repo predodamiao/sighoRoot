@@ -33,7 +33,6 @@ public class ManterConsumoController extends HttpServlet {
         if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
         }
-
     }
 
     public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, ClassNotFoundException, SQLException {
