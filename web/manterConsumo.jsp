@@ -54,23 +54,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="hospede">Hospede Solicitante:</label>
-                    </td>
-                    <td>
-                        <select name="hospedeSolicitante" id="hospedeSolcitante">
-                            <option value="0" <c:if test="${consumo.hospedeResponsavel.id == null}"> selected </c:if>></option>
-                            <c:forEach items="${hospedeSolicitante}" var="hospede">
-                                <option value="${hospede.id}" <c:if test="${consumo.hospedeResponsavel.id == hospede.id}">selected</c:if>>${hospede.nome}</option>
-                            </c:forEach>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
                         <label for="funcionario">Funcionário Solicitante:</label>
                     </td>
                     <td>
-                        <select name="FuncionarioSolicitante" id="FuncionarioSolcitante">
+                        <select name="FuncionarioSolicitante" id="FuncionarioSolicitante">
                             <option value="0" <c:if test="${consumo.funcionarioResponsavel.id == null}"> selected </c:if>></option>
                             <c:forEach items="${funcionarioSolicitante}" var="funcionario">
                                 <option value="${funcionario.id}" <c:if test="${consumo.funcionarioResponsavel.id == funcionario.id}">selected</c:if>>${funcionario.nome}</option>

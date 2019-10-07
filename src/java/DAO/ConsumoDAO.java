@@ -60,10 +60,8 @@ public class ConsumoDAO {
                 rs.getInt("quantidade"),
                 null,
                 null,
-                null,
                 null);
         consumo.setIdFuncionario(rs.getInt("idFuncionario"));
-        consumo.setIdFuncionario(rs.getInt("idHospede"));
         consumo.setIdItemConsumido(rs.getInt("idItem"));
         consumo.setIdHospedagem(rs.getInt("idHospedagem"));
         return consumo;
@@ -73,7 +71,7 @@ public class ConsumoDAO {
         Connection conexao = null;
         PreparedStatement comando = null;
         try {
-            comando = conexao.prepareStatement("insert into consumo (id, data, quantidade, idFuncionario, idHospede, idHospedagem, idItem) values (?,?,?,?,?,?,?)");
+            comando = conexao.prepareStatement("insert into consumo (id, data, quantidade, idFuncionario, idHospede, idHospedagem, idItem) values (?,?,?,?,?,?)");
             comando.setInt(1, consumo.getId());
             comando.setDate(2, (Date) consumo.getData());
             comando.setInt(3, consumo.getQuantidade());
@@ -83,22 +81,16 @@ public class ConsumoDAO {
                 comando.setInt(4, consumo.getFuncionarioResponsavel().getId());
             }
 
-            if (consumo.getHospedeResponsavel() == null) {
+            if (consumo.getHospedagem() == null) {
                 comando.setNull(5, Types.INTEGER);
             } else {
-                comando.setInt(5, consumo.getHospedeResponsavel().getId());
-            }
-
-            if (consumo.getHospedagem() == null) {
-                comando.setNull(6, Types.INTEGER);
-            } else {
-                comando.setInt(6, consumo.getHospedagem().getId());
+                comando.setInt(5, consumo.getHospedagem().getId());
             }
 
             if (consumo.getItemConsumido() == null) {
-                comando.setNull(7, Types.FLOAT);
+                comando.setNull(6, Types.FLOAT);
             } else {
-                comando.setFloat(7, consumo.getItemConsumido().getCodigo());
+                comando.setFloat(6, consumo.getItemConsumido().getCodigo());
             }
             comando.executeUpdate();
         } finally {
