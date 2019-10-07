@@ -8,12 +8,15 @@ package DAO;
 import static DAO.DAO.fecharConexao;
 import Model.Hospede;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 public class HospedeDAO {
 
@@ -75,7 +78,7 @@ public class HospedeDAO {
             comando.setString(4, hospede.getEmail());
             comando.setString(5, hospede.getRg());
             comando.setString(6, hospede.getCpf());
-            comando.setDate(7, (java.sql.Date) hospede.getDataNascimento());
+            comando.setDate(7, (Date) hospede.getDataNascimento());
             comando.setString(8, hospede.getPassaporte());
             comando.executeUpdate();
         } finally {

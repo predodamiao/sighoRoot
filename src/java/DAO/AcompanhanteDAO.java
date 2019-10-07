@@ -3,6 +3,7 @@ package DAO;
 import static DAO.DAO.fecharConexao;
 import Model.Acompanhante;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -65,7 +66,7 @@ public class AcompanhanteDAO {
             comando = conexao.prepareStatement("insert into acompanhante (id, nome, dataNascimento, ocupaCama idHospedagem) values (?,?,?,?,?)");
             comando.setInt(1, acompanhante.getId());
             comando.setString(2, acompanhante.getNome());
-            comando.setDate(3, (java.sql.Date) acompanhante.getDataNascimento());
+            comando.setDate(3, (Date) acompanhante.getDataNascimento());
             comando.setBoolean(4, acompanhante.isOcupaCama());
 
             if (acompanhante.getHospedagem() == null) {

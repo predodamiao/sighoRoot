@@ -2,7 +2,8 @@ package Model;
 
 import DAO.ConsumoDAO;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 
 public class Consumo {
 

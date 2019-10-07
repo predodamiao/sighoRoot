@@ -73,7 +73,7 @@ public class FuncionarioDAO {
             comando.setString(4, funcionario.getEmail());
             comando.setString(5, funcionario.getRg());
             comando.setString(6, funcionario.getCpf());
-            comando.setDate(7, (java.sql.Date) funcionario.getDataNascimento());
+            comando.setDate(7, (Date) funcionario.getDataNascimento());
             comando.setDate(8, (Date) funcionario.getDataAdmissao());
             comando.setString(9, funcionario.getCategoria().toString());
             comando.executeUpdate();
