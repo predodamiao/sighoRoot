@@ -32,11 +32,9 @@ public class SolicitacaoDAO {
                 solicitacao = instanciarSolicitacao(rs);
                 solicitacoes.add(solicitacao);
             }
-
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return solicitacoes;
     }
 
@@ -53,7 +51,6 @@ public class SolicitacaoDAO {
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return solicitacao;
     }
 
@@ -65,7 +62,6 @@ public class SolicitacaoDAO {
                 null,
                 null,
                 null);
-
         solicitacao.setIdFuncionario(rs.getInt("idFuncionario"));
         solicitacao.setIdHospedagem(rs.getInt("idHospedagem"));
         return solicitacao;
@@ -74,39 +70,32 @@ public class SolicitacaoDAO {
     public static void gravar(Solicitacao solicitacao) throws SQLException {
         Connection conexao = null;
         PreparedStatement comando = null;
-
         try {
-
             comando = conexao.prepareStatement("insert into solicitacao (id, data, quantidade, status, idFuncionario, idHospede, hospedagem, item) values (?,?,?,?,?,?)");
             comando.setInt(1, solicitacao.getId());
             comando.setDate(2, (Date) solicitacao.getData());
             comando.setInt(3, solicitacao.getQuantidade());
 //            comando.setString(4, solicitacao.getStatus());
-
             if (solicitacao.getFuncionario() == null) {
                 comando.setNull(5, Types.INTEGER);
             } else {
                 comando.setInt(5, solicitacao.getFuncionario().getId());
             }
-
             if (solicitacao.getHospedagem() == null) {
                 comando.setNull(6, Types.INTEGER);
             } else {
                 comando.setInt(6, solicitacao.getHospedagem().getId());
             }
-
             if (solicitacao.getItem() == null) {
                 comando.setNull(7, Types.FLOAT);
             } else {
                 comando.setFloat(7, solicitacao.getItem().getCodigo());
             }
-
             comando.executeUpdate();
 
         } finally {
             fecharConexao(conexao, comando);
         }
-
     }
 
 }

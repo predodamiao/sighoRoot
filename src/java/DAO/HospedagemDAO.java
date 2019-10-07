@@ -32,11 +32,9 @@ public class HospedagemDAO {
                 hospedagem = instanciarHospedagem(rs);
                 hospedagens.add(hospedagem);
             }
-
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return hospedagens;
     }
 
@@ -53,7 +51,6 @@ public class HospedagemDAO {
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return hospedagem;
     }
 
@@ -67,18 +64,15 @@ public class HospedagemDAO {
                 null,
                 null,
                 null);
-
         hospedagem.setIdTipoQuarto(rs.getInt("tipoQuarto"));
         hospedagem.setIdQuarto(rs.getInt("quarto"));
         hospedagem.setIdHospedeResponsavel(rs.getInt("hospedeResponsavel"));
-
         return hospedagem;
     }
 
     public static void gravar(Hospedagem hospedagem) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         PreparedStatement comando = null;
-
         try {
 
             comando = conexao.prepareStatement("insert into hospedagem (id, dataChegada, dataSaida, dataEstimadaChegada, dataEstimadaSaida, checked, tipoQuarto, quarto, hospedeResponsavel) values (?,?,?,?,?,?,?,?,?)");
@@ -88,31 +82,25 @@ public class HospedagemDAO {
             comando.setDate(4, (Date) hospedagem.getDataEstimadaChegada());
             comando.setDate(5, (Date) hospedagem.getDataEstimadaSaida());
             comando.setBoolean(6, hospedagem.isChecked());
-
             if (hospedagem.getTipoQuarto() == null) {
                 comando.setNull(7, Types.INTEGER);
             } else {
                 comando.setInt(7, hospedagem.getTipoQuarto().getId());
             }
-
             if (hospedagem.getQuarto() == null) {
                 comando.setNull(7, Types.INTEGER);
             } else {
                 comando.setInt(7, hospedagem.getQuarto().getIdentificacao());
             }
-
             if (hospedagem.getHospedeResponsavel() == null) {
                 comando.setNull(7, Types.INTEGER);
             } else {
                 comando.setInt(7, hospedagem.getHospedeResponsavel().getId());
             }
-
             comando.executeUpdate();
-
         } finally {
             fecharConexao(conexao, comando);
         }
-
     }
 
 }

@@ -13,7 +13,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class HospedeDAO {
@@ -31,11 +30,9 @@ public class HospedeDAO {
                 hospede = instanciarHospede(rs);
                 hospedes.add(hospede);
             }
-
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return hospedes;
     }
 
@@ -52,7 +49,6 @@ public class HospedeDAO {
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return hospede;
     }
 
@@ -65,16 +61,13 @@ public class HospedeDAO {
                 rs.getString("cpf"),
                 rs.getDate("dataNascimento"),
                 rs.getString("passaporte"));
-
         return hospede;
     }
 
     public static void gravar(Hospede hospede) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         PreparedStatement comando = null;
-
         try {
-
             comando = conexao.prepareStatement("insert into hospede (id, nome, telefone, email, rg, cpf, dataNascimento, passaporte) values (?,?,?,?,?,?,?,?)");
             comando.setInt(1, hospede.getId());
             comando.setString(2, hospede.getNome());
@@ -84,13 +77,10 @@ public class HospedeDAO {
             comando.setString(6, hospede.getCpf());
             comando.setDate(7, (java.sql.Date) hospede.getDataNascimento());
             comando.setString(8, hospede.getPassaporte());
-
             comando.executeUpdate();
-
         } finally {
             fecharConexao(conexao, comando);
         }
-
     }
 
 }

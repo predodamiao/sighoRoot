@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller;
 
 import Model.TipoQuarto;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,10 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Lavínia
- */
 public class PesquisarTipoQuartoController extends HttpServlet {
 
     /**
@@ -39,9 +29,9 @@ public class PesquisarTipoQuartoController extends HttpServlet {
             request.setAttribute("tiposQuarto", TipoQuarto.obterTiposQuarto());
             RequestDispatcher view = request.getRequestDispatcher("/pesquisaTipoQuarto.jsp");
             view.forward(request, response);
-        } catch (ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             throw new ServletException(e);
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new ServletException(e);
         }
     }

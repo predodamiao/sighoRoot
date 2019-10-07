@@ -1,8 +1,8 @@
 package Model;
 
 public enum CategoriaFuncionario {
-	GERENTE,
-	LAVANDERIA,
-	RECEPCAO,
-	CAMARARIA
+    GERENTE,
+    LAVANDERIA,
+    RECEPCAO,
+    CAMARARIA
 }

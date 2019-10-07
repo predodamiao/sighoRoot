@@ -30,11 +30,9 @@ public class OpcaoRestauranteDAO {
                 itemRestaurante = instanciarOpcaoRestaurante(rs);
                 itensRestaurante.add(itemRestaurante);
             }
-
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return itensRestaurante;
     }
 
@@ -51,7 +49,6 @@ public class OpcaoRestauranteDAO {
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return item;
     }
 
@@ -62,16 +59,13 @@ public class OpcaoRestauranteDAO {
                 null,
                 rs.getFloat("acrescimo"),
                 rs.getInt("tempoPreparo"));
-
         return opcao;
     }
 
     public static void gravar(OpcaoRestaurante opcao) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         PreparedStatement comando = null;
-
         try {
-
             comando = conexao.prepareStatement("insert into opcaoRestaurante (id, descricao, precoVenda, categoria, acrescimo, tempoPreparo) values (?,?,?,?,?,?)");
             comando.setFloat(1, opcao.getCodigo());
             comando.setString(2, opcao.getDescricao());
@@ -79,13 +73,10 @@ public class OpcaoRestauranteDAO {
 //            comando.setInt(4, opcao.getCategoria());
             comando.setFloat(5, opcao.getAcrescimo());
             comando.setInt(6, opcao.getTempoPreparo());
-
             comando.executeUpdate();
-
         } finally {
             fecharConexao(conexao, comando);
         }
-
     }
 
 }

@@ -12,7 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,11 +30,9 @@ public class TipoQuartoDAO {
                 tipoQuarto = instanciarTipoQuarto(rs);
                 tiposQuarto.add(tipoQuarto);
             }
-
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return tiposQuarto;
     }
 
@@ -52,7 +49,6 @@ public class TipoQuartoDAO {
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return tipo;
     }
 
@@ -61,28 +57,22 @@ public class TipoQuartoDAO {
                 rs.getString("nome"),
                 rs.getString("descricao"),
                 rs.getFloat("preco"));
-
         return tipo;
     }
 
     public static void gravar(TipoQuarto tipo) throws SQLException {
         Connection conexao = null;
         PreparedStatement comando = null;
-
         try {
-
             comando = conexao.prepareStatement("insert into tipoQuarto (id, nome, descricao, preco) values (?,?,?,?)");
             comando.setInt(1, tipo.getId());
             comando.setString(2, tipo.getNome());
             comando.setString(3, tipo.getDescricao());
             comando.setFloat(4, tipo.getPreco());
-
             comando.executeUpdate();
-
         } finally {
             fecharConexao(conexao, comando);
         }
-
     }
 
 }

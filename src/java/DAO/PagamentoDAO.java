@@ -32,11 +32,9 @@ public class PagamentoDAO {
                 pagamento = instanciarPagamento(rs);
                 pagamentos.add(pagamento);
             }
-
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return pagamentos;
     }
 
@@ -53,7 +51,6 @@ public class PagamentoDAO {
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return pagamento;
     }
 
@@ -65,7 +62,6 @@ public class PagamentoDAO {
                 null,
                 null,
                 null);
-
         pagamento.setIdHospedagem(rs.getInt("idHospedagem"));
         return pagamento;
     }
@@ -82,19 +78,15 @@ public class PagamentoDAO {
             comando.setDate(3, (Date) pagamento.getData());
             comando.setInt(4, pagamento.getQuantidadeParcelas());
 //            comando.setString(5, pagamento.getMomento());
-
             if (pagamento.getHospedagem() == null) {
                 comando.setNull(6, Types.INTEGER);
             } else {
                 comando.setInt(4, pagamento.getHospedagem().getId());
             }
-
             comando.executeUpdate();
-
         } finally {
             fecharConexao(conexao, comando);
         }
-
     }
 
 }

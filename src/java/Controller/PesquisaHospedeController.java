@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller;
 
 import Model.Hospede;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,10 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Pedro Henrique
- */
 public class PesquisaHospedeController extends HttpServlet {
 
     /**
@@ -31,6 +21,7 @@ public class PesquisaHospedeController extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
@@ -38,12 +29,13 @@ public class PesquisaHospedeController extends HttpServlet {
             request.setAttribute("hospedes", Hospede.obterHospedes());
             RequestDispatcher view = request.getRequestDispatcher("/pesquisaHospede.jsp");
             view.forward(request, response);
-        } catch (ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             throw new ServletException(e);
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new ServletException(e);
         }
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -90,5 +82,5 @@ public class PesquisaHospedeController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    
+
 }

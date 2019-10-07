@@ -1,22 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Lavínia Beghini
- */
 public class ManterItemConsumoController extends HttpServlet {
 
     /**
@@ -31,23 +21,20 @@ public class ManterItemConsumoController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String acao = request.getParameter("acao");
-        if(acao.equals("prepararOperacao")){
+        if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
         }
-        
-        
     }
-    
-    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException{
-        try{
+
+    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            //request.setAttribute("professores", Professor.obterProfessores());
             RequestDispatcher view = request.getRequestDispatcher("/manterItemConsumo.jsp");
             view.forward(request, response);
-        }catch(ServletException e){
+        } catch (ServletException e) {
             throw e;
-        }catch(IOException e){
+        } catch (IOException e) {
             throw new ServletException(e);
         }
     }

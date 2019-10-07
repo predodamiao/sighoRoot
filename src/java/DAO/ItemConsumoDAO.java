@@ -30,11 +30,9 @@ public class ItemConsumoDAO {
                 itemConsumo = instanciarItemConsumo(rs);
                 itensConsumo.add(itemConsumo);
             }
-
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return itensConsumo;
     }
 
@@ -51,7 +49,6 @@ public class ItemConsumoDAO {
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return item;
     }
 
@@ -60,28 +57,22 @@ public class ItemConsumoDAO {
                 rs.getString("descricao"),
                 rs.getFloat("precoVenda"),
                 null);
-
         return item;
     }
 
     public static void gravar(ItemConsumo item) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         PreparedStatement comando = null;
-
         try {
-
             comando = conexao.prepareStatement("insert into itemConsumo (id, descricao, precoVenda, categoria) values (?,?,?,?)");
             comando.setFloat(1, item.getCodigo());
             comando.setString(2, item.getDescricao());
             comando.setFloat(3, item.getPrecoVenda());
 //            comando.setInt(4, opcao.getCategoria());
-
             comando.executeUpdate();
-
         } finally {
             fecharConexao(conexao, comando);
         }
-
     }
 
 }

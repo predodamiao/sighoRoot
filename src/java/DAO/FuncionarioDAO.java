@@ -26,11 +26,9 @@ public class FuncionarioDAO {
                 funcionario = instanciarFuncionario(rs);
                 funcionarios.add(funcionario);
             }
-
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return funcionarios;
     }
 
@@ -47,7 +45,6 @@ public class FuncionarioDAO {
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return funcionario;
     }
 
@@ -61,16 +58,13 @@ public class FuncionarioDAO {
                 rs.getDate("dataNascimento"),
                 rs.getDate("dataAdmissao"),
                 null);
-
         return funcionario;
     }
 
     public static void gravar(Funcionario funcionario) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         PreparedStatement comando = null;
-
         try {
-
             comando = conexao.prepareStatement("insert into hospede (id, nome, telefone, email, rg, cpf, dataNascimento, dataAdmissao, categoria) values (?,?,?,?,?,?,?,?,?)");
             comando.setInt(1, funcionario.getId());
             comando.setString(2, funcionario.getNome());
@@ -81,13 +75,10 @@ public class FuncionarioDAO {
             comando.setDate(7, (java.sql.Date) funcionario.getDataNascimento());
             comando.setDate(8, (Date) funcionario.getDataAdmissao());
 //            comando.setString(9, funcionario.getCategoria());
-
             comando.executeUpdate();
-
         } finally {
             fecharConexao(conexao, comando);
         }
-
     }
 
 }

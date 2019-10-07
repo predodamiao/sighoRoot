@@ -32,11 +32,9 @@ public class ConsumoDAO {
                 consumo = instanciarConsumo(rs);
                 consumos.add(consumo);
             }
-
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return consumos;
     }
 
@@ -53,7 +51,6 @@ public class ConsumoDAO {
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return consumo;
     }
 
@@ -65,7 +62,6 @@ public class ConsumoDAO {
                 null,
                 null,
                 null);
-
         consumo.setIdFuncionario(rs.getInt("idFuncionario"));
         consumo.setIdFuncionario(rs.getInt("idHospede"));
         consumo.setIdItemConsumido(rs.getInt("idItem"));
@@ -76,14 +72,11 @@ public class ConsumoDAO {
     public static void gravar(Consumo consumo) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         PreparedStatement comando = null;
-
         try {
-
             comando = conexao.prepareStatement("insert into consumo (id, data, quantidade, idFuncionario, idHospede, idHospedagem, idItem) values (?,?,?,?,?,?,?)");
             comando.setInt(1, consumo.getId());
             comando.setDate(2, (Date) consumo.getData());
             comando.setInt(3, consumo.getQuantidade());
-
             if (consumo.getFuncionarioResponsavel() == null) {
                 comando.setNull(4, Types.INTEGER);
             } else {
@@ -107,13 +100,9 @@ public class ConsumoDAO {
             } else {
                 comando.setFloat(7, consumo.getItemConsumido().getCodigo());
             }
-
             comando.executeUpdate();
-
         } finally {
             fecharConexao(conexao, comando);
         }
-
     }
-
 }

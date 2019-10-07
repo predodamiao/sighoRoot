@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO;
 
 import static DAO.DAO.fecharConexao;
@@ -14,7 +9,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class AcompanhanteDAO {
@@ -32,11 +26,9 @@ public class AcompanhanteDAO {
                 acompanhante = instanciarAcompanhante(rs);
                 acompanhantes.add(acompanhante);
             }
-
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return acompanhantes;
     }
 
@@ -53,7 +45,6 @@ public class AcompanhanteDAO {
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return acompanhante;
     }
 
@@ -63,7 +54,6 @@ public class AcompanhanteDAO {
                 rs.getDate("dataNascimento"),
                 rs.getBoolean("ocupaCama"),
                 null);
-
         acompanhante.setIdHospedagem(rs.getInt("idHospedagem"));
         return acompanhante;
     }
@@ -71,9 +61,7 @@ public class AcompanhanteDAO {
     public static void gravar(Acompanhante acompanhante) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         PreparedStatement comando = null;
-
         try {
-
             comando = conexao.prepareStatement("insert into acompanhante (id, nome, dataNascimento, ocupaCama idHospedagem) values (?,?,?,?,?)");
             comando.setInt(1, acompanhante.getId());
             comando.setString(2, acompanhante.getNome());
@@ -85,13 +73,9 @@ public class AcompanhanteDAO {
             } else {
                 comando.setInt(5, acompanhante.getHospedagem().getId());
             }
-
             comando.executeUpdate();
-
         } finally {
             fecharConexao(conexao, comando);
         }
-
     }
-
 }

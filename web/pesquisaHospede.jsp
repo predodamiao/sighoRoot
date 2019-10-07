@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,19 +9,23 @@
     </head>
     <body>
         <form action="ManterHospedeController?acao=prepararOperacao&operacao=Incluir" method="post">
-        <table border="1">
-            <tr>
-                <th>CPF</th>
-                <th>Nome</th>
-            </tr>
-            <c:forEach items="${hospedes}" var="hospede">
+            <table border="1">
                 <tr>
-                    <td><c:out value="${hospede.cpf}"/></td>
-                    <td><c:out value="${hospede.nome}"/></td>
+                    <th>CPF</th>
+                    <th>Nome</th>
                 </tr>
-            </c:forEach>
-        </table>
-            <input type="submit" name="btnIncluir" value="Incluir"/>
+                <c:forEach items="${hospedes}" var="hospede">
+                    <tr>
+                        <td>
+                            <c:out value="${hospede.cpf}" />
+                        </td>
+                        <td>
+                            <c:out value="${hospede.nome}" />
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+            <input type="submit" name="btnIncluir" value="Incluir" />
         </form>
     </body>
 </html>

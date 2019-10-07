@@ -31,11 +31,9 @@ public class QuartoDAO {
                 quarto = instanciarQuarto(rs);
                 quartos.add(quarto);
             }
-
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return quartos;
     }
 
@@ -52,7 +50,6 @@ public class QuartoDAO {
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return quarto;
     }
 
@@ -62,35 +59,27 @@ public class QuartoDAO {
                 rs.getInt("quantidadeCamasSolteiro"),
                 rs.getBoolean("ocupado"),
                 null);
-
         quarto.setIdTipoQuarto(rs.getInt("tipoQuarto"));
-
         return quarto;
     }
 
     public static void gravar(Quarto quarto) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         PreparedStatement comando = null;
-
         try {
-
             comando = conexao.prepareStatement("insert into solicitacao (identificacao, quantidadeCamasCasal, quantidadeCamasSolteiro, ocupado, tipoQuarto) values (?,?,?,?,?)");
             comando.setInt(1, quarto.getIdentificacao());
             comando.setInt(2, quarto.getQuantidadeCamasCasal());
             comando.setInt(3, quarto.getQuantidadeCamasSolteiro());
             comando.setBoolean(4, quarto.isOcupado());
-
             if (quarto.getTipo() == null) {
                 comando.setNull(4, Types.INTEGER);
             } else {
                 comando.setInt(4, quarto.getTipo().getId());
             }
-
             comando.executeUpdate();
-
         } finally {
             fecharConexao(conexao, comando);
         }
-
     }
 }

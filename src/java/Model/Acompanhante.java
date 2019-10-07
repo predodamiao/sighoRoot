@@ -13,7 +13,7 @@ public class Acompanhante {
     private Hospedagem hospedagem;
     private int idHospedagem;
 
-    public Acompanhante(int id, String nome, Date dataNascimento,boolean ocupaCama, Hospedagem hospedagem) {
+    public Acompanhante(int id, String nome, Date dataNascimento, boolean ocupaCama, Hospedagem hospedagem) {
         this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -21,14 +21,14 @@ public class Acompanhante {
         this.hospedagem = hospedagem;
     }
 
-    public static Acompanhante obterAcompanhante(int codAcompanhante) throws ClassNotFoundException, SQLException{
+    public static Acompanhante obterAcompanhante(int codAcompanhante) throws ClassNotFoundException, SQLException {
         return AcompanhanteDAO.obterAcompanhante(codAcompanhante);
     }
-    
-    public static List<Acompanhante> obterAcompanhantes() throws ClassNotFoundException, SQLException{
+
+    public static List<Acompanhante> obterAcompanhantes() throws ClassNotFoundException, SQLException {
         return AcompanhanteDAO.obterAcompanhantes();
     }
-    
+
     public String getNome() {
         return nome;
     }
@@ -62,10 +62,10 @@ public class Acompanhante {
     }
 
     public Hospedagem getHospedagem() throws ClassNotFoundException, SQLException {
-        if((this.idHospedagem != 0) && (this.hospedagem == null)){
+        if ((this.idHospedagem != 0) && (this.hospedagem == null)) {
             this.hospedagem = Hospedagem.obterHospedagem(this.idHospedagem);
         }
-        
+
         return hospedagem;
     }
 

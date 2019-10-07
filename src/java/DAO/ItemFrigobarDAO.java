@@ -31,11 +31,9 @@ public class ItemFrigobarDAO {
                 itensPadraoFrigobar = instanciarItemPadraoFrigobar(rs);
                 itensPadroesFrigobar.add(itensPadraoFrigobar);
             }
-
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return itensPadroesFrigobar;
     }
 
@@ -52,7 +50,6 @@ public class ItemFrigobarDAO {
         } finally {
             DAO.fecharConexao(conexao, comando);
         }
-
         return item;
     }
 
@@ -62,16 +59,13 @@ public class ItemFrigobarDAO {
                 null);
 
         item.setIdItemConsumo(rs.getInt("idItem"));
-
         return item;
     }
 
     public static void gravar(ItemFrigobar item) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         PreparedStatement comando = null;
-
         try {
-
             comando = conexao.prepareStatement("insert into itemFrigobar (id, quantidade, idItem) values (?,?,?)");
             comando.setInt(1, item.getId());
             comando.setInt(2, item.getQuantidade());
@@ -81,9 +75,7 @@ public class ItemFrigobarDAO {
             } else {
                 comando.setFloat(3, item.getItem().getCodigo());
             }
-
             comando.executeUpdate();
-
         } finally {
             fecharConexao(conexao, comando);
         }

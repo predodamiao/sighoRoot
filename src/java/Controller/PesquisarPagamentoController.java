@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller;
 
 import Model.Pagamento;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,10 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Lavínia
- */
 public class PesquisarPagamentoController extends HttpServlet {
 
     /**
@@ -33,15 +23,15 @@ public class PesquisarPagamentoController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      * @throws java.sql.SQLException
      */
-   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         try {
             request.setAttribute("pagamentos", Pagamento.obterPagamentos());
             RequestDispatcher view = request.getRequestDispatcher("/pesquisaPagamento.jsp");
             view.forward(request, response);
-        } catch (ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             throw new ServletException(e);
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new ServletException(e);
         }
     }
@@ -58,11 +48,11 @@ public class PesquisarPagamentoController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       try {
-           processRequest(request, response);
-       } catch (SQLException ex) {
-           Logger.getLogger(PesquisarPagamentoController.class.getName()).log(Level.SEVERE, null, ex);
-       }
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(PesquisarPagamentoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -76,11 +66,11 @@ public class PesquisarPagamentoController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       try {
-           processRequest(request, response);
-       } catch (SQLException ex) {
-           Logger.getLogger(PesquisarPagamentoController.class.getName()).log(Level.SEVERE, null, ex);
-       }
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(PesquisarPagamentoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
