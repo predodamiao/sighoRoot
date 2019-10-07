@@ -32,15 +32,15 @@ public class PesquisarItemFrigobarController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         try {
-            request.setAttribute("itensPadraoFrigobar", ItemFrigobar.obterItensPadraoFrigobar());
+            request.setAttribute("itensFrigobar", ItemFrigobar.obterItensFrigobar());
             RequestDispatcher view = request.getRequestDispatcher("/pesquisaItemFrigobar.jsp");
             view.forward(request, response);
-        } catch (ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             throw new ServletException(e);
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new ServletException(e);
         }
     }
@@ -57,11 +57,11 @@ public class PesquisarItemFrigobarController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       try {
-           processRequest(request, response);
-       } catch (SQLException ex) {
-           Logger.getLogger(PesquisarItemFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
-       }
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(PesquisarItemFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -75,11 +75,11 @@ public class PesquisarItemFrigobarController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       try {
-           processRequest(request, response);
-       } catch (SQLException ex) {
-           Logger.getLogger(PesquisarItemFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
-       }
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(PesquisarItemFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -64,11 +64,9 @@ public class SolicitacaoDAO {
                 null,
                 null,
                 null,
-                null,
                 null);
 
-        solicitacao.setIdHospede(rs.getInt("idFuncionario"));
-        solicitacao.setIdHospede(rs.getInt("idHospede"));
+        solicitacao.setIdFuncionario(rs.getInt("idFuncionario"));
         solicitacao.setIdHospedagem(rs.getInt("idHospedagem"));
         return solicitacao;
     }
@@ -79,7 +77,7 @@ public class SolicitacaoDAO {
 
         try {
 
-            comando = conexao.prepareStatement("insert into solicitacao (id, data, quantidade, status, idFuncionario, idHospede, hospedagem, item) values (?,?,?,?,?,?,?)");
+            comando = conexao.prepareStatement("insert into solicitacao (id, data, quantidade, status, idFuncionario, idHospede, hospedagem, item) values (?,?,?,?,?,?)");
             comando.setInt(1, solicitacao.getId());
             comando.setDate(2, (Date) solicitacao.getData());
             comando.setInt(3, solicitacao.getQuantidade());
@@ -91,22 +89,16 @@ public class SolicitacaoDAO {
                 comando.setInt(5, solicitacao.getFuncionario().getId());
             }
 
-            if (solicitacao.getHospede() == null) {
+            if (solicitacao.getHospedagem() == null) {
                 comando.setNull(6, Types.INTEGER);
             } else {
-                comando.setInt(6, solicitacao.getHospede().getId());
-            }
-
-            if (solicitacao.getHospedagem() == null) {
-                comando.setNull(7, Types.INTEGER);
-            } else {
-                comando.setInt(7, solicitacao.getHospedagem().getId());
+                comando.setInt(6, solicitacao.getHospedagem().getId());
             }
 
             if (solicitacao.getItem() == null) {
-                comando.setNull(8, Types.FLOAT);
+                comando.setNull(7, Types.FLOAT);
             } else {
-                comando.setFloat(8, solicitacao.getItem().getCodigo());
+                comando.setFloat(7, solicitacao.getItem().getCodigo());
             }
 
             comando.executeUpdate();

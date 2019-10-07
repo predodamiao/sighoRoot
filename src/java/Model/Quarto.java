@@ -17,6 +17,7 @@ public class Quarto {
         this.identificacao = identificacao;
         this.quantidadeCamasCasal = quantidadeCamasCasal;
         this.quantidadeCamasSolteiro = quantidadesCamaSolteiro;
+        this.ocupado = ocupado;
         this.tipo = tipo;
     }
 
@@ -53,7 +54,7 @@ public class Quarto {
     }
 
     public boolean isOcupado() {
-        return ocupado;
+        return this.ocupado;
     }
 
     public void setOcupado(boolean ocupado) {

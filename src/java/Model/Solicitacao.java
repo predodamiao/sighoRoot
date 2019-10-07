@@ -11,20 +11,17 @@ public class Solicitacao {
     private int quantidade;
     private StatusSolicitacao status;
     private Funcionario funcionario;
-    private Hospede hospede;
     private Hospedagem hospedagem;
     private ItemConsumo item;
     private int idFuncionario;
-    private int idHospede;
     private int idHospedagem;
 
-    public Solicitacao(int id, Date data, int quantidade, StatusSolicitacao status, Funcionario funcionario, Hospede hospede, Hospedagem hospedagem, ItemConsumo item) {
+    public Solicitacao(int id, Date data, int quantidade, StatusSolicitacao status, Funcionario funcionario, Hospedagem hospedagem, ItemConsumo item) {
         this.id = id;
         this.data = data;
         this.quantidade = quantidade;
         this.status = status;
         this.funcionario = funcionario;
-        this.hospede = hospede;
         this.hospedagem = hospedagem;
         this.item = item;
     }
@@ -101,28 +98,12 @@ public class Solicitacao {
         this.funcionario = funcionario;
     }
 
-    public Hospede getHospede() {
-        return hospede;
-    }
-
-    public void setHospede(Hospede hospede) {
-        this.hospede = hospede;
-    }
-
     public int getIdFuncionario() {
         return idFuncionario;
     }
 
     public void setIdFuncionario(int idFuncionario) {
         this.idFuncionario = idFuncionario;
-    }
-
-    public int getIdHospede() {
-        return idHospede;
-    }
-
-    public void setIdHospede(int idHospede) {
-        this.idHospede = idHospede;
     }
 
     public void gravar() throws SQLException {

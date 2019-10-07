@@ -5,8 +5,12 @@
  */
 package Controller;
 
+import Model.ItemConsumo;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -29,25 +33,24 @@ public class ManterItemFrigobarController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         String acao = request.getParameter("acao");
-        if(acao.equals("prepararOperacao")){
+        if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
         }
-        
-        
+
     }
-    
-    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException{
-        try{
+
+    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, ClassNotFoundException, SQLException {
+        try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            //request.setAttribute("professores", Professor.obterProfessores());
+            request.setAttribute("itens", ItemConsumo.obterItensConsumo());
             RequestDispatcher view = request.getRequestDispatcher("/manterItemFrigobar.jsp");
             view.forward(request, response);
-        }catch(ServletException e){
+        } catch (ServletException e) {
             throw e;
-        }catch(IOException e){
+        } catch (IOException e) {
             throw new ServletException(e);
         }
     }
@@ -64,7 +67,13 @@ public class ManterItemFrigobarController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterItemFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManterItemFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -78,7 +87,13 @@ public class ManterItemFrigobarController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterItemFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManterItemFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

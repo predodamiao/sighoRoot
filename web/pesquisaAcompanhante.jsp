@@ -8,6 +8,7 @@
         <title>Pesquisa de Acompanhantes</title>
     </head>
     <body>
+        <form action="ManterAcompanhanteController?acao=prepararOperacao&operacao=Incluir" method="post">
         <table border="1">
             <tr>
                 <th>Nome</th>
@@ -20,5 +21,10 @@
                 </tr>
             </c:forEach>
         </table>
+
+       
+            <input type="submit" name="btnIncluir" value="Incluir"/>
+        </form>
+
     </body>
 </html>

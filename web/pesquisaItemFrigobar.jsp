@@ -8,15 +8,20 @@
         <title>Pesquisa de Padrão Frigobar</title>
     </head>
     <body>
+        <form action="ManterItemFrigobarController?acao=prepararOperacao&operacao=Incluir" method="post">
         <table border="1">
             <tr>
-                <th>quantidade</th>
+                <th>id</th>
+                <th>Quantidade</th>
             </tr>
             <c:forEach items="${itensFrigobar}" var="itemFrigobar">
                 <tr>
+                    <td><c:out value="${itemFrigobar.id}"/></td>
                     <td><c:out value="${itemFrigobar.quantidade}"/></td>
                 </tr>
             </c:forEach>
         </table>
+        <input type="submit" name="btnIncluir" value="Incluir"/>
+        </form>
     </body>
 </html>

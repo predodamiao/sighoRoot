@@ -8,6 +8,7 @@
         <title>Pesquisa de Hospedagens</title>
     </head>
     <body>
+        <form action="ManterHospedagemController?acao=prepararOperacao&operacao=Incluir" method="post">
         <table border="1">
             <tr>
                 <th>Data Estimada Chegada</th>
@@ -18,5 +19,7 @@
                 </tr>
             </c:forEach>
         </table>
+        <input type="submit" name="btnIncluir" value="Incluir"/>
+        </form>
     </body>
 </html>

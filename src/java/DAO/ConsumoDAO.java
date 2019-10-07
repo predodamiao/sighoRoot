@@ -59,7 +59,7 @@ public class ConsumoDAO {
 
     public static Consumo instanciarConsumo(ResultSet rs) throws ClassNotFoundException, SQLException {
         Consumo consumo = new Consumo(rs.getInt("id"),
-                rs.getDate("dataConsumo"),
+                rs.getDate("data"),
                 rs.getInt("quantidade"),
                 null,
                 null,

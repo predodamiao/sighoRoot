@@ -8,6 +8,7 @@
         <title>Pesquisa de Solicitações</title>
     </head>
     <body>
+        <form action="ManterSolicitacaoController?acao=prepararOperacao&operacao=Incluir" method="post">
         <table border="1">
             <tr>
                 <th>Data</th>
@@ -20,5 +21,7 @@
                 </tr>
             </c:forEach>
         </table>
+        <input type="submit" name="btnIncluir" value="Incluir"/>
+        </form>
     </body>
 </html>

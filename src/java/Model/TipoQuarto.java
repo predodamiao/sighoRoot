@@ -18,11 +18,11 @@ public class TipoQuarto {
         this.preco = preco;
     }
 
-        public static TipoQuarto obterTipoQuarto(int codTipoQuarto) throws ClassNotFoundException, SQLException{
+    public static TipoQuarto obterTipoQuarto(int codTipoQuarto) throws ClassNotFoundException, SQLException {
         return TipoQuartoDAO.obterTipoQuarto(codTipoQuarto);
     }
-    
-    public static List<TipoQuarto> obterTiposQuarto() throws ClassNotFoundException, SQLException{
+
+    public static List<TipoQuarto> obterTiposQuarto() throws ClassNotFoundException, SQLException {
         return TipoQuartoDAO.obterTiposQuarto();
     }
 
@@ -33,7 +33,7 @@ public class TipoQuarto {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public String getDescricao() {
         return descricao;
     }
@@ -57,7 +57,7 @@ public class TipoQuarto {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
+
     public void gravar() throws SQLException {
         TipoQuartoDAO.gravar(this);
     }

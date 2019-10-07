@@ -46,7 +46,7 @@ public class ItemFrigobarDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from ItemFrigobar where idItem = " + codItem);
+            ResultSet rs = comando.executeQuery("select * from ItemFrigobar where id = " + codItem);
             rs.first();
             item = instanciarItemPadraoFrigobar(rs);
         } finally {

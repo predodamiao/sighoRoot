@@ -46,7 +46,7 @@ public class QuartoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from quarto where id = " + codQuarto);
+            ResultSet rs = comando.executeQuery("select * from quarto where identificacao = " + codQuarto);
             rs.first();
             quarto = instanciarQuarto(rs);
         } finally {

@@ -12,15 +12,16 @@ public class ItemFrigobar {
     private int idItemConsumo;
 
     public ItemFrigobar(int id, int quantidade, ItemConsumo item) {
+        this.id = id;
         this.quantidade = quantidade;
         this.item = item;
     }
 
-    public static ItemFrigobar obterItemPadraoFrigobar(int codItem) throws ClassNotFoundException, SQLException {
+    public static ItemFrigobar obterItemFrigobar(int codItem) throws ClassNotFoundException, SQLException {
         return ItemFrigobarDAO.obterItensPadraoFrigobar(codItem);
     }
 
-    public static List<ItemFrigobar> obterItensPadraoFrigobar() throws ClassNotFoundException, SQLException {
+    public static List<ItemFrigobar> obterItensFrigobar() throws ClassNotFoundException, SQLException {
         return ItemFrigobarDAO.obterItensPadraoFrigobar();
     }
 
