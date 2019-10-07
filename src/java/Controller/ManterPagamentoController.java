@@ -1,6 +1,8 @@
 package Controller;
 
 import Model.Hospedagem;
+import Model.MomentoPagamento;
+import Model.TipoPagamento;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -37,6 +39,8 @@ public class ManterPagamentoController extends HttpServlet {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
             request.setAttribute("hospedagens", Hospedagem.obterHospedagens());
+            request.setAttribute("momentos", MomentoPagamento.obterMomentosPagamento());
+            request.setAttribute("tipos", TipoPagamento.obterTiposPagamento());
             RequestDispatcher view = request.getRequestDispatcher("/manterPagamento.jsp");
             view.forward(request, response);
         } catch (ServletException e) {

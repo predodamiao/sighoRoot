@@ -7,6 +7,7 @@ package DAO;
 
 import static DAO.DAO.fecharConexao;
 import Model.Solicitacao;
+import Model.StatusSolicitacao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -58,7 +59,7 @@ public class SolicitacaoDAO {
         Solicitacao solicitacao = new Solicitacao(rs.getInt("id"),
                 rs.getDate("data"),
                 rs.getInt("quantidade"),
-                null,
+                Enum.valueOf(StatusSolicitacao.class, rs.getString("status")),
                 null,
                 null,
                 null);
@@ -75,7 +76,7 @@ public class SolicitacaoDAO {
             comando.setInt(1, solicitacao.getId());
             comando.setDate(2, (Date) solicitacao.getData());
             comando.setInt(3, solicitacao.getQuantidade());
-//            comando.setString(4, solicitacao.getStatus());
+            comando.setString(4, solicitacao.getStatus().toString());
             if (solicitacao.getFuncionario() == null) {
                 comando.setNull(5, Types.INTEGER);
             } else {

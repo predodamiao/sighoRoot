@@ -71,7 +71,7 @@
                         <label for="dataNascimento">Data de Nascimento:</label>
                     </td>
                     <td>
-                        <input type="date" name="dataNascimento" id="dataNascimento" value="${funcionario.dataNasicmento}">
+                        <input type="date" name="dataNascimento" id="dataNascimento" value="${funcionario.dataNascimento}">
                     </td>
                 </tr>
                 <tr>
@@ -81,8 +81,8 @@
                     <td>
                         <select name="categoriaFuncionario" id="categoriaFuncionario">
                             <option value="0" <c:if test="${funcionario.categoriaFuncionario.id == null}"> selected </c:if>></option>
-                            <c:forEach items="${categoriasFuncionario}" var="categoriaFuncionario">
-                                <option value="${categoriaFuncionario.id}" <c:if test="${funcionario.categoriaFuncionario.id == categoriaFuncionario.id}">selected</c:if>></option>
+                            <c:forEach items="${categorias}" var="categoria">
+                                <option value="${categoria.id}" <c:if test="${funcionario.categoriaFuncionario.id == categoria.id}">selected</c:if>>${categoria.nomeCategoria}</option>
                             </c:forEach>
                         </select>
                     </td>

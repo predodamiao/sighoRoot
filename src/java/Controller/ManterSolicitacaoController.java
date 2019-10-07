@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Funcionario;
 import Model.Hospedagem;
+import Model.StatusSolicitacao;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -39,6 +40,7 @@ public class ManterSolicitacaoController extends HttpServlet {
             request.setAttribute("operacao", operacao);
             request.setAttribute("hospedagens", Hospedagem.obterHospedagens());
             request.setAttribute("funcionarios", Funcionario.obterFuncionarios());
+            request.setAttribute("status", StatusSolicitacao.obterStatusSolicitacoes());
             RequestDispatcher view = request.getRequestDispatcher("/manterSolicitacao.jsp");
             view.forward(request, response);
         } catch (ServletException e) {

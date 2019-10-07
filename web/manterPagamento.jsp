@@ -37,9 +37,22 @@
                     </td>
                     <td>
                         <select name="tipo" id="tipo">
-                            <option value="0" <c:if test="${pagamento.hospedagem.id == null}"> selected </c:if>></option>
+                            <option value="0" <c:if test="${pagamento.tipo.id == null}"> selected </c:if>></option>
                             <c:forEach items="${tipos}" var="tipo">
-                                <option value="${tipo.id}" <c:if test="${pagamento.tipo.id == tipo.id}">selected </c:if>></option>
+                                <option value="${tipo.id}" <c:if test="${pagamento.tipo.id == tipo.id}">selected </c:if>>${tipo.nomeTipo}</option>
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="tipo">Momento do Pagamento:</label>
+                    </td>
+                    <td>
+                        <select name="momento" id="momento">
+                            <option value="0" <c:if test="${pagamento.momento.id == null}"> selected </c:if>></option>
+                            <c:forEach items="${momentos}" var="momento">
+                                <option value="${momento.id}" <c:if test="${pagamento.momento.id == momento.id}">selected </c:if>>${momento.nomeMomento}</option>
                             </c:forEach>
                         </select>
                     </td>

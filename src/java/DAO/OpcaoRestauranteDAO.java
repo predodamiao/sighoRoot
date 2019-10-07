@@ -6,6 +6,7 @@
 package DAO;
 
 import static DAO.DAO.fecharConexao;
+import Model.CategoriaItemConsumo;
 import Model.OpcaoRestaurante;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -56,7 +57,7 @@ public class OpcaoRestauranteDAO {
         OpcaoRestaurante opcao = new OpcaoRestaurante(rs.getFloat("id"),
                 rs.getString("descricao"),
                 rs.getFloat("precoVenda"),
-                null,
+                Enum.valueOf(CategoriaItemConsumo.class, rs.getString("categoria")),
                 rs.getFloat("acrescimo"),
                 rs.getInt("tempoPreparo"));
         return opcao;
@@ -70,7 +71,7 @@ public class OpcaoRestauranteDAO {
             comando.setFloat(1, opcao.getCodigo());
             comando.setString(2, opcao.getDescricao());
             comando.setFloat(3, opcao.getPrecoVenda());
-//            comando.setInt(4, opcao.getCategoria());
+            comando.setString(4, opcao.getCategoria().toString());
             comando.setFloat(5, opcao.getAcrescimo());
             comando.setInt(6, opcao.getTempoPreparo());
             comando.executeUpdate();

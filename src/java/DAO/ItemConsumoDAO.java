@@ -6,6 +6,7 @@
 package DAO;
 
 import static DAO.DAO.fecharConexao;
+import Model.CategoriaItemConsumo;
 import Model.ItemConsumo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -56,7 +57,7 @@ public class ItemConsumoDAO {
         ItemConsumo item = new ItemConsumo(rs.getFloat("id"),
                 rs.getString("descricao"),
                 rs.getFloat("precoVenda"),
-                null);
+                Enum.valueOf(CategoriaItemConsumo.class, rs.getString("categoria")));
         return item;
     }
 
@@ -68,7 +69,7 @@ public class ItemConsumoDAO {
             comando.setFloat(1, item.getCodigo());
             comando.setString(2, item.getDescricao());
             comando.setFloat(3, item.getPrecoVenda());
-//            comando.setInt(4, opcao.getCategoria());
+            comando.setString(4, item.getCategoria().toString());
             comando.executeUpdate();
         } finally {
             fecharConexao(conexao, comando);

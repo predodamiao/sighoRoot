@@ -1,8 +1,38 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public enum TipoPagamento {
-    CREDITOAVISTA,
-    CREDITOPARCELADO,
-    DEBITO,
-    DINHEIRO
+    CREDITO("Crédito", 0),
+    DEBITO("Débito", 1),
+    DINHEIRO("Dinheiro", 2);
+
+    private int id;
+    private String nomeTipo;
+
+    TipoPagamento(String tipo, int id) {
+        this.nomeTipo = tipo;
+        this.id = id;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public String getNomeTipo() {
+        return this.nomeTipo;
+    }
+
+    public static List<TipoPagamento> obterTiposPagamento() {
+        ArrayList tipos = new ArrayList<TipoPagamento>();
+        tipos.addAll(Arrays.asList(TipoPagamento.values()));
+        return tipos;
+    }
+
+    public static TipoPagamento obterTipoPagamento(String valor) {
+        return Enum.valueOf(TipoPagamento.class, valor);
+    }
+
 }

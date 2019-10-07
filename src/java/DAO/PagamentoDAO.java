@@ -6,7 +6,9 @@
 package DAO;
 
 import static DAO.DAO.fecharConexao;
+import Model.MomentoPagamento;
 import Model.Pagamento;
+import Model.TipoPagamento;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -59,8 +61,8 @@ public class PagamentoDAO {
                 rs.getFloat("valor"),
                 rs.getDate("data"),
                 rs.getInt("parcelas"),
-                null,
-                null,
+                Enum.valueOf(TipoPagamento.class, rs.getString("tipoPagamento")),
+                Enum.valueOf(MomentoPagamento.class, rs.getString("momentoPagamento")),
                 null);
         pagamento.setIdHospedagem(rs.getInt("idHospedagem"));
         return pagamento;
@@ -77,11 +79,12 @@ public class PagamentoDAO {
             comando.setFloat(2, pagamento.getValor());
             comando.setDate(3, (Date) pagamento.getData());
             comando.setInt(4, pagamento.getQuantidadeParcelas());
-//            comando.setString(5, pagamento.getMomento());
+            comando.setString(5, pagamento.getTipo().toString());
+            comando.setString(5, pagamento.getMomento().toString());
             if (pagamento.getHospedagem() == null) {
-                comando.setNull(6, Types.INTEGER);
+                comando.setNull(7, Types.INTEGER);
             } else {
-                comando.setInt(4, pagamento.getHospedagem().getId());
+                comando.setInt(7, pagamento.getHospedagem().getId());
             }
             comando.executeUpdate();
         } finally {

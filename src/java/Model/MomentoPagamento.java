@@ -1,7 +1,38 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public enum MomentoPagamento {
-    CHECKIN,
-    CHECKOUT,
-    RESERVA
+    CHECKIN("Check In", 0),
+    CHECKOUT("Check Out", 1),
+    RESERVA("Reserva", 2);
+
+    private int id;
+    private String nomeMomento;
+
+    MomentoPagamento(String momento, int id) {
+        this.nomeMomento = momento;
+        this.id = id;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public String getNomeMomento() {
+        return this.nomeMomento;
+    }
+
+    public static List<MomentoPagamento> obterMomentosPagamento() {
+        ArrayList momentos = new ArrayList<MomentoPagamento>();
+        momentos.addAll(Arrays.asList(MomentoPagamento.values()));
+        return momentos;
+    }
+
+    public static MomentoPagamento obterMomentoPagamento(String valor) {
+        return Enum.valueOf(MomentoPagamento.class, valor);
+    }
+
 }

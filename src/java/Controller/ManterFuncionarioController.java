@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.CategoriaFuncionario;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,6 +31,7 @@ public class ManterFuncionarioController extends HttpServlet {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
+            request.setAttribute("categorias", CategoriaFuncionario.obterCategoriasFuncionario());
             RequestDispatcher view = request.getRequestDispatcher("/manterFuncionario.jsp");
             view.forward(request, response);
         } catch (ServletException e) {

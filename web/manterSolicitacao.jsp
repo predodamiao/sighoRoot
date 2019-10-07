@@ -61,7 +61,7 @@
                         <select name="status" id="status">
                             <option value="0" <c:if test="${solicitacao.status.id == null}"> selected </c:if>></option>
                             <c:forEach items="${status}" var="status">
-                                <option value="${status.id}" <c:if test="${solicitacao.status.id == status.id}"> selected </c:if>></option>
+                                <option value="${status.id}" <c:if test="${solicitacao.status.id == status.id}"> selected </c:if>>${status.nomeStatus}</option>
                             </c:forEach>
                         </select>
                     </td>

@@ -1,6 +1,7 @@
 package DAO;
 
 import static DAO.DAO.fecharConexao;
+import Model.CategoriaFuncionario;
 import Model.Funcionario;
 import java.sql.Connection;
 import java.sql.Date;
@@ -57,10 +58,10 @@ public class FuncionarioDAO {
                 rs.getString("cpf"),
                 rs.getDate("dataNascimento"),
                 rs.getDate("dataAdmissao"),
-                null);
+                Enum.valueOf(CategoriaFuncionario.class, rs.getString("categoriaFuncionario")));
         return funcionario;
     }
-
+    
     public static void gravar(Funcionario funcionario) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         PreparedStatement comando = null;
@@ -74,7 +75,7 @@ public class FuncionarioDAO {
             comando.setString(6, funcionario.getCpf());
             comando.setDate(7, (java.sql.Date) funcionario.getDataNascimento());
             comando.setDate(8, (Date) funcionario.getDataAdmissao());
-//            comando.setString(9, funcionario.getCategoria());
+            comando.setString(9, funcionario.getCategoria().toString());
             comando.executeUpdate();
         } finally {
             fecharConexao(conexao, comando);

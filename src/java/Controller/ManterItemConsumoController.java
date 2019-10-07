@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.CategoriaItemConsumo;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,6 +31,7 @@ public class ManterItemConsumoController extends HttpServlet {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
+            request.setAttribute("categorias", CategoriaItemConsumo.obterCategoriasItemConsumo());
             RequestDispatcher view = request.getRequestDispatcher("/manterItemConsumo.jsp");
             view.forward(request, response);
         } catch (ServletException e) {

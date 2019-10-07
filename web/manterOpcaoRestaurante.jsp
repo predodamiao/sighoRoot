@@ -21,13 +21,13 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="categoriaItemConsumo">Produto:</label>
+                        <label for="categoriaItemConsumo">Categoria do Item de Consumo:</label>
                     </td>
                     <td>
                         <select name="categoriaItemConsumo" id="categoriaItemConsumo">
-                            <option value="0" <c:if test="${itemFrigobar.id == null}"> selected </c:if>></option>
-                            <c:forEach items="${itens}" var="item">
-                                <option value="${item.codigo}" <c:if test="${item.codigo == itemFrigobar.item.codigo}">selected</c:if>>${item.descricao}</option>
+                            <option value="0" <c:if test="${ItemConsumo.categoria.id == null}"> selected </c:if>></option>
+                            <c:forEach items="${categorias}" var="categoria">
+                                <option value="${categoria.id}" <c:if test="${ItemConsumo.categoria.id == categoria.id}">selected</c:if>>${categoria.nomeCategoria}</option>
                             </c:forEach>
                         </select>
                     </td>
