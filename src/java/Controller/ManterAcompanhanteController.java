@@ -1,8 +1,12 @@
 package Controller;
 
+import Model.Acompanhante;
 import Model.Hospedagem;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -23,12 +27,15 @@ public class ManterAcompanhanteController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      * @throws java.lang.ClassNotFoundException
      * @throws java.sql.SQLException
+     * @throws java.text.ParseException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException, SQLException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException, ParseException {
         String acao = request.getParameter("acao");
         if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
+        } else if (acao.equals("confirmarOperacao")) {
+            confirmarOperacao(request, response);
         }
     }
 
@@ -41,6 +48,32 @@ public class ManterAcompanhanteController extends HttpServlet {
             view.forward(request, response);
         } catch (ServletException e) {
             throw e;
+        } catch (IOException e) {
+            throw new ServletException(e);
+        }
+    }
+
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException, IOException {
+        String operacao = request.getParameter("operacao");
+        int id = Integer.parseInt(request.getParameter("id"));
+        String nome = request.getParameter("nome");
+        Date dataNascimento = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataNascimento"));
+        System.out.println("b"+request.getParameter("dataNascimento"));
+        System.out.println("a"+dataNascimento);
+        Boolean ocupaCama = request.getParameter("ocupaCama") != null;
+        int codigoHospedagem = Integer.parseInt(request.getParameter("hospedagem"));
+
+        try {
+            Hospedagem hospedagem = null;
+            if (codigoHospedagem != 0) {
+                hospedagem = Hospedagem.obterHospedagem(codigoHospedagem);
+            }
+            Acompanhante acompanhante = new Acompanhante(id, nome, dataNascimento, ocupaCama, hospedagem);
+            if (operacao.equals("Incluir")) {
+                acompanhante.gravar();
+            }
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaAcompanhanteController");
+            view.forward(request, response);
         } catch (IOException e) {
             throw new ServletException(e);
         }
@@ -64,6 +97,8 @@ public class ManterAcompanhanteController extends HttpServlet {
             Logger.getLogger(ManterAcompanhanteController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(ManterAcompanhanteController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(ManterAcompanhanteController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -83,6 +118,8 @@ public class ManterAcompanhanteController extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ManterAcompanhanteController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
+            Logger.getLogger(ManterAcompanhanteController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(ManterAcompanhanteController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

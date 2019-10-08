@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>Item Frigobar - ${operacao}</h1>
-        <form>
+        <form action="ManterOpcaoRestauranteController?acao=confirmarOperacao&operacao=${operacao}" method="post">
             <table>
 
                 <tr>

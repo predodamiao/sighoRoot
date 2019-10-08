@@ -81,5 +81,9 @@ public class Acompanhante {
     public void setIdHospedagem(int idHospedagem) {
         this.idHospedagem = idHospedagem;
     }
+    
+    public void gravar() throws SQLException, ClassNotFoundException {
+        AcompanhanteDAO.gravar(this);
+    }
 
 }

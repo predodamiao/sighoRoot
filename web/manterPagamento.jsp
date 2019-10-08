@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>Pagemento - ${operacao}</h1>
-        <form>
+        <form action="ManterPagamentoController?acao=confirmarOperacao&operacao=${operacao}" method="post">
             <table>
                 <tr>
                     <td>

@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>Quarto - ${operacao}</h1>
-        <form>
+        <form action="ManterQuartoController?acao=confirmarOperacao&operacao=${operacao}" method="post">
             <table>
                 <tr>
                     <td>

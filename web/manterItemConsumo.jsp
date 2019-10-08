@@ -8,9 +8,8 @@
     </head>
     <body>
         <h1>Item de Consumo - ${operacao}</h1>
-        <form>
+        <form action="ManterItemConsumoController?acao=confirmarOperacao&operacao=${operacao}" method="post">
             <table>
-
                 <tr>
                     <td>
                         <label for="codigo">Código:</label>

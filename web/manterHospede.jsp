@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>Hospedagem - ${operacao}</h1>
-        <form>
+        <form action="ManterHospedeController?acao=confirmarOperacao&operacao=${operacao}" method="post">
             <table>
                 <tr>
                     <td>

@@ -1,11 +1,15 @@
 package Controller;
 
+import Model.Acompanhante;
 import Model.Funcionario;
 import Model.Hospedagem;
 import Model.Hospede;
 import Model.ItemConsumo;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -28,7 +32,7 @@ public class ManterConsumoController extends HttpServlet {
      * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException, SQLException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException, ParseException {
         String acao = request.getParameter("acao");
         if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
@@ -51,6 +55,7 @@ public class ManterConsumoController extends HttpServlet {
         }
     }
 
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -68,6 +73,8 @@ public class ManterConsumoController extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ManterConsumoController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
+            Logger.getLogger(ManterConsumoController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(ManterConsumoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -88,6 +95,8 @@ public class ManterConsumoController extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ManterConsumoController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
+            Logger.getLogger(ManterConsumoController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(ManterConsumoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

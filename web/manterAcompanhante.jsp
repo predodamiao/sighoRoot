@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>Acompanhante - ${operacao}</h1>
-        <form>
+        <form action="ManterAcompanhanteController?acao=confirmarOperacao&operacao=${operacao}" method="post">
             <table>
                 <tr>
                     <td>
@@ -39,7 +39,7 @@
                         <label for="ocupaCama">Ocupa Cama?</label>
                     </td>
                     <td>
-                        <input type="checkbox" name="ocupaCama" id="ocupaCama">
+                        <input type="checkbox" name="ocupaCama" value="ocupaCama" id="ocupaCama">
                     </td>
                 </tr>
                 <tr>

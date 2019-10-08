@@ -9,7 +9,7 @@
     </head>
     <body>
         <h1>Solicitacao - ${operacao}</h1>
-        <form>
+        <form action="ManterSolicitacaoController?acao=confirmarOperacao&operacao=${operacao}" method="post">
             <table>
                 <tr>
                     <td>

@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>Consumo - ${operacao}</h1>
-        <form>
+        <form action="ManterConsumoController?acao=confirmarOperacao&operacao=${operacao}" method="post">
             <table>
                 <tr>
                     <td>

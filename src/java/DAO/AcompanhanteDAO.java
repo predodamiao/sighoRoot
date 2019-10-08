@@ -63,12 +63,15 @@ public class AcompanhanteDAO {
         Connection conexao = null;
         PreparedStatement comando = null;
         try {
-            comando = conexao.prepareStatement("insert into acompanhante (id, nome, dataNascimento, ocupaCama idHospedagem) values (?,?,?,?,?)");
+            conexao = BD.getConexao();
+            comando = conexao.prepareStatement("insert into acompanhante(id, nome, dataNascimento, ocupaCama, idHospedagem) values (?,?,?,?,?)");
             comando.setInt(1, acompanhante.getId());
             comando.setString(2, acompanhante.getNome());
-            comando.setDate(3, (Date) acompanhante.getDataNascimento());
+            comando.setDate(3, new java.sql.Date(acompanhante.getDataNascimento().getTime()));
             comando.setBoolean(4, acompanhante.isOcupaCama());
-
+            System.out.println(acompanhante.getDataNascimento());
+            System.out.println(new java.sql.Date(acompanhante.getDataNascimento().getTime()));
+            
             if (acompanhante.getHospedagem() == null) {
                 comando.setNull(5, Types.INTEGER);
             } else {
