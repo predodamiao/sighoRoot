@@ -54,7 +54,7 @@ public class ItemConsumoDAO {
     }
 
     public static ItemConsumo instanciarItemConsumo(ResultSet rs) throws ClassNotFoundException, SQLException {
-        ItemConsumo item = new ItemConsumo(rs.getFloat("id"),
+        ItemConsumo item = new ItemConsumo(rs.getString("id"),
                 rs.getString("descricao"),
                 rs.getFloat("precoVenda"),
                 Enum.valueOf(CategoriaItemConsumo.class, rs.getString("categoria")));
@@ -66,7 +66,7 @@ public class ItemConsumoDAO {
         PreparedStatement comando = null;
         try {
             comando = conexao.prepareStatement("insert into itemConsumo (id, descricao, precoVenda, categoria) values (?,?,?,?)");
-            comando.setFloat(1, item.getCodigo());
+            comando.setString(1, item.getCodigo());
             comando.setString(2, item.getDescricao());
             comando.setFloat(3, item.getPrecoVenda());
             comando.setString(4, item.getCategoria().toString());

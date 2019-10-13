@@ -71,9 +71,10 @@ public class ConsumoDAO {
         Connection conexao = null;
         PreparedStatement comando = null;
         try {
-            comando = conexao.prepareStatement("insert into consumo (id, data, quantidade, idFuncionario, idHospede, idHospedagem, idItem) values (?,?,?,?,?,?)");
+            conexao = BD.getConexao();
+            comando = conexao.prepareStatement("insert into consumo (id, data, quantidade, idFuncionario, idHospedagem, idItem) values (?,?,?,?,?,?)");
             comando.setInt(1, consumo.getId());
-            comando.setDate(2, (Date) consumo.getData());
+            comando.setDate(2, new java.sql.Date(consumo.getData().getTime()));
             comando.setInt(3, consumo.getQuantidade());
             if (consumo.getFuncionarioResponsavel() == null) {
                 comando.setNull(4, Types.INTEGER);
@@ -90,7 +91,7 @@ public class ConsumoDAO {
             if (consumo.getItemConsumido() == null) {
                 comando.setNull(6, Types.FLOAT);
             } else {
-                comando.setFloat(6, consumo.getItemConsumido().getCodigo());
+                comando.setString(6, consumo.getItemConsumido().getCodigo());
             }
             comando.executeUpdate();
         } finally {

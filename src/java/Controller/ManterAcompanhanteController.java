@@ -58,15 +58,13 @@ public class ManterAcompanhanteController extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         String nome = request.getParameter("nome");
         Date dataNascimento = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataNascimento"));
-        System.out.println("b"+request.getParameter("dataNascimento"));
-        System.out.println("a"+dataNascimento);
         Boolean ocupaCama = request.getParameter("ocupaCama") != null;
-        int codigoHospedagem = Integer.parseInt(request.getParameter("hospedagem"));
+        int idHospedagem = Integer.parseInt(request.getParameter("hospedagem"));
 
         try {
             Hospedagem hospedagem = null;
-            if (codigoHospedagem != 0) {
-                hospedagem = Hospedagem.obterHospedagem(codigoHospedagem);
+            if (idHospedagem != 0) {
+                hospedagem = Hospedagem.obterHospedagem(idHospedagem);
             }
             Acompanhante acompanhante = new Acompanhante(id, nome, dataNascimento, ocupaCama, hospedagem);
             if (operacao.equals("Incluir")) {

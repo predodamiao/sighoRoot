@@ -78,7 +78,7 @@ public class HospedeDAO {
             comando.setString(4, hospede.getEmail());
             comando.setString(5, hospede.getRg());
             comando.setString(6, hospede.getCpf());
-            comando.setDate(7, (Date) hospede.getDataNascimento());
+            comando.setDate(7, new java.sql.Date(hospede.getDataNascimento().getTime()));
             comando.setString(8, hospede.getPassaporte());
             comando.executeUpdate();
         } finally {

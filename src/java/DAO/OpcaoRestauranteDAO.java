@@ -54,7 +54,7 @@ public class OpcaoRestauranteDAO {
     }
 
     public static OpcaoRestaurante instanciarOpcaoRestaurante(ResultSet rs) throws ClassNotFoundException, SQLException {
-        OpcaoRestaurante opcao = new OpcaoRestaurante(rs.getFloat("id"),
+        OpcaoRestaurante opcao = new OpcaoRestaurante(rs.getString("id"),
                 rs.getString("descricao"),
                 rs.getFloat("precoVenda"),
                 Enum.valueOf(CategoriaItemConsumo.class, rs.getString("categoria")),
@@ -68,7 +68,7 @@ public class OpcaoRestauranteDAO {
         PreparedStatement comando = null;
         try {
             comando = conexao.prepareStatement("insert into opcaoRestaurante (id, descricao, precoVenda, categoria, acrescimo, tempoPreparo) values (?,?,?,?,?,?)");
-            comando.setFloat(1, opcao.getCodigo());
+            comando.setString(1, opcao.getCodigo());
             comando.setString(2, opcao.getDescricao());
             comando.setFloat(3, opcao.getPrecoVenda());
             comando.setString(4, opcao.getCategoria().toString());

@@ -77,10 +77,10 @@ public class HospedagemDAO {
 
             comando = conexao.prepareStatement("insert into hospedagem (id, dataChegada, dataSaida, dataEstimadaChegada, dataEstimadaSaida, checked, tipoQuarto, quarto, hospedeResponsavel) values (?,?,?,?,?,?,?,?,?)");
             comando.setInt(1, hospedagem.getId());
-            comando.setDate(2, (Date) hospedagem.getDataChegada());
-            comando.setDate(3, (Date) hospedagem.getDataSaida());
-            comando.setDate(4, (Date) hospedagem.getDataEstimadaChegada());
-            comando.setDate(5, (Date) hospedagem.getDataEstimadaSaida());
+            comando.setDate(2, new java.sql.Date(hospedagem.getDataChegada().getTime()));
+            comando.setDate(3, new java.sql.Date(hospedagem.getDataSaida().getTime()));
+            comando.setDate(4, new java.sql.Date(hospedagem.getDataEstimadaChegada().getTime()));
+            comando.setDate(5, new java.sql.Date(hospedagem.getDataEstimadaSaida().getTime()));
             comando.setBoolean(6, hospedagem.isChecked());
             if (hospedagem.getTipoQuarto() == null) {
                 comando.setNull(7, Types.INTEGER);

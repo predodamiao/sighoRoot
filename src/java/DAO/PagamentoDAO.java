@@ -77,7 +77,7 @@ public class PagamentoDAO {
             comando = conexao.prepareStatement("insert into pagamento (id, valor, data, parcelas, tipo, momento, idHospedagem) values (?,?,?,?,?,?,?)");
             comando.setInt(1, pagamento.getId());
             comando.setFloat(2, pagamento.getValor());
-            comando.setDate(3, (Date) pagamento.getData());
+            comando.setDate(3, new java.sql.Date(pagamento.getData().getTime()));
             comando.setInt(4, pagamento.getQuantidadeParcelas());
             comando.setString(5, pagamento.getTipo().toString());
             comando.setString(5, pagamento.getMomento().toString());

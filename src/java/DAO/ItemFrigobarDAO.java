@@ -73,7 +73,7 @@ public class ItemFrigobarDAO {
             if (item.getItem() == null) {
                 comando.setNull(3, Types.INTEGER);
             } else {
-                comando.setFloat(3, item.getItem().getCodigo());
+                comando.setString(3, item.getItem().getCodigo());
             }
             comando.executeUpdate();
         } finally {

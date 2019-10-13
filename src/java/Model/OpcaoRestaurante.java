@@ -9,7 +9,7 @@ public class OpcaoRestaurante extends ItemConsumo {
     private float acrescimo;
     private int tempoPreparo;
 
-    public OpcaoRestaurante(float codigo, String descricao, float precoVenda, CategoriaItemConsumo categoria, float acrescimo, int tempoPreparo) {
+    public OpcaoRestaurante(String codigo, String descricao, float precoVenda, CategoriaItemConsumo categoria, float acrescimo, int tempoPreparo) {
         super(codigo, descricao, precoVenda, CategoriaItemConsumo.RESTAURANTE);
         this.acrescimo = acrescimo;
         this.tempoPreparo = tempoPreparo;

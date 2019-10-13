@@ -1,9 +1,8 @@
 package Controller;
 
-import Model.Acompanhante;
+import Model.Consumo;
 import Model.Funcionario;
 import Model.Hospedagem;
-import Model.Hospede;
 import Model.ItemConsumo;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -18,6 +17,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+
 public class ManterConsumoController extends HttpServlet {
 
     /**
@@ -26,20 +27,18 @@ public class ManterConsumoController extends HttpServlet {
      *
      * @param request servlet request
      * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     * @throws java.lang.ClassNotFoundException
-     * @throws java.sql.SQLException
+
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException, SQLException, ParseException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, IOException, ServletException, ParseException{
         String acao = request.getParameter("acao");
         if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
+        } else if (acao.equals("confirmarOperacao")) {
+            confirmarOperacao(request, response);
         }
     }
 
-    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, ClassNotFoundException, SQLException {
+    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, IOException, ServletException{
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
@@ -55,6 +54,37 @@ public class ManterConsumoController extends HttpServlet {
         }
     }
 
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException{
+        String operacao = request.getParameter("operacao");
+        int id = Integer.parseInt(request.getParameter("id"));
+        Date data = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data"));
+        int quantidade = Integer.parseInt(request.getParameter("quantidade"));
+        int idHospedagem = Integer.parseInt(request.getParameter("hospedagem"));
+        int codigoItem = Integer.parseInt(request.getParameter("item"));
+        int idFuncionario = Integer.parseInt(request.getParameter("funcionarioSolicitante"));
+        try {
+            Hospedagem hospedagem = null;
+            if (idHospedagem != 0) {
+                hospedagem = Hospedagem.obterHospedagem(idHospedagem);
+            }
+            ItemConsumo item = null;
+            if (codigoItem != 0) {
+                item = ItemConsumo.obterItemConsumo(codigoItem);
+            }
+            Funcionario funcionario = null;
+            if (idFuncionario != 0) {
+                funcionario = Funcionario.obterFuncionario(idFuncionario);
+            }
+            Consumo consumo = new Consumo(id, data, quantidade, funcionario, hospedagem, item);
+            if (operacao.equals("Incluir")) {
+                consumo.gravar();
+            }
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaConsumoController");
+            view.forward(request, response);
+        } catch (IOException e) {
+            throw new ServletException(e);
+        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

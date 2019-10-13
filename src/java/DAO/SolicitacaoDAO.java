@@ -74,7 +74,7 @@ public class SolicitacaoDAO {
         try {
             comando = conexao.prepareStatement("insert into solicitacao (id, data, quantidade, status, idFuncionario, idHospede, hospedagem, item) values (?,?,?,?,?,?)");
             comando.setInt(1, solicitacao.getId());
-            comando.setDate(2, (Date) solicitacao.getData());
+            comando.setDate(2,  new java.sql.Date(solicitacao.getData().getTime()));
             comando.setInt(3, solicitacao.getQuantidade());
             comando.setString(4, solicitacao.getStatus().toString());
             if (solicitacao.getFuncionario() == null) {
@@ -90,7 +90,7 @@ public class SolicitacaoDAO {
             if (solicitacao.getItem() == null) {
                 comando.setNull(7, Types.FLOAT);
             } else {
-                comando.setFloat(7, solicitacao.getItem().getCodigo());
+                comando.setString(7, solicitacao.getItem().getCodigo());
             }
             comando.executeUpdate();
 

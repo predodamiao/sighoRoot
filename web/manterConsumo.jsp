@@ -12,10 +12,18 @@
             <table>
                 <tr>
                     <td>
-                        <label for="data">Data de Nascimento:</label>
+                        <label for="id">ID:</label>
                     </td>
                     <td>
-                        <input type="date" name="data" id="data" value="$consumo.data">
+                        <input type="number" name="id" id="id" value="${consumo.id}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="data">Data:</label>
+                    </td>
+                    <td>
+                        <input type="date" name="data" id="data" value="${consumo.data}">
                     </td>
                 </tr>
                 <tr>
@@ -57,7 +65,7 @@
                         <label for="funcionario">Funcionário Solicitante:</label>
                     </td>
                     <td>
-                        <select name="FuncionarioSolicitante" id="FuncionarioSolicitante">
+                        <select name="funcionarioSolicitante" id="funcionarioSolicitante">
                             <option value="0" <c:if test="${consumo.funcionarioResponsavel.id == null}"> selected </c:if>></option>
                             <c:forEach items="${funcionarioSolicitante}" var="funcionario">
                                 <option value="${funcionario.id}" <c:if test="${consumo.funcionarioResponsavel.id == funcionario.id}">selected</c:if>>${funcionario.nome}</option>
