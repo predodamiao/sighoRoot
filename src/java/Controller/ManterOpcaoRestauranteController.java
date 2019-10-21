@@ -1,7 +1,12 @@
 package Controller;
 
-import Model.CategoriaItemConsumo;
+import Model.CategoriaServico;
+import Model.OpcaoRestaurante;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,12 +23,17 @@ public class ManterOpcaoRestauranteController extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.text.ParseException
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ParseException, ClassNotFoundException, SQLException {
         String acao = request.getParameter("acao");
         if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
+        } else if (acao.equals("confirmarOperacao")) {
+            confirmarOperacao(request, response);
         }
     }
 
@@ -31,11 +41,37 @@ public class ManterOpcaoRestauranteController extends HttpServlet {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            request.setAttribute("categorias", CategoriaItemConsumo.obterCategoriasItemConsumo());
             RequestDispatcher view = request.getRequestDispatcher("/manterOpcaoRestaurante.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
             throw e;
+        } catch (IOException e) {
+            throw new ServletException(e);
+        }
+    }
+    
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException{
+        String operacao = request.getParameter("operacao");
+        String codigo = request.getParameter("codigo");
+        String nome = request.getParameter("nome");
+        String descricao = request.getParameter("descricao");
+        float preco = Float.parseFloat(request.getParameter("preco"));
+        String idCategoria = request.getParameter("categoriaItemConsumo");
+        Float acrescimo = Float.parseFloat(request.getParameter("acrescimo"));
+        int tempoPreparo = Integer.parseInt(request.getParameter("tempoPreparo"));
+        
+        
+        try {
+            CategoriaServico categoria = null;
+            if (idCategoria != null) {
+                categoria = CategoriaServico.obterCategoriaServico(idCategoria);
+            }
+            OpcaoRestaurante opcao = new OpcaoRestaurante(codigo, nome, descricao, preco, categoria, acrescimo, tempoPreparo);
+            if (operacao.equals("Incluir")) {
+                opcao.gravar();
+            }
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaOpcaoRestauranteController");
+            view.forward(request, response);
         } catch (IOException e) {
             throw new ServletException(e);
         }
@@ -53,7 +89,15 @@ public class ManterOpcaoRestauranteController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(ManterOpcaoRestauranteController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterOpcaoRestauranteController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManterOpcaoRestauranteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -67,7 +111,15 @@ public class ManterOpcaoRestauranteController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(ManterOpcaoRestauranteController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterOpcaoRestauranteController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManterOpcaoRestauranteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

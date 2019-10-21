@@ -58,7 +58,7 @@ public class FuncionarioDAO {
                 rs.getString("cpf"),
                 rs.getDate("dataNascimento"),
                 rs.getDate("dataAdmissao"),
-                Enum.valueOf(CategoriaFuncionario.class, rs.getString("categoriaFuncionario")));
+                Enum.valueOf(CategoriaFuncionario.class, rs.getString("categoria")));
         return funcionario;
     }
     
@@ -66,7 +66,8 @@ public class FuncionarioDAO {
         Connection conexao = null;
         PreparedStatement comando = null;
         try {
-            comando = conexao.prepareStatement("insert into hospede (id, nome, telefone, email, rg, cpf, dataNascimento, dataAdmissao, categoria) values (?,?,?,?,?,?,?,?,?)");
+            conexao = BD.getConexao();
+            comando = conexao.prepareStatement("insert into funcionario (id, nome, telefone, email, rg, cpf, dataNascimento, dataAdmissao, categoria) values (?,?,?,?,?,?,?,?,?)");
             comando.setInt(1, funcionario.getId());
             comando.setString(2, funcionario.getNome());
             comando.setString(3, funcionario.getTelefone());

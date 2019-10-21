@@ -74,7 +74,7 @@ public class HospedagemDAO {
         Connection conexao = null;
         PreparedStatement comando = null;
         try {
-
+            conexao = BD.getConexao();
             comando = conexao.prepareStatement("insert into hospedagem (id, dataChegada, dataSaida, dataEstimadaChegada, dataEstimadaSaida, checked, tipoQuarto, quarto, hospedeResponsavel) values (?,?,?,?,?,?,?,?,?)");
             comando.setInt(1, hospedagem.getId());
             comando.setDate(2, new java.sql.Date(hospedagem.getDataChegada().getTime()));
@@ -88,14 +88,14 @@ public class HospedagemDAO {
                 comando.setInt(7, hospedagem.getTipoQuarto().getId());
             }
             if (hospedagem.getQuarto() == null) {
-                comando.setNull(7, Types.INTEGER);
+                comando.setNull(8, Types.INTEGER);
             } else {
-                comando.setInt(7, hospedagem.getQuarto().getIdentificacao());
+                comando.setInt(8, hospedagem.getQuarto().getIdentificacao());
             }
             if (hospedagem.getHospedeResponsavel() == null) {
-                comando.setNull(7, Types.INTEGER);
+                comando.setNull(9, Types.INTEGER);
             } else {
-                comando.setInt(7, hospedagem.getHospedeResponsavel().getId());
+                comando.setInt(9, hospedagem.getHospedeResponsavel().getId());
             }
             comando.executeUpdate();
         } finally {

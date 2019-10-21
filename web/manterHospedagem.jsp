@@ -12,6 +12,14 @@
             <table>
                 <tr>
                     <td>
+                        <label for="id">id</label>
+                    </td>
+                    <td>
+                        <input type="number" name="id" id="id" value="$hospedagem.id">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <label for="dataChegada">Chegada:</label>
                     </td>
                     <td>
@@ -47,7 +55,7 @@
                         <label for="checked">Checked:</label>
                     </td>
                     <td>
-                        <input type="checkbox" name="dataEstimadaSaida" id="checked" value="$hospedagem.checked">
+                        <input type="checkbox" name="checked" id="checked" value="$hospedagem.checked">
                     </td>
                 </tr>
                 <tr>

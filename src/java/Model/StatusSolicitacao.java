@@ -32,8 +32,8 @@ public enum StatusSolicitacao {
         return status;
     }
 
-    public static StatusSolicitacao obterCStatusSolicitacao(String valor) {
-        return Enum.valueOf(StatusSolicitacao.class, valor);
+    public static StatusSolicitacao obterStatusSolicitacao(String valor) {
+        return Enum.valueOf(StatusSolicitacao.class, valor.toUpperCase().replaceAll(" ",""));
     }
 
 }

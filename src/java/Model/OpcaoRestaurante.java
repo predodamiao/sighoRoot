@@ -4,13 +4,13 @@ import DAO.OpcaoRestauranteDAO;
 import java.sql.SQLException;
 import java.util.List;
 
-public class OpcaoRestaurante extends ItemConsumo {
+public class OpcaoRestaurante extends Servico {
 
     private float acrescimo;
     private int tempoPreparo;
 
-    public OpcaoRestaurante(String codigo, String descricao, float precoVenda, CategoriaItemConsumo categoria, float acrescimo, int tempoPreparo) {
-        super(codigo, descricao, precoVenda, CategoriaItemConsumo.RESTAURANTE);
+    public OpcaoRestaurante(String codigo, String nome, String descricao, float precoVenda, CategoriaServico categoria, float acrescimo, int tempoPreparo) {
+        super(codigo, nome, descricao, precoVenda, CategoriaServico.RESTAURANTE);
         this.acrescimo = acrescimo;
         this.tempoPreparo = tempoPreparo;
     }

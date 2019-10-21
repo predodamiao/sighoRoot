@@ -71,6 +71,7 @@ public class HospedeDAO {
         Connection conexao = null;
         PreparedStatement comando = null;
         try {
+            conexao = BD.getConexao();
             comando = conexao.prepareStatement("insert into hospede (id, nome, telefone, email, rg, cpf, dataNascimento, passaporte) values (?,?,?,?,?,?,?,?)");
             comando.setInt(1, hospede.getId());
             comando.setString(2, hospede.getNome());

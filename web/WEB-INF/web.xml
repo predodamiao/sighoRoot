@@ -17,44 +17,44 @@
         <servlet-class>Controller.PesquisaFuncionarioController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PesquisarHospedagemController</servlet-name>
-        <servlet-class>Controller.PesquisarHospedagemController</servlet-class>
+        <servlet-name>PesquisaHospedagemController</servlet-name>
+        <servlet-class>Controller.PesquisaHospedagemController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ManterHospedeController</servlet-name>
         <servlet-class>Controller.ManterHospedeController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PesquisarItemConsumoController</servlet-name>
-        <servlet-class>Controller.PesquisarItemConsumoController</servlet-class>
+        <servlet-name>PesquisaItemConsumoController</servlet-name>
+        <servlet-class>Controller.PesquisaItemConsumoController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PesquisarItemFrigobarController</servlet-name>
-        <servlet-class>Controller.PesquisarItemFrigobarController</servlet-class>
+        <servlet-name>PesquisaItemFrigobarController</servlet-name>
+        <servlet-class>Controller.PesquisaItemFrigobarController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisaOpcaoRestauranteController</servlet-name>
         <servlet-class>Controller.PesquisaOpcaoRestauranteController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PesquisarPagamentoController</servlet-name>
-        <servlet-class>Controller.PesquisarPagamentoController</servlet-class>
+        <servlet-name>PesquisaPagamentoController</servlet-name>
+        <servlet-class>Controller.PesquisaPagamentoController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisaQuartoController</servlet-name>
         <servlet-class>Controller.PesquisaQuartoController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PesquisarQuartoController</servlet-name>
-        <servlet-class>Controller.PesquisarQuartoController</servlet-class>
+        <servlet-name>PesquisaQuartoController</servlet-name>
+        <servlet-class>Controller.PesquisaQuartoController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PesquisarSolicitacaoController</servlet-name>
-        <servlet-class>Controller.PesquisarSolicitacaoController</servlet-class>
+        <servlet-name>PesquisaSolicitacaoController</servlet-name>
+        <servlet-class>Controller.PesquisaSolicitacaoController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PesquisarTipoQuartoController</servlet-name>
-        <servlet-class>Controller.PesquisarTipoQuartoController</servlet-class>
+        <servlet-name>PesquisaTipoQuartoController</servlet-name>
+        <servlet-class>Controller.PesquisaTipoQuartoController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ManterAcompanhanteController</servlet-name>
@@ -100,6 +100,14 @@
         <servlet-name>ManterTipoQuartoController</servlet-name>
         <servlet-class>Controller.ManterTipoQuartoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisaServicoController</servlet-name>
+        <servlet-class>Controller.PesquisaServicoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterServicoController</servlet-name>
+        <servlet-class>Controller.ManterServicoController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaHospedeController</servlet-name>
         <url-pattern>/PesquisaHospedeController</url-pattern>
@@ -117,44 +125,40 @@
         <url-pattern>/PesquisaFuncionarioController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PesquisarHospedagemController</servlet-name>
-        <url-pattern>/PesquisarHospedagemController</url-pattern>
+        <servlet-name>PesquisaHospedagemController</servlet-name>
+        <url-pattern>/PesquisaHospedagemController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ManterHospedeController</servlet-name>
         <url-pattern>/ManterHospedeController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PesquisarItemConsumoController</servlet-name>
-        <url-pattern>/PesquisarItemConsumoController</url-pattern>
+        <servlet-name>PesquisaItemConsumoController</servlet-name>
+        <url-pattern>/PesquisaItemConsumoController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PesquisarItemFrigobarController</servlet-name>
-        <url-pattern>/PesquisarItemFrigobarController</url-pattern>
+        <servlet-name>PesquisaItemFrigobarController</servlet-name>
+        <url-pattern>/PesquisaItemFrigobarController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PesquisaOpcaoRestauranteController</servlet-name>
         <url-pattern>/PesquisaOpcaoRestauranteController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PesquisarPagamentoController</servlet-name>
-        <url-pattern>/PesquisarPagamentoController</url-pattern>
+        <servlet-name>PesquisaPagamentoController</servlet-name>
+        <url-pattern>/PesquisaPagamentoController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PesquisaQuartoController</servlet-name>
         <url-pattern>/PesquisaQuartoController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PesquisarQuartoController</servlet-name>
-        <url-pattern>/PesquisarQuartoController</url-pattern>
+        <servlet-name>PesquisaSolicitacaoController</servlet-name>
+        <url-pattern>/PesquisaSolicitacaoController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PesquisarSolicitacaoController</servlet-name>
-        <url-pattern>/PesquisarSolicitacaoController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>PesquisarTipoQuartoController</servlet-name>
-        <url-pattern>/PesquisarTipoQuartoController</url-pattern>
+        <servlet-name>PesquisaTipoQuartoController</servlet-name>
+        <url-pattern>/PesquisaTipoQuartoController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ManterAcompanhanteController</servlet-name>
@@ -199,6 +203,14 @@
     <servlet-mapping>
         <servlet-name>ManterTipoQuartoController</servlet-name>
         <url-pattern>/ManterTipoQuartoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaServicoController</servlet-name>
+        <url-pattern>/PesquisaServicoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterServicoController</servlet-name>
+        <url-pattern>/ManterServicoController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

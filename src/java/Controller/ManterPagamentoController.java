@@ -2,9 +2,13 @@ package Controller;
 
 import Model.Hospedagem;
 import Model.MomentoPagamento;
+import Model.Pagamento;
 import Model.TipoPagamento;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -25,12 +29,15 @@ public class ManterPagamentoController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      * @throws java.lang.ClassNotFoundException
      * @throws java.sql.SQLException
+     * @throws java.text.ParseException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException, SQLException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException, ParseException {
         String acao = request.getParameter("acao");
         if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
+        } else if (acao.equals("confirmarOperacao")) {
+            confirmarOperacao(request, response);
         }
     }
 
@@ -45,6 +52,41 @@ public class ManterPagamentoController extends HttpServlet {
             view.forward(request, response);
         } catch (ServletException e) {
             throw e;
+        } catch (IOException e) {
+            throw new ServletException(e);
+        }
+    }
+    
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException{
+        String operacao = request.getParameter("operacao");
+        int id = Integer.parseInt(request.getParameter("id"));
+        Date data = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data"));
+        int idHospedagem = Integer.parseInt(request.getParameter("hospedagem"));
+        String idTipoPagamento = request.getParameter("tipo");
+        String idMomentoPagamento = request.getParameter("momento");
+        float valor = Float.parseFloat(request.getParameter("valor"));
+        int parcelas = Integer.parseInt(request.getParameter("parcelas"));
+        
+
+        try {
+            Hospedagem hospedagem = null;
+            if (idHospedagem != 0) {
+                hospedagem = Hospedagem.obterHospedagem(idHospedagem);
+            }
+            MomentoPagamento momento = null;
+            if (idMomentoPagamento != null) {
+                momento = MomentoPagamento.obterMomentoPagamento(idMomentoPagamento);
+            }
+            TipoPagamento tipo = null;
+            if (idTipoPagamento != null) {
+                tipo = TipoPagamento.obterTipoPagamento(idTipoPagamento);
+            }
+            Pagamento pagamento = new Pagamento(id, valor, data, parcelas, tipo, momento, hospedagem);
+            if (operacao.equals("Incluir")) {
+                pagamento.gravar();
+            }
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaPagamentoController");
+            view.forward(request, response);
         } catch (IOException e) {
             throw new ServletException(e);
         }
@@ -68,6 +110,8 @@ public class ManterPagamentoController extends HttpServlet {
             Logger.getLogger(ManterPagamentoController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(ManterPagamentoController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(ManterPagamentoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -87,6 +131,8 @@ public class ManterPagamentoController extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ManterPagamentoController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
+            Logger.getLogger(ManterPagamentoController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(ManterPagamentoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class PesquisarSolicitacaoController extends HttpServlet {
+public class PesquisaSolicitacaoController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -51,7 +51,7 @@ public class PesquisarSolicitacaoController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisarSolicitacaoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaSolicitacaoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -69,7 +69,7 @@ public class PesquisarSolicitacaoController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisarSolicitacaoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaSolicitacaoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public enum CategoriaItemConsumo {
+public enum CategoriaServico {
     CAMARARIA("Camararia", 0),
     LAVANDERIA("Lavanderia", 1),
     RESTAURANTE("Restaurante", 2);
@@ -12,7 +12,8 @@ public enum CategoriaItemConsumo {
     private int id;
     private String nomeCategoria;
 
-    CategoriaItemConsumo(String funcao, int id) {
+    
+    CategoriaServico(String funcao, int id) {
         this.nomeCategoria = funcao;
         this.id = id;
     }
@@ -25,14 +26,14 @@ public enum CategoriaItemConsumo {
         return this.nomeCategoria;
     }
 
-    public static List<CategoriaItemConsumo> obterCategoriasItemConsumo() {
-        ArrayList categorias = new ArrayList<CategoriaItemConsumo>();
-        categorias.addAll(Arrays.asList(CategoriaItemConsumo.values()));
+    public static List<CategoriaServico> obterCategoriasServico() {
+        ArrayList categorias = new ArrayList<CategoriaServico>();
+        categorias.addAll(Arrays.asList(CategoriaServico.values()));
         return categorias;
     }
 
-    public static CategoriaItemConsumo obterCategoriaItemConsumo(String valor) {
-        return Enum.valueOf(CategoriaItemConsumo.class, valor);
+    public static CategoriaServico obterCategoriaServico(String valor) {
+        return Enum.valueOf(CategoriaServico.class, valor.toUpperCase().replaceAll(" ",""));
     }
 
 }

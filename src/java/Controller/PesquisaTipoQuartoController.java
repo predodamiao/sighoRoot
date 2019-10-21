@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.Pagamento;
+import Model.TipoQuarto;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class PesquisarPagamentoController extends HttpServlet {
+public class PesquisaTipoQuartoController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -26,8 +26,8 @@ public class PesquisarPagamentoController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         try {
-            request.setAttribute("pagamentos", Pagamento.obterPagamentos());
-            RequestDispatcher view = request.getRequestDispatcher("/pesquisaPagamento.jsp");
+            request.setAttribute("tiposQuarto", TipoQuarto.obterTiposQuarto());
+            RequestDispatcher view = request.getRequestDispatcher("/pesquisaTipoQuarto.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException e) {
             throw new ServletException(e);
@@ -51,7 +51,7 @@ public class PesquisarPagamentoController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisarPagamentoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaTipoQuartoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -69,7 +69,7 @@ public class PesquisarPagamentoController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisarPagamentoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaTipoQuartoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

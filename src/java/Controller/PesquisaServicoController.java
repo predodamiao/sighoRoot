@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.TipoQuarto;
+import Model.Servico;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class PesquisarTipoQuartoController extends HttpServlet {
+public class PesquisaServicoController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -23,11 +23,11 @@ public class PesquisarTipoQuartoController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      * @throws java.sql.SQLException
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         try {
-            request.setAttribute("tiposQuarto", TipoQuarto.obterTiposQuarto());
-            RequestDispatcher view = request.getRequestDispatcher("/pesquisaTipoQuarto.jsp");
+            request.setAttribute("servicos", Servico.obterServicos());
+            RequestDispatcher view = request.getRequestDispatcher("/pesquisaServico.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException e) {
             throw new ServletException(e);
@@ -48,11 +48,11 @@ public class PesquisarTipoQuartoController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(PesquisarTipoQuartoController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       try {
+           processRequest(request, response);
+       } catch (SQLException ex) {
+           Logger.getLogger(PesquisaServicoController.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }
 
     /**
@@ -66,11 +66,11 @@ public class PesquisarTipoQuartoController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(PesquisarTipoQuartoController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       try {
+           processRequest(request, response);
+       } catch (SQLException ex) {
+           Logger.getLogger(PesquisaServicoController.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }
 
     /**

@@ -27,6 +27,11 @@ public class ManterConsumoController extends HttpServlet {
      *
      * @param request servlet request
      * @param response servlet response
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
+     * @throws java.io.IOException
+     * @throws javax.servlet.ServletException
+     * @throws java.text.ParseException
 
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, IOException, ServletException, ParseException{

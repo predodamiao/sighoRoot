@@ -6,7 +6,7 @@
 package DAO;
 
 import static DAO.DAO.fecharConexao;
-import Model.CategoriaItemConsumo;
+import Model.CategoriaServico;
 import Model.ItemConsumo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -55,9 +55,9 @@ public class ItemConsumoDAO {
 
     public static ItemConsumo instanciarItemConsumo(ResultSet rs) throws ClassNotFoundException, SQLException {
         ItemConsumo item = new ItemConsumo(rs.getString("id"),
+                rs.getString("nome"),
                 rs.getString("descricao"),
-                rs.getFloat("precoVenda"),
-                Enum.valueOf(CategoriaItemConsumo.class, rs.getString("categoria")));
+                rs.getFloat("precoVenda"));
         return item;
     }
 
@@ -65,11 +65,12 @@ public class ItemConsumoDAO {
         Connection conexao = null;
         PreparedStatement comando = null;
         try {
-            comando = conexao.prepareStatement("insert into itemConsumo (id, descricao, precoVenda, categoria) values (?,?,?,?)");
+            conexao = BD.getConexao();
+            comando = conexao.prepareStatement("insert into itemConsumo (id, nome, descricao, precoVenda) values (?,?,?,?)");
             comando.setString(1, item.getCodigo());
-            comando.setString(2, item.getDescricao());
-            comando.setFloat(3, item.getPrecoVenda());
-            comando.setString(4, item.getCategoria().toString());
+            comando.setString(2, item.getNome());
+            comando.setString(3, item.getDescricao());
+            comando.setFloat(4, item.getPrecoVenda());
             comando.executeUpdate();
         } finally {
             fecharConexao(conexao, comando);

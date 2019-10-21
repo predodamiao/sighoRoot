@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Lavínia
  */
-public class PesquisarItemFrigobarController extends HttpServlet {
+public class PesquisaItemFrigobarController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -55,7 +55,7 @@ public class PesquisarItemFrigobarController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisarItemFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaItemFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -73,7 +73,7 @@ public class PesquisarItemFrigobarController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisarItemFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaItemFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

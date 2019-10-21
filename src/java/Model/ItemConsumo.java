@@ -7,12 +7,13 @@ import java.util.List;
 public class ItemConsumo {
 
     private String codigo;
+    private String nome;
     private String descricao;
     private float precoVenda;
-    private CategoriaItemConsumo categoria;
 
-    public ItemConsumo(String codigo, String descricao, float precoVenda, CategoriaItemConsumo categoria) {
+    public ItemConsumo(String codigo, String nome, String descricao, float precoVenda){
         this.codigo = codigo;
+        this.nome = nome;
         this.descricao = descricao;
         this.precoVenda = precoVenda;
     }
@@ -49,16 +50,17 @@ public class ItemConsumo {
         this.precoVenda = precoVenda;
     }
 
-    public CategoriaItemConsumo getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(CategoriaItemConsumo categoria) {
-        this.categoria = categoria;
-    }
-
     public void gravar() throws SQLException, ClassNotFoundException {
         ItemConsumoDAO.gravar(this);
     }
+    
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
 
 }

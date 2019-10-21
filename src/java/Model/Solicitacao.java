@@ -10,20 +10,20 @@ public class Solicitacao {
     private Date data;
     private int quantidade;
     private StatusSolicitacao status;
-    private Funcionario funcionario;
+    private Funcionario funcionarioSolicitante;
     private Hospedagem hospedagem;
-    private ItemConsumo item;
-    private int idFuncionario;
+    private Servico servico;
+    private int idFuncionarioSolicitante;
     private int idHospedagem;
 
-    public Solicitacao(int id, Date data, int quantidade, StatusSolicitacao status, Funcionario funcionario, Hospedagem hospedagem, ItemConsumo item) {
+    public Solicitacao(int id, Date data, int quantidade, StatusSolicitacao status, Funcionario funcionario, Hospedagem hospedagem, Servico servico) {
         this.id = id;
         this.data = data;
         this.quantidade = quantidade;
         this.status = status;
-        this.funcionario = funcionario;
+        this.funcionarioSolicitante = funcionario;
         this.hospedagem = hospedagem;
-        this.item = item;
+        this.servico = servico;
     }
 
     public static Solicitacao obterSolicitacao(int codSolicitacao) throws ClassNotFoundException, SQLException {
@@ -74,12 +74,12 @@ public class Solicitacao {
         this.idHospedagem = idHospedagem;
     }
 
-    public ItemConsumo getItem() {
-        return item;
+    public Servico getServico() {
+        return servico;
     }
 
-    public void setItem(ItemConsumo item) {
-        this.item = item;
+    public void setServico(Servico servico) {
+        this.servico = servico;
     }
 
     public int getId() {
@@ -90,23 +90,23 @@ public class Solicitacao {
         this.id = id;
     }
 
-    public Funcionario getFuncionario() {
-        return funcionario;
+    public Funcionario getFuncionarioSolicitante() {
+        return funcionarioSolicitante;
     }
 
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
+    public void setFuncionarioSolicitante(Funcionario funcionario) {
+        this.funcionarioSolicitante = funcionario;
     }
 
-    public int getIdFuncionario() {
-        return idFuncionario;
+    public int getIdFuncionarioSolicitante() {
+        return idFuncionarioSolicitante;
     }
 
-    public void setIdFuncionario(int idFuncionario) {
-        this.idFuncionario = idFuncionario;
+    public void setIdFuncionarioSolicitante(int idFuncionario) {
+        this.idFuncionarioSolicitante = idFuncionario;
     }
 
-    public void gravar() throws SQLException {
+    public void gravar() throws SQLException, ClassNotFoundException {
         SolicitacaoDAO.gravar(this);
     }
 

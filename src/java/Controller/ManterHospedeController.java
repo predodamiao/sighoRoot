@@ -1,6 +1,13 @@
 package Controller;
 
+import Model.Hospede;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,12 +24,17 @@ public class ManterHospedeController extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
+     * @throws java.text.ParseException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException, ParseException {
         String acao = request.getParameter("acao");
         if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
+        } else if (acao.equals("confirmarOperacao")) {
+            confirmarOperacao(request, response);
         }
     }
 
@@ -34,6 +46,29 @@ public class ManterHospedeController extends HttpServlet {
             view.forward(request, response);
         } catch (ServletException e) {
             throw e;
+        } catch (IOException e) {
+            throw new ServletException(e);
+        }
+    }
+    
+   public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, ServletException, ParseException, IOException {
+        String operacao = request.getParameter("operacao");
+        int id = Integer.parseInt(request.getParameter("id"));
+        String nome = request.getParameter("nome");
+        String telefone = request.getParameter("telefone");
+        String email = request.getParameter("email");
+        String rg = request.getParameter("rg");
+        String cpf = request.getParameter("cpf");
+        Date dataNascimento = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataNascimento"));
+        String passaporte = request.getParameter("passaporte");
+
+        try {
+            Hospede hospede = new Hospede(id, nome, telefone, email, rg, cpf, dataNascimento, passaporte);
+            if (operacao.equals("Incluir")) {
+                hospede.gravar();
+            }
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaHospedeController");
+            view.forward(request, response);
         } catch (IOException e) {
             throw new ServletException(e);
         }
@@ -51,7 +86,15 @@ public class ManterHospedeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterHospedeController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManterHospedeController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(ManterHospedeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -65,7 +108,15 @@ public class ManterHospedeController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterHospedeController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManterHospedeController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(ManterHospedeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

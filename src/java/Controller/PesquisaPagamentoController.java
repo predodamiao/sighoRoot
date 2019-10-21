@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.Quarto;
+import Model.Pagamento;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class PesquisarQuartoController extends HttpServlet {
+public class PesquisaPagamentoController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -26,8 +26,8 @@ public class PesquisarQuartoController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         try {
-            request.setAttribute("quartos", Quarto.obterQuartos());
-            RequestDispatcher view = request.getRequestDispatcher("/pesquisaQuarto.jsp");
+            request.setAttribute("pagamentos", Pagamento.obterPagamentos());
+            RequestDispatcher view = request.getRequestDispatcher("/pesquisaPagamento.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException e) {
             throw new ServletException(e);
@@ -51,7 +51,7 @@ public class PesquisarQuartoController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisarQuartoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaPagamentoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -69,7 +69,7 @@ public class PesquisarQuartoController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisarQuartoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaPagamentoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

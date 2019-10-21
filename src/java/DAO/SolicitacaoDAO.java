@@ -63,34 +63,35 @@ public class SolicitacaoDAO {
                 null,
                 null,
                 null);
-        solicitacao.setIdFuncionario(rs.getInt("idFuncionario"));
+        solicitacao.setIdFuncionarioSolicitante(rs.getInt("idFuncionario"));
         solicitacao.setIdHospedagem(rs.getInt("idHospedagem"));
         return solicitacao;
     }
 
-    public static void gravar(Solicitacao solicitacao) throws SQLException {
+    public static void gravar(Solicitacao solicitacao) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         PreparedStatement comando = null;
         try {
+            conexao = BD.getConexao();
             comando = conexao.prepareStatement("insert into solicitacao (id, data, quantidade, status, idFuncionario, idHospede, hospedagem, item) values (?,?,?,?,?,?)");
             comando.setInt(1, solicitacao.getId());
             comando.setDate(2,  new java.sql.Date(solicitacao.getData().getTime()));
             comando.setInt(3, solicitacao.getQuantidade());
             comando.setString(4, solicitacao.getStatus().toString());
-            if (solicitacao.getFuncionario() == null) {
+            if (solicitacao.getFuncionarioSolicitante() == null) {
                 comando.setNull(5, Types.INTEGER);
             } else {
-                comando.setInt(5, solicitacao.getFuncionario().getId());
+                comando.setInt(5, solicitacao.getFuncionarioSolicitante().getId());
             }
             if (solicitacao.getHospedagem() == null) {
                 comando.setNull(6, Types.INTEGER);
             } else {
                 comando.setInt(6, solicitacao.getHospedagem().getId());
             }
-            if (solicitacao.getItem() == null) {
+            if (solicitacao.getServico() == null) {
                 comando.setNull(7, Types.FLOAT);
             } else {
-                comando.setString(7, solicitacao.getItem().getCodigo());
+                comando.setString(7, solicitacao.getServico().getCodigo());
             }
             comando.executeUpdate();
 

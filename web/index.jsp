@@ -12,23 +12,25 @@
         <br>
         <a href="PesquisaFuncionarioController">Pesquisar Funcionário</a>
         <br>
-        <a href="PesquisarHospedagemController">Pesquisar Hospedagem</a>
+        <a href="PesquisaHospedagemController">Pesquisar Hospedagem</a>
         <br>
         <a href="PesquisaHospedeController">Pesquisar Hospede</a>
         <br>
-        <a href="PesquisarItemConsumoController">Pesquisar Item Consumo</a>
+        <a href="PesquisaItemConsumoController">Pesquisar Item Consumo</a>
         <br>
-        <a href="PesquisarItemFrigobarController">Pesquisar Item Frigobar</a>
+        <a href="PesquisaItemFrigobarController">Pesquisar Item Frigobar</a>
         <br>
         <a href="PesquisaOpcaoRestauranteController">Pesquisar Opção Restaurante</a>
         <br>
-        <a href="PesquisarPagamentoController">Pesquisar Pagamento</a>
+        <a href="PesquisaPagamentoController">Pesquisar Pagamento</a>
         <br>
-        <a href="PesquisarQuartoController">Pesquisar Quarto</a>
+        <a href="PesquisaQuartoController">Pesquisar Quarto</a>
         <br>
-        <a href="PesquisarSolicitacaoController">Pesquisar Solicitacões</a>
+        <a href="PesquisaServicoController">Pesquisar Serviço</a>
         <br>
-        <a href="PesquisarTipoQuartoController">Pesquisar Tipo de Quarto</a>
+        <a href="PesquisaSolicitacaoController">Pesquisar Solicitacões</a>
+        <br>
+        <a href="PesquisaTipoQuartoController">Pesquisar Tipo de Quarto</a>
         <br>
         <br>
         <br>

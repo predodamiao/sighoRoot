@@ -43,7 +43,7 @@ public class TipoQuartoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from quarto where id = " + codTipoQuarto);
+            ResultSet rs = comando.executeQuery("select * from tipoQuarto where id = " + codTipoQuarto);
             rs.first();
             tipo = instanciarTipoQuarto(rs);
         } finally {
@@ -60,10 +60,11 @@ public class TipoQuartoDAO {
         return tipo;
     }
 
-    public static void gravar(TipoQuarto tipo) throws SQLException {
+    public static void gravar(TipoQuarto tipo) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         PreparedStatement comando = null;
         try {
+            conexao = BD.getConexao();
             comando = conexao.prepareStatement("insert into tipoQuarto (id, nome, descricao, preco) values (?,?,?,?)");
             comando.setInt(1, tipo.getId());
             comando.setString(2, tipo.getNome());

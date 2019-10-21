@@ -13,6 +13,14 @@
             <table>
                 <tr>
                     <td>
+                        <label for="id">id:</label>
+                    </td>
+                    <td>
+                        <input type="number" name="id" id="id" value="${pagamento.id}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <label for="data">Data:</label>
                     </td>
                     <td>
@@ -42,13 +50,13 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="solicitante">Solicitante:</label>
+                        <label for="funcionarioSolicitante">Funcionário Solicitante:</label>
                     </td>
                     <td>
-                        <select name="solicitante" id="solicitante">
-                            <option value="0" <c:if test="${solicitacao.solicitante.id == null}"> selected </c:if>></option>
+                        <select name="funcionarioSolicitante" id="funcionarioSolicitante">
+                            <option value="0" <c:if test="${solicitacao.funcionarioSolicitante.id == null}"> selected </c:if>></option>
                             <c:forEach items="${funcionarios}" var="funcionario">
-                                <option value="${funcionario.id}" <c:if test="${solicitacao.funcionario.id == funcionario.id}"> selected </c:if>>${funcionario.nome}</option>
+                                <option value="${funcionario.id}" <c:if test="${solicitacao.funcionarioSolicitante.id == funcionario.id}"> selected </c:if>>${funcionario.nome}</option>
                             </c:forEach>
                         </select>
                     </td>
@@ -61,12 +69,27 @@
                         <select name="status" id="status">
                             <option value="0" <c:if test="${solicitacao.status.id == null}"> selected </c:if>></option>
                             <c:forEach items="${status}" var="status">
-                                <option value="${status.id}" <c:if test="${solicitacao.status.id == status.id}"> selected </c:if>>${status.nomeStatus}</option>
+                                <option value="${status.nomeStatus}" <c:if test="${solicitacao.status.id == status.id}"> selected </c:if>>${status.nomeStatus}</option>
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="item">Item:</label>
+                    </td>
+                    <td>
+                        <select name="item" id="item">
+                            <option value="0" <c:if test="${consumo.item.codigo == null}"> selected </c:if>></option>
+                            <c:forEach items="${itens}" var="item">
+                                <option value="${item.nome}" <c:if test="${consumo.item.codigo == item.codigo}">selected</c:if>>${item.nome}</option>
                             </c:forEach>
                         </select>
                     </td>
                 </tr>
             </table>
+                            
+            <input type="submit" name="enviar">
         </form>
     </body>
 </html>

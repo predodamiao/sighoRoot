@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.Hospedagem;
+import Model.ItemConsumo;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class PesquisarHospedagemController extends HttpServlet {
+public class PesquisaItemConsumoController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -21,12 +21,13 @@ public class PesquisarHospedagemController extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         try {
-            request.setAttribute("hospedagens", Hospedagem.obterHospedagens());
-            RequestDispatcher view = request.getRequestDispatcher("/pesquisaHospedagem.jsp");
+            request.setAttribute("itensConsumo", ItemConsumo.obterItensConsumo());
+            RequestDispatcher view = request.getRequestDispatcher("/pesquisaItemConsumo.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException e) {
             throw new ServletException(e);
@@ -50,7 +51,7 @@ public class PesquisarHospedagemController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisarHospedagemController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaItemConsumoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -68,7 +69,7 @@ public class PesquisarHospedagemController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisarHospedagemController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaItemConsumoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

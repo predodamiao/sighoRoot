@@ -32,7 +32,7 @@ public enum MomentoPagamento {
     }
 
     public static MomentoPagamento obterMomentoPagamento(String valor) {
-        return Enum.valueOf(MomentoPagamento.class, valor);
+        return Enum.valueOf(MomentoPagamento.class, valor.toUpperCase().replaceAll(" ",""));
     }
 
 }

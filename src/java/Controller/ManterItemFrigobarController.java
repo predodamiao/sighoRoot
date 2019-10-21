@@ -1,8 +1,10 @@
 package Controller;
 
 import Model.ItemConsumo;
+import Model.ItemFrigobar;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -23,12 +25,15 @@ public class ManterItemFrigobarController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      * @throws java.lang.ClassNotFoundException
      * @throws java.sql.SQLException
+     * @throws java.text.ParseException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException, SQLException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException, ParseException {
         String acao = request.getParameter("acao");
         if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
+        } else if (acao.equals("confirmarOperacao")) {
+            confirmarOperacao(request, response);
         }
     }
 
@@ -41,6 +46,28 @@ public class ManterItemFrigobarController extends HttpServlet {
             view.forward(request, response);
         } catch (ServletException e) {
             throw e;
+        } catch (IOException e) {
+            throw new ServletException(e);
+        }
+    }
+    
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException, IOException {
+        String operacao = request.getParameter("operacao");
+        int id = Integer.parseInt(request.getParameter("id"));
+        int quantidade = Integer.parseInt(request.getParameter("quantidade"));
+        int idItem = Integer.parseInt(request.getParameter("itemConsumo"));
+
+        try {
+            ItemConsumo item = null;
+            if (idItem != 0) {
+                item = ItemConsumo.obterItemConsumo(idItem);
+            }
+            ItemFrigobar itemFrigobar = new ItemFrigobar(id, quantidade, item);
+            if (operacao.equals("Incluir")) {
+                itemFrigobar.gravar();
+            }
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaItemFrigobarController");
+            view.forward(request, response);
         } catch (IOException e) {
             throw new ServletException(e);
         }
@@ -64,6 +91,8 @@ public class ManterItemFrigobarController extends HttpServlet {
             Logger.getLogger(ManterItemFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(ManterItemFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(ManterItemFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -83,6 +112,8 @@ public class ManterItemFrigobarController extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ManterItemFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
+            Logger.getLogger(ManterItemFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(ManterItemFrigobarController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -66,6 +66,7 @@ public class ItemFrigobarDAO {
         Connection conexao = null;
         PreparedStatement comando = null;
         try {
+            conexao = BD.getConexao();
             comando = conexao.prepareStatement("insert into itemFrigobar (id, quantidade, idItem) values (?,?,?)");
             comando.setInt(1, item.getId());
             comando.setInt(2, item.getQuantidade());

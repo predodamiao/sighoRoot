@@ -67,15 +67,16 @@ public class QuartoDAO {
         Connection conexao = null;
         PreparedStatement comando = null;
         try {
-            comando = conexao.prepareStatement("insert into solicitacao (identificacao, quantidadeCamasCasal, quantidadeCamasSolteiro, ocupado, tipoQuarto) values (?,?,?,?,?)");
+            conexao = BD.getConexao();
+            comando = conexao.prepareStatement("insert into quarto (identificacao, quantidadeCamasCasal, quantidadeCamasSolteiro, ocupado, tipoQuarto) values (?,?,?,?,?)");
             comando.setInt(1, quarto.getIdentificacao());
             comando.setInt(2, quarto.getQuantidadeCamasCasal());
             comando.setInt(3, quarto.getQuantidadeCamasSolteiro());
             comando.setBoolean(4, quarto.isOcupado());
             if (quarto.getTipo() == null) {
-                comando.setNull(4, Types.INTEGER);
+                comando.setNull(5, Types.INTEGER);
             } else {
-                comando.setInt(4, quarto.getTipo().getId());
+                comando.setInt(5, quarto.getTipo().getId());
             }
             comando.executeUpdate();
         } finally {

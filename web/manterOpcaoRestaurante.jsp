@@ -11,33 +11,64 @@
         <form action="ManterOpcaoRestauranteController?acao=confirmarOperacao&operacao=${operacao}" method="post">
             <table>
 
-                <tr>
+               <tr>
                     <td>
-                        <label for="id">ID:</label>
+                        <label for="codigo">Código:</label>
                     </td>
                     <td>
-                        <input type="number" name="id" id="id" value="${itemFrigobar.id}">
+                        <input type="text" name="codigo" id="codigo" value="${opcaoRestaurante.codigo}">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="categoriaItemConsumo">Categoria do Item de Consumo:</label>
+                        <label for="nome">Nome:</label>
                     </td>
                     <td>
-                        <select name="categoriaItemConsumo" id="categoriaItemConsumo">
-                            <option value="0" <c:if test="${ItemConsumo.categoria.id == null}"> selected </c:if>></option>
-                            <c:forEach items="${categorias}" var="categoria">
-                                <option value="${categoria.id}" <c:if test="${ItemConsumo.categoria.id == categoria.id}">selected</c:if>>${categoria.nomeCategoria}</option>
-                            </c:forEach>
+                        <input type="text" name="nome" id="nome" value="${opcaoRestaurante.nome}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="descricao">Descrição:</label>
+                    </td>
+                    <td>
+                        <textarea name="descricao" id="descricao">${opcaoRestaurante.descricao}</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="preco">Preco de Consumo:</label>
+                    </td>
+                    <td>
+                        <input type="number" name="preco" id="preco" step="0.10" min="0.00" value="${opcaoRestaurante.preco}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="Acrescimo">Acrescimo para servir no Quarto:</label>
+                    </td>
+                    <td>
+                        <input type="number" name="acrescimo" id="acrescimo" step="0.10" min="0.00" value="${opcaoRestaurante.preco}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="preco">Tempo de Preparo:</label>
+                    </td>
+                    <td>
+                        <input type="number" name="tempoPreparo" id="tempoPreparo" step="1" min="0" value="${opcaoRestaurante.preco}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="categoriaOpcaoRestaurante">Categoria:</label>
+                    </td>
+                    <td>
+                        <select name="categoriaOpcaoRestaurante" id="categoriaOpcaoRestaurante" disabled>
+                            <option value="0"></option>
+                                <option value="Restaurante" selected>Restaurante</option>
+
                         </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="quantidade">Quantidade:</label>
-                    </td>
-                    <td>
-                        <input type="number" name="quantidade" id="quantidade" value="${itemFrigobar.quantidade}">
                     </td>
                 </tr>
             </table>

@@ -6,7 +6,7 @@
 package DAO;
 
 import static DAO.DAO.fecharConexao;
-import Model.CategoriaItemConsumo;
+import Model.CategoriaServico;
 import Model.OpcaoRestaurante;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -55,9 +55,10 @@ public class OpcaoRestauranteDAO {
 
     public static OpcaoRestaurante instanciarOpcaoRestaurante(ResultSet rs) throws ClassNotFoundException, SQLException {
         OpcaoRestaurante opcao = new OpcaoRestaurante(rs.getString("id"),
+                rs.getString("nome"),
                 rs.getString("descricao"),
-                rs.getFloat("precoVenda"),
-                Enum.valueOf(CategoriaItemConsumo.class, rs.getString("categoria")),
+                rs.getFloat("preco"),
+                Enum.valueOf(CategoriaServico.class, rs.getString("categoria")),
                 rs.getFloat("acrescimo"),
                 rs.getInt("tempoPreparo"));
         return opcao;
@@ -67,13 +68,15 @@ public class OpcaoRestauranteDAO {
         Connection conexao = null;
         PreparedStatement comando = null;
         try {
-            comando = conexao.prepareStatement("insert into opcaoRestaurante (id, descricao, precoVenda, categoria, acrescimo, tempoPreparo) values (?,?,?,?,?,?)");
+            conexao = BD.getConexao();
+            comando = conexao.prepareStatement("insert into opcaoRestaurante (id, nome, descricao, preco, categoria, acrescimo, tempoPreparo) values (?,?,?,?,?,?,?)");
             comando.setString(1, opcao.getCodigo());
-            comando.setString(2, opcao.getDescricao());
-            comando.setFloat(3, opcao.getPrecoVenda());
-            comando.setString(4, opcao.getCategoria().toString());
-            comando.setFloat(5, opcao.getAcrescimo());
-            comando.setInt(6, opcao.getTempoPreparo());
+            comando.setString(2, opcao.getNome());
+            comando.setString(3, opcao.getDescricao());
+            comando.setFloat(4, opcao.getPreco());
+            comando.setString(5, opcao.getCategoria().toString());
+            comando.setFloat(6, opcao.getAcrescimo());
+            comando.setInt(7, opcao.getTempoPreparo());
             comando.executeUpdate();
         } finally {
             fecharConexao(conexao, comando);

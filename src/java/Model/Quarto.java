@@ -13,10 +13,10 @@ public class Quarto {
     private TipoQuarto tipo;
     private int idTipoQuarto;
 
-    public Quarto(int identificacao, int quantidadeCamasCasal, int quantidadesCamaSolteiro, boolean ocupado, TipoQuarto tipo) {
+    public Quarto(int identificacao, int quantidadeCamasCasal, int quantidadeCamasSolteiro, boolean ocupado, TipoQuarto tipo) {
         this.identificacao = identificacao;
         this.quantidadeCamasCasal = quantidadeCamasCasal;
-        this.quantidadeCamasSolteiro = quantidadesCamaSolteiro;
+        this.quantidadeCamasSolteiro = quantidadeCamasSolteiro;
         this.ocupado = ocupado;
         this.tipo = tipo;
     }

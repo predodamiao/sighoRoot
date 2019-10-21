@@ -5,8 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum TipoPagamento {
-    CREDITO("Crédito", 0),
-    DEBITO("Débito", 1),
+    CREDITO("Credito", 0),
+    DEBITO("Debito", 1),
     DINHEIRO("Dinheiro", 2);
 
     private int id;
@@ -32,7 +32,7 @@ public enum TipoPagamento {
     }
 
     public static TipoPagamento obterTipoPagamento(String valor) {
-        return Enum.valueOf(TipoPagamento.class, valor);
+        return Enum.valueOf(TipoPagamento.class, valor.toUpperCase().replaceAll(" ",""));
     }
 
 }

@@ -28,10 +28,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="quantidadesCamasSolteiro">Quantidade de Camas de Solteiro:</label>
+                        <label for="quantidadeCamasSolteiro">Quantidade de Camas de Solteiro:</label>
                     </td>
                     <td>
-                        <input type="number" name="quantidadesCamasSolteiro" id="quantidadesCamasSolteiro" min="0" value="${quarto.quantidadesCamasSolteiro}">
+                        <input type="number" name="quantidadeCamasSolteiro" id="quantidadeCamasSolteiro" min="0" value="${quarto.quantidadesCamasSolteiro}">
                     </td>
                 </tr>
                 <tr>

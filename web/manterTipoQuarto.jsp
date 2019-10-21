@@ -12,6 +12,14 @@
             <table>
                 <tr>
                     <td>
+                        <label for="id">ID:</label>
+                    </td>
+                    <td>
+                        <input type="number" name="id" id="id" value="${tipoQuarto.id}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <label for="nome">Nome:</label>
                     </td>
                     <td>

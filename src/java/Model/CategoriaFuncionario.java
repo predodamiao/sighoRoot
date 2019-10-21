@@ -33,7 +33,7 @@ public enum CategoriaFuncionario {
     }
 
     public static CategoriaFuncionario obterCategoriaFuncionario(String valor) {
-        return Enum.valueOf(CategoriaFuncionario.class, valor);
+        return Enum.valueOf(CategoriaFuncionario.class, valor.toUpperCase().replaceAll(" ",""));
     }
 
 }

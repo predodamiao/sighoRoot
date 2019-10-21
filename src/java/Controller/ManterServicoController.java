@@ -1,14 +1,11 @@
 package Controller;
 
-import Model.Hospedagem;
-import Model.Hospede;
-import Model.Quarto;
-import Model.TipoQuarto;
+import Model.CategoriaServico;
+import Model.Servico;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -17,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ManterHospedagemController extends HttpServlet {
+public class ManterServicoController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -27,12 +24,12 @@ public class ManterHospedagemController extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.text.ParseException
      * @throws java.lang.ClassNotFoundException
      * @throws java.sql.SQLException
-     * @throws java.text.ParseException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException, SQLException, ParseException {
+            throws ServletException, IOException, ParseException, ClassNotFoundException, SQLException {
         String acao = request.getParameter("acao");
         if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
@@ -41,14 +38,12 @@ public class ManterHospedagemController extends HttpServlet {
         }
     }
 
-    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, ClassNotFoundException, SQLException {
+    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            request.setAttribute("hospedes", Hospede.obterHospedes());
-            request.setAttribute("quartos", Quarto.obterQuartos());
-            request.setAttribute("tiposQuarto", TipoQuarto.obterTiposQuarto());
-            RequestDispatcher view = request.getRequestDispatcher("/manterHospedagem.jsp");
+            request.setAttribute("categorias", CategoriaServico.obterCategoriasServico());
+            RequestDispatcher view = request.getRequestDispatcher("/manterServico.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
             throw e;
@@ -56,39 +51,27 @@ public class ManterHospedagemController extends HttpServlet {
             throw new ServletException(e);
         }
     }
-
-    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, ServletException, ParseException, IOException {
+    
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException{
         String operacao = request.getParameter("operacao");
-        int id = Integer.parseInt(request.getParameter("id"));
-        Date dataChegada = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataChegada"));
-        Date dataEstimadaChegada = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataEstimadaChegada"));
-        Date dataSaida = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataSaida"));
-        Date dataEstimadaSaida = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataEstimadaSaida"));
-        Boolean checked = request.getParameter("checked") != null;
+        String codigo = request.getParameter("codigo");
+        String nome = request.getParameter("nome");
+        String descricao = request.getParameter("descricao");
+        float preco = Float.parseFloat(request.getParameter("preco"));
+        String idCategoria = request.getParameter("categoriaItemConsumo");
         
-        int idHospede = Integer.parseInt(request.getParameter("hospede"));
-        int idQuarto = Integer.parseInt(request.getParameter("quarto"));
-        int idTipoQuarto = Integer.parseInt(request.getParameter("tipoQuarto"));
-
+        
+        
         try {
-            Hospede hospede = null;
-            if (idHospede != 0) {
-                hospede = Hospede.obterHospede(idHospede);
+            CategoriaServico categoria = null;
+            if (idCategoria != null) {
+                categoria = CategoriaServico.obterCategoriaServico(idCategoria);
             }
-            Quarto quarto = null;
-            if (idQuarto != 0) {
-                quarto = Quarto.obterQuarto(idQuarto);
-            }
-            TipoQuarto tipoQuarto = null;
-            if (idQuarto != 0) {
-                tipoQuarto = TipoQuarto.obterTipoQuarto(idTipoQuarto);
-            }
-            
-            Hospedagem hospedagem = new Hospedagem(id, dataChegada, dataSaida, dataEstimadaChegada, dataEstimadaSaida, checked, tipoQuarto, quarto, hospede);
+            Servico servico = new Servico(codigo, nome, descricao, preco, categoria);
             if (operacao.equals("Incluir")) {
-                hospedagem.gravar();
+                servico.gravar();
             }
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaHospedagemController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaServicoController");
             view.forward(request, response);
         } catch (IOException e) {
             throw new ServletException(e);
@@ -109,12 +92,12 @@ public class ManterHospedagemController extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManterHospedagemController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ManterHospedagemController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
-            Logger.getLogger(ManterHospedagemController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterServicoController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterServicoController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManterServicoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -131,12 +114,12 @@ public class ManterHospedagemController extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManterHospedagemController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ManterHospedagemController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
-            Logger.getLogger(ManterHospedagemController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterServicoController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterServicoController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManterServicoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

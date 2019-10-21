@@ -58,7 +58,7 @@ public class TipoQuarto {
         this.nome = nome;
     }
 
-    public void gravar() throws SQLException {
+    public void gravar() throws SQLException, ClassNotFoundException {
         TipoQuartoDAO.gravar(this);
     }
 

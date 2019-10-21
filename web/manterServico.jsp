@@ -1,0 +1,62 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Serviço</title>
+    </head>
+    <body>
+        <h1>Serviço - ${operacao}</h1>
+        <form action="ManterServicoController?acao=confirmarOperacao&operacao=${operacao}" method="post">
+            <table>
+                <tr>
+                    <td>
+                        <label for="codigo">Código:</label>
+                    </td>
+                    <td>
+                        <input type="text" name="codigo" id="codigo" value="${servico.codigo}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="nome">Nome:</label>
+                    </td>
+                    <td>
+                        <input type="text" name="nome" id="nome" value="${servico.nome}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="descricao">Descrição:</label>
+                    </td>
+                    <td>
+                        <textarea name="descricao" id="descricao">${servico.descricao}</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="preco">Preco de Consumo:</label>
+                    </td>
+                    <td>
+                        <input type="number" name="preco" id="preco" step="0.10" min="0.00" value="${servico.preco}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="categoriaItemConsumo">Categoria do Item de Consumo:</label>
+                    </td>
+                    <td>
+                        <select name="categoriaItemConsumo" id="categoriaItemConsumo">
+                            <option value="0" <c:if test="${servico.categoria.id == null}"> selected </c:if>></option>
+                            <c:forEach items="${categorias}" var="categoria">
+                                <option value="${categoria.nomeCategoria}" <c:if test="${servico.categoria.id == categoria.id}">selected</c:if>>${categoria.nomeCategoria}</option>
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" name="enviar">
+        </form>
+    </body>
+</html>
