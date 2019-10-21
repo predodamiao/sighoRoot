@@ -11,16 +11,24 @@
         <form action="ManterConsumoController?acao=prepararOperacao&operacao=Incluir" method="post">
             <table border="1">
                 <tr>
+                    <th>id</th>
                     <th>Data</th>
                     <th>Quantidade</th>
+                    <th>id Item Consumido</th>
                 </tr>
                 <c:forEach items="${consumos}" var="consumo">
                     <tr>
+                        <td>
+                            <c:out value="${consumo.id}" />
+                        </td>
                         <td>
                             <c:out value="${consumo.data}" />
                         </td>
                         <td>
                             <c:out value="${consumo.quantidade}" />
+                        </td>
+                        <td>
+                            <c:out value="${consumo.itemConsumido.nome}" />
                         </td>
                     </tr>
                 </c:forEach>

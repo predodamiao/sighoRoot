@@ -11,16 +11,20 @@
         <form action="ManterTipoQuartoController?acao=prepararOperacao&operacao=Incluir" method="post">
             <table border="1">
                 <tr>
-                    <th>Preco</th>
-                    <th>Descrição</th>
+                    <th>id</th>
+                    <th>Nome</th>
+                    <th>Preço</th>
                 </tr>
                 <c:forEach items="${tiposQuarto}" var="tipoQuarto">
                     <tr>
                         <td>
-                            <c:out value="${tipoQuarto.preco}" />
+                            <c:out value="${tipoQuarto.id}" />
                         </td>
                         <td>
-                            <c:out value="${tipoQuarto.descricao}" />
+                            <c:out value="${tipoQuarto.nome}" />
+                        </td>
+                        <td>
+                            <c:out value="${tipoQuarto.preco}" />
                         </td>
                     </tr>
                 </c:forEach>

@@ -11,8 +11,9 @@
         <form action="ManterItemConsumoController?acao=prepararOperacao&operacao=Incluir" method="post">
             <table border="1">
                 <tr>
-                    <th>ID</th>
-                    <th>Descrição</th>
+                    <th>id</th>
+                    <th>Nome</th>
+                    <th>Preço de Venda</th>
                 </tr>
                 <c:forEach items="${itensConsumo}" var="itemConsumo">
                     <tr>
@@ -20,7 +21,10 @@
                             <c:out value="${itemConsumo.codigo}" />
                         </td>
                         <td>
-                            <c:out value="${itemConsumo.descricao}" />
+                            <c:out value="${itemConsumo.nome}" />
+                        </td>
+                        <td>
+                            R$ <c:out value="${itemConsumo.precoVenda}" />
                         </td>
                     </tr>
                 </c:forEach>

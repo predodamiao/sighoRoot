@@ -13,6 +13,7 @@
                 <tr>
                     <th>Data</th>
                     <th>Quantidade</th>
+                    <th>Status</th>
                 </tr>
                 <c:forEach items="${solicitacoes}" var="solicitacao">
                     <tr>
@@ -21,6 +22,9 @@
                         </td>
                         <td>
                             <c:out value="${solicitacao.quantidade}" />
+                        </td>
+                        <td>
+                            <c:out value="${solicitacao.status}" />
                         </td>
                     </tr>
                 </c:forEach>

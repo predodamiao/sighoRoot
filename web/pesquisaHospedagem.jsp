@@ -11,12 +11,24 @@
         <form action="ManterHospedagemController?acao=prepararOperacao&operacao=Incluir" method="post">
             <table border="1">
                 <tr>
+                    <th>id</th>
                     <th>Data Estimada Chegada</th>
+                    <th>id Hospede Responsável</th>
+                    <th>id Quarto</th>
                 </tr>
                 <c:forEach items="${hospedagens}" var="hospedagem">
                     <tr>
                         <td>
+                            <c:out value="${hospedagem.id}"/>
+                        </td>
+                        <td>
                             <c:out value="${hospedagem.dataEstimadaChegada}"/>
+                        </td>
+                        <td>
+                            <c:out value="${hospedagem.idHospedeResponsavel}"/>
+                        </td>
+                        <td>
+                            <c:out value="${hospedagem.idQuarto}"/>
                         </td>
                     </tr>
                 </c:forEach>

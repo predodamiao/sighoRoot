@@ -11,8 +11,9 @@
         <form action="ManterQuartoController?acao=prepararOperacao&operacao=Incluir" method="post">
             <table border="1">
                 <tr>
-                    <th>Número</th>
+                    <th>Identificacao</th>
                     <th>Ocupado</th>
+                    <th>id Tipo</th>
                 </tr>
                 <c:forEach items="${quartos}" var="quarto">
                     <tr>
@@ -21,6 +22,9 @@
                         </td>
                         <td>
                             <c:out value="${quarto.ocupado}" />
+                        </td>
+                        <td>
+                            <c:out value="${quarto.idTipoQuarto}" />
                         </td>
                     </tr>
                 </c:forEach>

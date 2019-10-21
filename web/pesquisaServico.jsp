@@ -11,8 +11,10 @@
         <form action="ManterServicoController?acao=prepararOperacao&operacao=Incluir" method="post">
             <table border="1">
                 <tr>
-                    <th>ID</th>
-                    <th>Descrição</th>
+                    <th>id</th>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Tipo</th>
                 </tr>
                 <c:forEach items="${servicos}" var="servico">
                     <tr>
@@ -21,6 +23,12 @@
                         </td>
                         <td>
                             <c:out value="${servico.nome}" />
+                        </td>
+                        <td>
+                            <c:out value="${servico.preco}" />
+                        </td>
+                        <td>
+                            <c:out value="${servico.categoria}" />
                         </td>
                     </tr>
                 </c:forEach>

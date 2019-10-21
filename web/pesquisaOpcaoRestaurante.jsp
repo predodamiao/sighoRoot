@@ -11,16 +11,20 @@
         <form action="ManterOpcaoRestauranteController?acao=prepararOperacao&operacao=Incluir" method="post">
             <table border="1">
                 <tr>
-                    <th>Descrição</th>
-                    <th>Preço Venda</th>
+                    <th>id</th>
+                    <th>Nome</th>
+                    <th>Preço</th>
                 </tr>
                 <c:forEach items="${itensRestaurante}" var="itemRestaurante">
                     <tr>
                         <td>
-                            <c:out value="${itemRestaurante.descricao}" />
+                            <c:out value="${itemRestaurante.codigo}" />
                         </td>
                         <td>
-                            <c:out value="${itemRestaurante.precoVenda}" />
+                            <c:out value="${itemRestaurante.nome}" />
+                        </td>
+                        <td>
+                            <c:out value="${itemRestaurante.preco}" />
                         </td>
                     </tr>
                 </c:forEach>

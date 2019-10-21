@@ -11,16 +11,24 @@
         <form action="ManterFuncionarioController?acao=prepararOperacao&operacao=Incluir" method="post">
             <table border="1">
                 <tr>
+                    <th>id</th>
                     <th>CPF</th>
                     <th>Nome</th>
+                    <th>Data Admissão</th>
                 </tr>
                 <c:forEach items="${funcionarios}" var="funcionario">
                     <tr>
                         <td>
-                            <c:out value="${funcionario.cpf}" />
+                            <c:out value="${funcionario.id}" />
                         </td>
                         <td>
                             <c:out value="${funcionario.nome}" />
+                        </td>
+                        <td>
+                            <c:out value="${funcionario.cpf}" />
+                        </td>
+                        <td>
+                            <c:out value="${funcionario.dataAdmissao}" />
                         </td>
                     </tr>
                 </c:forEach>

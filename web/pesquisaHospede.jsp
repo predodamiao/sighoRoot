@@ -11,16 +11,20 @@
         <form action="ManterHospedeController?acao=prepararOperacao&operacao=Incluir" method="post">
             <table border="1">
                 <tr>
-                    <th>CPF</th>
+                    <th>id</th>
                     <th>Nome</th>
+                    <th>CPF</th>
                 </tr>
                 <c:forEach items="${hospedes}" var="hospede">
                     <tr>
                         <td>
-                            <c:out value="${hospede.cpf}" />
+                            <c:out value="${hospede.id}" />
                         </td>
                         <td>
                             <c:out value="${hospede.nome}" />
+                        </td>
+                        <td>
+                            <c:out value="${hospede.cpf}" />
                         </td>
                     </tr>
                 </c:forEach>

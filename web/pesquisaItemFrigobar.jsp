@@ -12,12 +12,16 @@
             <table border="1">
                 <tr>
                     <th>id</th>
+                    <th>id Item</th>
                     <th>Quantidade</th>
                 </tr>
                 <c:forEach items="${itensFrigobar}" var="itemFrigobar">
                     <tr>
                         <td>
                             <c:out value="${itemFrigobar.id}" />
+                        </td>
+                        <td>
+                            <c:out value="${itemFrigobar.idItemConsumo}" />
                         </td>
                         <td>
                             <c:out value="${itemFrigobar.quantidade}" />

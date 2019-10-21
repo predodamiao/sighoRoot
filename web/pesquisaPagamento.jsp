@@ -11,12 +11,20 @@
         <form action="ManterPagamentoController?acao=prepararOperacao&operacao=Incluir" method="post">
             <table border="1">
                 <tr>
+                    <th>id</th>
                     <th>Valor</th>
+                    <th>Data</th>
                 </tr>
                 <c:forEach items="${pagamentos}" var="pagamento">
                     <tr>
                         <td>
+                            <c:out value="${pagamento.id}" />
+                        </td>
+                        <td>
                             <c:out value="${pagamento.valor}" />
+                        </td>
+                        <td>
+                            <c:out value="${pagamento.data}" />
                         </td>
                     </tr>
                 </c:forEach>

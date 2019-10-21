@@ -11,17 +11,24 @@
         <form action="ManterAcompanhanteController?acao=prepararOperacao&operacao=Incluir" method="post">
             <table border="1">
                 <tr>
-
+                    <th>id</th>
                     <th>Nome</th>
-                    <th>Ocupa Campa</th>
+                    <th>DataNascimeto</th>
+                    <th>idHospedagem</th>
                 </tr>
                 <c:forEach items="${acompanhantes}" var="acompanhante">
                     <tr>
                         <td>
+                            <c:out value="${acompanhante.id}" />
+                        </td>
+                        <td>
                             <c:out value="${acompanhante.nome}" />
                         </td>
                         <td>
-                            <c:out value="${acompanhante.ocupaCama}" />
+                            <c:out value="${acompanhante.dataNascimento}" />
+                        </td>
+                        <td>
+                            <c:out value="${acompanhante.idHospedagem}" />
                         </td>
                     </tr>
                 </c:forEach>

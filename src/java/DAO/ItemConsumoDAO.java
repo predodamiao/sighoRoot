@@ -6,7 +6,6 @@
 package DAO;
 
 import static DAO.DAO.fecharConexao;
-import Model.CategoriaServico;
 import Model.ItemConsumo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
