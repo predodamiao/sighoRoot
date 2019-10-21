@@ -28,7 +28,7 @@
                             <c:out value="${consumo.quantidade}" />
                         </td>
                         <td>
-                            <c:out value="${consumo.itemConsumido.nome}" />
+                            <c:out value="${consumo.idItemConsumido}" />
                         </td>
                     </tr>
                 </c:forEach>

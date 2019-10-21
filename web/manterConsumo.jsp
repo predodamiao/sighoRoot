@@ -55,7 +55,7 @@
                         <select name="item" id="item">
                             <option value="0" <c:if test="${consumo.item.codigo == null}"> selected </c:if>></option>
                             <c:forEach items="${itens}" var="item">
-                                <option value="${item.codigo}" <c:if test="${consumo.item.codigo == item.codigo}">selected</c:if>>${item.descricao}</option>
+                                <option value="${item.codigo}" <c:if test="${consumo.item.codigo == item.codigo}">selected</c:if>>${item.nome}</option>
                             </c:forEach>
                         </select>
                     </td>

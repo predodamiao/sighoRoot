@@ -7,7 +7,9 @@ import java.util.List;
 public enum CategoriaServico {
     CAMARARIA("Camararia", 0),
     LAVANDERIA("Lavanderia", 1),
-    RESTAURANTE("Restaurante", 2);
+    RESTAURANTE("Restaurante", 2),
+    RECEPCAO("Recepção", 2),
+    OUTROS("Outros", 2);
 
     private int id;
     private String nomeCategoria;

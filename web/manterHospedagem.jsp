@@ -28,7 +28,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="dataSaida">Saída</label>
+                        <label for="dataSaida">Saída:</label>
                     </td>
                     <td>
                         <input type="date" name="dataSaida" id="dataSaida" value="$hospedagem.dataSaida">
@@ -36,7 +36,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="dataEstimadaChegada">Chegada:</label>
+                        <label for="dataEstimadaChegada">Chegada Estimada:</label>
                     </td>
                     <td>
                         <input type="date" name="dataEstimadaChegada" id="dataEstimadaChegada" value="$hospedagem.dataEstimadaChegada">
@@ -44,7 +44,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="dataEstimadaSaida">Saída</label>
+                        <label for="dataEstimadaSaida">Saída Estimada:</label>
                     </td>
                     <td>
                         <input type="date" name="dataEstimadaSaida" id="dataEstimadaSaida" value="$hospedagem.dataEstimadaSaida">
