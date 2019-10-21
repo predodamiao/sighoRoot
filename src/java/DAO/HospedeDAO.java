@@ -16,8 +16,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class HospedeDAO {
 
     public static List<Hospede> obterHospedes() throws ClassNotFoundException, SQLException {

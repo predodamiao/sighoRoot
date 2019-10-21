@@ -26,13 +26,13 @@ public enum MomentoPagamento {
     }
 
     public static List<MomentoPagamento> obterMomentosPagamento() {
-        ArrayList momentos = new ArrayList<MomentoPagamento>();
+        ArrayList<MomentoPagamento> momentos = new ArrayList<MomentoPagamento>();
         momentos.addAll(Arrays.asList(MomentoPagamento.values()));
         return momentos;
     }
 
     public static MomentoPagamento obterMomentoPagamento(String valor) {
-        return Enum.valueOf(MomentoPagamento.class, valor.toUpperCase().replaceAll(" ",""));
+        return Enum.valueOf(MomentoPagamento.class, valor.toUpperCase().replaceAll(" ", ""));
     }
 
 }

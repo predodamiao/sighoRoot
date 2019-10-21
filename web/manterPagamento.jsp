@@ -7,7 +7,7 @@
         <title>Pagamento</title>
     </head>
     <body>
-        <h1>Pagemento - ${operacao}</h1>
+        <h1>Pagamento - ${operacao}</h1>
         <form action="ManterPagamentoController?acao=confirmarOperacao&operacao=${operacao}" method="post">
             <table>
                 <tr>

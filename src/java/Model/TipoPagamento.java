@@ -26,13 +26,13 @@ public enum TipoPagamento {
     }
 
     public static List<TipoPagamento> obterTiposPagamento() {
-        ArrayList tipos = new ArrayList<TipoPagamento>();
+        ArrayList<TipoPagamento> tipos = new ArrayList<TipoPagamento>();
         tipos.addAll(Arrays.asList(TipoPagamento.values()));
         return tipos;
     }
 
     public static TipoPagamento obterTipoPagamento(String valor) {
-        return Enum.valueOf(TipoPagamento.class, valor.toUpperCase().replaceAll(" ",""));
+        return Enum.valueOf(TipoPagamento.class, valor.toUpperCase().replaceAll(" ", ""));
     }
 
 }

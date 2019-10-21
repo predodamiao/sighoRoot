@@ -11,7 +11,7 @@
         <form action="ManterOpcaoRestauranteController?acao=confirmarOperacao&operacao=${operacao}" method="post">
             <table>
 
-               <tr>
+                <tr>
                     <td>
                         <label for="codigo">Código:</label>
                     </td>
@@ -66,7 +66,7 @@
                     <td>
                         <select name="categoriaOpcaoRestaurante" id="categoriaOpcaoRestaurante" disabled>
                             <option value="0"></option>
-                                <option value="Restaurante" selected>Restaurante</option>
+                            <option value="Restaurante" selected>Restaurante</option>
 
                         </select>
                     </td>

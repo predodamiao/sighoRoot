@@ -33,9 +33,7 @@ public class PesquisaItemFrigobarController extends HttpServlet {
             request.setAttribute("itensFrigobar", ItemFrigobar.obterItensFrigobar());
             RequestDispatcher view = request.getRequestDispatcher("/pesquisaItemFrigobar.jsp");
             view.forward(request, response);
-        } catch (ClassNotFoundException e) {
-            throw new ServletException(e);
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             throw new ServletException(e);
         }
     }

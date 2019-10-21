@@ -71,7 +71,7 @@ public class AcompanhanteDAO {
             comando.setBoolean(4, acompanhante.isOcupaCama());
             System.out.println(acompanhante.getDataNascimento());
             System.out.println(new java.sql.Date(acompanhante.getDataNascimento().getTime()));
-            
+
             if (acompanhante.getHospedagem() == null) {
                 comando.setNull(5, Types.INTEGER);
             } else {

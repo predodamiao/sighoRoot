@@ -50,8 +50,8 @@ public class ManterHospedeController extends HttpServlet {
             throw new ServletException(e);
         }
     }
-    
-   public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, ServletException, ParseException, IOException {
+
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, ServletException, ParseException, IOException {
         String operacao = request.getParameter("operacao");
         int id = Integer.parseInt(request.getParameter("id"));
         String nome = request.getParameter("nome");

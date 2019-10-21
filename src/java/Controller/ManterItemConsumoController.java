@@ -48,15 +48,14 @@ public class ManterItemConsumoController extends HttpServlet {
             throw new ServletException(e);
         }
     }
-    
-    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException{
+
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException {
         String operacao = request.getParameter("operacao");
         String codigo = request.getParameter("codigo");
         String nome = request.getParameter("nome");
         String descricao = request.getParameter("descricao");
         float preco = Float.parseFloat(request.getParameter("preco"));
-        
-        
+
         try {
             ItemConsumo item = new ItemConsumo(codigo, nome, descricao, preco);
             if (operacao.equals("Incluir")) {
@@ -68,7 +67,6 @@ public class ManterItemConsumoController extends HttpServlet {
             throw new ServletException(e);
         }
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

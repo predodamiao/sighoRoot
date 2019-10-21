@@ -65,7 +65,7 @@ public class ManterHospedagemController extends HttpServlet {
         Date dataSaida = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataSaida"));
         Date dataEstimadaSaida = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataEstimadaSaida"));
         Boolean checked = request.getParameter("checked") != null;
-        
+
         int idHospede = Integer.parseInt(request.getParameter("hospede"));
         int idQuarto = Integer.parseInt(request.getParameter("quarto"));
         int idTipoQuarto = Integer.parseInt(request.getParameter("tipoQuarto"));
@@ -83,7 +83,7 @@ public class ManterHospedagemController extends HttpServlet {
             if (idQuarto != 0) {
                 tipoQuarto = TipoQuarto.obterTipoQuarto(idTipoQuarto);
             }
-            
+
             Hospedagem hospedagem = new Hospedagem(id, dataChegada, dataSaida, dataEstimadaChegada, dataEstimadaSaida, checked, tipoQuarto, quarto, hospede);
             if (operacao.equals("Incluir")) {
                 hospedagem.gravar();

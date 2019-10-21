@@ -75,7 +75,7 @@ public class SolicitacaoDAO {
             conexao = BD.getConexao();
             comando = conexao.prepareStatement("insert into solicitacao (id, data, quantidade, status, idFuncionario, idHospede, hospedagem, item) values (?,?,?,?,?,?)");
             comando.setInt(1, solicitacao.getId());
-            comando.setDate(2,  new java.sql.Date(solicitacao.getData().getTime()));
+            comando.setDate(2, new java.sql.Date(solicitacao.getData().getTime()));
             comando.setInt(3, solicitacao.getQuantidade());
             comando.setString(4, solicitacao.getStatus().toString());
             if (solicitacao.getFuncionarioSolicitante() == null) {

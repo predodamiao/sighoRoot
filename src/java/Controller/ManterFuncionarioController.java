@@ -64,13 +64,13 @@ public class ManterFuncionarioController extends HttpServlet {
         Date dataNascimento = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataNascimento"));
         Date dataAdmissao = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataAdmissao"));
         String idCategoria = request.getParameter("categoriaFuncionario");
-        
+
         try {
             CategoriaFuncionario categoria = null;
             if (idCategoria != null) {
                 categoria = CategoriaFuncionario.obterCategoriaFuncionario(idCategoria);
             }
-            
+
             Funcionario funcionario = new Funcionario(id, nome, telefone, email, rg, cpf, dataNascimento, dataAdmissao, categoria);
             if (operacao.equals("Incluir")) {
                 funcionario.gravar();
@@ -82,18 +82,17 @@ public class ManterFuncionarioController extends HttpServlet {
         }
     }
 
-
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-/**
- * Handles the HTTP <code>GET</code> method.
- *
- * @param request servlet request
- * @param response servlet response
- * @throws ServletException if a servlet-specific error occurs
- * @throws IOException if an I/O error occurs
- */
-@Override
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
             processRequest(request, response);
@@ -115,7 +114,7 @@ public class ManterFuncionarioController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-        protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
             processRequest(request, response);
@@ -134,7 +133,7 @@ public class ManterFuncionarioController extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-        public String getServletInfo() {
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 

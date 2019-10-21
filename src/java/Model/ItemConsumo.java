@@ -11,7 +11,7 @@ public class ItemConsumo {
     private String descricao;
     private float precoVenda;
 
-    public ItemConsumo(String codigo, String nome, String descricao, float precoVenda){
+    public ItemConsumo(String codigo, String nome, String descricao, float precoVenda) {
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
@@ -53,7 +53,7 @@ public class ItemConsumo {
     public void gravar() throws SQLException, ClassNotFoundException {
         ItemConsumoDAO.gravar(this);
     }
-    
+
     public String getNome() {
         return nome;
     }
@@ -61,6 +61,5 @@ public class ItemConsumo {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
 
 }

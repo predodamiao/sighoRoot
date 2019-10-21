@@ -50,7 +50,7 @@ public class ManterItemFrigobarController extends HttpServlet {
             throw new ServletException(e);
         }
     }
-    
+
     public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException, IOException {
         String operacao = request.getParameter("operacao");
         int id = Integer.parseInt(request.getParameter("id"));

@@ -29,9 +29,7 @@ public class PesquisaItemConsumoController extends HttpServlet {
             request.setAttribute("itensConsumo", ItemConsumo.obterItensConsumo());
             RequestDispatcher view = request.getRequestDispatcher("/pesquisaItemConsumo.jsp");
             view.forward(request, response);
-        } catch (ClassNotFoundException e) {
-            throw new ServletException(e);
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             throw new ServletException(e);
         }
     }

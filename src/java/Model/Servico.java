@@ -12,7 +12,7 @@ public class Servico {
     private float preco;
     private CategoriaServico categoria;
 
-    public Servico(String codigo, String nome, String descricao, float preco, CategoriaServico categoria){
+    public Servico(String codigo, String nome, String descricao, float preco, CategoriaServico categoria) {
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
@@ -55,7 +55,7 @@ public class Servico {
     public void gravar() throws SQLException, ClassNotFoundException {
         ServicoDAO.gravar(this);
     }
-    
+
     public String getNome() {
         return nome;
     }
@@ -71,6 +71,5 @@ public class Servico {
     public void setCategoria(CategoriaServico categoria) {
         this.categoria = categoria;
     }
-
 
 }

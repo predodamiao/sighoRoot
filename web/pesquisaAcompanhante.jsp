@@ -11,6 +11,7 @@
         <form action="ManterAcompanhanteController?acao=prepararOperacao&operacao=Incluir" method="post">
             <table border="1">
                 <tr>
+
                     <th>Nome</th>
                     <th>Ocupa Campa</th>
                 </tr>

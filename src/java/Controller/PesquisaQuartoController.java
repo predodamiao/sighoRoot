@@ -29,9 +29,7 @@ public class PesquisaQuartoController extends HttpServlet {
             request.setAttribute("quartos", Quarto.obterQuartos());
             RequestDispatcher view = request.getRequestDispatcher("/pesquisaQuarto.jsp");
             view.forward(request, response);
-        } catch (ClassNotFoundException e) {
-            throw new ServletException(e);
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             throw new ServletException(e);
         }
     }

@@ -27,13 +27,13 @@ public enum CategoriaFuncionario {
     }
 
     public static List<CategoriaFuncionario> obterCategoriasFuncionario() {
-        ArrayList categorias = new ArrayList<CategoriaFuncionario>();
+        ArrayList<CategoriaFuncionario> categorias = new ArrayList<CategoriaFuncionario>();
         categorias.addAll(Arrays.asList(CategoriaFuncionario.values()));
         return categorias;
     }
 
     public static CategoriaFuncionario obterCategoriaFuncionario(String valor) {
-        return Enum.valueOf(CategoriaFuncionario.class, valor.toUpperCase().replaceAll(" ",""));
+        return Enum.valueOf(CategoriaFuncionario.class, valor.toUpperCase().replaceAll(" ", ""));
     }
 
 }

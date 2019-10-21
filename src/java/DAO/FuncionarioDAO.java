@@ -61,7 +61,7 @@ public class FuncionarioDAO {
                 Enum.valueOf(CategoriaFuncionario.class, rs.getString("categoria")));
         return funcionario;
     }
-    
+
     public static void gravar(Funcionario funcionario) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         PreparedStatement comando = null;

@@ -48,17 +48,17 @@ public class ManterTipoQuartoController extends HttpServlet {
             throw new ServletException(e);
         }
     }
-    
+
     public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException, IOException {
         String operacao = request.getParameter("operacao");
         int id = Integer.parseInt(request.getParameter("id"));
         String nome = request.getParameter("nome");
         String descricao = request.getParameter("descricao");
         Float preco = Float.parseFloat(request.getParameter("preco"));
-        
+
         try {
-           
-            TipoQuarto tipo = new TipoQuarto(id, nome,descricao, preco);
+
+            TipoQuarto tipo = new TipoQuarto(id, nome, descricao, preco);
             if (operacao.equals("Incluir")) {
                 tipo.gravar();
             }

@@ -23,15 +23,13 @@ public class PesquisaServicoController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      * @throws java.sql.SQLException
      */
-   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         try {
             request.setAttribute("servicos", Servico.obterServicos());
             RequestDispatcher view = request.getRequestDispatcher("/pesquisaServico.jsp");
             view.forward(request, response);
-        } catch (ClassNotFoundException e) {
-            throw new ServletException(e);
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             throw new ServletException(e);
         }
     }
@@ -48,11 +46,11 @@ public class PesquisaServicoController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       try {
-           processRequest(request, response);
-       } catch (SQLException ex) {
-           Logger.getLogger(PesquisaServicoController.class.getName()).log(Level.SEVERE, null, ex);
-       }
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(PesquisaServicoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -66,11 +64,11 @@ public class PesquisaServicoController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       try {
-           processRequest(request, response);
-       } catch (SQLException ex) {
-           Logger.getLogger(PesquisaServicoController.class.getName()).log(Level.SEVERE, null, ex);
-       }
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(PesquisaServicoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -27,13 +27,13 @@ public enum StatusSolicitacao {
     }
 
     public static List<StatusSolicitacao> obterStatusSolicitacoes() {
-        ArrayList status = new ArrayList<StatusSolicitacao>();
+        ArrayList<StatusSolicitacao> status = new ArrayList<StatusSolicitacao>();
         status.addAll(Arrays.asList(StatusSolicitacao.values()));
         return status;
     }
 
     public static StatusSolicitacao obterStatusSolicitacao(String valor) {
-        return Enum.valueOf(StatusSolicitacao.class, valor.toUpperCase().replaceAll(" ",""));
+        return Enum.valueOf(StatusSolicitacao.class, valor.toUpperCase().replaceAll(" ", ""));
     }
 
 }

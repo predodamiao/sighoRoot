@@ -3,7 +3,6 @@ package Controller;
 import Model.CategoriaServico;
 import Model.Servico;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -51,17 +50,15 @@ public class ManterServicoController extends HttpServlet {
             throw new ServletException(e);
         }
     }
-    
-    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException{
+
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException {
         String operacao = request.getParameter("operacao");
         String codigo = request.getParameter("codigo");
         String nome = request.getParameter("nome");
         String descricao = request.getParameter("descricao");
         float preco = Float.parseFloat(request.getParameter("preco"));
         String idCategoria = request.getParameter("categoriaItemConsumo");
-        
-        
-        
+
         try {
             CategoriaServico categoria = null;
             if (idCategoria != null) {

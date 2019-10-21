@@ -12,7 +12,6 @@ public enum CategoriaServico {
     private int id;
     private String nomeCategoria;
 
-    
     CategoriaServico(String funcao, int id) {
         this.nomeCategoria = funcao;
         this.id = id;
@@ -27,13 +26,13 @@ public enum CategoriaServico {
     }
 
     public static List<CategoriaServico> obterCategoriasServico() {
-        ArrayList categorias = new ArrayList<CategoriaServico>();
+        ArrayList<CategoriaServico> categorias = new ArrayList<CategoriaServico>();
         categorias.addAll(Arrays.asList(CategoriaServico.values()));
         return categorias;
     }
 
     public static CategoriaServico obterCategoriaServico(String valor) {
-        return Enum.valueOf(CategoriaServico.class, valor.toUpperCase().replaceAll(" ",""));
+        return Enum.valueOf(CategoriaServico.class, valor.toUpperCase().replaceAll(" ", ""));
     }
 
 }

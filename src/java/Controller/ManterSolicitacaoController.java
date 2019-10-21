@@ -2,7 +2,6 @@ package Controller;
 
 import Model.Funcionario;
 import Model.Hospedagem;
-import Model.ItemConsumo;
 import Model.Servico;
 import Model.Solicitacao;
 import Model.StatusSolicitacao;
@@ -59,8 +58,8 @@ public class ManterSolicitacaoController extends HttpServlet {
             throw new ServletException(e);
         }
     }
-    
-    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException{
+
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException {
         String operacao = request.getParameter("operacao");
         int id = Integer.parseInt(request.getParameter("id"));
         Date data = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data"));
@@ -69,8 +68,6 @@ public class ManterSolicitacaoController extends HttpServlet {
         int idFuncionario = Integer.parseInt(request.getParameter("funcionarioSolicitante"));
         String idStatus = request.getParameter("status");
         int codigoServico = Integer.parseInt(request.getParameter("servico"));
-        
-        
 
         try {
             Hospedagem hospedagem = null;

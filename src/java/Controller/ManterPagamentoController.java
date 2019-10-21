@@ -56,8 +56,8 @@ public class ManterPagamentoController extends HttpServlet {
             throw new ServletException(e);
         }
     }
-    
-    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException{
+
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException {
         String operacao = request.getParameter("operacao");
         int id = Integer.parseInt(request.getParameter("id"));
         Date data = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data"));
@@ -66,7 +66,6 @@ public class ManterPagamentoController extends HttpServlet {
         String idMomentoPagamento = request.getParameter("momento");
         float valor = Float.parseFloat(request.getParameter("valor"));
         int parcelas = Integer.parseInt(request.getParameter("parcelas"));
-        
 
         try {
             Hospedagem hospedagem = null;
