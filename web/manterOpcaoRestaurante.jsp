@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
 
                 <tr>
                     <td>
-                        <label for="codigo">CÃ³digo:</label>
+                        <label for="codigo">Código:</label>
                     </td>
                     <td>
                         <input type="text" name="codigo" id="codigo" value="${opcaoRestaurante.codigo}">
@@ -29,7 +29,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="descricao">DescriÃ§Ã£o:</label>
+                        <label for="descricao">Descrição:</label>
                     </td>
                     <td>
                         <textarea name="descricao" id="descricao">${opcaoRestaurante.descricao}</textarea>

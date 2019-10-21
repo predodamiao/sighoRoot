@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="dataSaida">Sa√≠da:</label>
+                        <label for="dataSaida">SaÌda:</label>
                     </td>
                     <td>
                         <input type="date" name="dataSaida" id="dataSaida" value="$hospedagem.dataSaida">
@@ -44,7 +44,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="dataEstimadaSaida">Sa√≠da Estimada:</label>
+                        <label for="dataEstimadaSaida">SaÌda Estimada:</label>
                     </td>
                     <td>
                         <input type="date" name="dataEstimadaSaida" id="dataEstimadaSaida" value="$hospedagem.dataEstimadaSaida">
@@ -60,7 +60,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="hospede">Hospede Respons√°vel:</label>
+                        <label for="hospede">Hospede Respons·vel:</label>
                     </td>
                     <td>
                         <select name="hospede" id="hospede">

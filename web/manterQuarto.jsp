@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
@@ -12,7 +12,7 @@
             <table>
                 <tr>
                     <td>
-                        <label for="identificacao">IdentificaÃ§Ã£o:</label>
+                        <label for="identificacao">Identificação:</label>
                     </td>
                     <td>
                         <input type="text" name="identificacao" id="identificacao" value="${quarto.identificacao}">

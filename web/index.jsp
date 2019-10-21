@@ -2,7 +2,7 @@
 <html>
     <head>
         <title></title>
-        <meta charset="UTF-8" />
+        <meta charset="ISO-8859-1" />
     </head>
     <body>
         <h1></h1>
