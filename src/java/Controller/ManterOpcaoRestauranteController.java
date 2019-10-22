@@ -37,10 +37,17 @@ public class ManterOpcaoRestauranteController extends HttpServlet {
         }
     }
 
-    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, ClassNotFoundException, SQLException {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
+            
+            if(!operacao.equals("Incluir")){
+                String idOpcaoRestaurante = request.getParameter("id");
+                OpcaoRestaurante opcaoRestaurante = OpcaoRestaurante.obterItemRestaurante(idOpcaoRestaurante);
+                request.setAttribute("solicitacao", opcaoRestaurante);
+            }
+            
             RequestDispatcher view = request.getRequestDispatcher("/manterOpcaoRestaurante.jsp");
             view.forward(request, response);
         } catch (ServletException e) {

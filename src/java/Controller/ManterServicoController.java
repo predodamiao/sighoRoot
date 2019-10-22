@@ -37,11 +37,18 @@ public class ManterServicoController extends HttpServlet {
         }
     }
 
-    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, ClassNotFoundException, SQLException {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
             request.setAttribute("categorias", CategoriaServico.obterCategoriasServico());
+            
+            if(!operacao.equals("Incluir")){
+                String idServico = request.getParameter("id");
+                Servico servico = Servico.obterServico(idServico);
+                request.setAttribute("servico", servico);
+            }
+            
             RequestDispatcher view = request.getRequestDispatcher("/manterServico.jsp");
             view.forward(request, response);
         } catch (ServletException e) {

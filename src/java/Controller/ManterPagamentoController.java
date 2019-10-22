@@ -48,6 +48,13 @@ public class ManterPagamentoController extends HttpServlet {
             request.setAttribute("hospedagens", Hospedagem.obterHospedagens());
             request.setAttribute("momentos", MomentoPagamento.obterMomentosPagamento());
             request.setAttribute("tipos", TipoPagamento.obterTiposPagamento());
+            
+            if(!operacao.equals("Incluir")){
+                int idPagamento = Integer.parseInt(request.getParameter("id"));
+                Pagamento pagamento = Pagamento.obterPagamento(idPagamento);
+                request.setAttribute("pagamento", pagamento);
+            }
+            
             RequestDispatcher view = request.getRequestDispatcher("/manterPagamento.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
