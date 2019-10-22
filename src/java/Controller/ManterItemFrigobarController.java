@@ -55,11 +55,11 @@ public class ManterItemFrigobarController extends HttpServlet {
         String operacao = request.getParameter("operacao");
         int id = Integer.parseInt(request.getParameter("id"));
         int quantidade = Integer.parseInt(request.getParameter("quantidade"));
-        int idItem = Integer.parseInt(request.getParameter("itemConsumo"));
+        String idItem = request.getParameter("itemConsumo");
 
         try {
             ItemConsumo item = null;
-            if (idItem != 0) {
+            if (idItem != null) {
                 item = ItemConsumo.obterItemConsumo(idItem);
             }
             ItemFrigobar itemFrigobar = new ItemFrigobar(id, quantidade, item);

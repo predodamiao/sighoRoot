@@ -9,7 +9,6 @@ import static DAO.DAO.fecharConexao;
 import Model.Solicitacao;
 import Model.StatusSolicitacao;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,7 +22,7 @@ public class SolicitacaoDAO {
     public static List<Solicitacao> obterSolicitacoes() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<Solicitacao> solicitacoes = new ArrayList<Solicitacao>();
+        List<Solicitacao> solicitacoes = new ArrayList<>();
         Solicitacao solicitacao = null;
         try {
             conexao = BD.getConexao();
@@ -62,9 +61,12 @@ public class SolicitacaoDAO {
                 Enum.valueOf(StatusSolicitacao.class, rs.getString("status")),
                 null,
                 null,
+                null,
                 null);
         solicitacao.setIdFuncionarioSolicitante(rs.getInt("idFuncionario"));
         solicitacao.setIdHospedagem(rs.getInt("idHospedagem"));
+        solicitacao.setIdServico(rs.getString("idServico"));
+        solicitacao.setIdOpcao(rs.getString("idOpcaoRestaurante"));
         return solicitacao;
     }
 
@@ -73,7 +75,7 @@ public class SolicitacaoDAO {
         PreparedStatement comando = null;
         try {
             conexao = BD.getConexao();
-            comando = conexao.prepareStatement("insert into solicitacao (id, data, quantidade, status, idFuncionario, idHospede, hospedagem, item) values (?,?,?,?,?,?)");
+            comando = conexao.prepareStatement("insert into solicitacao (id, data, quantidade, status, idFuncionario, idHospedagem, idServico, idOpcaoRestaurante) values (?,?,?,?,?,?,?,?)");
             comando.setInt(1, solicitacao.getId());
             comando.setDate(2, new java.sql.Date(solicitacao.getData().getTime()));
             comando.setInt(3, solicitacao.getQuantidade());
@@ -92,6 +94,11 @@ public class SolicitacaoDAO {
                 comando.setNull(7, Types.FLOAT);
             } else {
                 comando.setString(7, solicitacao.getServico().getCodigo());
+            }
+            if (solicitacao.getOpcao() == null) {
+                comando.setNull(8, Types.FLOAT);
+            } else {
+                comando.setString(8, solicitacao.getOpcao().getCodigo());
             }
             comando.executeUpdate();
 

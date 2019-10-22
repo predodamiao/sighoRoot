@@ -9,7 +9,7 @@ public class ItemFrigobar {
     private int id;
     private int quantidade;
     private ItemConsumo item;
-    private int idItemConsumo;
+    private String idItemConsumo;
 
     public ItemFrigobar(int id, int quantidade, ItemConsumo item) {
         this.id = id;
@@ -34,7 +34,7 @@ public class ItemFrigobar {
     }
 
     public ItemConsumo getItem() throws ClassNotFoundException, SQLException {
-        if ((this.idItemConsumo != 0) && (this.item == null)) {
+        if ((this.idItemConsumo != null) && (this.item == null)) {
             this.item = ItemConsumo.obterItemConsumo(this.idItemConsumo);
         }
 
@@ -45,11 +45,11 @@ public class ItemFrigobar {
         this.item = item;
     }
 
-    public int getIdItemConsumo() {
+    public String getIdItemConsumo() {
         return idItemConsumo;
     }
 
-    public void setIdItemConsumo(int idItemConsumo) {
+    public void setIdItemConsumo(String idItemConsumo) {
         this.idItemConsumo = idItemConsumo;
     }
 

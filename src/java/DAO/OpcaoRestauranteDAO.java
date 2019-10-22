@@ -37,7 +37,7 @@ public class OpcaoRestauranteDAO {
         return itensRestaurante;
     }
 
-    public static OpcaoRestaurante obterItensRestaurante(int codOpcao) throws ClassNotFoundException, SQLException {
+    public static OpcaoRestaurante obterItensRestaurante(String codOpcao) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         OpcaoRestaurante item = null;

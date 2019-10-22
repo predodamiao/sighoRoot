@@ -39,7 +39,7 @@
                         <label for="preco">Preço:</label>
                     </td>
                     <td>
-                        <input type="number" name="preco" id="preco" value="${tipoQuarto.preco}">
+                        <input type="number" step="0.01" min="0.00" name="preco" id="preco" value="${tipoQuarto.preco}">
                     </td>
                 </tr>
             </table>

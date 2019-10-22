@@ -63,7 +63,7 @@ public class ManterConsumoController extends HttpServlet {
         Date data = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data"));
         int quantidade = Integer.parseInt(request.getParameter("quantidade"));
         int idHospedagem = Integer.parseInt(request.getParameter("hospedagem"));
-        int codigoItem = Integer.parseInt(request.getParameter("item"));
+        String codigoItem = request.getParameter("item");
         int idFuncionario = Integer.parseInt(request.getParameter("funcionarioSolicitante"));
         try {
             Hospedagem hospedagem = null;
@@ -71,7 +71,7 @@ public class ManterConsumoController extends HttpServlet {
                 hospedagem = Hospedagem.obterHospedagem(idHospedagem);
             }
             ItemConsumo item = null;
-            if (codigoItem != 0) {
+            if (codigoItem != null) {
                 item = ItemConsumo.obterItemConsumo(codigoItem);
             }
             Funcionario funcionario = null;

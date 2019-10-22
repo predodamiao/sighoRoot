@@ -8,7 +8,6 @@ package DAO;
 import static DAO.DAO.fecharConexao;
 import Model.Consumo;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,7 +21,7 @@ public class ConsumoDAO {
     public static List<Consumo> obterConsumos() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<Consumo> consumos = new ArrayList<Consumo>();
+        List<Consumo> consumos = new ArrayList<>();
         Consumo consumo = null;
         try {
             conexao = BD.getConexao();
@@ -62,7 +61,7 @@ public class ConsumoDAO {
                 null,
                 null);
         consumo.setIdFuncionario(rs.getInt("idFuncionario"));
-        consumo.setIdItemConsumido(rs.getInt("idItem"));
+        consumo.setIdItemConsumido(rs.getString("idItem"));
         consumo.setIdHospedagem(rs.getInt("idHospedagem"));
         return consumo;
     }

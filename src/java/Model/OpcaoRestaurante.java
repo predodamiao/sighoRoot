@@ -15,7 +15,7 @@ public class OpcaoRestaurante extends Servico {
         this.tempoPreparo = tempoPreparo;
     }
 
-    public static OpcaoRestaurante obterItemRestaurante(int codItem) throws ClassNotFoundException, SQLException {
+    public static OpcaoRestaurante obterItemRestaurante(String codItem) throws ClassNotFoundException, SQLException {
         return OpcaoRestauranteDAO.obterItensRestaurante(codItem);
     }
 

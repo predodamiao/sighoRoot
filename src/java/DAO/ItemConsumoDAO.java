@@ -36,7 +36,7 @@ public class ItemConsumoDAO {
         return itensConsumo;
     }
 
-    public static ItemConsumo obterItemConsumo(int codItem) throws ClassNotFoundException, SQLException {
+    public static ItemConsumo obterItemConsumo(String codItem) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         ItemConsumo item = null;

@@ -40,7 +40,7 @@
                         <label for="preco">Preco de Consumo:</label>
                     </td>
                     <td>
-                        <input type="number" name="preco" id="preco" step="0.10" min="0.00" value="${opcaoRestaurante.preco}">
+                        <input type="number" name="preco" id="preco" step="0.01" min="0.00" value="${opcaoRestaurante.preco}">
                     </td>
                 </tr>
                 <tr>
@@ -48,7 +48,7 @@
                         <label for="Acrescimo">Acrescimo para servir no Quarto:</label>
                     </td>
                     <td>
-                        <input type="number" name="acrescimo" id="acrescimo" step="0.10" min="0.00" value="${opcaoRestaurante.preco}">
+                        <input type="number" name="acrescimo" id="acrescimo" step="0.01" min="0.00" value="${opcaoRestaurante.preco}">
                     </td>
                 </tr>
                 <tr>

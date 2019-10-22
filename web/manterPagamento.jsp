@@ -71,7 +71,7 @@
                         <label for="valor">Valor:</label>
                     </td>
                     <td>
-                        <input type="number" name="valor" id="valor" value="${pagamento.valor}">
+                        <input type="number" name="valor" step="0.01" min="0.00" id="valor" value="${pagamento.valor}">
                     </td>
                 </tr>
                 <tr>

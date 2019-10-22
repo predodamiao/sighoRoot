@@ -58,7 +58,7 @@ public class ItemFrigobarDAO {
                 rs.getInt("quantidade"),
                 null);
 
-        item.setIdItemConsumo(rs.getInt("idItem"));
+        item.setIdItemConsumo(rs.getString("idItem"));
         return item;
     }
 

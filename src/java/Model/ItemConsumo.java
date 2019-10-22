@@ -18,7 +18,7 @@ public class ItemConsumo {
         this.precoVenda = precoVenda;
     }
 
-    public static ItemConsumo obterItemConsumo(int codItemConsumo) throws ClassNotFoundException, SQLException {
+    public static ItemConsumo obterItemConsumo(String codItemConsumo) throws ClassNotFoundException, SQLException {
         return ItemConsumoDAO.obterItemConsumo(codItemConsumo);
     }
 

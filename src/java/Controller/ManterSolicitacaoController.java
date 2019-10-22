@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Funcionario;
 import Model.Hospedagem;
+import Model.OpcaoRestaurante;
 import Model.Servico;
 import Model.Solicitacao;
 import Model.StatusSolicitacao;
@@ -49,6 +50,7 @@ public class ManterSolicitacaoController extends HttpServlet {
             request.setAttribute("hospedagens", Hospedagem.obterHospedagens());
             request.setAttribute("funcionarios", Funcionario.obterFuncionarios());
             request.setAttribute("servicos", Servico.obterServicos());
+            request.setAttribute("opcoes", OpcaoRestaurante.obterItensRestaurante());
             request.setAttribute("status", StatusSolicitacao.obterStatusSolicitacoes());
             RequestDispatcher view = request.getRequestDispatcher("/manterSolicitacao.jsp");
             view.forward(request, response);
@@ -67,7 +69,8 @@ public class ManterSolicitacaoController extends HttpServlet {
         int idHospedagem = Integer.parseInt(request.getParameter("hospedagem"));
         int idFuncionario = Integer.parseInt(request.getParameter("funcionarioSolicitante"));
         String idStatus = request.getParameter("status");
-        int codigoServico = Integer.parseInt(request.getParameter("servico"));
+        String codigoServico = request.getParameter("servico");
+        String codigoOpcao = request.getParameter("opcao");
 
         try {
             Hospedagem hospedagem = null;
@@ -83,10 +86,14 @@ public class ManterSolicitacaoController extends HttpServlet {
                 status = StatusSolicitacao.obterStatusSolicitacao(idStatus);
             }
             Servico servico = null;
-            if (codigoServico != 0) {
+            if (codigoServico != null) {
                 servico = Servico.obterServico(codigoServico);
             }
-            Solicitacao solicitacao = new Solicitacao(id, data, quantidade, status, funcionario, hospedagem, servico);
+            OpcaoRestaurante opcao = null;
+            if (codigoOpcao != null) {
+                opcao = OpcaoRestaurante.obterItemRestaurante(codigoOpcao);
+            }
+            Solicitacao solicitacao = new Solicitacao(id, data, quantidade, status, funcionario, hospedagem, servico, opcao);
             if (operacao.equals("Incluir")) {
                 solicitacao.gravar();
             }

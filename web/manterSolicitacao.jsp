@@ -76,13 +76,26 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="item">Item:</label>
+                        <label for="item">Serviço:</label>
                     </td>
                     <td>
-                        <select name="item" id="item">
-                            <option value="0" <c:if test="${consumo.item.codigo == null}"> selected </c:if>></option>
-                            <c:forEach items="${itens}" var="item">
-                                <option value="${item.nome}" <c:if test="${consumo.item.codigo == item.codigo}">selected</c:if>>${item.nome}</option>
+                        <select name="servico" id="servico">
+                            <option value="0" <c:if test="${consumo.servico.codigo == null}"> selected </c:if>></option>
+                            <c:forEach items="${servicos}" var="servico">
+                                <option value="${servico.nome}" <c:if test="${consumo.servico.codigo == servico.codigo}">selected</c:if>>${servico.nome}</option>
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="opcao">Opção Restaurante:</label>
+                    </td>
+                    <td>
+                        <select name="opcao" id="opcao">
+                            <option value="0" <c:if test="${consumo.opcao.codigo == null}"> selected </c:if>></option>
+                            <c:forEach items="${opcoes}" var="opcao">
+                                <option value="${opcao.nome}" <c:if test="${consumo.opcao.codigo == opcao.codigo}">selected</c:if>>${opcao.nome}</option>
                             </c:forEach>
                         </select>
                     </td>

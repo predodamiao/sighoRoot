@@ -15,7 +15,7 @@ public class Consumo {
     private ItemConsumo itemConsumido;
     private int idFuncionario;
     private int idHospedagem;
-    private int idItemConsumido;
+    private String idItemConsumido;
 
     public Consumo(int id, Date data, int quantidade, Funcionario funcionarioResponsavel, Hospedagem hospedagem, ItemConsumo itemConsumido) {
         this.id = id;
@@ -82,7 +82,7 @@ public class Consumo {
     }
 
     public ItemConsumo getItemConsumido() throws ClassNotFoundException, SQLException {
-        if ((this.idItemConsumido != 0) && (this.itemConsumido == null)) {
+        if ((this.idItemConsumido != null) && (this.itemConsumido == null)) {
             this.itemConsumido = ItemConsumo.obterItemConsumo(this.idItemConsumido);
         }
 
@@ -109,11 +109,11 @@ public class Consumo {
         this.idHospedagem = idHospedagem;
     }
 
-    public int getIdItemConsumido() {
+    public String getIdItemConsumido() {
         return idItemConsumido;
     }
 
-    public void setIdItemConsumido(int idItemConsumido) {
+    public void setIdItemConsumido(String idItemConsumido) {
         this.idItemConsumido = idItemConsumido;
     }
 

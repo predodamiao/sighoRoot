@@ -37,7 +37,7 @@ public class ServicoDAO {
         return servicos;
     }
 
-    public static Servico obterServico(int codServico) throws ClassNotFoundException, SQLException {
+    public static Servico obterServico(String codServico) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         Servico servico = null;
