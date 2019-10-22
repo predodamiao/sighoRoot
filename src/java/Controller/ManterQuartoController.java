@@ -42,6 +42,13 @@ public class ManterQuartoController extends HttpServlet {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
             request.setAttribute("tiposQuarto", TipoQuarto.obterTiposQuarto());
+            
+            if(!operacao.equals("Incluir")){
+                int idQuarto = Integer.parseInt(request.getParameter("id"));
+                Quarto quarto = Quarto.obterQuarto(idQuarto);
+                request.setAttribute("quarto", quarto);
+            }
+            
             RequestDispatcher view = request.getRequestDispatcher("/manterQuarto.jsp");
             view.forward(request, response);
         } catch (ServletException e) {

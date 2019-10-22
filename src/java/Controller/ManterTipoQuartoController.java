@@ -36,10 +36,17 @@ public class ManterTipoQuartoController extends HttpServlet {
         }
     }
 
-    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, ClassNotFoundException, SQLException {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
+            
+            if(!operacao.equals("Incluir")){
+                int idTipoQuarto = Integer.parseInt(request.getParameter("id"));
+                TipoQuarto tipo = TipoQuarto.obterTipoQuarto(idTipoQuarto);
+                request.setAttribute("tipoQuarto", tipo);
+            }
+            
             RequestDispatcher view = request.getRequestDispatcher("/manterTipoQuarto.jsp");
             view.forward(request, response);
         } catch (ServletException e) {

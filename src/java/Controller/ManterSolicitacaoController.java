@@ -52,6 +52,13 @@ public class ManterSolicitacaoController extends HttpServlet {
             request.setAttribute("servicos", Servico.obterServicos());
             request.setAttribute("opcoes", OpcaoRestaurante.obterItensRestaurante());
             request.setAttribute("status", StatusSolicitacao.obterStatusSolicitacoes());
+            
+            if(!operacao.equals("Incluir")){
+                int idSolicitacao = Integer.parseInt(request.getParameter("id"));
+                Solicitacao solicitacao = Solicitacao.obterSolicitacao(idSolicitacao);
+                request.setAttribute("solicitacao", solicitacao);
+            }
+            
             RequestDispatcher view = request.getRequestDispatcher("/manterSolicitacao.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
