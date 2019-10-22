@@ -61,5 +61,9 @@ public class ItemConsumo {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    
+    public void excluir() throws SQLException, ClassNotFoundException{
+       ItemConsumoDAO.excluir(this);
+    }
 
 }

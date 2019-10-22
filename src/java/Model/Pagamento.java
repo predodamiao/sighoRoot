@@ -105,5 +105,9 @@ public class Pagamento {
     public void gravar() throws SQLException, ClassNotFoundException {
         PagamentoDAO.gravar(this);
     }
+    
+    public void excluir() throws SQLException, ClassNotFoundException{
+       PagamentoDAO.excluir(this);
+    }
 
 }

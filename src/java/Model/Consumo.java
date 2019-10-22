@@ -120,5 +120,9 @@ public class Consumo {
     public void gravar() throws SQLException, ClassNotFoundException {
         ConsumoDAO.gravar(this);
     }
+    
+    public void excluir() throws SQLException, ClassNotFoundException{
+        ConsumoDAO.excluir(this);
+    }
 
 }

@@ -61,5 +61,9 @@ public class TipoQuarto {
     public void gravar() throws SQLException, ClassNotFoundException {
         TipoQuartoDAO.gravar(this);
     }
+    
+    public void excluir() throws SQLException, ClassNotFoundException{
+       TipoQuartoDAO.excluir(this);
+    }
 
 }

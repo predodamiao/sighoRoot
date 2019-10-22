@@ -52,10 +52,6 @@ public class Servico {
         this.preco = preco;
     }
 
-    public void gravar() throws SQLException, ClassNotFoundException {
-        ServicoDAO.gravar(this);
-    }
-
     public String getNome() {
         return nome;
     }
@@ -70,6 +66,14 @@ public class Servico {
 
     public void setCategoria(CategoriaServico categoria) {
         this.categoria = categoria;
+    }
+    
+    public void gravar() throws SQLException, ClassNotFoundException {
+        ServicoDAO.gravar(this);
+    }
+    
+    public void excluir() throws SQLException, ClassNotFoundException{
+       ServicoDAO.excluir(this);
     }
 
 }

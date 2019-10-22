@@ -84,5 +84,9 @@ public class Quarto {
     public void gravar() throws SQLException, ClassNotFoundException {
         QuartoDAO.gravar(this);
     }
+    
+    public void excluir() throws SQLException, ClassNotFoundException{
+       QuartoDAO.excluir(this);
+    }
 
 }

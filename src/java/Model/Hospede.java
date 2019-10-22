@@ -33,5 +33,9 @@ public class Hospede extends Pessoa {
     public void gravar() throws SQLException, ClassNotFoundException {
         HospedeDAO.gravar(this);
     }
+    
+    public void excluir() throws SQLException, ClassNotFoundException{
+        HospedeDAO.excluir(this);
+    }
 
 }

@@ -8,7 +8,7 @@ public enum CategoriaServico {
     CAMARARIA("Camararia", 0),
     LAVANDERIA("Lavanderia", 1),
     RESTAURANTE("Restaurante", 2),
-    RECEPCAO("Recepção", 2),
+    RECEPCAO("Recepcao", 2),
     OUTROS("Outros", 2);
 
     private int id;

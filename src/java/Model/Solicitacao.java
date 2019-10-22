@@ -144,5 +144,9 @@ public class Solicitacao {
     public void gravar() throws SQLException, ClassNotFoundException {
         SolicitacaoDAO.gravar(this);
     }
+    
+    public void excluir() throws SQLException, ClassNotFoundException{
+       SolicitacaoDAO.excluir(this);
+    }
 
 }

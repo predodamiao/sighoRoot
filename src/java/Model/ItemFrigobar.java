@@ -64,5 +64,9 @@ public class ItemFrigobar {
     public void gravar() throws SQLException, ClassNotFoundException {
         ItemFrigobarDAO.gravar(this);
     }
+    
+    public void excluir() throws SQLException, ClassNotFoundException{
+       ItemFrigobarDAO.excluir(this);
+    }
 
 }

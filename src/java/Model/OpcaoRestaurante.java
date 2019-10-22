@@ -43,5 +43,10 @@ public class OpcaoRestaurante extends Servico {
     public void gravar() throws SQLException, ClassNotFoundException {
         OpcaoRestauranteDAO.gravar(this);
     }
+    
+    @Override
+    public void excluir() throws SQLException, ClassNotFoundException{
+       OpcaoRestauranteDAO.excluir(this);
+    }
 
 }
