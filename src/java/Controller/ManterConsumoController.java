@@ -48,6 +48,11 @@ public class ManterConsumoController extends HttpServlet {
             request.setAttribute("hospedagens", Hospedagem.obterHospedagens());
             request.setAttribute("itens", ItemConsumo.obterItensConsumo());
             request.setAttribute("funcionarioSolicitante", Funcionario.obterFuncionarios());
+            if(!operacao.equals("Incluir")){
+                int idConsumo = Integer.parseInt(request.getParameter("id"));
+                Consumo consumo = Consumo.obterConsumo(idConsumo);
+                request.setAttribute("consumo", consumo);
+            }
             RequestDispatcher view = request.getRequestDispatcher("/manterConsumo.jsp");
             view.forward(request, response);
         } catch (ServletException e) {

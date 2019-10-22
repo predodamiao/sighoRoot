@@ -38,10 +38,15 @@ public class ManterHospedeController extends HttpServlet {
         }
     }
 
-    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, ClassNotFoundException, SQLException {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
+            if(!operacao.equals("Incluir")){
+                int idHospede = Integer.parseInt(request.getParameter("id"));
+                Hospede hospede = Hospede.obterHospede(idHospede);
+                request.setAttribute("hospede", hospede);
+            }
             RequestDispatcher view = request.getRequestDispatcher("/manterHospede.jsp");
             view.forward(request, response);
         } catch (ServletException e) {

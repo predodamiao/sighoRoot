@@ -39,11 +39,16 @@ public class ManterFuncionarioController extends HttpServlet {
         }
     }
 
-    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, ClassNotFoundException, SQLException {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
             request.setAttribute("categorias", CategoriaFuncionario.obterCategoriasFuncionario());
+            if(!operacao.equals("Incluir")){
+                int idFuncionario = Integer.parseInt(request.getParameter("id"));
+                Funcionario funcionario = Funcionario.obterFuncionario(idFuncionario);
+                request.setAttribute("funcionario", funcionario);
+            }
             RequestDispatcher view = request.getRequestDispatcher("/manterFuncionario.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
