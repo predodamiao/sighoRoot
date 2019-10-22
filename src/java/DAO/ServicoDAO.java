@@ -78,5 +78,22 @@ public class ServicoDAO {
             fecharConexao(conexao, comando);
         }
     }
+    
+    public static void excluir (Servico servico) throws ClassNotFoundException, SQLException{
+        
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from Servico where id = "+servico.getCodigo();
+            comando.execute(stringSQL);
+        }finally{
+            fecharConexao(conexao,comando);
+        }
+        
+    }
 
 }

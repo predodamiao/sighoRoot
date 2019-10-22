@@ -91,5 +91,22 @@ public class PagamentoDAO {
             fecharConexao(conexao, comando);
         }
     }
+    
+    public static void excluir (Pagamento pagamento) throws ClassNotFoundException, SQLException{
+        
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from Pagamento where id = "+pagamento.getId();
+            comando.execute(stringSQL);
+        }finally{
+            fecharConexao(conexao,comando);
+        }
+        
+    }
 
 }

@@ -20,7 +20,7 @@ public class TipoQuartoDAO {
     public static List<TipoQuarto> obterTiposQuarto() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<TipoQuarto> tiposQuarto = new ArrayList<TipoQuarto>();
+        List<TipoQuarto> tiposQuarto = new ArrayList<>();
         TipoQuarto tipoQuarto = null;
         try {
             conexao = BD.getConexao();
@@ -74,6 +74,23 @@ public class TipoQuartoDAO {
         } finally {
             fecharConexao(conexao, comando);
         }
+    }
+    
+    public static void excluir (TipoQuarto tipo) throws ClassNotFoundException, SQLException{
+        
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from tipoQuarto where id = "+tipo.getId();
+            comando.execute(stringSQL);
+        }finally{
+            fecharConexao(conexao,comando);
+        }
+        
     }
 
 }
