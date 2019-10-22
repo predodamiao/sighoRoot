@@ -13,6 +13,7 @@
                     <th>id</th>
                     <th>id Item</th>
                     <th>Quantidade</th>
+                    <th colspan="2">Ação</th>
                 </tr>
                 <c:forEach items="${itensFrigobar}" var="itemFrigobar">
                     <tr>
@@ -24,6 +25,12 @@
                         </td>
                         <td>
                             <c:out value="${itemFrigobar.quantidade}" />
+                        </td>
+                        <td>
+                            <a href="ManterItemFrigobarController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${itemFrigobar.id}"/>">Editar</a>
+                        </td>
+                        <td>
+                            <a href="ManterItemFrigobarController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${itemFrigobar.id}"/>"/>Excluir</a>
                         </td>
                     </tr>
                 </c:forEach>

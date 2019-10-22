@@ -14,6 +14,7 @@
                     <th>Data</th>
                     <th>Quantidade</th>
                     <th>id Item Consumido</th>
+                    <th colspan="2">Ação<th>
                 </tr>
                 <c:forEach items="${consumos}" var="consumo">
                     <tr>
@@ -28,6 +29,12 @@
                         </td>
                         <td>
                             <c:out value="${consumo.idItemConsumido}" />
+                        </td>
+                        <td>
+                            <a href="ManterConsumoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${consumo.id}"/>">Editar</a>
+                        </td>
+                        <td>
+                            <a href="ManterConsumoController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${consumo.id}"/>"/>Excluir</a>
                         </td>
                     </tr>
                 </c:forEach>

@@ -13,6 +13,7 @@
                     <th>id</th>
                     <th>Nome</th>
                     <th>CPF</th>
+                    <th colspan="2">Ação</th>
                 </tr>
                 <c:forEach items="${hospedes}" var="hospede">
                     <tr>
@@ -24,6 +25,12 @@
                         </td>
                         <td>
                             <c:out value="${hospede.cpf}" />
+                        </td>
+                        <td>
+                            <a href="ManterHospedeController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${hospede.id}"/>">Editar</a>
+                        </td>
+                        <td>
+                            <a href="ManterHospedeController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${hospede.id}"/>"/>Excluir</a>
                         </td>
                     </tr>
                 </c:forEach>

@@ -13,6 +13,7 @@
                     <th>id</th>
                     <th>Nome</th>
                     <th>Preço de Venda</th>
+                    <th colspan="2">Ação</th>
                 </tr>
                 <c:forEach items="${itensConsumo}" var="itemConsumo">
                     <tr>
@@ -24,6 +25,12 @@
                         </td>
                         <td>
                             R$ <c:out value="${itemConsumo.precoVenda}" />
+                        </td>
+                        <td>
+                            <a href="ManterItemConsumoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${itemConsumo.id}"/>">Editar</a>
+                        </td>
+                        <td>
+                            <a href="ManterItemConsumoController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${itemConsumo.id}"/>"/>Excluir</a>
                         </td>
                     </tr>
                 </c:forEach>

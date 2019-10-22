@@ -13,6 +13,7 @@
                     <th>id</th>
                     <th>Valor</th>
                     <th>Data</th>
+                    <th colspan="2">Ação</th>
                 </tr>
                 <c:forEach items="${pagamentos}" var="pagamento">
                     <tr>
@@ -24,6 +25,12 @@
                         </td>
                         <td>
                             <c:out value="${pagamento.data}" />
+                        </td>
+                        <td>
+                            <a href="ManterPagamentoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${pagamento.id}"/>">Editar</a>
+                        </td>
+                        <td>
+                            <a href="ManterPagamentoController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${pagamento.id}"/>"/>Excluir</a>
                         </td>
                     </tr>
                 </c:forEach>

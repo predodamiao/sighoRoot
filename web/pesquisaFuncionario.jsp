@@ -14,6 +14,7 @@
                     <th>CPF</th>
                     <th>Nome</th>
                     <th>Data Admissão</th>
+                    <th colspan="2">Ação</th>
                 </tr>
                 <c:forEach items="${funcionarios}" var="funcionario">
                     <tr>
@@ -28,6 +29,12 @@
                         </td>
                         <td>
                             <c:out value="${funcionario.dataAdmissao}" />
+                        </td>
+                        <td>
+                            <a href="ManterFuncionarioController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${funcionario.id}"/>">Editar</a>
+                        </td>
+                        <td>
+                            <a href="ManterFuncionarioController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${funcionario.id}"/>"/>Excluir</a>
                         </td>
                     </tr>
                 </c:forEach>

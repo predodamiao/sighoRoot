@@ -39,7 +39,7 @@
                         <label for="ocupaCama">Ocupa Cama?</label>
                     </td>
                     <td>
-                        <input type="checkbox" name="ocupaCama" value="ocupaCama" id="ocupaCama">
+                        <input type="checkbox" name="ocupaCama" value="ocupaCama" id="ocupaCama" <c:if test="${acompanhante.ocupaCama == true}">checked</c:if>>
                     </td>
                 </tr>
                 <tr>

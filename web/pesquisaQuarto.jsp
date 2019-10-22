@@ -13,6 +13,7 @@
                     <th>Identificacao</th>
                     <th>Ocupado</th>
                     <th>id Tipo</th>
+                    <th colspan="2">Ação</th>
                 </tr>
                 <c:forEach items="${quartos}" var="quarto">
                     <tr>
@@ -24,6 +25,12 @@
                         </td>
                         <td>
                             <c:out value="${quarto.idTipoQuarto}" />
+                        </td>
+                        <td>
+                            <a href="ManterQuartoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${quarto.id}"/>">Editar</a>
+                        </td>
+                        <td>
+                            <a href="ManterQuartoController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${quarto.id}"/>"/>Excluir</a>
                         </td>
                     </tr>
                 </c:forEach>

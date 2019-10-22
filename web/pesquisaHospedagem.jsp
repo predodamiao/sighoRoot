@@ -29,6 +29,12 @@
                         <td>
                             <c:out value="${hospedagem.idQuarto}"/>
                         </td>
+                        <td>
+                            <a href="ManterHospedagemController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${hospedagem.id}"/>">Editar</a>
+                        </td>
+                        <td>
+                            <a href="ManterHospedagemController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${hospedagem.id}"/>"/>Excluir</a>
+                        </td>
                     </tr>
                 </c:forEach>
             </table>

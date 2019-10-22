@@ -13,6 +13,7 @@
                     <th>Data</th>
                     <th>Quantidade</th>
                     <th>Status</th>
+                    <th colspan="2">Ação</th>
                 </tr>
                 <c:forEach items="${solicitacoes}" var="solicitacao">
                     <tr>
@@ -24,6 +25,12 @@
                         </td>
                         <td>
                             <c:out value="${solicitacao.status}" />
+                        </td>
+                        <td>
+                            <a href="ManterSolicitacaoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${solicitacao.id}"/>">Editar</a>
+                        </td>
+                        <td>
+                            <a href="ManterSolicitacaoController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${solicitacao.id}"/>"/>Excluir</a>
                         </td>
                     </tr>
                 </c:forEach>

@@ -14,6 +14,7 @@
                     <th>Nome</th>
                     <th>Preço</th>
                     <th>Tipo</th>
+                    <th colspan="2">Ação</th>
                 </tr>
                 <c:forEach items="${servicos}" var="servico">
                     <tr>
@@ -28,6 +29,12 @@
                         </td>
                         <td>
                             <c:out value="${servico.categoria}" />
+                        </td>
+                        <td>
+                            <a href="ManterServicoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${servico.id}"/>">Editar</a>
+                        </td>
+                        <td>
+                            <a href="ManterServicoController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${servico.id}"/>"/>Excluir</a>
                         </td>
                     </tr>
                 </c:forEach>
