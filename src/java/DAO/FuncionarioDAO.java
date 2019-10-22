@@ -2,6 +2,7 @@ package DAO;
 
 import static DAO.DAO.fecharConexao;
 import Model.CategoriaFuncionario;
+import Model.Consumo;
 import Model.Funcionario;
 import java.sql.Connection;
 import java.sql.Date;
@@ -79,6 +80,20 @@ public class FuncionarioDAO {
             comando.setString(9, funcionario.getCategoria().toString());
             comando.executeUpdate();
         } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+    
+    public static void excluir(Funcionario funcionario) throws SQLException, ClassNotFoundException{
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from funcionario where id = " + funcionario.getId();
+            comando.execute(stringSQL);
+        }finally{
             fecharConexao(conexao, comando);
         }
     }
