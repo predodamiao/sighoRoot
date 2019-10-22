@@ -15,6 +15,7 @@
                     <th>Nome</th>
                     <th>DataNascimeto</th>
                     <th>idHospedagem</th>
+                    <th colspan="2">Ação</th>
                 </tr>
                 <c:forEach items="${acompanhantes}" var="acompanhante">
                     <tr>
@@ -29,6 +30,12 @@
                         </td>
                         <td>
                             <c:out value="${acompanhante.idHospedagem}" />
+                        </td>
+                        <td>
+                            <a href="ManterAcompanhanteController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${acompanhante.id}"/>">Editar</a>
+                        </td>
+                        <td>
+                            <a href="ManterAcompanhanteController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${acompanhante.id}"/>"/>Excluir</a>
                         </td>
                     </tr>
                 </c:forEach>
