@@ -82,5 +82,22 @@ public class OpcaoRestauranteDAO {
             fecharConexao(conexao, comando);
         }
     }
+    
+    public static void excluir (OpcaoRestaurante opcao) throws ClassNotFoundException, SQLException{
+        
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from Solicitacao where id = "+opcao.getCodigo();
+            comando.execute(stringSQL);
+        }finally{
+            fecharConexao(conexao,comando);
+        }
+        
+    }
 
 }

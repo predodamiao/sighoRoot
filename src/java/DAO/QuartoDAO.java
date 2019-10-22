@@ -83,4 +83,21 @@ public class QuartoDAO {
             fecharConexao(conexao, comando);
         }
     }
+    
+    public static void excluir (Quarto quarto) throws ClassNotFoundException, SQLException{
+        
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from Quarto where id = "+quarto.getIdentificacao();
+            comando.execute(stringSQL);
+        }finally{
+            fecharConexao(conexao,comando);
+        }
+        
+    }
 }

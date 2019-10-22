@@ -84,5 +84,22 @@ public class HospedeDAO {
             fecharConexao(conexao, comando);
         }
     }
+    
+    public static void excluir (Hospede hospede) throws ClassNotFoundException, SQLException{
+        
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from Hospede where id = "+hospede.getId();
+            comando.execute(stringSQL);
+        }finally{
+            fecharConexao(conexao,comando);
+        }
+        
+    }
 
 }

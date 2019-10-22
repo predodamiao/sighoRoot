@@ -81,5 +81,22 @@ public class ItemFrigobarDAO {
             fecharConexao(conexao, comando);
         }
     }
+    
+    public static void excluir (ItemFrigobar item) throws ClassNotFoundException, SQLException{
+        
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from itemFrigobar where id = "+item.getId();
+            comando.execute(stringSQL);
+        }finally{
+            fecharConexao(conexao,comando);
+        }
+        
+    }
 
 }

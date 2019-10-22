@@ -102,5 +102,22 @@ public class HospedagemDAO {
             fecharConexao(conexao, comando);
         }
     }
+    
+    public static void excluir (Hospedagem hospedagem) throws ClassNotFoundException, SQLException{
+        
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from Hospedagem where id = "+hospedagem.getId();
+            comando.execute(stringSQL);
+        }finally{
+            fecharConexao(conexao,comando);
+        }
+        
+    }
 
 }
