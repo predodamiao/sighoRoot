@@ -44,6 +44,11 @@ public class ManterAcompanhanteController extends HttpServlet {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
             request.setAttribute("hospedagens", Hospedagem.obterHospedagens());
+            if(!operacao.equals("Incluir")){
+                int idAcompanhante = Integer.parseInt(request.getParameter("id"));
+                Acompanhante acompanhante = Acompanhante.obterAcompanhante(idAcompanhante);
+                request.setAttribute("acompanhante", acompanhante);
+            }
             RequestDispatcher view = request.getRequestDispatcher("/manterAcompanhante.jsp");
             view.forward(request, response);
         } catch (ServletException e) {

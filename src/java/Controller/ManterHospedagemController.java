@@ -48,6 +48,11 @@ public class ManterHospedagemController extends HttpServlet {
             request.setAttribute("hospedes", Hospede.obterHospedes());
             request.setAttribute("quartos", Quarto.obterQuartos());
             request.setAttribute("tiposQuarto", TipoQuarto.obterTiposQuarto());
+            if(!operacao.equals("Incluir")){
+                int idHospedagem = Integer.parseInt(request.getParameter("id"));
+                Hospedagem hospedagem = Hospedagem.obterHospedagem(idHospedagem);
+                request.setAttribute("hospedagem", hospedagem);
+            }
             RequestDispatcher view = request.getRequestDispatcher("/manterHospedagem.jsp");
             view.forward(request, response);
         } catch (ServletException e) {

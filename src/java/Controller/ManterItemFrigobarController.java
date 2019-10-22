@@ -42,6 +42,11 @@ public class ManterItemFrigobarController extends HttpServlet {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
             request.setAttribute("itens", ItemConsumo.obterItensConsumo());
+            if(!operacao.equals("Incluir")){
+                int idItemFrigobar = Integer.parseInt(request.getParameter("id"));
+                ItemFrigobar itemFrigobar = ItemFrigobar.obterItemFrigobar(idItemFrigobar);
+                request.setAttribute("acompanhante", itemFrigobar);
+            }
             RequestDispatcher view = request.getRequestDispatcher("/manterItemFrigobar.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
