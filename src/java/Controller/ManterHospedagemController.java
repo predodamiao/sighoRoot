@@ -87,6 +87,8 @@ public class ManterHospedagemController extends HttpServlet {
             Hospedagem hospedagem = new Hospedagem(id, dataChegada, dataSaida, dataEstimadaChegada, dataEstimadaSaida, checked, tipoQuarto, quarto, hospede);
             if (operacao.equals("Incluir")) {
                 hospedagem.gravar();
+            }else if(operacao.equals("Exluir")){
+                hospedagem.excluir();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaHospedagemController");
             view.forward(request, response);

@@ -81,6 +81,8 @@ public class ManterConsumoController extends HttpServlet {
             Consumo consumo = new Consumo(id, data, quantidade, funcionario, hospedagem, item);
             if (operacao.equals("Incluir")) {
                 consumo.gravar();
+            }else if(operacao.equals("Exluir")){
+                consumo.excluir();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaConsumoController");
             view.forward(request, response);

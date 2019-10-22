@@ -61,6 +61,8 @@ public class ManterTipoQuartoController extends HttpServlet {
             TipoQuarto tipo = new TipoQuarto(id, nome, descricao, preco);
             if (operacao.equals("Incluir")) {
                 tipo.gravar();
+            }else if(operacao.equals("Exluir")){
+                tipo.excluir();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaTipoQuartoController");
             view.forward(request, response);
