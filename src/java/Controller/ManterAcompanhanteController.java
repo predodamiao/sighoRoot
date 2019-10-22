@@ -74,6 +74,8 @@ public class ManterAcompanhanteController extends HttpServlet {
             Acompanhante acompanhante = new Acompanhante(id, nome, dataNascimento, ocupaCama, hospedagem);
             if (operacao.equals("Incluir")) {
                 acompanhante.gravar();
+            }else if(operacao.equals("Exluir")){
+                acompanhante.excluir();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaAcompanhanteController");
             view.forward(request, response);

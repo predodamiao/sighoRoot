@@ -74,6 +74,8 @@ public class ManterQuartoController extends HttpServlet {
             Quarto quarto = new Quarto(identificacao, quantidadeCamasCasal, quantidadeCamasSolteiro, ocupado, tipoQuarto);
             if (operacao.equals("Incluir")) {
                 quarto.gravar();
+            }else if(operacao.equals("Exluir")){
+                quarto.excluir();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaQuartoController");
             view.forward(request, response);

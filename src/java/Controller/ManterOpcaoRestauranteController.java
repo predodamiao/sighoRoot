@@ -75,6 +75,8 @@ public class ManterOpcaoRestauranteController extends HttpServlet {
             OpcaoRestaurante opcao = new OpcaoRestaurante(codigo, nome, descricao, preco, categoria, acrescimo, tempoPreparo);
             if (operacao.equals("Incluir")) {
                 opcao.gravar();
+            }else if(operacao.equals("Exluir")){
+                opcao.excluir();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaOpcaoRestauranteController");
             view.forward(request, response);

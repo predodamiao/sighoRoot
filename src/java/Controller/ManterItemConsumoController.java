@@ -65,6 +65,8 @@ public class ManterItemConsumoController extends HttpServlet {
             ItemConsumo item = new ItemConsumo(codigo, nome, descricao, preco);
             if (operacao.equals("Incluir")) {
                 item.gravar();
+            }else if(operacao.equals("Exluir")){
+                item.excluir();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaItemConsumoController");
             view.forward(request, response);
