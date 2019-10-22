@@ -97,4 +97,18 @@ public class ConsumoDAO {
             fecharConexao(conexao, comando);
         }
     }
+    
+    public static void excluir(Consumo consumo) throws SQLException, ClassNotFoundException{
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from consumo where id = " + consumo.getId();
+            comando.execute(stringSQL);
+        }finally{
+            fecharConexao(conexao, comando);
+        }
+    }
 }
