@@ -37,7 +37,7 @@ public class OpcaoRestauranteDAO {
         return itensRestaurante;
     }
 
-    public static OpcaoRestaurante obterOpcaoRestaurante(String codOpcao) throws ClassNotFoundException, SQLException {
+    public static OpcaoRestaurante obterOpcaoRestaurante(int codOpcao) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         OpcaoRestaurante item = null;
@@ -55,7 +55,7 @@ public class OpcaoRestauranteDAO {
     }
 
     public static OpcaoRestaurante instanciarOpcaoRestaurante(ResultSet rs) throws ClassNotFoundException, SQLException {
-        OpcaoRestaurante opcao = new OpcaoRestaurante(rs.getString("id"),
+        OpcaoRestaurante opcao = new OpcaoRestaurante(rs.getInt("id"),
                 rs.getString("nome"),
                 rs.getString("descricao"),
                 rs.getFloat("preco"),
@@ -71,7 +71,7 @@ public class OpcaoRestauranteDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.prepareStatement("insert into opcaoRestaurante (id, nome, descricao, preco, categoria, acrescimo, tempoPreparo) values (?,?,?,?,?,?,?)");
-            comando.setString(1, opcao.getCodigo());
+            comando.setInt(1, opcao.getCodigo());
             comando.setString(2, opcao.getNome());
             comando.setString(3, opcao.getDescricao());
             comando.setFloat(4, opcao.getPreco());

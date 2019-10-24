@@ -37,7 +37,7 @@ public class ServicoDAO {
         return servicos;
     }
 
-    public static Servico obterServico(String codServico) throws ClassNotFoundException, SQLException {
+    public static Servico obterServico(int codServico) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         Servico servico = null;
@@ -55,7 +55,7 @@ public class ServicoDAO {
     }
 
     public static Servico instanciarServico(ResultSet rs) throws ClassNotFoundException, SQLException {
-        Servico servico = new Servico(rs.getString("id"),
+        Servico servico = new Servico(rs.getInt("id"),
                 rs.getString("nome"),
                 rs.getString("descricao"),
                 rs.getFloat("preco"),
@@ -69,7 +69,7 @@ public class ServicoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.prepareStatement("insert into servico (id, nome, descricao, preco, categoria) values (?,?,?,?,?)");
-            comando.setString(1, servico.getCodigo());
+            comando.setInt(1, servico.getCodigo());
             comando.setString(2, servico.getNome());
             comando.setString(3, servico.getDescricao());
             comando.setFloat(4, servico.getPreco());

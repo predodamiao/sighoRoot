@@ -9,13 +9,13 @@ public class OpcaoRestaurante extends Servico {
     private float acrescimo;
     private int tempoPreparo;
 
-    public OpcaoRestaurante(String codigo, String nome, String descricao, float precoVenda, CategoriaServico categoria, float acrescimo, int tempoPreparo) {
+    public OpcaoRestaurante(int codigo, String nome, String descricao, float precoVenda, CategoriaServico categoria, float acrescimo, int tempoPreparo) {
         super(codigo, nome, descricao, precoVenda, CategoriaServico.RESTAURANTE);
         this.acrescimo = acrescimo;
         this.tempoPreparo = tempoPreparo;
     }
 
-    public static OpcaoRestaurante obterOpcaoRestaurante(String codItem) throws ClassNotFoundException, SQLException {
+    public static OpcaoRestaurante obterOpcaoRestaurante(int codItem) throws ClassNotFoundException, SQLException {
         return OpcaoRestauranteDAO.obterOpcaoRestaurante(codItem);
     }
 

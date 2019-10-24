@@ -76,10 +76,9 @@ public class ManterSolicitacaoController extends HttpServlet {
         int idHospedagem = Integer.parseInt(request.getParameter("hospedagem"));
         int idFuncionario = Integer.parseInt(request.getParameter("funcionarioSolicitante"));
         String idStatus = request.getParameter("status");
-        String codigoServico = request.getParameter("servico");
-        String codigoOpcao = request.getParameter("opcao");
+        int codigoServico = Integer.parseInt(request.getParameter("servico"));
+        int codigoOpcao = Integer.parseInt(request.getParameter("opcao"));
 
-        System.out.println("Codigo Serviço: "+ codigoServico + " Codigo Opção: "+ codigoOpcao);
         
         try {
             Hospedagem hospedagem = null;
@@ -99,7 +98,7 @@ public class ManterSolicitacaoController extends HttpServlet {
                 servico = Servico.obterServico(codigoServico);
             }
             OpcaoRestaurante opcao = null;
-            if (!"0".equals(codigoOpcao)) {
+            if (codigoOpcao!=0) {
                 opcao = OpcaoRestaurante.obterOpcaoRestaurante(codigoOpcao);
             }
             Solicitacao solicitacao = new Solicitacao(id, data, quantidade, status, funcionario, hospedagem, servico, opcao);

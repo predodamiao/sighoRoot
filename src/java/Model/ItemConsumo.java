@@ -6,19 +6,20 @@ import java.util.List;
 
 public class ItemConsumo {
 
-    private String codigo;
+    
+    private int codigo;
     private String nome;
     private String descricao;
     private float precoVenda;
 
-    public ItemConsumo(String codigo, String nome, String descricao, float precoVenda) {
+    public ItemConsumo(int codigo, String nome, String descricao, float precoVenda) {
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
         this.precoVenda = precoVenda;
     }
 
-    public static ItemConsumo obterItemConsumo(String codItemConsumo) throws ClassNotFoundException, SQLException {
+    public static ItemConsumo obterItemConsumo(int codItemConsumo) throws ClassNotFoundException, SQLException {
         return ItemConsumoDAO.obterItemConsumo(codItemConsumo);
     }
 
@@ -26,11 +27,11 @@ public class ItemConsumo {
         return ItemConsumoDAO.obterItensConsumo();
     }
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 

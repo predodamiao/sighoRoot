@@ -58,7 +58,7 @@ public class ItemFrigobarDAO {
                 rs.getInt("quantidade"),
                 null);
 
-        item.setIdItemConsumo(rs.getString("idItem"));
+        item.setIdItemConsumo(rs.getInt("idItem"));
         return item;
     }
 
@@ -74,7 +74,7 @@ public class ItemFrigobarDAO {
             if (item.getItem() == null) {
                 comando.setNull(3, Types.INTEGER);
             } else {
-                comando.setString(3, item.getItem().getCodigo());
+                comando.setInt(3, item.getItem().getCodigo());
             }
             comando.executeUpdate();
         } finally {

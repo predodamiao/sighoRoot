@@ -6,13 +6,13 @@ import java.util.List;
 
 public class Servico {
 
-    private String codigo;
+    private int codigo;
     private String nome;
     private String descricao;
     private float preco;
     private CategoriaServico categoria;
 
-    public Servico(String codigo, String nome, String descricao, float preco, CategoriaServico categoria) {
+    public Servico(int codigo, String nome, String descricao, float preco, CategoriaServico categoria) {
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
@@ -20,7 +20,7 @@ public class Servico {
         this.categoria = categoria;
     }
 
-    public static Servico obterServico(String codServico) throws ClassNotFoundException, SQLException {
+    public static Servico obterServico(int codServico) throws ClassNotFoundException, SQLException {
         return ServicoDAO.obterServico(codServico);
     }
 
@@ -28,11 +28,11 @@ public class Servico {
         return ServicoDAO.obterServicos();
     }
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 

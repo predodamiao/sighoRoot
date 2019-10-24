@@ -43,7 +43,7 @@ public class ManterOpcaoRestauranteController extends HttpServlet {
             request.setAttribute("operacao", operacao);
             
             if(!operacao.equals("Incluir")){
-                String idOpcaoRestaurante = request.getParameter("id");
+                int idOpcaoRestaurante = Integer.parseInt(request.getParameter("id"));
                 OpcaoRestaurante opcaoRestaurante = OpcaoRestaurante.obterOpcaoRestaurante(idOpcaoRestaurante);
                 request.setAttribute("opcaoRestaurante", opcaoRestaurante);
             }
@@ -59,7 +59,7 @@ public class ManterOpcaoRestauranteController extends HttpServlet {
 
     public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException {
         String operacao = request.getParameter("operacao");
-        String codigo = request.getParameter("codigo");
+        int codigo = Integer.parseInt(request.getParameter("codigo"));
         String nome = request.getParameter("nome");
         String descricao = request.getParameter("descricao");
         float preco = Float.parseFloat(request.getParameter("preco"));

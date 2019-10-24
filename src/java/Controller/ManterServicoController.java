@@ -44,7 +44,7 @@ public class ManterServicoController extends HttpServlet {
             request.setAttribute("categorias", CategoriaServico.obterCategoriasServico());
             
             if(!operacao.equals("Incluir")){
-                String idServico = request.getParameter("id");
+                int idServico = Integer.parseInt(request.getParameter("id"));
                 Servico servico = Servico.obterServico(idServico);
                 request.setAttribute("servico", servico);
             }
@@ -60,7 +60,7 @@ public class ManterServicoController extends HttpServlet {
 
     public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException {
         String operacao = request.getParameter("operacao");
-        String codigo = request.getParameter("codigo");
+        int codigo = Integer.parseInt(request.getParameter("codigo"));
         String nome = request.getParameter("nome");
         String descricao = request.getParameter("descricao");
         float preco = Float.parseFloat(request.getParameter("preco"));

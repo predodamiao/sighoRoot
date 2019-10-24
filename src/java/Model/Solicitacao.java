@@ -16,8 +16,8 @@ public class Solicitacao {
     private OpcaoRestaurante opcao;
     private int idFuncionarioSolicitante;
     private int idHospedagem;
-    private String idServico;
-    private String idOpcao;
+    private int idServico;
+    private int idOpcao;
 
     public Solicitacao(int id, Date data, int quantidade, StatusSolicitacao status, Funcionario funcionario, Hospedagem hospedagem, Servico servico, OpcaoRestaurante opcao) {
         this.id = id;
@@ -94,7 +94,7 @@ public class Solicitacao {
     }
 
     public Servico getServico() throws ClassNotFoundException, SQLException {
-        if (!(this.idServico.equals("0")) && (this.servico == null)) {
+        if ((this.idServico!=0) && (this.servico == null)) {
             this.servico = Servico.obterServico(this.idServico);
         }
         
@@ -106,7 +106,7 @@ public class Solicitacao {
     }
 
     public OpcaoRestaurante getOpcao() throws ClassNotFoundException, SQLException {
-        if (!(this.idOpcao.equals("0")) && (this.opcao == null)) {
+        if (!(this.idOpcao==0) && (this.opcao == null)) {
             this.opcao = OpcaoRestaurante.obterOpcaoRestaurante(this.idOpcao);
         }
         
@@ -133,19 +133,19 @@ public class Solicitacao {
         this.idHospedagem = idHospedagem;
     }
 
-    public String getIdServico() {
+    public int getIdServico() {
         return idServico;
     }
 
-    public void setIdServico(String idServico) {
+    public void setIdServico(int idServico) {
         this.idServico = idServico;
     }
 
-    public String getIdOpcao() {
+    public int getIdOpcao() {
         return idOpcao;
     }
 
-    public void setIdOpcao(String idOpcao) {
+    public void setIdOpcao(int idOpcao) {
         this.idOpcao = idOpcao;
     }
     

@@ -65,8 +65,8 @@ public class SolicitacaoDAO {
                 null);
         solicitacao.setIdFuncionarioSolicitante(rs.getInt("idFuncionario"));
         solicitacao.setIdHospedagem(rs.getInt("idHospedagem"));
-        solicitacao.setIdServico(rs.getString("idServico"));
-        solicitacao.setIdOpcao(rs.getString("idOpcaoRestaurante"));
+        solicitacao.setIdServico(rs.getInt("idServico"));
+        solicitacao.setIdOpcao(rs.getInt("idOpcaoRestaurante"));
         return solicitacao;
     }
 
@@ -91,14 +91,14 @@ public class SolicitacaoDAO {
                 comando.setInt(6, solicitacao.getHospedagem().getId());
             }
             if (solicitacao.getServico() == null) {
-                comando.setNull(7, Types.FLOAT);
+                comando.setNull(7, Types.INTEGER);
             } else {
-                comando.setString(7, solicitacao.getServico().getCodigo());
+                comando.setInt(7, solicitacao.getServico().getCodigo());
             }
             if (solicitacao.getOpcao() == null) {
-                comando.setNull(8, Types.FLOAT);
+                comando.setNull(8, Types.INTEGER);
             } else {
-                comando.setString(8, solicitacao.getOpcao().getCodigo());
+                comando.setInt(8, solicitacao.getOpcao().getCodigo());
             }
             comando.executeUpdate();
 

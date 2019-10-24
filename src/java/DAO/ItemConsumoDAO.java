@@ -36,7 +36,7 @@ public class ItemConsumoDAO {
         return itensConsumo;
     }
 
-    public static ItemConsumo obterItemConsumo(String codItem) throws ClassNotFoundException, SQLException {
+    public static ItemConsumo obterItemConsumo(int codItem) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         ItemConsumo item = null;
@@ -53,7 +53,7 @@ public class ItemConsumoDAO {
     }
 
     public static ItemConsumo instanciarItemConsumo(ResultSet rs) throws ClassNotFoundException, SQLException {
-        ItemConsumo item = new ItemConsumo(rs.getString("id"),
+        ItemConsumo item = new ItemConsumo(rs.getInt("id"),
                 rs.getString("nome"),
                 rs.getString("descricao"),
                 rs.getFloat("precoVenda"));
@@ -66,7 +66,7 @@ public class ItemConsumoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.prepareStatement("insert into itemConsumo (id, nome, descricao, precoVenda) values (?,?,?,?)");
-            comando.setString(1, item.getCodigo());
+            comando.setInt(1, item.getCodigo());
             comando.setString(2, item.getNome());
             comando.setString(3, item.getDescricao());
             comando.setFloat(4, item.getPrecoVenda());

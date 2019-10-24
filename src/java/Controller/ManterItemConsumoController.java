@@ -41,7 +41,7 @@ public class ManterItemConsumoController extends HttpServlet {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
             if(!operacao.equals("Incluir")){
-                String idItemConsumo = (request.getParameter("id"));
+                int idItemConsumo = Integer.parseInt((request.getParameter("id")));
                 ItemConsumo itemConsumo = ItemConsumo.obterItemConsumo(idItemConsumo);
                 request.setAttribute("itemConsumo", itemConsumo);
             }
@@ -56,7 +56,7 @@ public class ManterItemConsumoController extends HttpServlet {
 
     public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException {
         String operacao = request.getParameter("operacao");
-        String codigo = request.getParameter("codigo");
+        int codigo = Integer.parseInt(request.getParameter("codigo"));
         String nome = request.getParameter("nome");
         String descricao = request.getParameter("descricao");
         float preco = Float.parseFloat(request.getParameter("preco"));

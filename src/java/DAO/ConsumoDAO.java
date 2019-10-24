@@ -61,7 +61,7 @@ public class ConsumoDAO {
                 null,
                 null);
         consumo.setIdFuncionario(rs.getInt("idFuncionario"));
-        consumo.setIdItemConsumido(rs.getString("idItem"));
+        consumo.setIdItemConsumido(rs.getInt("idItem"));
         consumo.setIdHospedagem(rs.getInt("idHospedagem"));
         return consumo;
     }
@@ -88,9 +88,9 @@ public class ConsumoDAO {
             }
 
             if (consumo.getItemConsumido() == null) {
-                comando.setNull(6, Types.FLOAT);
+                comando.setNull(6, Types.INTEGER);
             } else {
-                comando.setString(6, consumo.getItemConsumido().getCodigo());
+                comando.setInt(6, consumo.getItemConsumido().getCodigo());
             }
             comando.executeUpdate();
         } finally {
