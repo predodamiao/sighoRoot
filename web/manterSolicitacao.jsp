@@ -95,7 +95,8 @@
                         <select name="opcao" id="opcao">
                             <option value="0" <c:if test="${solicitacao.opcao == null}"> selected </c:if>></option>
                             <c:forEach items="${opcoes}" var="opcao">
-                                 </c:forEach>
+                                <option value="${opcao.codigo}" <c:if test="${solicitacao.opcao != null}"><c:if test="${solicitacao.opcao.codigo == opcao.codigo}">selected</c:if></c:if>>${opcao.nome}</option>
+                            </c:forEach>
                         </select>
                     </td>
                 </tr>
