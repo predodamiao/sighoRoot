@@ -16,7 +16,7 @@
                         <label for="id">id:</label>
                     </td>
                     <td>
-                        <input type="number" name="id" id="id" value="${pagamento.id}">
+                        <input type="number" name="id" id="id" value="${solicitacao.id}">
                     </td>
                 </tr>
                 <tr>
@@ -80,9 +80,9 @@
                     </td>
                     <td>
                         <select name="servico" id="servico">
-                            <option value="0" <c:if test="${consumo.servico.codigo == null}"> selected </c:if>></option>
+                            <option value="0" <c:if test="${solicitacao.servico.codigo == null}"> selected </c:if>></option>
                             <c:forEach items="${servicos}" var="servico">
-                                <option value="${servico.nome}" <c:if test="${consumo.servico.codigo == servico.codigo}">selected</c:if>>${servico.nome}</option>
+                                <option value="${servico.codigo}" <c:if test="${solicitacao.servico.codigo == servico.codigo}">selected</c:if>>${servico.nome}</option>
                             </c:forEach>
                         </select>
                     </td>
@@ -93,10 +93,9 @@
                     </td>
                     <td>
                         <select name="opcao" id="opcao">
-                            <option value="0" <c:if test="${consumo.opcao.codigo == null}"> selected </c:if>></option>
+                            <option value="0" <c:if test="${solicitacao.opcao == null}"> selected </c:if>></option>
                             <c:forEach items="${opcoes}" var="opcao">
-                                <option value="${opcao.nome}" <c:if test="${consumo.opcao.codigo == opcao.codigo}">selected</c:if>>${opcao.nome}</option>
-                            </c:forEach>
+                                 </c:forEach>
                         </select>
                     </td>
                 </tr>

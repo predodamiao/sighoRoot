@@ -23,7 +23,7 @@
                         <label for="nome">Nome:</label>
                     </td>
                     <td>
-                        <input type="text" name="nome" id="nome" value="${acompanhante.nome}">
+                        <input type="text" name="nome" id="nome" value="${funcionario.nome}">
                     </td>
                 </tr>
                 <tr>
@@ -80,9 +80,9 @@
                     </td>
                     <td>
                         <select name="categoriaFuncionario" id="categoriaFuncionario">
-                            <option value="0" <c:if test="${funcionario.categoriaFuncionario.id == null}"> selected </c:if>></option>
+                            <option value="0" <c:if test="${funcionario.categoria.id == null}"> selected </c:if>></option>
                             <c:forEach items="${categorias}" var="categoria">
-                                <option value="${categoria.nomeCategoria}" <c:if test="${funcionario.categoriaFuncionario.id == categoria.id}">selected</c:if>>${categoria.nomeCategoria}</option>
+                                <option value="${categoria.nomeCategoria}" <c:if test="${funcionario.categoria.id == categoria.id}">selected</c:if>>${categoria.nomeCategoria}</option>
                             </c:forEach>
                         </select>
                     </td>

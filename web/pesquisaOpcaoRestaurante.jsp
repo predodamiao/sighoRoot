@@ -15,22 +15,22 @@
                     <th>Preço</th>
                     <th colspan="2">Ação</th>
                 </tr>
-                <c:forEach items="${itensRestaurante}" var="itemRestaurante">
+                <c:forEach items="${opcoesRestaurante}" var="opcaoRestaurante">
                     <tr>
                         <td>
-                            <c:out value="${itemRestaurante.codigo}" />
+                            <c:out value="${opcaoRestaurante.codigo}" />
                         </td>
                         <td>
-                            <c:out value="${itemRestaurante.nome}" />
+                            <c:out value="${opcaoRestaurante.nome}" />
                         </td>
                         <td>
-                            <c:out value="${itemRestaurante.preco}" />
+                            <c:out value="${opcaoRestaurante.preco}" />
                         </td>
                         <td>
-                            <a href="ManterOpcaoRestauranteController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${opcaoRestaurante.id}"/>">Editar</a>
+                            <a href="ManterOpcaoRestauranteController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${opcaoRestaurante.codigo}"/>">Editar</a>
                         </td>
                         <td>
-                            <a href="ManterOpcaoRestauranteController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${opcaoRestaurante.id}"/>"/>Excluir</a>
+                            <a href="ManterOpcaoRestauranteController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${opcaoRestaurante.codigo}"/>"/>Excluir</a>
                         </td>
                     </tr>
                 </c:forEach>

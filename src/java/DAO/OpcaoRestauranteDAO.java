@@ -18,7 +18,7 @@ import java.util.List;
 
 public class OpcaoRestauranteDAO {
 
-    public static List<OpcaoRestaurante> obterItensRestaurante() throws ClassNotFoundException, SQLException {
+    public static List<OpcaoRestaurante> obterOpcoesRestaurante() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         List<OpcaoRestaurante> itensRestaurante = new ArrayList<OpcaoRestaurante>();
@@ -37,14 +37,15 @@ public class OpcaoRestauranteDAO {
         return itensRestaurante;
     }
 
-    public static OpcaoRestaurante obterItensRestaurante(String codOpcao) throws ClassNotFoundException, SQLException {
+    public static OpcaoRestaurante obterOpcaoRestaurante(String codOpcao) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         OpcaoRestaurante item = null;
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from OpcaoRestaurante where id = " + codOpcao);
+            System.out.println("select * from opcaoRestaurante where id ='" + codOpcao +"'");
+            ResultSet rs = comando.executeQuery("select * from opcaoRestaurante where id ='" + codOpcao +"'");
             rs.first();
             item = instanciarOpcaoRestaurante(rs);
         } finally {
@@ -92,7 +93,7 @@ public class OpcaoRestauranteDAO {
         try{
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from Solicitacao where id = "+opcao.getCodigo();
+            stringSQL = "delete from opcaoRestaurante where id = "+opcao.getCodigo();
             comando.execute(stringSQL);
         }finally{
             fecharConexao(conexao,comando);

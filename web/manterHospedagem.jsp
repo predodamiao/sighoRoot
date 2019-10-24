@@ -15,7 +15,7 @@
                         <label for="id">id</label>
                     </td>
                     <td>
-                        <input type="number" name="id" id="id" value="$hospedagem.id">
+                        <input type="number" name="id" id="id" value="${hospedagem.id}">
                     </td>
                 </tr>
                 <tr>
@@ -23,7 +23,7 @@
                         <label for="dataChegada">Chegada:</label>
                     </td>
                     <td>
-                        <input type="date" name="dataChegada" id="dataChegada" value="$hospedagem.dataChegada">
+                        <input type="date" name="dataChegada" id="dataChegada" value="${hospedagem.dataChegada}">
                     </td>
                 </tr>
                 <tr>
@@ -31,7 +31,7 @@
                         <label for="dataSaida">Saída:</label>
                     </td>
                     <td>
-                        <input type="date" name="dataSaida" id="dataSaida" value="$hospedagem.dataSaida">
+                        <input type="date" name="dataSaida" id="dataSaida" value="${hospedagem.dataSaida}">
                     </td>
                 </tr>
                 <tr>
@@ -39,7 +39,7 @@
                         <label for="dataEstimadaChegada">Chegada Estimada:</label>
                     </td>
                     <td>
-                        <input type="date" name="dataEstimadaChegada" id="dataEstimadaChegada" value="$hospedagem.dataEstimadaChegada">
+                        <input type="date" name="dataEstimadaChegada" id="dataEstimadaChegada" value="${hospedagem.dataEstimadaChegada}">
                     </td>
                 </tr>
                 <tr>
@@ -47,7 +47,7 @@
                         <label for="dataEstimadaSaida">Saída Estimada:</label>
                     </td>
                     <td>
-                        <input type="date" name="dataEstimadaSaida" id="dataEstimadaSaida" value="$hospedagem.dataEstimadaSaida">
+                        <input type="date" name="dataEstimadaSaida" id="dataEstimadaSaida" value="${hospedagem.dataEstimadaSaida}">
                     </td>
                 </tr>
                 <tr>
@@ -55,7 +55,7 @@
                         <label for="checked">Checked:</label>
                     </td>
                     <td>
-                        <input type="checkbox" name="checked" id="checked" value="$hospedagem.checked">
+                        <input type="checkbox" name="checked" id="checked" <c:if test="${hospedagem.checked == true}">checked</c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -64,9 +64,9 @@
                     </td>
                     <td>
                         <select name="hospede" id="hospede">
-                            <option value="0" <c:if test="${hospedagem.hospede.id == null}"> selected </c:if>></option>
+                            <option value="0" <c:if test="${hospedagem.hospedeResponsavel.id == null}"> selected </c:if>></option>
                             <c:forEach items="${hospedes}" var="hospede">
-                                <option value="${hospede.id}" <c:if test="${hospededagem.hospede.id == hospede.id}">selected</c:if>>${hospede.nome}</option>
+                                <option value="${hospede.id}" <c:if test="${hospedagem.hospedeResponsavel.id == hospede.id}">selected</c:if>>${hospede.nome}</option>
                             </c:forEach>
                         </select>
                     </td>
@@ -77,7 +77,7 @@
                     </td>
                     <td>
                         <select name="quarto" id="quarto">
-                            <option value="0" <c:if test="${hospedagem.quarto.id == null}"> selected </c:if>></option>
+                            <option value="0" <c:if test="${hospedagem.quarto.identificacao == null}"> selected </c:if>></option>
                             <c:forEach items="${quartos}" var="quarto">
                                 <option value="${quarto.identificacao}" <c:if test="${hospedagem.quarto.identificacao == quarto.identificacao}">selected</c:if>>${quarto.identificacao}</option>
                             </c:forEach>

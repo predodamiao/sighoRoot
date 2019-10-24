@@ -79,7 +79,7 @@
                         <label for="parcelas">Parcelar:</label>
                     </td>
                     <td>
-                        <input type="number" name="parcelas" id="parcelas" value="${pagamento.parcelas}">
+                        <input type="number" name="parcelas" id="parcelas" value="${pagamento.quantidadeParcelas}">
                     </td>
                 </tr>
             </table>

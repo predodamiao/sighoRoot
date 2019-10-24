@@ -26,7 +26,7 @@ public class PesquisaOpcaoRestauranteController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         try {
-            request.setAttribute("itensRestaurante", OpcaoRestaurante.obterItensRestaurante());
+            request.setAttribute("opcoesRestaurante", OpcaoRestaurante.obterOpcoesRestaurante());
             RequestDispatcher view = request.getRequestDispatcher("/pesquisaOpcaoRestaurante.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException | SQLException e) {

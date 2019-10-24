@@ -4,10 +4,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Item Frigobar</title>
+        <title>Opção Restaurante</title>
     </head>
     <body>
-        <h1>Item Frigobar - ${operacao}</h1>
+        <h1>Opção Restaurante - ${operacao}</h1>
         <form action="ManterOpcaoRestauranteController?acao=confirmarOperacao&operacao=${operacao}" method="post">
             <table>
 
@@ -48,7 +48,7 @@
                         <label for="Acrescimo">Acrescimo para servir no Quarto:</label>
                     </td>
                     <td>
-                        <input type="number" name="acrescimo" id="acrescimo" step="0.01" min="0.00" value="${opcaoRestaurante.preco}">
+                        <input type="number" name="acrescimo" id="acrescimo" step="0.01" min="0.00" value="${opcaoRestaurante.acrescimo}">
                     </td>
                 </tr>
                 <tr>
@@ -56,7 +56,7 @@
                         <label for="preco">Tempo de Preparo:</label>
                     </td>
                     <td>
-                        <input type="number" name="tempoPreparo" id="tempoPreparo" step="1" min="0" value="${opcaoRestaurante.preco}">
+                        <input type="number" name="tempoPreparo" id="tempoPreparo" step="1" min="0" value="${opcaoRestaurante.tempoPreparo}">
                     </td>
                 </tr>
                 <tr>

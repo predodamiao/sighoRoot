@@ -27,10 +27,10 @@
                             <c:out value="${quarto.idTipoQuarto}" />
                         </td>
                         <td>
-                            <a href="ManterQuartoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${quarto.id}"/>">Editar</a>
+                            <a href="ManterQuartoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${quarto.identificacao}"/>">Editar</a>
                         </td>
                         <td>
-                            <a href="ManterQuartoController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${quarto.id}"/>"/>Excluir</a>
+                            <a href="ManterQuartoController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${quarto.identificacao}"/>"/>Excluir</a>
                         </td>
                     </tr>
                 </c:forEach>

@@ -15,12 +15,12 @@ public class OpcaoRestaurante extends Servico {
         this.tempoPreparo = tempoPreparo;
     }
 
-    public static OpcaoRestaurante obterItemRestaurante(String codItem) throws ClassNotFoundException, SQLException {
-        return OpcaoRestauranteDAO.obterItensRestaurante(codItem);
+    public static OpcaoRestaurante obterOpcaoRestaurante(String codItem) throws ClassNotFoundException, SQLException {
+        return OpcaoRestauranteDAO.obterOpcaoRestaurante(codItem);
     }
 
-    public static List<OpcaoRestaurante> obterItensRestaurante() throws ClassNotFoundException, SQLException {
-        return OpcaoRestauranteDAO.obterItensRestaurante();
+    public static List<OpcaoRestaurante> obterOpcoesRestaurante() throws ClassNotFoundException, SQLException {
+        return OpcaoRestauranteDAO.obterOpcoesRestaurante();
     }
 
     public float getAcrescimo() {

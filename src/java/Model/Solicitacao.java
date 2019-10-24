@@ -93,7 +93,11 @@ public class Solicitacao {
         this.hospedagem = hospedagem;
     }
 
-    public Servico getServico() {
+    public Servico getServico() throws ClassNotFoundException, SQLException {
+        if (!(this.idServico.equals("0")) && (this.servico == null)) {
+            this.servico = Servico.obterServico(this.idServico);
+        }
+        
         return servico;
     }
 
@@ -101,7 +105,11 @@ public class Solicitacao {
         this.servico = servico;
     }
 
-    public OpcaoRestaurante getOpcao() {
+    public OpcaoRestaurante getOpcao() throws ClassNotFoundException, SQLException {
+        if (!(this.idOpcao.equals("0")) && (this.opcao == null)) {
+            this.opcao = OpcaoRestaurante.obterOpcaoRestaurante(this.idOpcao);
+        }
+        
         return opcao;
     }
 

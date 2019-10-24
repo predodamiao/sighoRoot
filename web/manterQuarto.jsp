@@ -31,7 +31,7 @@
                         <label for="quantidadeCamasSolteiro">Quantidade de Camas de Solteiro:</label>
                     </td>
                     <td>
-                        <input type="number" name="quantidadeCamasSolteiro" id="quantidadeCamasSolteiro" min="0" value="${quarto.quantidadesCamasSolteiro}">
+                        <input type="number" name="quantidadeCamasSolteiro" id="quantidadeCamasSolteiro" min="0" value="${quarto.quantidadeCamasSolteiro}">
                     </td>
                 </tr>
                 <tr>
@@ -48,9 +48,9 @@
                     </td>
                     <td>
                         <select name="tipoQuarto" id="tipoQuarto">
-                            <option value="0" <c:if test="${quarto.tipoQuarto.id == null}"> selected </c:if>></option>
+                            <option value="0" <c:if test="${quarto.tipo.id == null}"> selected </c:if>></option>
                             <c:forEach items="${tiposQuarto}" var="tipoQuarto">
-                                <option value="${tipoQuarto.id}" <c:if test="${quarto.tipoQuarto.id == tipoQuarto.id}">selected</c:if>>${tipoQuarto.nome}</option>
+                                <option value="${tipoQuarto.id}" <c:if test="${quarto.tipo.id == tipoQuarto.id}">selected</c:if>>${tipoQuarto.nome}</option>
                             </c:forEach>
                         </select>
                     </td>

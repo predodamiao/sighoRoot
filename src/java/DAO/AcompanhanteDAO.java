@@ -40,7 +40,7 @@ public class AcompanhanteDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from acompanhante where idHospede = " + codAcompanhante);
+            ResultSet rs = comando.executeQuery("select * from acompanhante where id = " + codAcompanhante);
             rs.first();
             acompanhante = instanciarAcompanhante(rs);
         } finally {

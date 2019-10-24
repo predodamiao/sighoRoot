@@ -23,7 +23,7 @@
                         <label for="nome">Nome:</label>
                     </td>
                     <td>
-                        <input type="text" name="nome" id="nome" value="${acompanhante.nome}">
+                        <input type="text" name="nome" id="nome" value="${hospede.nome}">
                     </td>
                 </tr>
                 <tr>
@@ -71,7 +71,7 @@
                         <label for="passaporte">Passaporte</label>
                     </td>
                     <td>
-                        <input type="text" name="passaporte" id="passaporte" value="${hospede.cpf}">
+                        <input type="text" name="passaporte" id="passaporte" value="${hospede.passaporte}">
                     </td>
                 </tr>
             </table>

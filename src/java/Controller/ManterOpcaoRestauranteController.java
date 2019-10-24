@@ -44,8 +44,8 @@ public class ManterOpcaoRestauranteController extends HttpServlet {
             
             if(!operacao.equals("Incluir")){
                 String idOpcaoRestaurante = request.getParameter("id");
-                OpcaoRestaurante opcaoRestaurante = OpcaoRestaurante.obterItemRestaurante(idOpcaoRestaurante);
-                request.setAttribute("solicitacao", opcaoRestaurante);
+                OpcaoRestaurante opcaoRestaurante = OpcaoRestaurante.obterOpcaoRestaurante(idOpcaoRestaurante);
+                request.setAttribute("opcaoRestaurante", opcaoRestaurante);
             }
             
             RequestDispatcher view = request.getRequestDispatcher("/manterOpcaoRestaurante.jsp");

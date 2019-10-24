@@ -44,7 +44,8 @@ public class ServicoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from servico where id = " + codServico);
+            System.out.println("select * from servico where id = " + codServico);
+            ResultSet rs = comando.executeQuery("select * from servico where id = '" + codServico+"'");
             rs.first();
             servico = instanciarServico(rs);
         } finally {

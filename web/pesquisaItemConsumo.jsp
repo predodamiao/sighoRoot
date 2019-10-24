@@ -27,10 +27,10 @@
                             R$ <c:out value="${itemConsumo.precoVenda}" />
                         </td>
                         <td>
-                            <a href="ManterItemConsumoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${itemConsumo.id}"/>">Editar</a>
+                            <a href="ManterItemConsumoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${itemConsumo.codigo}"/>">Editar</a>
                         </td>
                         <td>
-                            <a href="ManterItemConsumoController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${itemConsumo.id}"/>"/>Excluir</a>
+                            <a href="ManterItemConsumoController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${itemConsumo.codigo}"/>"/>Excluir</a>
                         </td>
                     </tr>
                 </c:forEach>

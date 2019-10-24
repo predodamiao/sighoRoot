@@ -106,22 +106,22 @@ public class SolicitacaoDAO {
             fecharConexao(conexao, comando);
         }
     }
-    
-    public static void excluir (Solicitacao solicitacao) throws ClassNotFoundException, SQLException{
-        
+
+    public static void excluir(Solicitacao solicitacao) throws ClassNotFoundException, SQLException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from Solicitacao where id = "+solicitacao.getId();
+            stringSQL = "delete from Solicitacao where id = " + solicitacao.getId();
             comando.execute(stringSQL);
-        }finally{
-            fecharConexao(conexao,comando);
+        } finally {
+            fecharConexao(conexao, comando);
         }
-        
+
     }
 
 }

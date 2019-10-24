@@ -31,10 +31,10 @@
                             <c:out value="${servico.categoria}" />
                         </td>
                         <td>
-                            <a href="ManterServicoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${servico.id}"/>">Editar</a>
+                            <a href="ManterServicoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${servico.codigo}"/>">Editar</a>
                         </td>
                         <td>
-                            <a href="ManterServicoController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${servico.id}"/>"/>Excluir</a>
+                            <a href="ManterServicoController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${servico.codigo}"/>"/>Excluir</a>
                         </td>
                     </tr>
                 </c:forEach>

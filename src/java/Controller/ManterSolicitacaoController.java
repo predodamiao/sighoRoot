@@ -50,7 +50,7 @@ public class ManterSolicitacaoController extends HttpServlet {
             request.setAttribute("hospedagens", Hospedagem.obterHospedagens());
             request.setAttribute("funcionarios", Funcionario.obterFuncionarios());
             request.setAttribute("servicos", Servico.obterServicos());
-            request.setAttribute("opcoes", OpcaoRestaurante.obterItensRestaurante());
+            request.setAttribute("opcoes", OpcaoRestaurante.obterOpcoesRestaurante());
             request.setAttribute("status", StatusSolicitacao.obterStatusSolicitacoes());
             
             if(!operacao.equals("Incluir")){
@@ -79,6 +79,8 @@ public class ManterSolicitacaoController extends HttpServlet {
         String codigoServico = request.getParameter("servico");
         String codigoOpcao = request.getParameter("opcao");
 
+        System.out.println("Codigo Serviço: "+ codigoServico + " Codigo Opção: "+ codigoOpcao);
+        
         try {
             Hospedagem hospedagem = null;
             if (idHospedagem != 0) {
@@ -93,12 +95,12 @@ public class ManterSolicitacaoController extends HttpServlet {
                 status = StatusSolicitacao.obterStatusSolicitacao(idStatus);
             }
             Servico servico = null;
-            if (codigoServico != null) {
+            if (!"0".equals(codigoServico)) {
                 servico = Servico.obterServico(codigoServico);
             }
             OpcaoRestaurante opcao = null;
-            if (codigoOpcao != null) {
-                opcao = OpcaoRestaurante.obterItemRestaurante(codigoOpcao);
+            if (!"0".equals(codigoOpcao)) {
+                opcao = OpcaoRestaurante.obterOpcaoRestaurante(codigoOpcao);
             }
             Solicitacao solicitacao = new Solicitacao(id, data, quantidade, status, funcionario, hospedagem, servico, opcao);
             if (operacao.equals("Incluir")) {
@@ -106,7 +108,7 @@ public class ManterSolicitacaoController extends HttpServlet {
             }else if(operacao.equals("Exluir")){
                 solicitacao.excluir();
             }
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaPagamentoController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaSolicitacaoController");
             view.forward(request, response);
         } catch (IOException e) {
             throw new ServletException(e);
