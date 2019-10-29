@@ -89,5 +89,9 @@ public class Acompanhante {
     public void excluir() throws SQLException, ClassNotFoundException{
         AcompanhanteDAO.excluir(this);
     }
+   
+    public void alterar() throws SQLException, ClassNotFoundException{
+        AcompanhanteDAO.alterar(this);
+    }
 
 }

@@ -71,7 +71,7 @@ public class ManterHospedeController extends HttpServlet {
             Hospede hospede = new Hospede(id, nome, telefone, email, rg, cpf, dataNascimento, passaporte);
             if (operacao.equals("Incluir")) {
                 hospede.gravar();
-            }else if(operacao.equals("Exluir")){
+            }else if(operacao.equals("Excluir")){
                 hospede.excluir();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaHospedeController");

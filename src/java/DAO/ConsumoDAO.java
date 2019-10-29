@@ -111,4 +111,44 @@ public class ConsumoDAO {
             fecharConexao(conexao, comando);
         }
     }
+    
+    public static void alterar(Consumo consumo) throws SQLException, ClassNotFoundException{
+        
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "update consumo set "
+                    +"data = '" + new java.sql.Date(consumo.getData().getTime()) +"', "
+                    +"quantidade = " + consumo.getQuantidade() +", "
+                    +"idHospedagem = ";
+                    if(consumo.getHospedagem() == null){
+                        stringSQL = stringSQL + null;
+                    }else{
+                        stringSQL = stringSQL + consumo.getHospedagem().getId();
+                    }
+                    stringSQL = stringSQL + ", idFuncionario = ";
+                    if(consumo.getFuncionarioResponsavel() == null){
+                        stringSQL = stringSQL + null;
+                    }else{
+                        stringSQL = stringSQL + consumo.getFuncionarioResponsavel().getId();
+                    }
+                    stringSQL = stringSQL + ", idItem = ";
+                    System.out.println("id ITEM "+ consumo.getIdItemConsumido());
+                    if(consumo.getItemConsumido() == null){
+                        stringSQL = stringSQL + null;
+                    }else{
+                        stringSQL = stringSQL + consumo.getItemConsumido().getCodigo();
+                    }
+                    
+            stringSQL = stringSQL + " where id = " + consumo.getId();
+            comando.execute(stringSQL);
+        }finally{
+            fecharConexao(conexao, comando);
+        }
+        
+    }
 }

@@ -125,4 +125,7 @@ public class Consumo {
         ConsumoDAO.excluir(this);
     }
 
+    public void alterar() throws SQLException, ClassNotFoundException{
+        ConsumoDAO.alterar(this);
+    }
 }
