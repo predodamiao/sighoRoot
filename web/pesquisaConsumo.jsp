@@ -14,7 +14,7 @@
                     <th>Data</th>
                     <th>Quantidade</th>
                     <th>id Item Consumido</th>
-                    <th colspan="2">Ação<th>
+                    <th colspan="2">Ação</th>
                 </tr>
                 <c:forEach items="${consumos}" var="consumo">
                     <tr>
