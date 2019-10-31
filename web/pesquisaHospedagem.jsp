@@ -14,6 +14,7 @@
                     <th>Data Estimada Chegada</th>
                     <th>id Hospede Responsável</th>
                     <th>id Quarto</th>
+                    <th colspan="2">Ação</th>
                 </tr>
                 <c:forEach items="${hospedagens}" var="hospedagem">
                     <tr>
