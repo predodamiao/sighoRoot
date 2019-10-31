@@ -63,7 +63,7 @@
                         <label for="hospede">Hospede Responsável:</label>
                     </td>
                     <td>
-                        <select name="hospede" id="hospede">
+                        <select name="hospede" id="hospede" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                             <option value="0" <c:if test="${hospedagem.hospedeResponsavel.id == null}"> selected </c:if>></option>
                             <c:forEach items="${hospedes}" var="hospede">
                                 <option value="${hospede.id}" <c:if test="${hospedagem.hospedeResponsavel.id == hospede.id}">selected</c:if>>${hospede.nome}</option>
@@ -76,7 +76,7 @@
                         <label for="quarto">Quarto:</label>
                     </td>
                     <td>
-                        <select name="quarto" id="quarto">
+                        <select name="quarto" id="quarto" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                             <option value="0" <c:if test="${hospedagem.quarto.identificacao == null}"> selected </c:if>></option>
                             <c:forEach items="${quartos}" var="quarto">
                                 <option value="${quarto.identificacao}" <c:if test="${hospedagem.quarto.identificacao == quarto.identificacao}">selected</c:if>>${quarto.identificacao}</option>

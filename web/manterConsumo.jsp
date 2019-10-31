@@ -39,7 +39,7 @@
                         <label for="hospedagem">Hospedagem:</label>
                     </td>
                     <td>
-                        <select name="hospedagem" id="hospedagem">
+                        <select name="hospedagem" id="hospedagem" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                             <option value="0" <c:if test="${consumo.hospedagem.id == null}"> selected </c:if>></option>
                             <c:forEach items="${hospedagens}" var="hospedagem">
                                 <option value="${hospedagem.id}" <c:if test="${consumo.hospedagem.id == hospedagem.id}">selected</c:if>>${hospedagem.id}</option>
@@ -52,7 +52,7 @@
                         <label for="item">Item:</label>
                     </td>
                     <td>
-                        <select name="item" id="item">
+                        <select name="item" id="item" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                             <option value="0" <c:if test="${consumo.itemConsumido.codigo == null}"> selected </c:if>></option>
                             <c:forEach items="${itens}" var="item">
                                 <option value="${item.codigo}" <c:if test="${consumo.itemConsumido.codigo == item.codigo}">selected</c:if>>${item.nome}</option>
