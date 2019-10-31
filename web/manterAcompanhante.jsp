@@ -15,7 +15,7 @@
                         <label for="id">ID:</label>
                     </td>
                     <td>
-                        <input type="number" name="id" id="id" value="${acompanhante.id}">
+                        <input type="number" name="id" id="id" value="${acompanhante.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -47,7 +47,7 @@
                         <label for="hospedagem">Hospedagem</label>
                     </td>
                     <td>
-                        <select name="hospedagem" id="hospedagem">
+                        <select name="hospedagem" id="hospedagem" <c:if test="${operacao != 'Incluir'}"> disabled </c:if>>
                             <option value="0" <c:if test="${acompanhante.hospedagem.id == null}">selected</c:if>></option>
                             <c:forEach items="${hospedagens}" var="hospedagem">
                                 <option value="${hospedagem.id}" <c:if test="${acompanhante.hospedagem.id == hospedagem.id}">selected</c:if>>${hospedagem.id}</option>
@@ -56,7 +56,7 @@
                     </td>
                 </tr>
             </table>
-            <input type="submit" name="enviar">
+            <input type="submit" name="enviar" value="${operacao}">
         </form>
     </body>
 </html>

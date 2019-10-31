@@ -15,7 +15,7 @@
                         <label for="id">id:</label>
                     </td>
                     <td>
-                        <input type="number" name="id" id="id" value="${pagamento.id}">
+                        <input type="number" name="id" id="id" value="${pagamento.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -32,7 +32,7 @@
                         <label for="hospedagem">Hospedagem:</label>
                     </td>
                     <td>
-                        <select name="hospedagem" id="hospedagem">
+                        <select name="hospedagem" id="hospedagem" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                             <option value="0" <c:if test="${pagamento.hospedagem.id == null}"> selected </c:if>></option>
                             <c:forEach items="${hospedagens}" var="hospedagem">
                                 <option value="${hospedagem.id}" <c:if test="${pagamento.hospedagem.id == hospedagem.id}">selected</c:if>>${hospedagem.id}</option>
@@ -45,7 +45,7 @@
                         <label for="tipo">Tipo de Pagamento:</label>
                     </td>
                     <td>
-                        <select name="tipo" id="tipo">
+                        <select name="tipo" id="tipo" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                             <option value="0" <c:if test="${pagamento.tipo.id == null}"> selected </c:if>></option>
                             <c:forEach items="${tipos}" var="tipo">
                                 <option value="${tipo.nomeTipo}" <c:if test="${pagamento.tipo.id == tipo.id}">selected </c:if>>${tipo.nomeTipo}</option>
@@ -58,7 +58,7 @@
                         <label for="tipo">Momento do Pagamento:</label>
                     </td>
                     <td>
-                        <select name="momento" id="momento">
+                        <select name="momento" id="momento" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                             <option value="0" <c:if test="${pagamento.momento.id == null}"> selected </c:if>></option>
                             <c:forEach items="${momentos}" var="momento">
                                 <option value="${momento.nomeMomento}" <c:if test="${pagamento.momento.id == momento.id}">selected </c:if>>${momento.nomeMomento}</option>
@@ -83,7 +83,7 @@
                     </td>
                 </tr>
             </table>
-            <input type="submit" name="enviar">
+            <input type="submit" name="enviar" value="${operacao}">
         </form>
     </body>
 </html>

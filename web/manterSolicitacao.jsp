@@ -16,7 +16,7 @@
                         <label for="id">id:</label>
                     </td>
                     <td>
-                        <input type="number" name="id" id="id" value="${solicitacao.id}">
+                        <input type="number" name="id" id="id" value="${solicitacao.id}"<c:if test="${operacao != 'Incluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -40,7 +40,7 @@
                         <label for="hospedagem">Hospedagem:</label>
                     </td>
                     <td>
-                        <select name="hospedagem" id="hospedagem">
+                        <select name="hospedagem" id="hospedagem" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                             <option value="0" <c:if test="${solicitacao.hospedagem.id == null}"> selected </c:if>></option>
                             <c:forEach items="${hospedagens}" var="hospedagem">
                                 <option value="${hospedagem.id}" <c:if test="${solicitacao.hospedagem.id == hospedagem.id}"> selected </c:if>>${hospedagem.id}</option>
@@ -53,7 +53,7 @@
                         <label for="funcionarioSolicitante">Funcionário Solicitante:</label>
                     </td>
                     <td>
-                        <select name="funcionarioSolicitante" id="funcionarioSolicitante">
+                        <select name="funcionarioSolicitante" id="funcionarioSolicitante" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                             <option value="0" <c:if test="${solicitacao.funcionarioSolicitante.id == null}"> selected </c:if>></option>
                             <c:forEach items="${funcionarios}" var="funcionario">
                                 <option value="${funcionario.id}" <c:if test="${solicitacao.funcionarioSolicitante.id == funcionario.id}"> selected </c:if>>${funcionario.nome}</option>
@@ -66,7 +66,7 @@
                         <label for="status">Status:</label>
                     </td>
                     <td>
-                        <select name="status" id="status">
+                        <select name="status" id="status" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                             <option value="0" <c:if test="${solicitacao.status.id == null}"> selected </c:if>></option>
                             <c:forEach items="${status}" var="status">
                                 <option value="${status.nomeStatus}" <c:if test="${solicitacao.status.id == status.id}"> selected </c:if>>${status.nomeStatus}</option>
@@ -79,7 +79,7 @@
                         <label for="item">Serviço:</label>
                     </td>
                     <td>
-                        <select name="servico" id="servico">
+                        <select name="servico" id="servico" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                             <option value="0" <c:if test="${solicitacao.servico.codigo == null}"> selected </c:if>></option>
                             <c:forEach items="${servicos}" var="servico">
                                 <option value="${servico.codigo}" <c:if test="${solicitacao.servico.codigo == servico.codigo}">selected</c:if>>${servico.nome}</option>
@@ -92,7 +92,7 @@
                         <label for="opcao">Opção Restaurante:</label>
                     </td>
                     <td>
-                        <select name="opcao" id="opcao">
+                        <select name="opcao" id="opcao" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                             <option value="0" <c:if test="${solicitacao.opcao == null}"> selected </c:if>></option>
                             <c:forEach items="${opcoes}" var="opcao">
                                 <option value="${opcao.codigo}" <c:if test="${solicitacao.opcao != null}"><c:if test="${solicitacao.opcao.codigo == opcao.codigo}">selected</c:if></c:if>>${opcao.nome}</option>
@@ -102,7 +102,7 @@
                 </tr>
             </table>
 
-            <input type="submit" name="enviar">
+            <input type="submit" name="enviar" value="${operacao}">
         </form>
     </body>
 </html>

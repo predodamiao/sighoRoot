@@ -16,7 +16,7 @@
                         <label for="codigo">Código:</label>
                     </td>
                     <td>
-                        <input type="text" name="codigo" id="codigo" value="${opcaoRestaurante.codigo}">
+                        <input type="text" name="codigo" id="codigo" value="${opcaoRestaurante.codigo}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -72,7 +72,7 @@
                     </td>
                 </tr>
             </table>
-            <input type="submit" name="enviar">
+            <input type="submit" name="enviar" value="${operacao}">
         </form>
     </body>
 </html>

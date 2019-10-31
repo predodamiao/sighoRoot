@@ -16,7 +16,7 @@
                         <label for="id">ID:</label>
                     </td>
                     <td>
-                        <input type="number" name="id" id="id" value="${itemFrigobar.id}">
+                        <input type="number" name="id" id="id" value="${itemFrigobar.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> >
                     </td>
                 </tr>
                 <tr>
@@ -24,7 +24,7 @@
                         <label for="itemConsumo">Produto:</label>
                     </td>
                     <td>
-                        <select name="itemConsumo" id="itemConsumo">
+                        <select name="itemConsumo" id="itemConsumo" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                             <option value="0" <c:if test="${itemFrigobar.id == null}"> selected </c:if>></option>
                             <c:forEach items="${itens}" var="item">
                                 <option value="${item.codigo}" <c:if test="${item.codigo == itemFrigobar.item.codigo}">selected</c:if>>${item.nome}</option>
@@ -41,7 +41,7 @@
                     </td>
                 </tr>
             </table>
-            <input type="submit" name="enviar">
+            <input type="submit" name="enviar" value="${operacao}">
         </form>
     </body>
 </html>
