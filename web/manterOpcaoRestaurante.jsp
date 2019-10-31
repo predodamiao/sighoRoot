@@ -24,7 +24,7 @@
                         <label for="nome">Nome:</label>
                     </td>
                     <td>
-                        <input type="text" name="nome" id="nome" value="${opcaoRestaurante.nome}">
+                        <input type="text" name="nome" id="nome" value="${opcaoRestaurante.nome}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -32,7 +32,7 @@
                         <label for="descricao">Descrição:</label>
                     </td>
                     <td>
-                        <textarea name="descricao" id="descricao">${opcaoRestaurante.descricao}</textarea>
+                        <textarea name="descricao" id="descricao" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>${opcaoRestaurante.descricao}</textarea>
                     </td>
                 </tr>
                 <tr>
@@ -40,7 +40,7 @@
                         <label for="preco">Preco de Consumo:</label>
                     </td>
                     <td>
-                        <input type="number" name="preco" id="preco" step="0.01" min="0.00" value="${opcaoRestaurante.preco}">
+                        <input type="number" name="preco" id="preco" step="0.01" min="0.00" value="${opcaoRestaurante.preco}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -48,7 +48,7 @@
                         <label for="Acrescimo">Acrescimo para servir no Quarto:</label>
                     </td>
                     <td>
-                        <input type="number" name="acrescimo" id="acrescimo" step="0.01" min="0.00" value="${opcaoRestaurante.acrescimo}">
+                        <input type="number" name="acrescimo" id="acrescimo" step="0.01" min="0.00" value="${opcaoRestaurante.acrescimo}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -56,7 +56,7 @@
                         <label for="preco">Tempo de Preparo:</label>
                     </td>
                     <td>
-                        <input type="number" name="tempoPreparo" id="tempoPreparo" step="1" min="0" value="${opcaoRestaurante.tempoPreparo}">
+                        <input type="number" name="tempoPreparo" id="tempoPreparo" step="1" min="0" value="${opcaoRestaurante.tempoPreparo}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>

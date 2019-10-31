@@ -23,7 +23,7 @@
                         <label for="nome">Nome:</label>
                     </td>
                     <td>
-                        <input type="text" name="nome" id="nome" value="${tipoQuarto.nome}">
+                        <input type="text" name="nome" id="nome" value="${tipoQuarto.nome}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -31,7 +31,7 @@
                         <label for="descricao">Descrição:</label>
                     </td>
                     <td>
-                        <textarea name="descricao" id="descricao">${tipoQuarto.descricao}</textarea>
+                        <textarea name="descricao" id="descricao" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>${tipoQuarto.descricao}</textarea>
                     </td>
                 </tr>
                 <tr>
@@ -39,7 +39,7 @@
                         <label for="preco">Preço:</label>
                     </td>
                     <td>
-                        <input type="number" step="0.01" min="0.00" name="preco" id="preco" value="${tipoQuarto.preco}">
+                        <input type="number" step="0.01" min="0.00" name="preco" id="preco" value="${tipoQuarto.preco}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
             </table>

@@ -8,7 +8,8 @@ public enum CategoriaFuncionario {
     GERENTE("Gerente", 0),
     LAVANDERIA("Lavanderia", 1),
     RECEPCAO("Recepcao", 2),
-    CAMARARIA("Camararia", 3);
+    CAMARARIA("Camararia", 3),
+    RESTAURANTE("Restaurante", 4);
 
     private int id;
     private String nomeCategoria;

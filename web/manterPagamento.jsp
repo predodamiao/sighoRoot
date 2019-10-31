@@ -24,7 +24,7 @@
                         <label for="data">Data:</label>
                     </td>
                     <td>
-                        <input type="date" name="data" id="data" value="${pagamento.data}">
+                        <input type="date" name="data" id="data" value="${pagamento.data}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -71,15 +71,15 @@
                         <label for="valor">Valor:</label>
                     </td>
                     <td>
-                        <input type="number" name="valor" step="0.01" min="0.00" id="valor" value="${pagamento.valor}">
+                        <input type="number" name="valor" step="0.01" min="0.00" id="valor" value="${pagamento.valor}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="parcelas">Parcelar:</label>
+                        <label for="parcelas">Parcelas:</label>
                     </td>
                     <td>
-                        <input type="number" name="parcelas" id="parcelas" value="${pagamento.quantidadeParcelas}">
+                        <input type="number" name="parcelas" id="parcelas" value="${pagamento.quantidadeParcelas}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
             </table>

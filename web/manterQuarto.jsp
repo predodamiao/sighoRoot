@@ -23,7 +23,7 @@
                         <label for="quantidadeCamasCasal">Quantidade de Camas de Casal:</label>
                     </td>
                     <td>
-                        <input type="number" name="quantidadeCamasCasal" id="quantidadeCamasCasal" min="0" value="${quarto.quantidadeCamasCasal}">
+                        <input type="number" name="quantidadeCamasCasal" id="quantidadeCamasCasal" min="0" value="${quarto.quantidadeCamasCasal}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -31,7 +31,7 @@
                         <label for="quantidadeCamasSolteiro">Quantidade de Camas de Solteiro:</label>
                     </td>
                     <td>
-                        <input type="number" name="quantidadeCamasSolteiro" id="quantidadeCamasSolteiro" min="0" value="${quarto.quantidadeCamasSolteiro}">
+                        <input type="number" name="quantidadeCamasSolteiro" id="quantidadeCamasSolteiro" min="0" value="${quarto.quantidadeCamasSolteiro}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -39,7 +39,7 @@
                         <label for="ocupado">Ocupado:</label>
                     </td>
                     <td>
-                        <input type="checkbox" name="ocupado" id="ocupado" value="$quarto.ocupado">
+                        <input type="checkbox" name="ocupado" id="ocupado" value="$quarto.ocupado" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                     </td>
                 </tr>
                 <tr>
