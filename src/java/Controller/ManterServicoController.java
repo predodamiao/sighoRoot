@@ -76,6 +76,8 @@ public class ManterServicoController extends HttpServlet {
                 servico.gravar();
             }else if(operacao.equals("Excluir")){
                 servico.excluir();
+            }else if(operacao.equals("Editar")){
+                servico.alterar();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaServicoController");
             view.forward(request, response);

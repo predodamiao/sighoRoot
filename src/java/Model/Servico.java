@@ -75,5 +75,9 @@ public class Servico {
     public void excluir() throws SQLException, ClassNotFoundException{
        ServicoDAO.excluir(this);
     }
+    
+    public void alterar() throws SQLException, ClassNotFoundException{
+       ServicoDAO.excluir(this);
+    }
 
 }

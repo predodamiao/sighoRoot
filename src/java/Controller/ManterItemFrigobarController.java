@@ -68,10 +68,15 @@ public class ManterItemFrigobarController extends HttpServlet {
                 item = ItemConsumo.obterItemConsumo(idItem);
             }
             ItemFrigobar itemFrigobar = new ItemFrigobar(id, quantidade, item);
+            
+            System.out.println("Operação: "+ operacao);
+            
             if (operacao.equals("Incluir")) {
                 itemFrigobar.gravar();
             }else if(operacao.equals("Excluir")){
-                item.excluir();
+                itemFrigobar.excluir();
+            }else if(operacao.equals("Editar")){
+                itemFrigobar.alterar();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaItemFrigobarController");
             view.forward(request, response);

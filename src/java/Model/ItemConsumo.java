@@ -66,5 +66,9 @@ public class ItemConsumo {
     public void excluir() throws SQLException, ClassNotFoundException{
        ItemConsumoDAO.excluir(this);
     }
+    
+    public void alterar() throws SQLException, ClassNotFoundException{
+       ItemConsumoDAO.alterar(this);
+    }
 
 }

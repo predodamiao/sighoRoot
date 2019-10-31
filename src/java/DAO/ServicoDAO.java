@@ -96,5 +96,28 @@ public class ServicoDAO {
         }
         
     }
+    
+    public static void alterar(Servico servico) throws SQLException, ClassNotFoundException{
+        
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "update servico set "
+                    +"nome = '" + servico.getNome() +"', "
+                    +"descricao = '" + servico.getDescricao() +"', "
+                    +"preco = " + servico.getPreco()
+                    +"categoria = '" + servico.getCategoria().toString() +"'";
+            
+            stringSQL = stringSQL + " where id = " + servico.getCodigo();
+            comando.execute(stringSQL);
+        }finally{
+            fecharConexao(conexao, comando);
+        }
+        
+    }
 
 }

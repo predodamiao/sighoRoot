@@ -37,5 +37,9 @@ public class Hospede extends Pessoa {
     public void excluir() throws SQLException, ClassNotFoundException{
         HospedeDAO.excluir(this);
     }
+    
+    public void alterar() throws SQLException, ClassNotFoundException{
+       HospedeDAO.alterar(this);
+    }
 
 }

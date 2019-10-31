@@ -98,5 +98,32 @@ public class ItemFrigobarDAO {
         }
         
     }
+    
+    public static void alterar(ItemFrigobar item) throws SQLException, ClassNotFoundException{
+        
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "update itemfrigobar set "
+                    +"quantidade = "+ item.getQuantidade() +", "
+                    +"idItem = ";
+            if(item.getItem() == null){
+                stringSQL = stringSQL + null;
+            }else{
+                stringSQL = stringSQL + item.getItem().getCodigo();
+            }
+            
+            stringSQL = stringSQL + " where id = " + item.getId();
+            System.out.println("Linha: "+ stringSQL);
+            comando.execute(stringSQL);
+        }finally{
+            fecharConexao(conexao, comando);
+        }
+        
+    }
 
 }

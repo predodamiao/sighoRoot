@@ -100,4 +100,33 @@ public class QuartoDAO {
         }
         
     }
+    
+    public static void alterar(Quarto quarto) throws SQLException, ClassNotFoundException{
+        
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+                
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "update quarto set "
+                    +"quantidadeCamasCasal = "+ quarto.getQuantidadeCamasCasal() +", "
+                    +"quantidadeCamasSolteiro = "+ quarto.getQuantidadeCamasSolteiro() +", "
+                    +"ocupado = "+ quarto.isOcupado() +", "
+                    +"tipoQuarto = ";
+            if(quarto.getTipo() == null){
+                stringSQL = stringSQL + null;
+            }else{
+                stringSQL = stringSQL + quarto.getTipo().getId();
+            }
+            
+            stringSQL = stringSQL + " where identificacao = " + quarto.getIdentificacao();
+            System.out.println("Linha: "+ stringSQL);
+            comando.execute(stringSQL);
+        }finally{
+            fecharConexao(conexao, comando);
+        }
+        
+    }
 }

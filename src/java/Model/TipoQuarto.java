@@ -65,5 +65,9 @@ public class TipoQuarto {
     public void excluir() throws SQLException, ClassNotFoundException{
        TipoQuartoDAO.excluir(this);
     }
+    
+    public void alterar() throws SQLException, ClassNotFoundException{
+        TipoQuartoDAO.alterar(this);
+    }
 
 }

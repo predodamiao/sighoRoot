@@ -109,5 +109,9 @@ public class Pagamento {
     public void excluir() throws SQLException, ClassNotFoundException{
        PagamentoDAO.excluir(this);
     }
+    
+    public void alterar() throws SQLException, ClassNotFoundException{
+       PagamentoDAO.alterar(this);
+    }
 
 }

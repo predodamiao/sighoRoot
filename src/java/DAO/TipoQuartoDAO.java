@@ -92,5 +92,28 @@ public class TipoQuartoDAO {
         }
         
     }
+    
+    public static void alterar(TipoQuarto tipo) throws SQLException, ClassNotFoundException{
+        
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "update tipoQuarto set "
+                    +"nome = '"+ tipo.getNome() +"', "
+                    +"descricao = '"+ tipo.getDescricao() +"', "
+                    +"preco = "+ tipo.getPreco();
+                    
+            stringSQL = stringSQL + " where id = " + tipo.getId();
+            System.out.println("Linha: "+ stringSQL);
+            comando.execute(stringSQL);
+        }finally{
+            fecharConexao(conexao, comando);
+        }
+        
+    }
 
 }

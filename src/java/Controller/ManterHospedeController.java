@@ -73,6 +73,8 @@ public class ManterHospedeController extends HttpServlet {
                 hospede.gravar();
             }else if(operacao.equals("Excluir")){
                 hospede.excluir();
+            }else if(operacao.equals("Editar")){
+                hospede.alterar();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaHospedeController");
             view.forward(request, response);

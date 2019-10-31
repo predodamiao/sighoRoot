@@ -123,5 +123,61 @@ public class SolicitacaoDAO {
         }
 
     }
+    
+    /*
+    private Date data;
+    private int quantidade;
+    private StatusSolicitacao status;
+    private Funcionario funcionarioSolicitante;
+    private Hospedagem hospedagem;
+    private Servico servico;
+    private OpcaoRestaurante opcao;
+    */
+    
+    public static void alterar(Solicitacao solicitacao) throws SQLException, ClassNotFoundException{
+        
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "update solicitacao set "
+                    +"data = '" + new java.sql.Date(solicitacao.getData().getTime()) +"', "
+                    +"quantidade = " + solicitacao.getQuantidade() +", "
+                    +"status = '" + solicitacao.getStatus().toString()+"' ";
+                    stringSQL = stringSQL + ", idFuncionario = ";
+                    if(solicitacao.getFuncionarioSolicitante() == null){
+                        stringSQL = stringSQL + null;
+                    }else{
+                        stringSQL = stringSQL + solicitacao.getFuncionarioSolicitante().getId();
+                    }
+                    stringSQL = stringSQL + ", idHospedagem = ";
+                    if(solicitacao.getHospedagem() == null){
+                        stringSQL = stringSQL + null;
+                    }else{
+                        stringSQL = stringSQL + solicitacao.getHospedagem().getId();
+                    }
+                    stringSQL = stringSQL + ", idServico = ";
+                    if(solicitacao.getServico() == null){
+                        stringSQL = stringSQL + null;
+                    }else{
+                        stringSQL = stringSQL + solicitacao.getServico().getCodigo();
+                    }
+                    stringSQL = stringSQL + ", idOpcaoRestaurante = ";
+                    if(solicitacao.getOpcao() == null){
+                        stringSQL = stringSQL + null;
+                    }else{
+                        stringSQL = stringSQL + solicitacao.getOpcao().getCodigo();
+                    }
+                    
+            stringSQL = stringSQL + " where id = " + solicitacao.getId();
+            comando.execute(stringSQL);
+        }finally{
+            fecharConexao(conexao, comando);
+        }
+        
+    }
 
 }

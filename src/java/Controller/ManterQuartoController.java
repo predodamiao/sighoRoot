@@ -76,6 +76,8 @@ public class ManterQuartoController extends HttpServlet {
                 quarto.gravar();
             }else if(operacao.equals("Excluir")){
                 quarto.excluir();
+            }else if(operacao.equals("Editar")){
+                quarto.alterar();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaQuartoController");
             view.forward(request, response);

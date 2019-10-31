@@ -108,5 +108,46 @@ public class PagamentoDAO {
         }
         
     }
+    /*
+    
+    private float valor;
+    private Date data;
+    private int quantidadeParcelas;
+    private TipoPagamento tipo;
+    private MomentoPagamento momento;
+    private Hospedagem hospedagem;
+    private int idHospedagem;
+    
+    */
+    public static void alterar(Pagamento pagamento) throws SQLException, ClassNotFoundException{
+        
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "update pagamento set "
+                    +"valor = " + pagamento.getValor() +", "
+                    +"data = '" +  new java.sql.Date(pagamento.getData().getTime()) +"', "
+                    +"parcelas = " + pagamento.getQuantidadeParcelas() +", "
+                    +"tipo = '" + pagamento.getTipo().toString()+"', "
+                    +"momento = '" + pagamento.getMomento().toString() +"', "
+                    +"idHospedagem = ";
+                    if(pagamento.getHospedagem() == null){
+                        stringSQL = stringSQL + null;
+                    }else{
+                        stringSQL = stringSQL + pagamento.getHospedagem().getId();
+                    }       
+                    
+            stringSQL = stringSQL + " where id = " + pagamento.getId();
+            comando.execute(stringSQL);
+        }finally{
+            fecharConexao(conexao, comando);
+        }
+        
+    }
+
 
 }

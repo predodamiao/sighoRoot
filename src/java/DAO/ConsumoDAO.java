@@ -137,7 +137,6 @@ public class ConsumoDAO {
                         stringSQL = stringSQL + consumo.getFuncionarioResponsavel().getId();
                     }
                     stringSQL = stringSQL + ", idItem = ";
-                    System.out.println("id ITEM "+ consumo.getIdItemConsumido());
                     if(consumo.getItemConsumido() == null){
                         stringSQL = stringSQL + null;
                     }else{

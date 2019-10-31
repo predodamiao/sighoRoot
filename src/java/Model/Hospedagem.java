@@ -154,5 +154,9 @@ public class Hospedagem {
     public void excluir() throws SQLException, ClassNotFoundException{
         HospedagemDAO.excluir(this);
     }
+    
+    public void alterar() throws SQLException, ClassNotFoundException{
+       HospedagemDAO.alterar(this);
+    }
 
 }

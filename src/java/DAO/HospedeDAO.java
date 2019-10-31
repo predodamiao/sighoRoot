@@ -101,5 +101,33 @@ public class HospedeDAO {
         }
         
     }
+    
+    public static void alterar(Hospede hospede) throws SQLException, ClassNotFoundException{
+        
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "update hospede set "
+                    +"nome = '" + hospede.getNome() +"', "
+                    +"telefone = '" + hospede.getTelefone() +"', "
+                    +"email = '" + hospede.getEmail() +"', "
+                    +"rg = '" + hospede.getRg() +"', "
+                    +"cpf = " + hospede.getCpf() +", "
+                    +"dataNascimento = '" + new java.sql.Date(hospede.getDataNascimento().getTime()) +"', "
+                    +"passaporte = '" + hospede.getPassaporte()+ "'";
+                    
+                    
+            stringSQL = stringSQL + " where id = " + hospede.getId();
+            System.out.println("linha: " + stringSQL);
+            comando.execute(stringSQL);
+        }finally{
+            fecharConexao(conexao, comando);
+        }
+        
+    }
 
 }

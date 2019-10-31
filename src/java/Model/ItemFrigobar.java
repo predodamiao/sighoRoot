@@ -68,5 +68,10 @@ public class ItemFrigobar {
     public void excluir() throws SQLException, ClassNotFoundException{
        ItemFrigobarDAO.excluir(this);
     }
+    
+    public void alterar() throws SQLException, ClassNotFoundException{
+        System.out.println("dentro da classe");
+        ItemFrigobarDAO.alterar(this);
+    }
 
 }

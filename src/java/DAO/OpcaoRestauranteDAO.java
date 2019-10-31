@@ -101,4 +101,29 @@ public class OpcaoRestauranteDAO {
         
     }
 
+    public static void alterar(OpcaoRestaurante opcao) throws SQLException, ClassNotFoundException{
+        
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "update opcaoRestaurante set "
+                    +"nome = '" + opcao.getNome() +"', "
+                    +"descricao = '" + opcao.getDescricao() +"', "
+                    +"preco = " + opcao.getPreco()+", "
+                    +"categoria = '" + opcao.getCategoria().toString() +"', "
+                    +"acrescimo = " + opcao.getAcrescimo()+", "
+                    +"tempoPreparo = " + opcao.getTempoPreparo();
+            
+            stringSQL = stringSQL + " where id = " + opcao.getCodigo();
+            comando.execute(stringSQL);
+        }finally{
+            fecharConexao(conexao, comando);
+        }
+        
+    }
+
 }

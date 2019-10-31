@@ -156,5 +156,9 @@ public class Solicitacao {
     public void excluir() throws SQLException, ClassNotFoundException{
        SolicitacaoDAO.excluir(this);
     }
+    
+    public void alterar() throws SQLException, ClassNotFoundException{
+       SolicitacaoDAO.alterar(this);
+    }
 
 }

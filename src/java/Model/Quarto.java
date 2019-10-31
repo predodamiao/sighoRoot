@@ -89,4 +89,8 @@ public class Quarto {
        QuartoDAO.excluir(this);
     }
 
+    public void alterar() throws SQLException, ClassNotFoundException{
+       QuartoDAO.alterar(this);
+    }
+    
 }

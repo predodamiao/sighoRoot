@@ -67,7 +67,10 @@ public class ManterItemConsumoController extends HttpServlet {
                 item.gravar();
             }else if(operacao.equals("Excluir")){
                 item.excluir();
+            }else if(operacao.equals("Editar")){
+                item.alterar();
             }
+            
             RequestDispatcher view = request.getRequestDispatcher("PesquisaItemConsumoController");
             view.forward(request, response);
         } catch (IOException e) {

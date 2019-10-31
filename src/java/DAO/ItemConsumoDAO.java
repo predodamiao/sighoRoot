@@ -92,5 +92,27 @@ public class ItemConsumoDAO {
         }
         
     }
+    
+    public static void alterar(ItemConsumo item) throws SQLException, ClassNotFoundException{
+        
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "update itemConsumo set "
+                    +"nome = '" + item.getNome() +"', "
+                    +"descricao = '" + item.getDescricao() +"', "
+                    +"precoVenda = " + item.getPrecoVenda();
+
+            stringSQL = stringSQL + " where id = " + item.getCodigo();
+            comando.execute(stringSQL);
+        }finally{
+            fecharConexao(conexao, comando);
+        }
+        
+    }
 
 }

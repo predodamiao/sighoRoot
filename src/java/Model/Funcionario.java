@@ -47,5 +47,9 @@ public class Funcionario extends Pessoa {
     public void excluir() throws SQLException, ClassNotFoundException{
        FuncionarioDAO.excluir(this);
     }
+    
+    public void alterar() throws SQLException, ClassNotFoundException{
+       FuncionarioDAO.alterar(this);
+    }
 
 }

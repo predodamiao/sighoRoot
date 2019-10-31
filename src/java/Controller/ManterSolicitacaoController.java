@@ -106,6 +106,8 @@ public class ManterSolicitacaoController extends HttpServlet {
                 solicitacao.gravar();
             }else if(operacao.equals("Excluir")){
                 solicitacao.excluir();
+            }else if(operacao.equals("Editar")){
+                solicitacao.alterar();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaSolicitacaoController");
             view.forward(request, response);

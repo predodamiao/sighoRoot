@@ -92,6 +92,8 @@ public class ManterPagamentoController extends HttpServlet {
                 pagamento.gravar();
             }else if(operacao.equals("Excluir")){
                 pagamento.excluir();
+            }else if(operacao.equals("Editar")){
+                pagamento.alterar();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaPagamentoController");
             view.forward(request, response);
