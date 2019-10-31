@@ -15,7 +15,7 @@
                         <label for="id">ID:</label>
                     </td>
                     <td>
-                        <input type="number" name="id" id="id" value="${hospede.id}">
+                        <input type="number" name="id" id="id" value="${hospede.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -75,7 +75,7 @@
                     </td>
                 </tr>
             </table>
-            <input type="submit" name="enviar">
+           <input type="submit" name="enviar" value="${operacao}">
         </form>
     </body>
 </html>

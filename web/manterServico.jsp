@@ -15,7 +15,7 @@
                         <label for="codigo">Código:</label>
                     </td>
                     <td>
-                        <input type="text" name="codigo" id="codigo" value="${servico.codigo}">
+                        <input type="text" name="codigo" id="codigo" value="${servico.codigo}"<c:if test="${operacao != 'Incluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -47,7 +47,7 @@
                         <label for="categoriaItemConsumo">Categoria do Item de Consumo:</label>
                     </td>
                     <td>
-                        <select name="categoriaItemConsumo" id="categoriaItemConsumo">
+                        <select name="categoriaItemConsumo" id="categoriaItemConsumo" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                             <option value="0" <c:if test="${servico.categoria.id == null}"> selected </c:if>></option>
                             <c:forEach items="${categorias}" var="categoria">
                                 <option value="${categoria.nomeCategoria}" <c:if test="${servico.categoria.id == categoria.id}">selected</c:if>>${categoria.nomeCategoria}</option>
@@ -56,7 +56,7 @@
                     </td>
                 </tr>
             </table>
-            <input type="submit" name="enviar">
+            <input type="submit" name="enviar" value="${operacao}">
         </form>
     </body>
 </html>
