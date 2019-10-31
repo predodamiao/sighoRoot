@@ -37,7 +37,7 @@
                         <label for="quantidade">Quantidade:</label>
                     </td>
                     <td>
-                        <input type="number" name="quantidade" id="quantidade" value="${itemFrigobar.quantidade}">
+                        <input type="number" name="quantidade" id="quantidade" value="${itemFrigobar.quantidade}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
             </table>

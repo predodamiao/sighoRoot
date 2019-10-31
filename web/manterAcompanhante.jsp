@@ -23,7 +23,7 @@
                         <label for="nome">Nome:</label>
                     </td>
                     <td>
-                        <input type="text" name="nome" id="nome" value="${acompanhante.nome}">
+                        <input type="text" name="nome" id="nome" value="${acompanhante.nome}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -31,7 +31,7 @@
                         <label for="dataNascimento">Data de Nascimento:</label>
                     </td>
                     <td>
-                        <input type="date" name="dataNascimento" id="dataNascimento" value="${acompanhante.dataNascimento}">
+                        <input type="date" name="dataNascimento" id="dataNascimento" value="${acompanhante.dataNascimento}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -39,7 +39,7 @@
                         <label for="ocupaCama">Ocupa Cama?</label>
                     </td>
                     <td>
-                        <input type="checkbox" name="ocupaCama" value="ocupaCama" id="ocupaCama" <c:if test="${acompanhante.ocupaCama == true}">checked</c:if>>
+                        <input type="checkbox" name="ocupaCama" value="ocupaCama" id="ocupaCama" <c:if test="${acompanhante.ocupaCama == true}">checked</c:if> <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                     </td>
                 </tr>
                 <tr>

@@ -23,7 +23,7 @@
                         <label for="nome">Nome:</label>
                     </td>
                     <td>
-                        <input type="text" name="nome" id="nome" value="${itemConsumo.nome}">
+                        <input type="text" name="nome" id="nome" value="${itemConsumo.nome}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -31,7 +31,7 @@
                         <label for="descricao">Descrição:</label>
                     </td>
                     <td>
-                        <textarea name="descricao" id="descricao">${itemConsumo.descricao}</textarea>
+                        <textarea name="descricao" id="descricao" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>${itemConsumo.descricao}</textarea>
                     </td>
                 </tr>
                 <tr>
@@ -39,7 +39,7 @@
                         <label for="preco">Preco de Consumo:</label>
                     </td>
                     <td>
-                        <input type="number" name="preco" id="preco" step="0.01" min="0.00" value="${itemConsumo.precoVenda}">
+                        <input type="number" name="preco" id="preco" step="0.01" min="0.00" value="${itemConsumo.precoVenda}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
             </table>

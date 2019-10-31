@@ -23,7 +23,7 @@
                         <label for="data">Data:</label>
                     </td>
                     <td>
-                        <input type="date" name="data" id="data" value="${consumo.data}">
+                        <input type="date" name="data" id="data" value="${consumo.data}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -31,7 +31,7 @@
                         <label for="quantidade">Quantidade:</label>
                     </td>
                     <td>
-                        <input type="number" name="quantidade" id="quantidade" value="${consumo.quantidade}">
+                        <input type="number" name="quantidade" id="quantidade" value="${consumo.quantidade}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>

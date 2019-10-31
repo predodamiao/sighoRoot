@@ -23,7 +23,7 @@
                         <label for="nome">Nome:</label>
                     </td>
                     <td>
-                        <input type="text" name="nome" id="nome" value="${funcionario.nome}">
+                        <input type="text" name="nome" id="nome" value="${funcionario.nome}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -31,7 +31,7 @@
                         <label for="telefone">Telefone:</label>
                     </td>
                     <td>
-                        <input type="text" name="telefone" id="telefone" value="${funcionario.telefone}">
+                        <input type="text" name="telefone" id="telefone" value="${funcionario.telefone}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -39,7 +39,7 @@
                         <label for="email">E-mail:</label>
                     </td>
                     <td>
-                        <input type="email" name="email" id="email" value="${funcionario.email}">
+                        <input type="email" name="email" id="email" value="${funcionario.email}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -47,7 +47,7 @@
                         <label for="rg">RG:</label>
                     </td>
                     <td>
-                        <input type="text" name="rg" id="rg" value="${funcionario.rg}">
+                        <input type="text" name="rg" id="rg" value="${funcionario.rg}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -55,7 +55,7 @@
                         <label for="cpf">CPF</label>
                     </td>
                     <td>
-                        <input type="text" name="cpf" id="cpf" value="${funcionario.cpf}">
+                        <input type="text" name="cpf" id="cpf" value="${funcionario.cpf}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -63,7 +63,7 @@
                         <label for="dataNascimento">Data de Nascimento:</label>
                     </td>
                     <td>
-                        <input type="date" name="dataNascimento" id="dataNascimento" value="${funcionario.dataNascimento}">
+                        <input type="date" name="dataNascimento" id="dataNascimento" value="${funcionario.dataNascimento}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -71,7 +71,7 @@
                         <label for="dataAdmissao">Data da Admissão:</label>
                     </td>
                     <td>
-                        <input type="date" name="dataAdmissao" id="dataAdmissao" value="${funcionario.dataAdmissao}">
+                        <input type="date" name="dataAdmissao" id="dataAdmissao" value="${funcionario.dataAdmissao}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>

@@ -23,7 +23,7 @@
                         <label for="nome">Nome:</label>
                     </td>
                     <td>
-                        <input type="text" name="nome" id="nome" value="${hospede.nome}">
+                        <input type="text" name="nome" id="nome" value="${hospede.nome}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -31,7 +31,7 @@
                         <label for="telefone">Telefone:</label>
                     </td>
                     <td>
-                        <input type="text" name="telefone" id="telefone" value="${hospede.telefone}">
+                        <input type="text" name="telefone" id="telefone" value="${hospede.telefone}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -39,7 +39,7 @@
                         <label for="email">E-mail:</label>
                     </td>
                     <td>
-                        <input type="email" name="email" id="email" value="${hospede.email}">
+                        <input type="email" name="email" id="email" value="${hospede.email}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -47,7 +47,7 @@
                         <label for="rg">RG:</label>
                     </td>
                     <td>
-                        <input type="text" name="rg" id="rg" value="${hospede.rg}">
+                        <input type="text" name="rg" id="rg" value="${hospede.rg}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -55,7 +55,7 @@
                         <label for="cpf">CPF</label>
                     </td>
                     <td>
-                        <input type="text" name="cpf" id="cpf" value="${hospede.cpf}">
+                        <input type="text" name="cpf" id="cpf" value="${hospede.cpf}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -63,7 +63,7 @@
                         <label for="dataNascimento">Data de Nascimento:</label>
                     </td>
                     <td>
-                        <input type="date" name="dataNascimento" id="dataNascimento" value="${hospede.dataNascimento}">
+                        <input type="date" name="dataNascimento" id="dataNascimento" value="${hospede.dataNascimento}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -71,7 +71,7 @@
                         <label for="passaporte">Passaporte</label>
                     </td>
                     <td>
-                        <input type="text" name="passaporte" id="passaporte" value="${hospede.passaporte}">
+                        <input type="text" name="passaporte" id="passaporte" value="${hospede.passaporte}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                     </td>
                 </tr>
             </table>
