@@ -67,9 +67,16 @@ public class ManterConsumoController extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         Date data = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data"));
         int quantidade = Integer.parseInt(request.getParameter("quantidade"));
-        int idHospedagem = Integer.parseInt(request.getParameter("hospedagem"));
-        int codigoItem = Integer.parseInt(request.getParameter("item"));
-        int idFuncionario = Integer.parseInt(request.getParameter("funcionarioSolicitante"));
+        
+        int idHospedagem = 0;
+        int codigoItem = 0;
+        int idFuncionario = 0;
+        
+        if(!operacao.equals("Excluir")){
+        idHospedagem = Integer.parseInt(request.getParameter("hospedagem"));
+        codigoItem = Integer.parseInt(request.getParameter("item"));
+        idFuncionario = Integer.parseInt(request.getParameter("funcionarioSolicitante"));
+        }
         try {
             Hospedagem hospedagem = null;
             if (idHospedagem != 0) {

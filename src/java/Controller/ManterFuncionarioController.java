@@ -44,7 +44,7 @@ public class ManterFuncionarioController extends HttpServlet {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
             request.setAttribute("categorias", CategoriaFuncionario.obterCategoriasFuncionario());
-            if(!operacao.equals("Incluir")){
+            if (!operacao.equals("Incluir")) {
                 int idFuncionario = Integer.parseInt(request.getParameter("id"));
                 Funcionario funcionario = Funcionario.obterFuncionario(idFuncionario);
                 request.setAttribute("funcionario", funcionario);
@@ -68,8 +68,10 @@ public class ManterFuncionarioController extends HttpServlet {
         String cpf = request.getParameter("cpf");
         Date dataNascimento = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataNascimento"));
         Date dataAdmissao = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataAdmissao"));
-        String idCategoria = request.getParameter("categoriaFuncionario");
-
+        String idCategoria = null;
+        if (!operacao.equals("Incluir")) {
+            idCategoria = request.getParameter("categoriaFuncionario");
+        }
         try {
             CategoriaFuncionario categoria = null;
             if (idCategoria != null) {
@@ -79,12 +81,12 @@ public class ManterFuncionarioController extends HttpServlet {
             Funcionario funcionario = new Funcionario(id, nome, telefone, email, rg, cpf, dataNascimento, dataAdmissao, categoria);
             if (operacao.equals("Incluir")) {
                 funcionario.gravar();
-            }else if(operacao.equals("Excluir")){
+            } else if (operacao.equals("Excluir")) {
                 funcionario.excluir();
-            }else if(operacao.equals("Editar")){
+            } else if (operacao.equals("Editar")) {
                 funcionario.alterar();
             }
-            
+
             RequestDispatcher view = request.getRequestDispatcher("PesquisaFuncionarioController");
             view.forward(request, response);
         } catch (IOException e) {
