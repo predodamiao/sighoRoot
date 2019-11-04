@@ -82,46 +82,46 @@ public class AcompanhanteDAO {
             fecharConexao(conexao, comando);
         }
     }
-    
-    public static void excluir(Acompanhante acompanhante) throws SQLException, ClassNotFoundException{
+
+    public static void excluir(Acompanhante acompanhante) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        try{
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "delete from acompanhante where id =" + acompanhante.getId();
             comando.execute(stringSQL);
-        }finally{
+        } finally {
             fecharConexao(conexao, comando);
         }
     }
-    
-    public static void alterar(Acompanhante acompanhante) throws SQLException, ClassNotFoundException{
-        
+
+    public static void alterar(Acompanhante acompanhante) throws SQLException, ClassNotFoundException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "update acompanhante set "
-                    +"nome = '" + acompanhante.getNome() +"', "
-                    +"dataNascimento = '" + new java.sql.Date(acompanhante.getDataNascimento().getTime()) +"', "
-                    +"ocupaCama = " + acompanhante.isOcupaCama() +", "
-                    +"idHospedagem = ";
-            if(acompanhante.getHospedagem() == null){
+                    + "nome = '" + acompanhante.getNome() + "', "
+                    + "dataNascimento = '" + new java.sql.Date(acompanhante.getDataNascimento().getTime()) + "', "
+                    + "ocupaCama = " + acompanhante.isOcupaCama() + ", "
+                    + "idHospedagem = ";
+            if (acompanhante.getHospedagem() == null) {
                 stringSQL = stringSQL + null;
-            }else{
+            } else {
                 stringSQL = stringSQL + acompanhante.getHospedagem().getId();
             }
-            
+
             stringSQL = stringSQL + " where id = " + acompanhante.getId();
             comando.execute(stringSQL);
-        }finally{
+        } finally {
             fecharConexao(conexao, comando);
         }
-        
+
     }
 }

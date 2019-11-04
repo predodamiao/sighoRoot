@@ -81,49 +81,49 @@ public class ItemFrigobarDAO {
             fecharConexao(conexao, comando);
         }
     }
-    
-    public static void excluir (ItemFrigobar item) throws ClassNotFoundException, SQLException{
-        
+
+    public static void excluir(ItemFrigobar item) throws ClassNotFoundException, SQLException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from itemFrigobar where id = "+item.getId();
+            stringSQL = "delete from itemFrigobar where id = " + item.getId();
             comando.execute(stringSQL);
-        }finally{
-            fecharConexao(conexao,comando);
+        } finally {
+            fecharConexao(conexao, comando);
         }
-        
+
     }
-    
-    public static void alterar(ItemFrigobar item) throws SQLException, ClassNotFoundException{
-        
+
+    public static void alterar(ItemFrigobar item) throws SQLException, ClassNotFoundException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "update itemfrigobar set "
-                    +"quantidade = "+ item.getQuantidade() +", "
-                    +"idItem = ";
-            if(item.getItem() == null){
+                    + "quantidade = " + item.getQuantidade() + ", "
+                    + "idItem = ";
+            if (item.getItem() == null) {
                 stringSQL = stringSQL + null;
-            }else{
+            } else {
                 stringSQL = stringSQL + item.getItem().getCodigo();
             }
-            
+
             stringSQL = stringSQL + " where id = " + item.getId();
-            System.out.println("Linha: "+ stringSQL);
+            System.out.println("Linha: " + stringSQL);
             comando.execute(stringSQL);
-        }finally{
+        } finally {
             fecharConexao(conexao, comando);
         }
-        
+
     }
 
 }

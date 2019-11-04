@@ -75,44 +75,44 @@ public class ItemConsumoDAO {
             fecharConexao(conexao, comando);
         }
     }
-    
-    public static void excluir (ItemConsumo item) throws ClassNotFoundException, SQLException{
-        
+
+    public static void excluir(ItemConsumo item) throws ClassNotFoundException, SQLException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from itemConsumo where id = "+item.getCodigo();
+            stringSQL = "delete from itemConsumo where id = " + item.getCodigo();
             comando.execute(stringSQL);
-        }finally{
-            fecharConexao(conexao,comando);
+        } finally {
+            fecharConexao(conexao, comando);
         }
-        
+
     }
-    
-    public static void alterar(ItemConsumo item) throws SQLException, ClassNotFoundException{
-        
+
+    public static void alterar(ItemConsumo item) throws SQLException, ClassNotFoundException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "update itemConsumo set "
-                    +"nome = '" + item.getNome() +"', "
-                    +"descricao = '" + item.getDescricao() +"', "
-                    +"precoVenda = " + item.getPrecoVenda();
+                    + "nome = '" + item.getNome() + "', "
+                    + "descricao = '" + item.getDescricao() + "', "
+                    + "precoVenda = " + item.getPrecoVenda();
 
             stringSQL = stringSQL + " where id = " + item.getCodigo();
             comando.execute(stringSQL);
-        }finally{
+        } finally {
             fecharConexao(conexao, comando);
         }
-        
+
     }
 
 }

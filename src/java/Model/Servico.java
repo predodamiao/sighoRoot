@@ -67,17 +67,17 @@ public class Servico {
     public void setCategoria(CategoriaServico categoria) {
         this.categoria = categoria;
     }
-    
+
     public void gravar() throws SQLException, ClassNotFoundException {
         ServicoDAO.gravar(this);
     }
-    
-    public void excluir() throws SQLException, ClassNotFoundException{
-       ServicoDAO.excluir(this);
+
+    public void excluir() throws SQLException, ClassNotFoundException {
+        ServicoDAO.excluir(this);
     }
-    
-    public void alterar() throws SQLException, ClassNotFoundException{
-       ServicoDAO.excluir(this);
+
+    public void alterar() throws SQLException, ClassNotFoundException {
+        ServicoDAO.excluir(this);
     }
 
 }

@@ -102,64 +102,64 @@ public class HospedagemDAO {
             fecharConexao(conexao, comando);
         }
     }
-    
-    public static void excluir (Hospedagem hospedagem) throws ClassNotFoundException, SQLException{
-        
+
+    public static void excluir(Hospedagem hospedagem) throws ClassNotFoundException, SQLException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from Hospedagem where id = "+hospedagem.getId();
+            stringSQL = "delete from Hospedagem where id = " + hospedagem.getId();
             comando.execute(stringSQL);
-        }finally{
-            fecharConexao(conexao,comando);
+        } finally {
+            fecharConexao(conexao, comando);
         }
-        
+
     }
-    
-    public static void alterar(Hospedagem hospedagem) throws SQLException, ClassNotFoundException{
-        
+
+    public static void alterar(Hospedagem hospedagem) throws SQLException, ClassNotFoundException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "update hospedagem set "
-                    +"dataChegada = '" + new java.sql.Date(hospedagem.getDataChegada().getTime()) +"', "
-                    +"dataSaida = '" + new java.sql.Date(hospedagem.getDataSaida().getTime()) +"', "
-                    +"dataEstimadaChegada = '" + new java.sql.Date(hospedagem.getDataEstimadaChegada().getTime()) +"', "
-                    +"dataEstimadaSaida = '" + new java.sql.Date(hospedagem.getDataEstimadaSaida().getTime()) +"', "
-                    +"hospedeResponsavel = ";
-                    if(hospedagem.getHospedeResponsavel() == null){
-                        stringSQL = stringSQL + null;
-                    }else{
-                        stringSQL = stringSQL + hospedagem.getHospedeResponsavel().getId();
-                    }
-                    stringSQL = stringSQL + ", tipoQuarto = ";
-                    if(hospedagem.getTipoQuarto() == null){
-                        stringSQL = stringSQL + null;
-                    }else{
-                        stringSQL = stringSQL + hospedagem.getTipoQuarto().getId();
-                    }
-                    stringSQL = stringSQL + ", quarto = ";
-                    if(hospedagem.getQuarto() == null){
-                        stringSQL = stringSQL + null;
-                    }else{
-                        stringSQL = stringSQL + hospedagem.getQuarto().getIdentificacao();
-                    }
+                    + "dataChegada = '" + new java.sql.Date(hospedagem.getDataChegada().getTime()) + "', "
+                    + "dataSaida = '" + new java.sql.Date(hospedagem.getDataSaida().getTime()) + "', "
+                    + "dataEstimadaChegada = '" + new java.sql.Date(hospedagem.getDataEstimadaChegada().getTime()) + "', "
+                    + "dataEstimadaSaida = '" + new java.sql.Date(hospedagem.getDataEstimadaSaida().getTime()) + "', "
+                    + "hospedeResponsavel = ";
+            if (hospedagem.getHospedeResponsavel() == null) {
+                stringSQL = stringSQL + null;
+            } else {
+                stringSQL = stringSQL + hospedagem.getHospedeResponsavel().getId();
+            }
+            stringSQL = stringSQL + ", tipoQuarto = ";
+            if (hospedagem.getTipoQuarto() == null) {
+                stringSQL = stringSQL + null;
+            } else {
+                stringSQL = stringSQL + hospedagem.getTipoQuarto().getId();
+            }
+            stringSQL = stringSQL + ", quarto = ";
+            if (hospedagem.getQuarto() == null) {
+                stringSQL = stringSQL + null;
+            } else {
+                stringSQL = stringSQL + hospedagem.getQuarto().getIdentificacao();
+            }
 
             stringSQL = stringSQL + " where id = " + hospedagem.getId();
             System.out.println("linha: " + stringSQL);
             comando.execute(stringSQL);
-        }finally{
+        } finally {
             fecharConexao(conexao, comando);
         }
-        
+
     }
 
 }

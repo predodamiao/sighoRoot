@@ -42,7 +42,7 @@ public class ManterHospedeController extends HttpServlet {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            if(!operacao.equals("Incluir")){
+            if (!operacao.equals("Incluir")) {
                 int idHospede = Integer.parseInt(request.getParameter("id"));
                 Hospede hospede = Hospede.obterHospede(idHospede);
                 request.setAttribute("hospede", hospede);
@@ -71,9 +71,9 @@ public class ManterHospedeController extends HttpServlet {
             Hospede hospede = new Hospede(id, nome, telefone, email, rg, cpf, dataNascimento, passaporte);
             if (operacao.equals("Incluir")) {
                 hospede.gravar();
-            }else if(operacao.equals("Excluir")){
+            } else if (operacao.equals("Excluir")) {
                 hospede.excluir();
-            }else if(operacao.equals("Editar")){
+            } else if (operacao.equals("Editar")) {
                 hospede.alterar();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaHospedeController");

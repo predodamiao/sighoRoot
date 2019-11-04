@@ -83,50 +83,50 @@ public class QuartoDAO {
             fecharConexao(conexao, comando);
         }
     }
-    
-    public static void excluir (Quarto quarto) throws ClassNotFoundException, SQLException{
-        
+
+    public static void excluir(Quarto quarto) throws ClassNotFoundException, SQLException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from Quarto where id = "+quarto.getIdentificacao();
+            stringSQL = "delete from Quarto where id = " + quarto.getIdentificacao();
             comando.execute(stringSQL);
-        }finally{
-            fecharConexao(conexao,comando);
+        } finally {
+            fecharConexao(conexao, comando);
         }
-        
+
     }
-    
-    public static void alterar(Quarto quarto) throws SQLException, ClassNotFoundException{
-        
+
+    public static void alterar(Quarto quarto) throws SQLException, ClassNotFoundException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-                
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "update quarto set "
-                    +"quantidadeCamasCasal = "+ quarto.getQuantidadeCamasCasal() +", "
-                    +"quantidadeCamasSolteiro = "+ quarto.getQuantidadeCamasSolteiro() +", "
-                    +"ocupado = "+ quarto.isOcupado() +", "
-                    +"tipoQuarto = ";
-            if(quarto.getTipo() == null){
+                    + "quantidadeCamasCasal = " + quarto.getQuantidadeCamasCasal() + ", "
+                    + "quantidadeCamasSolteiro = " + quarto.getQuantidadeCamasSolteiro() + ", "
+                    + "ocupado = " + quarto.isOcupado() + ", "
+                    + "tipoQuarto = ";
+            if (quarto.getTipo() == null) {
                 stringSQL = stringSQL + null;
-            }else{
+            } else {
                 stringSQL = stringSQL + quarto.getTipo().getId();
             }
-            
+
             stringSQL = stringSQL + " where identificacao = " + quarto.getIdentificacao();
-            System.out.println("Linha: "+ stringSQL);
+            System.out.println("Linha: " + stringSQL);
             comando.execute(stringSQL);
-        }finally{
+        } finally {
             fecharConexao(conexao, comando);
         }
-        
+
     }
 }

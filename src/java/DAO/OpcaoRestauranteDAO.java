@@ -44,8 +44,8 @@ public class OpcaoRestauranteDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            System.out.println("select * from opcaoRestaurante where id ='" + codOpcao +"'");
-            ResultSet rs = comando.executeQuery("select * from opcaoRestaurante where id ='" + codOpcao +"'");
+            System.out.println("select * from opcaoRestaurante where id ='" + codOpcao + "'");
+            ResultSet rs = comando.executeQuery("select * from opcaoRestaurante where id ='" + codOpcao + "'");
             rs.first();
             item = instanciarOpcaoRestaurante(rs);
         } finally {
@@ -83,47 +83,47 @@ public class OpcaoRestauranteDAO {
             fecharConexao(conexao, comando);
         }
     }
-    
-    public static void excluir (OpcaoRestaurante opcao) throws ClassNotFoundException, SQLException{
-        
+
+    public static void excluir(OpcaoRestaurante opcao) throws ClassNotFoundException, SQLException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from opcaoRestaurante where id = "+opcao.getCodigo();
+            stringSQL = "delete from opcaoRestaurante where id = " + opcao.getCodigo();
             comando.execute(stringSQL);
-        }finally{
-            fecharConexao(conexao,comando);
+        } finally {
+            fecharConexao(conexao, comando);
         }
-        
+
     }
 
-    public static void alterar(OpcaoRestaurante opcao) throws SQLException, ClassNotFoundException{
-        
+    public static void alterar(OpcaoRestaurante opcao) throws SQLException, ClassNotFoundException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "update opcaoRestaurante set "
-                    +"nome = '" + opcao.getNome() +"', "
-                    +"descricao = '" + opcao.getDescricao() +"', "
-                    +"preco = " + opcao.getPreco()+", "
-                    +"categoria = '" + opcao.getCategoria().toString() +"', "
-                    +"acrescimo = " + opcao.getAcrescimo()+", "
-                    +"tempoPreparo = " + opcao.getTempoPreparo();
-            
+                    + "nome = '" + opcao.getNome() + "', "
+                    + "descricao = '" + opcao.getDescricao() + "', "
+                    + "preco = " + opcao.getPreco() + ", "
+                    + "categoria = '" + opcao.getCategoria().toString() + "', "
+                    + "acrescimo = " + opcao.getAcrescimo() + ", "
+                    + "tempoPreparo = " + opcao.getTempoPreparo();
+
             stringSQL = stringSQL + " where id = " + opcao.getCodigo();
             comando.execute(stringSQL);
-        }finally{
+        } finally {
             fecharConexao(conexao, comando);
         }
-        
+
     }
 
 }

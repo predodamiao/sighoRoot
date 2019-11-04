@@ -120,12 +120,12 @@ public class Consumo {
     public void gravar() throws SQLException, ClassNotFoundException {
         ConsumoDAO.gravar(this);
     }
-    
-    public void excluir() throws SQLException, ClassNotFoundException{
+
+    public void excluir() throws SQLException, ClassNotFoundException {
         ConsumoDAO.excluir(this);
     }
 
-    public void alterar() throws SQLException, ClassNotFoundException{
+    public void alterar() throws SQLException, ClassNotFoundException {
         ConsumoDAO.alterar(this);
     }
 }

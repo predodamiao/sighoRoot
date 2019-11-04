@@ -52,13 +52,13 @@ public class ManterSolicitacaoController extends HttpServlet {
             request.setAttribute("servicos", Servico.obterServicos());
             request.setAttribute("opcoes", OpcaoRestaurante.obterOpcoesRestaurante());
             request.setAttribute("status", StatusSolicitacao.obterStatusSolicitacoes());
-            
-            if(!operacao.equals("Incluir")){
+
+            if (!operacao.equals("Incluir")) {
                 int idSolicitacao = Integer.parseInt(request.getParameter("id"));
                 Solicitacao solicitacao = Solicitacao.obterSolicitacao(idSolicitacao);
                 request.setAttribute("solicitacao", solicitacao);
             }
-            
+
             RequestDispatcher view = request.getRequestDispatcher("/manterSolicitacao.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
@@ -79,7 +79,6 @@ public class ManterSolicitacaoController extends HttpServlet {
         int codigoServico = Integer.parseInt(request.getParameter("servico"));
         int codigoOpcao = Integer.parseInt(request.getParameter("opcao"));
 
-        
         try {
             Hospedagem hospedagem = null;
             if (idHospedagem != 0) {
@@ -98,15 +97,15 @@ public class ManterSolicitacaoController extends HttpServlet {
                 servico = Servico.obterServico(codigoServico);
             }
             OpcaoRestaurante opcao = null;
-            if (codigoOpcao!=0) {
+            if (codigoOpcao != 0) {
                 opcao = OpcaoRestaurante.obterOpcaoRestaurante(codigoOpcao);
             }
             Solicitacao solicitacao = new Solicitacao(id, data, quantidade, status, funcionario, hospedagem, servico, opcao);
             if (operacao.equals("Incluir")) {
                 solicitacao.gravar();
-            }else if(operacao.equals("Excluir")){
+            } else if (operacao.equals("Excluir")) {
                 solicitacao.excluir();
-            }else if(operacao.equals("Editar")){
+            } else if (operacao.equals("Editar")) {
                 solicitacao.alterar();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaSolicitacaoController");

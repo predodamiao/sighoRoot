@@ -83,52 +83,51 @@ public class FuncionarioDAO {
             fecharConexao(conexao, comando);
         }
     }
-    
-    public static void excluir(Funcionario funcionario) throws SQLException, ClassNotFoundException{
+
+    public static void excluir(Funcionario funcionario) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        try{
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "delete from funcionario where id = " + funcionario.getId();
             comando.execute(stringSQL);
-        }finally{
+        } finally {
             fecharConexao(conexao, comando);
         }
     }
 
-    public static void alterar(Funcionario funcionario) throws SQLException, ClassNotFoundException{
-        
+    public static void alterar(Funcionario funcionario) throws SQLException, ClassNotFoundException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "update funcionario set "
-                    +"nome = '" + funcionario.getNome() +"', "
-                    +"telefone = '" + funcionario.getTelefone() +"', "
-                    +"email = '" + funcionario.getEmail() +"', "
-                    +"rg = '" + funcionario.getRg() +"', "
-                    +"cpf = " + funcionario.getCpf() +", "
-                    +"dataNascimento = '" + new java.sql.Date(funcionario.getDataNascimento().getTime()) +"', "
-                    +"dataAdmissao = '" + new java.sql.Date(funcionario.getDataAdmissao().getTime()) +"', "
-                    +"categoria = '";
-                    if(funcionario.getCategoria() == null){
-                        stringSQL = stringSQL + null;
-                    }else{
-                        stringSQL = stringSQL + funcionario.getCategoria().toString() + "'";
-                    }
-                    
-                    
+                    + "nome = '" + funcionario.getNome() + "', "
+                    + "telefone = '" + funcionario.getTelefone() + "', "
+                    + "email = '" + funcionario.getEmail() + "', "
+                    + "rg = '" + funcionario.getRg() + "', "
+                    + "cpf = " + funcionario.getCpf() + ", "
+                    + "dataNascimento = '" + new java.sql.Date(funcionario.getDataNascimento().getTime()) + "', "
+                    + "dataAdmissao = '" + new java.sql.Date(funcionario.getDataAdmissao().getTime()) + "', "
+                    + "categoria = '";
+            if (funcionario.getCategoria() == null) {
+                stringSQL = stringSQL + null;
+            } else {
+                stringSQL = stringSQL + funcionario.getCategoria().toString() + "'";
+            }
+
             stringSQL = stringSQL + " where id = " + funcionario.getId();
             comando.execute(stringSQL);
-        }finally{
+        } finally {
             fecharConexao(conexao, comando);
         }
-        
+
     }
-    
+
 }

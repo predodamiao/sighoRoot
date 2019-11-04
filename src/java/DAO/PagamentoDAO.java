@@ -91,23 +91,24 @@ public class PagamentoDAO {
             fecharConexao(conexao, comando);
         }
     }
-    
-    public static void excluir (Pagamento pagamento) throws ClassNotFoundException, SQLException{
-        
+
+    public static void excluir(Pagamento pagamento) throws ClassNotFoundException, SQLException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from Pagamento where id = "+pagamento.getId();
+            stringSQL = "delete from Pagamento where id = " + pagamento.getId();
             comando.execute(stringSQL);
-        }finally{
-            fecharConexao(conexao,comando);
+        } finally {
+            fecharConexao(conexao, comando);
         }
-        
+
     }
+
     /*
     
     private float valor;
@@ -118,36 +119,35 @@ public class PagamentoDAO {
     private Hospedagem hospedagem;
     private int idHospedagem;
     
-    */
-    public static void alterar(Pagamento pagamento) throws SQLException, ClassNotFoundException{
-        
+     */
+    public static void alterar(Pagamento pagamento) throws SQLException, ClassNotFoundException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "update pagamento set "
-                    +"valor = " + pagamento.getValor() +", "
-                    +"data = '" +  new java.sql.Date(pagamento.getData().getTime()) +"', "
-                    +"parcelas = " + pagamento.getQuantidadeParcelas() +", "
-                    +"tipo = '" + pagamento.getTipo().toString()+"', "
-                    +"momento = '" + pagamento.getMomento().toString() +"', "
-                    +"idHospedagem = ";
-                    if(pagamento.getHospedagem() == null){
-                        stringSQL = stringSQL + null;
-                    }else{
-                        stringSQL = stringSQL + pagamento.getHospedagem().getId();
-                    }       
-                    
+                    + "valor = " + pagamento.getValor() + ", "
+                    + "data = '" + new java.sql.Date(pagamento.getData().getTime()) + "', "
+                    + "parcelas = " + pagamento.getQuantidadeParcelas() + ", "
+                    + "tipo = '" + pagamento.getTipo().toString() + "', "
+                    + "momento = '" + pagamento.getMomento().toString() + "', "
+                    + "idHospedagem = ";
+            if (pagamento.getHospedagem() == null) {
+                stringSQL = stringSQL + null;
+            } else {
+                stringSQL = stringSQL + pagamento.getHospedagem().getId();
+            }
+
             stringSQL = stringSQL + " where id = " + pagamento.getId();
             comando.execute(stringSQL);
-        }finally{
+        } finally {
             fecharConexao(conexao, comando);
         }
-        
-    }
 
+    }
 
 }

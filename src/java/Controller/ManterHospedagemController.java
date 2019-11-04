@@ -48,7 +48,7 @@ public class ManterHospedagemController extends HttpServlet {
             request.setAttribute("hospedes", Hospede.obterHospedes());
             request.setAttribute("quartos", Quarto.obterQuartos());
             request.setAttribute("tiposQuarto", TipoQuarto.obterTiposQuarto());
-            if(!operacao.equals("Incluir")){
+            if (!operacao.equals("Incluir")) {
                 int idHospedagem = Integer.parseInt(request.getParameter("id"));
                 Hospedagem hospedagem = Hospedagem.obterHospedagem(idHospedagem);
                 request.setAttribute("hospedagem", hospedagem);
@@ -92,9 +92,9 @@ public class ManterHospedagemController extends HttpServlet {
             Hospedagem hospedagem = new Hospedagem(id, dataChegada, dataSaida, dataEstimadaChegada, dataEstimadaSaida, checked, tipoQuarto, quarto, hospede);
             if (operacao.equals("Incluir")) {
                 hospedagem.gravar();
-            }else if(operacao.equals("Excluir")){
+            } else if (operacao.equals("Excluir")) {
                 hospedagem.excluir();
-            }else if(operacao.equals("Editar")){
+            } else if (operacao.equals("Editar")) {
                 hospedagem.alterar();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaHospedagemController");

@@ -41,13 +41,13 @@ public class ManterOpcaoRestauranteController extends HttpServlet {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            
-            if(!operacao.equals("Incluir")){
+
+            if (!operacao.equals("Incluir")) {
                 int idOpcaoRestaurante = Integer.parseInt(request.getParameter("id"));
                 OpcaoRestaurante opcaoRestaurante = OpcaoRestaurante.obterOpcaoRestaurante(idOpcaoRestaurante);
                 request.setAttribute("opcaoRestaurante", opcaoRestaurante);
             }
-            
+
             RequestDispatcher view = request.getRequestDispatcher("/manterOpcaoRestaurante.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
@@ -75,9 +75,9 @@ public class ManterOpcaoRestauranteController extends HttpServlet {
             OpcaoRestaurante opcao = new OpcaoRestaurante(codigo, nome, descricao, preco, categoria, acrescimo, tempoPreparo);
             if (operacao.equals("Incluir")) {
                 opcao.gravar();
-            }else if(operacao.equals("Excluir")){
+            } else if (operacao.equals("Excluir")) {
                 opcao.excluir();
-            }else if(operacao.equals("Editar")){
+            } else if (operacao.equals("Editar")) {
                 opcao.alterar();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaOpcaoRestauranteController");

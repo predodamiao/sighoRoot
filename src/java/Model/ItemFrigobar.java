@@ -64,12 +64,12 @@ public class ItemFrigobar {
     public void gravar() throws SQLException, ClassNotFoundException {
         ItemFrigobarDAO.gravar(this);
     }
-    
-    public void excluir() throws SQLException, ClassNotFoundException{
-       ItemFrigobarDAO.excluir(this);
+
+    public void excluir() throws SQLException, ClassNotFoundException {
+        ItemFrigobarDAO.excluir(this);
     }
-    
-    public void alterar() throws SQLException, ClassNotFoundException{
+
+    public void alterar() throws SQLException, ClassNotFoundException {
         System.out.println("dentro da classe");
         ItemFrigobarDAO.alterar(this);
     }

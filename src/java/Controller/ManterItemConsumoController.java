@@ -40,7 +40,7 @@ public class ManterItemConsumoController extends HttpServlet {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            if(!operacao.equals("Incluir")){
+            if (!operacao.equals("Incluir")) {
                 int idItemConsumo = Integer.parseInt((request.getParameter("id")));
                 ItemConsumo itemConsumo = ItemConsumo.obterItemConsumo(idItemConsumo);
                 request.setAttribute("itemConsumo", itemConsumo);
@@ -65,12 +65,12 @@ public class ManterItemConsumoController extends HttpServlet {
             ItemConsumo item = new ItemConsumo(codigo, nome, descricao, preco);
             if (operacao.equals("Incluir")) {
                 item.gravar();
-            }else if(operacao.equals("Excluir")){
+            } else if (operacao.equals("Excluir")) {
                 item.excluir();
-            }else if(operacao.equals("Editar")){
+            } else if (operacao.equals("Editar")) {
                 item.alterar();
             }
-            
+
             RequestDispatcher view = request.getRequestDispatcher("PesquisaItemConsumoController");
             view.forward(request, response);
         } catch (IOException e) {

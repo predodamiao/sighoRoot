@@ -6,7 +6,6 @@ import java.util.List;
 
 public class ItemConsumo {
 
-    
     private int codigo;
     private String nome;
     private String descricao;
@@ -62,13 +61,13 @@ public class ItemConsumo {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
-    public void excluir() throws SQLException, ClassNotFoundException{
-       ItemConsumoDAO.excluir(this);
+
+    public void excluir() throws SQLException, ClassNotFoundException {
+        ItemConsumoDAO.excluir(this);
     }
-    
-    public void alterar() throws SQLException, ClassNotFoundException{
-       ItemConsumoDAO.alterar(this);
+
+    public void alterar() throws SQLException, ClassNotFoundException {
+        ItemConsumoDAO.alterar(this);
     }
 
 }

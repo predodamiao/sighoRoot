@@ -45,7 +45,7 @@ public class ServicoDAO {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             System.out.println("select * from servico where id = " + codServico);
-            ResultSet rs = comando.executeQuery("select * from servico where id = '" + codServico+"'");
+            ResultSet rs = comando.executeQuery("select * from servico where id = '" + codServico + "'");
             rs.first();
             servico = instanciarServico(rs);
         } finally {
@@ -79,45 +79,45 @@ public class ServicoDAO {
             fecharConexao(conexao, comando);
         }
     }
-    
-    public static void excluir (Servico servico) throws ClassNotFoundException, SQLException{
-        
+
+    public static void excluir(Servico servico) throws ClassNotFoundException, SQLException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from Servico where id = "+servico.getCodigo();
+            stringSQL = "delete from Servico where id = " + servico.getCodigo();
             comando.execute(stringSQL);
-        }finally{
-            fecharConexao(conexao,comando);
+        } finally {
+            fecharConexao(conexao, comando);
         }
-        
+
     }
-    
-    public static void alterar(Servico servico) throws SQLException, ClassNotFoundException{
-        
+
+    public static void alterar(Servico servico) throws SQLException, ClassNotFoundException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "update servico set "
-                    +"nome = '" + servico.getNome() +"', "
-                    +"descricao = '" + servico.getDescricao() +"', "
-                    +"preco = " + servico.getPreco()
-                    +"categoria = '" + servico.getCategoria().toString() +"'";
-            
+                    + "nome = '" + servico.getNome() + "', "
+                    + "descricao = '" + servico.getDescricao() + "', "
+                    + "preco = " + servico.getPreco()
+                    + "categoria = '" + servico.getCategoria().toString() + "'";
+
             stringSQL = stringSQL + " where id = " + servico.getCodigo();
             comando.execute(stringSQL);
-        }finally{
+        } finally {
             fecharConexao(conexao, comando);
         }
-        
+
     }
 
 }

@@ -84,50 +84,49 @@ public class HospedeDAO {
             fecharConexao(conexao, comando);
         }
     }
-    
-    public static void excluir (Hospede hospede) throws ClassNotFoundException, SQLException{
-        
+
+    public static void excluir(Hospede hospede) throws ClassNotFoundException, SQLException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from Hospede where id = "+hospede.getId();
+            stringSQL = "delete from Hospede where id = " + hospede.getId();
             comando.execute(stringSQL);
-        }finally{
-            fecharConexao(conexao,comando);
+        } finally {
+            fecharConexao(conexao, comando);
         }
-        
+
     }
-    
-    public static void alterar(Hospede hospede) throws SQLException, ClassNotFoundException{
-        
+
+    public static void alterar(Hospede hospede) throws SQLException, ClassNotFoundException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "update hospede set "
-                    +"nome = '" + hospede.getNome() +"', "
-                    +"telefone = '" + hospede.getTelefone() +"', "
-                    +"email = '" + hospede.getEmail() +"', "
-                    +"rg = '" + hospede.getRg() +"', "
-                    +"cpf = " + hospede.getCpf() +", "
-                    +"dataNascimento = '" + new java.sql.Date(hospede.getDataNascimento().getTime()) +"', "
-                    +"passaporte = '" + hospede.getPassaporte()+ "'";
-                    
-                    
+                    + "nome = '" + hospede.getNome() + "', "
+                    + "telefone = '" + hospede.getTelefone() + "', "
+                    + "email = '" + hospede.getEmail() + "', "
+                    + "rg = '" + hospede.getRg() + "', "
+                    + "cpf = " + hospede.getCpf() + ", "
+                    + "dataNascimento = '" + new java.sql.Date(hospede.getDataNascimento().getTime()) + "', "
+                    + "passaporte = '" + hospede.getPassaporte() + "'";
+
             stringSQL = stringSQL + " where id = " + hospede.getId();
             System.out.println("linha: " + stringSQL);
             comando.execute(stringSQL);
-        }finally{
+        } finally {
             fecharConexao(conexao, comando);
         }
-        
+
     }
 
 }

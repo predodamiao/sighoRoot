@@ -249,7 +249,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="nome">Nome</label>
-                                                         <input class="form-control" type="text" name="nome" id="nome" value="${hospede.nome}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
+                                                        <input class="form-control" type="text" name="nome" id="nome" value="${hospede.nome}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                                                     </div>
                                                 </div>
                                             </div>
@@ -298,13 +298,13 @@
                                                     <div class="form-group">
                                                         <label for="passaporte">Passaporte</label>
                                                         <input class="form-control" type="text" name="passaporte" id="passaporte" value="${hospede.passaporte}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                </div>
+                                    </div>
 
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-fill btn-primary">${operacao}</button>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-fill btn-primary">${operacao}</button>
                                 </div>
                                 </form>
                             </div>

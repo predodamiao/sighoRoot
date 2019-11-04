@@ -85,12 +85,12 @@ public class Acompanhante {
     public void gravar() throws SQLException, ClassNotFoundException {
         AcompanhanteDAO.gravar(this);
     }
-    
-    public void excluir() throws SQLException, ClassNotFoundException{
+
+    public void excluir() throws SQLException, ClassNotFoundException {
         AcompanhanteDAO.excluir(this);
     }
-   
-    public void alterar() throws SQLException, ClassNotFoundException{
+
+    public void alterar() throws SQLException, ClassNotFoundException {
         AcompanhanteDAO.alterar(this);
     }
 

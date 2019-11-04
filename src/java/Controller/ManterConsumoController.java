@@ -48,7 +48,7 @@ public class ManterConsumoController extends HttpServlet {
             request.setAttribute("hospedagens", Hospedagem.obterHospedagens());
             request.setAttribute("itens", ItemConsumo.obterItensConsumo());
             request.setAttribute("funcionarioSolicitante", Funcionario.obterFuncionarios());
-            if(!operacao.equals("Incluir")){
+            if (!operacao.equals("Incluir")) {
                 int idConsumo = Integer.parseInt(request.getParameter("id"));
                 Consumo consumo = Consumo.obterConsumo(idConsumo);
                 request.setAttribute("consumo", consumo);
@@ -67,15 +67,15 @@ public class ManterConsumoController extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         Date data = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data"));
         int quantidade = Integer.parseInt(request.getParameter("quantidade"));
-        
+
         int idHospedagem = 0;
         int codigoItem = 0;
         int idFuncionario = 0;
-        
-        if(!operacao.equals("Excluir")){
-        idHospedagem = Integer.parseInt(request.getParameter("hospedagem"));
-        codigoItem = Integer.parseInt(request.getParameter("item"));
-        idFuncionario = Integer.parseInt(request.getParameter("funcionarioSolicitante"));
+
+        if (!operacao.equals("Excluir")) {
+            idHospedagem = Integer.parseInt(request.getParameter("hospedagem"));
+            codigoItem = Integer.parseInt(request.getParameter("item"));
+            idFuncionario = Integer.parseInt(request.getParameter("funcionarioSolicitante"));
         }
         try {
             Hospedagem hospedagem = null;
@@ -93,9 +93,9 @@ public class ManterConsumoController extends HttpServlet {
             Consumo consumo = new Consumo(id, data, quantidade, funcionario, hospedagem, item);
             if (operacao.equals("Incluir")) {
                 consumo.gravar();
-            }else if(operacao.equals("Excluir")){
+            } else if (operacao.equals("Excluir")) {
                 consumo.excluir();
-            }else if(operacao.equals("Editar")){
+            } else if (operacao.equals("Editar")) {
                 consumo.alterar();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaConsumoController");

@@ -44,7 +44,7 @@ public class ManterAcompanhanteController extends HttpServlet {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
             request.setAttribute("hospedagens", Hospedagem.obterHospedagens());
-            if(!operacao.equals("Incluir")){
+            if (!operacao.equals("Incluir")) {
                 int idAcompanhante = Integer.parseInt(request.getParameter("id"));
                 Acompanhante acompanhante = Acompanhante.obterAcompanhante(idAcompanhante);
                 request.setAttribute("acompanhante", acompanhante);
@@ -65,7 +65,7 @@ public class ManterAcompanhanteController extends HttpServlet {
         Date dataNascimento = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataNascimento"));
         Boolean ocupaCama = request.getParameter("ocupaCama") != null;
         int idHospedagem = 0;
-        if(!operacao.equals("Excluir")){
+        if (!operacao.equals("Excluir")) {
             idHospedagem = Integer.parseInt(request.getParameter("hospedagem"));
         }
         try {
@@ -76,9 +76,9 @@ public class ManterAcompanhanteController extends HttpServlet {
             Acompanhante acompanhante = new Acompanhante(id, nome, dataNascimento, ocupaCama, hospedagem);
             if (operacao.equals("Incluir")) {
                 acompanhante.gravar();
-            }else if(operacao.equals("Excluir")){
+            } else if (operacao.equals("Excluir")) {
                 acompanhante.excluir();
-            }else if(operacao.equals("Editar")){
+            } else if (operacao.equals("Editar")) {
                 acompanhante.alterar();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaAcompanhanteController");

@@ -42,13 +42,13 @@ public class ManterServicoController extends HttpServlet {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
             request.setAttribute("categorias", CategoriaServico.obterCategoriasServico());
-            
-            if(!operacao.equals("Incluir")){
+
+            if (!operacao.equals("Incluir")) {
                 int idServico = Integer.parseInt(request.getParameter("id"));
                 Servico servico = Servico.obterServico(idServico);
                 request.setAttribute("servico", servico);
             }
-            
+
             RequestDispatcher view = request.getRequestDispatcher("/manterServico.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
@@ -74,9 +74,9 @@ public class ManterServicoController extends HttpServlet {
             Servico servico = new Servico(codigo, nome, descricao, preco, categoria);
             if (operacao.equals("Incluir")) {
                 servico.gravar();
-            }else if(operacao.equals("Excluir")){
+            } else if (operacao.equals("Excluir")) {
                 servico.excluir();
-            }else if(operacao.equals("Editar")){
+            } else if (operacao.equals("Editar")) {
                 servico.alterar();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaServicoController");

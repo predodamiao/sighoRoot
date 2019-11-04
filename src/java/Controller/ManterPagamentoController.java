@@ -48,13 +48,13 @@ public class ManterPagamentoController extends HttpServlet {
             request.setAttribute("hospedagens", Hospedagem.obterHospedagens());
             request.setAttribute("momentos", MomentoPagamento.obterMomentosPagamento());
             request.setAttribute("tipos", TipoPagamento.obterTiposPagamento());
-            
-            if(!operacao.equals("Incluir")){
+
+            if (!operacao.equals("Incluir")) {
                 int idPagamento = Integer.parseInt(request.getParameter("id"));
                 Pagamento pagamento = Pagamento.obterPagamento(idPagamento);
                 request.setAttribute("pagamento", pagamento);
             }
-            
+
             RequestDispatcher view = request.getRequestDispatcher("/manterPagamento.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
@@ -90,9 +90,9 @@ public class ManterPagamentoController extends HttpServlet {
             Pagamento pagamento = new Pagamento(id, valor, data, parcelas, tipo, momento, hospedagem);
             if (operacao.equals("Incluir")) {
                 pagamento.gravar();
-            }else if(operacao.equals("Excluir")){
+            } else if (operacao.equals("Excluir")) {
                 pagamento.excluir();
-            }else if(operacao.equals("Editar")){
+            } else if (operacao.equals("Editar")) {
                 pagamento.alterar();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaPagamentoController");

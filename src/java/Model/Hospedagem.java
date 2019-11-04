@@ -150,13 +150,13 @@ public class Hospedagem {
     public void gravar() throws SQLException, ClassNotFoundException {
         HospedagemDAO.gravar(this);
     }
-    
-    public void excluir() throws SQLException, ClassNotFoundException{
+
+    public void excluir() throws SQLException, ClassNotFoundException {
         HospedagemDAO.excluir(this);
     }
-    
-    public void alterar() throws SQLException, ClassNotFoundException{
-       HospedagemDAO.alterar(this);
+
+    public void alterar() throws SQLException, ClassNotFoundException {
+        HospedagemDAO.alterar(this);
     }
 
 }

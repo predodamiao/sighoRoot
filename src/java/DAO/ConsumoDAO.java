@@ -97,57 +97,57 @@ public class ConsumoDAO {
             fecharConexao(conexao, comando);
         }
     }
-    
-    public static void excluir(Consumo consumo) throws SQLException, ClassNotFoundException{
+
+    public static void excluir(Consumo consumo) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        try{
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "delete from consumo where id = " + consumo.getId();
             comando.execute(stringSQL);
-        }finally{
+        } finally {
             fecharConexao(conexao, comando);
         }
     }
-    
-    public static void alterar(Consumo consumo) throws SQLException, ClassNotFoundException{
-        
+
+    public static void alterar(Consumo consumo) throws SQLException, ClassNotFoundException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "update consumo set "
-                    +"data = '" + new java.sql.Date(consumo.getData().getTime()) +"', "
-                    +"quantidade = " + consumo.getQuantidade() +", "
-                    +"idHospedagem = ";
-                    if(consumo.getHospedagem() == null){
-                        stringSQL = stringSQL + null;
-                    }else{
-                        stringSQL = stringSQL + consumo.getHospedagem().getId();
-                    }
-                    stringSQL = stringSQL + ", idFuncionario = ";
-                    if(consumo.getFuncionarioResponsavel() == null){
-                        stringSQL = stringSQL + null;
-                    }else{
-                        stringSQL = stringSQL + consumo.getFuncionarioResponsavel().getId();
-                    }
-                    stringSQL = stringSQL + ", idItem = ";
-                    if(consumo.getItemConsumido() == null){
-                        stringSQL = stringSQL + null;
-                    }else{
-                        stringSQL = stringSQL + consumo.getItemConsumido().getCodigo();
-                    }
-                    
+                    + "data = '" + new java.sql.Date(consumo.getData().getTime()) + "', "
+                    + "quantidade = " + consumo.getQuantidade() + ", "
+                    + "idHospedagem = ";
+            if (consumo.getHospedagem() == null) {
+                stringSQL = stringSQL + null;
+            } else {
+                stringSQL = stringSQL + consumo.getHospedagem().getId();
+            }
+            stringSQL = stringSQL + ", idFuncionario = ";
+            if (consumo.getFuncionarioResponsavel() == null) {
+                stringSQL = stringSQL + null;
+            } else {
+                stringSQL = stringSQL + consumo.getFuncionarioResponsavel().getId();
+            }
+            stringSQL = stringSQL + ", idItem = ";
+            if (consumo.getItemConsumido() == null) {
+                stringSQL = stringSQL + null;
+            } else {
+                stringSQL = stringSQL + consumo.getItemConsumido().getCodigo();
+            }
+
             stringSQL = stringSQL + " where id = " + consumo.getId();
             comando.execute(stringSQL);
-        }finally{
+        } finally {
             fecharConexao(conexao, comando);
         }
-        
+
     }
 }

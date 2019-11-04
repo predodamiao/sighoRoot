@@ -105,13 +105,13 @@ public class Pagamento {
     public void gravar() throws SQLException, ClassNotFoundException {
         PagamentoDAO.gravar(this);
     }
-    
-    public void excluir() throws SQLException, ClassNotFoundException{
-       PagamentoDAO.excluir(this);
+
+    public void excluir() throws SQLException, ClassNotFoundException {
+        PagamentoDAO.excluir(this);
     }
-    
-    public void alterar() throws SQLException, ClassNotFoundException{
-       PagamentoDAO.alterar(this);
+
+    public void alterar() throws SQLException, ClassNotFoundException {
+        PagamentoDAO.alterar(this);
     }
 
 }

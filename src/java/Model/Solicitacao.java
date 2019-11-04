@@ -94,10 +94,10 @@ public class Solicitacao {
     }
 
     public Servico getServico() throws ClassNotFoundException, SQLException {
-        if ((this.idServico!=0) && (this.servico == null)) {
+        if ((this.idServico != 0) && (this.servico == null)) {
             this.servico = Servico.obterServico(this.idServico);
         }
-        
+
         return servico;
     }
 
@@ -106,10 +106,10 @@ public class Solicitacao {
     }
 
     public OpcaoRestaurante getOpcao() throws ClassNotFoundException, SQLException {
-        if (!(this.idOpcao==0) && (this.opcao == null)) {
+        if (!(this.idOpcao == 0) && (this.opcao == null)) {
             this.opcao = OpcaoRestaurante.obterOpcaoRestaurante(this.idOpcao);
         }
-        
+
         return opcao;
     }
 
@@ -148,17 +148,17 @@ public class Solicitacao {
     public void setIdOpcao(int idOpcao) {
         this.idOpcao = idOpcao;
     }
-    
+
     public void gravar() throws SQLException, ClassNotFoundException {
         SolicitacaoDAO.gravar(this);
     }
-    
-    public void excluir() throws SQLException, ClassNotFoundException{
-       SolicitacaoDAO.excluir(this);
+
+    public void excluir() throws SQLException, ClassNotFoundException {
+        SolicitacaoDAO.excluir(this);
     }
-    
-    public void alterar() throws SQLException, ClassNotFoundException{
-       SolicitacaoDAO.alterar(this);
+
+    public void alterar() throws SQLException, ClassNotFoundException {
+        SolicitacaoDAO.alterar(this);
     }
 
 }

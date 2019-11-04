@@ -84,13 +84,13 @@ public class Quarto {
     public void gravar() throws SQLException, ClassNotFoundException {
         QuartoDAO.gravar(this);
     }
-    
-    public void excluir() throws SQLException, ClassNotFoundException{
-       QuartoDAO.excluir(this);
+
+    public void excluir() throws SQLException, ClassNotFoundException {
+        QuartoDAO.excluir(this);
     }
 
-    public void alterar() throws SQLException, ClassNotFoundException{
-       QuartoDAO.alterar(this);
+    public void alterar() throws SQLException, ClassNotFoundException {
+        QuartoDAO.alterar(this);
     }
-    
+
 }

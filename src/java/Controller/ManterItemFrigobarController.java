@@ -42,7 +42,7 @@ public class ManterItemFrigobarController extends HttpServlet {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
             request.setAttribute("itens", ItemConsumo.obterItensConsumo());
-            if(!operacao.equals("Incluir")){
+            if (!operacao.equals("Incluir")) {
                 int idItemFrigobar = Integer.parseInt(request.getParameter("id"));
                 ItemFrigobar itemFrigobar = ItemFrigobar.obterItemFrigobar(idItemFrigobar);
                 request.setAttribute("itemFrigobar", itemFrigobar);
@@ -68,14 +68,14 @@ public class ManterItemFrigobarController extends HttpServlet {
                 item = ItemConsumo.obterItemConsumo(idItem);
             }
             ItemFrigobar itemFrigobar = new ItemFrigobar(id, quantidade, item);
-            
-            System.out.println("Operação: "+ operacao);
-            
+
+            System.out.println("Operação: " + operacao);
+
             if (operacao.equals("Incluir")) {
                 itemFrigobar.gravar();
-            }else if(operacao.equals("Excluir")){
+            } else if (operacao.equals("Excluir")) {
                 itemFrigobar.excluir();
-            }else if(operacao.equals("Editar")){
+            } else if (operacao.equals("Editar")) {
                 itemFrigobar.alterar();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaItemFrigobarController");

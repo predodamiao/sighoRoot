@@ -42,13 +42,13 @@ public class ManterQuartoController extends HttpServlet {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
             request.setAttribute("tiposQuarto", TipoQuarto.obterTiposQuarto());
-            
-            if(!operacao.equals("Incluir")){
+
+            if (!operacao.equals("Incluir")) {
                 int idQuarto = Integer.parseInt(request.getParameter("id"));
                 Quarto quarto = Quarto.obterQuarto(idQuarto);
                 request.setAttribute("quarto", quarto);
             }
-            
+
             RequestDispatcher view = request.getRequestDispatcher("/manterQuarto.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
@@ -74,9 +74,9 @@ public class ManterQuartoController extends HttpServlet {
             Quarto quarto = new Quarto(identificacao, quantidadeCamasCasal, quantidadeCamasSolteiro, ocupado, tipoQuarto);
             if (operacao.equals("Incluir")) {
                 quarto.gravar();
-            }else if(operacao.equals("Excluir")){
+            } else if (operacao.equals("Excluir")) {
                 quarto.excluir();
-            }else if(operacao.equals("Editar")){
+            } else if (operacao.equals("Editar")) {
                 quarto.alterar();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaQuartoController");

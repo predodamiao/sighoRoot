@@ -75,45 +75,45 @@ public class TipoQuartoDAO {
             fecharConexao(conexao, comando);
         }
     }
-    
-    public static void excluir (TipoQuarto tipo) throws ClassNotFoundException, SQLException{
-        
+
+    public static void excluir(TipoQuarto tipo) throws ClassNotFoundException, SQLException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from tipoQuarto where id = "+tipo.getId();
+            stringSQL = "delete from tipoQuarto where id = " + tipo.getId();
             comando.execute(stringSQL);
-        }finally{
-            fecharConexao(conexao,comando);
+        } finally {
+            fecharConexao(conexao, comando);
         }
-        
+
     }
-    
-    public static void alterar(TipoQuarto tipo) throws SQLException, ClassNotFoundException{
-        
+
+    public static void alterar(TipoQuarto tipo) throws SQLException, ClassNotFoundException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "update tipoQuarto set "
-                    +"nome = '"+ tipo.getNome() +"', "
-                    +"descricao = '"+ tipo.getDescricao() +"', "
-                    +"preco = "+ tipo.getPreco();
-                    
+                    + "nome = '" + tipo.getNome() + "', "
+                    + "descricao = '" + tipo.getDescricao() + "', "
+                    + "preco = " + tipo.getPreco();
+
             stringSQL = stringSQL + " where id = " + tipo.getId();
-            System.out.println("Linha: "+ stringSQL);
+            System.out.println("Linha: " + stringSQL);
             comando.execute(stringSQL);
-        }finally{
+        } finally {
             fecharConexao(conexao, comando);
         }
-        
+
     }
 
 }
