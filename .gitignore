@@ -2,6 +2,7 @@ build/*
 nbproject/*
 web/.idea/*
 .idea/*
+out/*
 # Compiled class file
 *.class
 
