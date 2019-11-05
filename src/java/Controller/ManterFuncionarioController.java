@@ -69,9 +69,7 @@ public class ManterFuncionarioController extends HttpServlet {
         Date dataNascimento = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataNascimento"));
         Date dataAdmissao = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataAdmissao"));
         String idCategoria = null;
-        if (!operacao.equals("Incluir")) {
             idCategoria = request.getParameter("categoriaFuncionario");
-        }
         try {
             CategoriaFuncionario categoria = null;
             if (idCategoria != null) {

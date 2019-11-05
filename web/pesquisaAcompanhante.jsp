@@ -20,7 +20,7 @@
 <html lang="pt-br">
 
     <head>
-        <meta charset="iso-8851-1"/>
+        <meta charset="iso-8859-1"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" type="image/png" href="./assets/img/favicon.png">
         <title>

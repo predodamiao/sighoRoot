@@ -71,10 +71,16 @@ public class ManterHospedagemController extends HttpServlet {
         Date dataEstimadaSaida = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataEstimadaSaida"));
         Boolean checked = request.getParameter("checked") != null;
 
-        int idHospede = Integer.parseInt(request.getParameter("hospede"));
-        int idQuarto = Integer.parseInt(request.getParameter("quarto"));
-        int idTipoQuarto = Integer.parseInt(request.getParameter("tipoQuarto"));
-
+        int idHospede = 0;
+        int idQuarto = 0;
+        int idTipoQuarto = 0;
+        
+        
+        if(!operacao.equals("Excluir")){
+        idHospede = Integer.parseInt(request.getParameter("hospede"));
+        idQuarto = Integer.parseInt(request.getParameter("quarto"));
+        idTipoQuarto = Integer.parseInt(request.getParameter("tipoQuarto"));
+        }
         try {
             Hospede hospede = null;
             if (idHospede != 0) {
@@ -85,7 +91,7 @@ public class ManterHospedagemController extends HttpServlet {
                 quarto = Quarto.obterQuarto(idQuarto);
             }
             TipoQuarto tipoQuarto = null;
-            if (idQuarto != 0) {
+            if (idTipoQuarto != 0) {
                 tipoQuarto = TipoQuarto.obterTipoQuarto(idTipoQuarto);
             }
 

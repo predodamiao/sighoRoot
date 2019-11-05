@@ -17,7 +17,7 @@
 <html lang="pt-br">
 
     <head>
-        <meta charset="iso-8851-1" />
+        <meta charset="iso-8859-1" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" type="image/png" href="./assets/img/favicon.png">
         <title>
@@ -137,7 +137,7 @@
                                                 <p>Item do Frigobar</p>
                                             </div>
                                         </div>
-                                        <div class="font-icon-list col-md-3" onClick="window.location.href = 'PesquisaOpcaoRestaurnateController'">
+                                        <div class="font-icon-list col-md-3" onClick="window.location.href = 'PesquisaOpcaoRestauranteController'">
                                             <div class="font-icon-detail fa-2x">
                                                 <i class="tim-icons icon-molecule-40"></i>
                                                 <p>Opção do Restaurante</p>

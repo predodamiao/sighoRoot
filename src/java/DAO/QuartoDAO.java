@@ -93,7 +93,7 @@ public class QuartoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from Quarto where id = " + quarto.getIdentificacao();
+            stringSQL = "delete from Quarto where identificacao = " + quarto.getIdentificacao();
             comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);

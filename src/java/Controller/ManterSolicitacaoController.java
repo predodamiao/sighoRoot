@@ -73,12 +73,20 @@ public class ManterSolicitacaoController extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         Date data = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data"));
         int quantidade = Integer.parseInt(request.getParameter("quantidade"));
-        int idHospedagem = Integer.parseInt(request.getParameter("hospedagem"));
-        int idFuncionario = Integer.parseInt(request.getParameter("funcionarioSolicitante"));
-        String idStatus = request.getParameter("status");
-        int codigoServico = Integer.parseInt(request.getParameter("servico"));
-        int codigoOpcao = Integer.parseInt(request.getParameter("opcao"));
 
+        int idHospedagem = 0;
+        int idFuncionario = 0;
+        String idStatus = null;
+        int codigoServico = 0;
+        int codigoOpcao = 0;
+
+        if (!operacao.equals("Excluir")) {
+            idHospedagem = Integer.parseInt(request.getParameter("hospedagem"));
+            idFuncionario = Integer.parseInt(request.getParameter("funcionarioSolicitante"));
+            idStatus = request.getParameter("status");
+            codigoServico = Integer.parseInt(request.getParameter("servico"));
+            codigoOpcao = Integer.parseInt(request.getParameter("opcao"));
+        }
         try {
             Hospedagem hospedagem = null;
             if (idHospedagem != 0) {
@@ -93,13 +101,14 @@ public class ManterSolicitacaoController extends HttpServlet {
                 status = StatusSolicitacao.obterStatusSolicitacao(idStatus);
             }
             Servico servico = null;
-            if (!"0".equals(codigoServico)) {
+            if (codigoServico != 0) {
                 servico = Servico.obterServico(codigoServico);
             }
             OpcaoRestaurante opcao = null;
             if (codigoOpcao != 0) {
                 opcao = OpcaoRestaurante.obterOpcaoRestaurante(codigoOpcao);
             }
+            System.out.println("ID: "+id);
             Solicitacao solicitacao = new Solicitacao(id, data, quantidade, status, funcionario, hospedagem, servico, opcao);
             if (operacao.equals("Incluir")) {
                 solicitacao.gravar();

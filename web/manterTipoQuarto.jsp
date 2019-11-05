@@ -20,7 +20,7 @@
 <html lang="pt-br">
 
     <head>
-        <meta charset="iso-8851-1" />
+        <meta charset="iso-8859-1" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" type="image/png" href="./assets/img/favicon.png">
         <title>
@@ -236,12 +236,12 @@
                                     <h4 class="card-title fa-2x"> TIPO DE QUARTO - ${operacao}</h4>
                                 </div>
                                 <div class="card-body">
-                                    <form>
+                                    <form action="ManterTipoQuartoController?acao=confirmarOperacao&operacao=${operacao}" method="post">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="id">id</label>
-                                                    <input class="form-control" min="1" step="1"  type="number" class="form-control">
+                                                    <input class="form-control" min="1" step="1" id="id" name="id" type="number" value="${tipoQuarto.id}" class="form-control" <c:if test="${operacao != 'Incluir'}"> readonly </c:if>>
                                                 </div>
                                             </div>
                                         </div>

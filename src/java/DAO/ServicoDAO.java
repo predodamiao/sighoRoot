@@ -109,7 +109,7 @@ public class ServicoDAO {
             stringSQL = "update servico set "
                     + "nome = '" + servico.getNome() + "', "
                     + "descricao = '" + servico.getDescricao() + "', "
-                    + "preco = " + servico.getPreco()
+                    + "preco = " + servico.getPreco()+ ","
                     + "categoria = '" + servico.getCategoria().toString() + "'";
 
             stringSQL = stringSQL + " where id = " + servico.getCodigo();

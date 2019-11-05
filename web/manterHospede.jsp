@@ -20,7 +20,7 @@
 <html lang="pt-br">
 
     <head>
-        <meta charset="iso-8851-1" />
+        <meta charset="iso-8859-1" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" type="image/png" href="./assets/img/favicon.png">
         <title>
@@ -236,7 +236,7 @@
                                     <h4 class="card-title fa-2x"> HÓSPEDE - ${operacao}</h4>
                                 </div>
                                 <div class="card-body">
-                                    <form>
+                                    <form action="ManterHospedeController?acao=confirmarOperacao&operacao=${operacao}" method="post">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">

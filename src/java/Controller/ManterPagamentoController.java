@@ -68,11 +68,18 @@ public class ManterPagamentoController extends HttpServlet {
         String operacao = request.getParameter("operacao");
         int id = Integer.parseInt(request.getParameter("id"));
         Date data = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data"));
-        int idHospedagem = Integer.parseInt(request.getParameter("hospedagem"));
-        String idTipoPagamento = request.getParameter("tipo");
-        String idMomentoPagamento = request.getParameter("momento");
         float valor = Float.parseFloat(request.getParameter("valor"));
         int parcelas = Integer.parseInt(request.getParameter("parcelas"));
+
+        int idHospedagem = 0;
+        String idTipoPagamento = null;
+        String idMomentoPagamento = null;
+
+        if (!operacao.equals("Excluir")) {
+            idHospedagem = Integer.parseInt(request.getParameter("hospedagem"));
+            idTipoPagamento = request.getParameter("tipo");
+            idMomentoPagamento = request.getParameter("momento");
+        }
 
         try {
             Hospedagem hospedagem = null;

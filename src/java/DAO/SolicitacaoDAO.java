@@ -45,7 +45,7 @@ public class SolicitacaoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from Solicitacao where id = " + codSolicitacao);
+            ResultSet rs = comando.executeQuery("select * from solicitacao where id = " + codSolicitacao);
             rs.first();
             solicitacao = instanciarSolicitacao(rs);
         } finally {
@@ -116,7 +116,7 @@ public class SolicitacaoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from Solicitacao where id = " + solicitacao.getId();
+            stringSQL = "delete from solicitacao where id = " + solicitacao.getId();
             comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);
@@ -124,15 +124,6 @@ public class SolicitacaoDAO {
 
     }
 
-    /*
-    private Date data;
-    private int quantidade;
-    private StatusSolicitacao status;
-    private Funcionario funcionarioSolicitante;
-    private Hospedagem hospedagem;
-    private Servico servico;
-    private OpcaoRestaurante opcao;
-     */
     public static void alterar(Solicitacao solicitacao) throws SQLException, ClassNotFoundException {
 
         Connection conexao = null;
