@@ -29,11 +29,11 @@ public class PrestacaoServico {
         this.servico = servico;
     }
 
-    public static PrestacaoServico obterSolicitacao(int codSolicitacao) throws ClassNotFoundException, SQLException {
+    public static PrestacaoServico obterPrestacaoServico(int codSolicitacao) throws ClassNotFoundException, SQLException {
         return PrestacaoServicoDAO.obterPrestacaoServico(codSolicitacao);
     }
 
-    public static List<PrestacaoServico> obterSolicitacoes() throws ClassNotFoundException, SQLException {
+    public static List<PrestacaoServico> obterPrestacoesServico() throws ClassNotFoundException, SQLException {
         return PrestacaoServicoDAO.obterPrestacoesServico();
     }
 

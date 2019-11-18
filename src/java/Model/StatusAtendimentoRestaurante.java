@@ -32,8 +32,8 @@ public enum StatusAtendimentoRestaurante {
         return status;
     }
 
-    public static StatusPrestacaoServico obterStatusAtendimentoRestaurante(String valor) {
-        return Enum.valueOf(StatusPrestacaoServico.class, valor.toUpperCase().replaceAll(" ", ""));
+    public static StatusAtendimentoRestaurante obterStatusAtendimentoRestaurante(String valor) {
+        return Enum.valueOf(StatusAtendimentoRestaurante.class, valor.toUpperCase().replaceAll(" ", ""));
     }
 
 }
