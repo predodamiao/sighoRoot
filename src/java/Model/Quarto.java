@@ -9,15 +9,13 @@ public class Quarto {
     private int identificacao;
     private int quantidadeCamasCasal;
     private int quantidadeCamasSolteiro;
-    private boolean ocupado;
     private TipoQuarto tipo;
     private int idTipoQuarto;
 
-    public Quarto(int identificacao, int quantidadeCamasCasal, int quantidadeCamasSolteiro, boolean ocupado, TipoQuarto tipo) {
+    public Quarto(int identificacao, int quantidadeCamasCasal, int quantidadeCamasSolteiro, TipoQuarto tipo) {
         this.identificacao = identificacao;
         this.quantidadeCamasCasal = quantidadeCamasCasal;
         this.quantidadeCamasSolteiro = quantidadeCamasSolteiro;
-        this.ocupado = ocupado;
         this.tipo = tipo;
     }
 
@@ -51,14 +49,6 @@ public class Quarto {
 
     public void setQuantidadeCamasSolteiro(int quantidadeCamasSolteiro) {
         this.quantidadeCamasSolteiro = quantidadeCamasSolteiro;
-    }
-
-    public boolean isOcupado() {
-        return this.ocupado;
-    }
-
-    public void setOcupado(boolean ocupado) {
-        this.ocupado = ocupado;
     }
 
     public TipoQuarto getTipo() throws ClassNotFoundException, SQLException {

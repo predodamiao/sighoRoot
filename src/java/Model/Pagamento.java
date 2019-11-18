@@ -2,21 +2,23 @@ package Model;
 
 import DAO.PagamentoDAO;
 import java.sql.SQLException;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 public class Pagamento {
 
     private int id;
     private float valor;
-    private Date data;
+    private LocalDate data;
+    private LocalTime hora;
     private int quantidadeParcelas;
     private TipoPagamento tipo;
     private MomentoPagamento momento;
     private Hospedagem hospedagem;
     private int idHospedagem;
 
-    public Pagamento(int id, float valor, Date data, int parcelas, TipoPagamento tipo, MomentoPagamento momento, Hospedagem hospedagem) {
+    public Pagamento(int id, float valor, LocalDate data, LocalTime hora, int parcelas, TipoPagamento tipo, MomentoPagamento momento, Hospedagem hospedagem) {
         this.id = id;
         this.valor = valor;
         this.data = data;
@@ -42,11 +44,11 @@ public class Pagamento {
         this.valor = valor;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
@@ -112,6 +114,14 @@ public class Pagamento {
 
     public void alterar() throws SQLException, ClassNotFoundException {
         PagamentoDAO.alterar(this);
+    }
+
+    public LocalTime getHora() {
+        return hora;
+    }
+
+    public void setHora(LocalTime hora) {
+        this.hora = hora;
     }
 
 }

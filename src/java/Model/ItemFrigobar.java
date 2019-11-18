@@ -70,7 +70,6 @@ public class ItemFrigobar {
     }
 
     public void alterar() throws SQLException, ClassNotFoundException {
-        System.out.println("dentro da classe");
         ItemFrigobarDAO.alterar(this);
     }
 

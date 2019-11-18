@@ -7,7 +7,8 @@ import java.util.List;
 public enum MomentoPagamento {
     CHECKIN("Check In", 0),
     CHECKOUT("Check Out", 1),
-    RESERVA("Reserva", 2);
+    RESERVA("Reserva", 2),
+    OUTRO("Outro", 3);
 
     private int id;
     private String nomeMomento;

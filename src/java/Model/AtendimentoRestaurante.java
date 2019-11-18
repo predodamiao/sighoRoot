@@ -1,41 +1,41 @@
 package Model;
 
-import DAO.SolicitacaoDAO;
+import DAO.AtendimentoRestauranteDAO;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 
-public class Solicitacao {
+public class AtendimentoRestaurante{
 
     private int id;
-    private Date data;
+    private LocalDate data;
+    private LocalTime hora;
     private int quantidade;
-    private StatusSolicitacao status;
+    private StatusAtendimentoRestaurante status;
     private Funcionario funcionarioSolicitante;
     private Hospedagem hospedagem;
-    private Servico servico;
     private OpcaoRestaurante opcao;
     private int idFuncionarioSolicitante;
     private int idHospedagem;
-    private int idServico;
     private int idOpcao;
 
-    public Solicitacao(int id, Date data, int quantidade, StatusSolicitacao status, Funcionario funcionario, Hospedagem hospedagem, Servico servico, OpcaoRestaurante opcao) {
+    public AtendimentoRestaurante(int id, LocalDate data, LocalTime hora, int quantidade, StatusAtendimentoRestaurante status, Funcionario funcionario, Hospedagem hospedagem, OpcaoRestaurante opcao) {
         this.id = id;
         this.data = data;
         this.quantidade = quantidade;
         this.status = status;
         this.funcionarioSolicitante = funcionario;
         this.hospedagem = hospedagem;
-        this.servico = servico;
         this.opcao = opcao;
     }
 
-    public static Solicitacao obterSolicitacao(int codSolicitacao) throws ClassNotFoundException, SQLException {
-        return SolicitacaoDAO.obterSolicitacao(codSolicitacao);
+    public static AtendimentoRestaurante obterAtendimentoRestaurante(int codSolicitacao) throws ClassNotFoundException, SQLException {
+        return AtendimentoRestauranteDAO.obterAtendimentoRestaurante(codSolicitacao);
     }
 
-    public static List<Solicitacao> obterSolicitacoes() throws ClassNotFoundException, SQLException {
-        return SolicitacaoDAO.obterSolicitacoes();
+    public static List<AtendimentoRestaurante> obterAtendimentosRestaurante() throws ClassNotFoundException, SQLException {
+        return AtendimentoRestauranteDAO.obterAtendimentosRestaurante();
     }
 
     public int getId() {
@@ -46,12 +46,20 @@ public class Solicitacao {
         this.id = id;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
+    }
+    
+    public LocalTime getHora() {
+        return hora;
+    }
+
+    public void setHora(LocalTime hora) {
+        this.hora = hora;
     }
 
     public int getQuantidade() {
@@ -62,11 +70,11 @@ public class Solicitacao {
         this.quantidade = quantidade;
     }
 
-    public StatusSolicitacao getStatus() {
+    public StatusAtendimentoRestaurante getStatus() {
         return status;
     }
 
-    public void setStatus(StatusSolicitacao status) {
+    public void setStatus(StatusAtendimentoRestaurante status) {
         this.status = status;
     }
 
@@ -91,18 +99,6 @@ public class Solicitacao {
 
     public void setHospedagem(Hospedagem hospedagem) {
         this.hospedagem = hospedagem;
-    }
-
-    public Servico getServico() throws ClassNotFoundException, SQLException {
-        if ((this.idServico != 0) && (this.servico == null)) {
-            this.servico = Servico.obterServico(this.idServico);
-        }
-
-        return servico;
-    }
-
-    public void setServico(Servico servico) {
-        this.servico = servico;
     }
 
     public OpcaoRestaurante getOpcao() throws ClassNotFoundException, SQLException {
@@ -133,14 +129,6 @@ public class Solicitacao {
         this.idHospedagem = idHospedagem;
     }
 
-    public int getIdServico() {
-        return idServico;
-    }
-
-    public void setIdServico(int idServico) {
-        this.idServico = idServico;
-    }
-
     public int getIdOpcao() {
         return idOpcao;
     }
@@ -148,17 +136,21 @@ public class Solicitacao {
     public void setIdOpcao(int idOpcao) {
         this.idOpcao = idOpcao;
     }
+    
+    public float getPrecoAtendimento(){
+        return this.opcao.getPreco() * this.quantidade;
+    }
 
     public void gravar() throws SQLException, ClassNotFoundException {
-        SolicitacaoDAO.gravar(this);
+        AtendimentoRestauranteDAO.gravar(this);
     }
 
     public void excluir() throws SQLException, ClassNotFoundException {
-        SolicitacaoDAO.excluir(this);
+        AtendimentoRestauranteDAO.excluir(this);
     }
 
     public void alterar() throws SQLException, ClassNotFoundException {
-        SolicitacaoDAO.alterar(this);
+        AtendimentoRestauranteDAO.alterar(this);
     }
 
 }

@@ -9,13 +9,13 @@ public class TipoQuarto {
     private int id;
     private String nome;
     private String descricao;
-    private float preco;
+    private float diaria;
 
-    public TipoQuarto(int id, String nome, String descricao, float preco) {
+    public TipoQuarto(int id, String nome, String descricao, float diaria) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
-        this.preco = preco;
+        this.diaria = diaria;
     }
 
     public static TipoQuarto obterTipoQuarto(int codTipoQuarto) throws ClassNotFoundException, SQLException {
@@ -42,12 +42,12 @@ public class TipoQuarto {
         this.descricao = descricao;
     }
 
-    public float getPreco() {
-        return preco;
+    public float getDiaria() {
+        return diaria;
     }
 
-    public void setPreco(float preco) {
-        this.preco = preco;
+    public void setDiaria(float diaria) {
+        this.diaria = diaria;
     }
 
     public String getNome() {

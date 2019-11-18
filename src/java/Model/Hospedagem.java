@@ -1,34 +1,41 @@
 package Model;
 
+import DAO.AtendimentoRestauranteDAO;
+import DAO.ConsumoDAO;
 import DAO.HospedagemDAO;
+import DAO.PagamentoDAO;
+import DAO.PrestacaoServicoDAO;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 
 public class Hospedagem {
 
     private int id;
-    private Date dataChegada;
-    private Date dataSaida;
-    private Date dataEstimadaChegada;
-    private Date dataEstimadaSaida;
-    private boolean checked;
-    private TipoQuarto tipoQuarto;
+    private LocalDate dataChegada;
+    private LocalTime horaChegada;
+    private LocalDate dataSaida;
+    private LocalTime horaSaida;
     private Quarto quarto;
     private Hospede hospedeResponsavel;
-    private int idTipoQuarto;
     private int idQuarto;
     private int idHospedeResponsavel;
 
-    public Hospedagem(int id, Date dataChegada, Date dataSaida, Date dataEstimadaChegada, Date dataEstimadaSaida, boolean checked, TipoQuarto tipoQuarto, Quarto quarto, Hospede hospedeResponsavel) {
+    public Hospedagem(int id, LocalDate dataChegada, LocalTime horaChegada, LocalDate dataSaida, LocalTime horaSaida, Quarto quarto, Hospede hospedeResponsavel) {
         this.id = id;
         this.dataChegada = dataChegada;
+        this.horaChegada = horaChegada;
         this.dataSaida = dataSaida;
-        this.dataEstimadaChegada = dataEstimadaChegada;
-        this.dataEstimadaSaida = dataEstimadaSaida;
-        this.checked = checked;
-        this.tipoQuarto = tipoQuarto;
+        this.horaSaida = horaSaida;
         this.quarto = quarto;
         this.hospedeResponsavel = hospedeResponsavel;
+    }
+    
+    public Hospedagem(int id, LocalDate dataSaida, LocalTime horaSaida) {
+        this.id = id;
+        this.dataSaida = dataSaida;
+        this.horaSaida = horaSaida;
     }
 
     public static Hospedagem obterHospedagem(int codHospedagem) throws ClassNotFoundException, SQLException {
@@ -38,57 +45,29 @@ public class Hospedagem {
     public static List<Hospedagem> obterHospedagens() throws ClassNotFoundException, SQLException {
         return HospedagemDAO.obterHospedagens();
     }
-
-    public Date getDataChegada() {
-        return dataChegada;
+    
+    public static List<Hospedagem> obterHospedagensAtivas() throws ClassNotFoundException, SQLException {
+        return HospedagemDAO.obterHospedagensAtivas();
+    }
+    
+    public void checkout() throws ClassNotFoundException, SQLException{
+        HospedagemDAO.checkout(this);
+    }
+    
+    public List<Pagamento> obterPagamentos() throws ClassNotFoundException, SQLException {
+        return PagamentoDAO.obterPagamentosHospede(this.id);
     }
 
-    public void setDataChegada(Date dataChegada) {
-        this.dataChegada = dataChegada;
+    public List<PrestacaoServico> obterPrestacoesServico() throws ClassNotFoundException, SQLException {
+        return PrestacaoServicoDAO.obterPrestacoesServicoHospede(this.id);
     }
 
-    public Date getDataSaida() {
-        return dataSaida;
+    public List<Consumo> obterConsumos() {
+        return ConsumoDAO.obterConsumosHospede(this.id);
     }
-
-    public void setDataSaida(Date dataSaida) {
-        this.dataSaida = dataSaida;
-    }
-
-    public Date getDataEstimadaChegada() {
-        return dataEstimadaChegada;
-    }
-
-    public void setDataEstimadaChegada(Date dataEstimadaChegada) {
-        this.dataEstimadaChegada = dataEstimadaChegada;
-    }
-
-    public Date getDataEstimadaSaida() {
-        return dataEstimadaSaida;
-    }
-
-    public void setDataEstimadaSaida(Date dataEstimadaSaida) {
-        this.dataEstimadaSaida = dataEstimadaSaida;
-    }
-
-    public boolean isChecked() {
-        return checked;
-    }
-
-    public void setChecked(boolean checked) {
-        this.checked = checked;
-    }
-
-    public TipoQuarto getTipoQuarto() throws ClassNotFoundException, SQLException {
-        if ((this.idTipoQuarto != 0) && (this.tipoQuarto == null)) {
-            this.tipoQuarto = TipoQuarto.obterTipoQuarto(this.idTipoQuarto);
-        }
-
-        return tipoQuarto;
-    }
-
-    public void setTipoQuarto(TipoQuarto tipoQuarto) {
-        this.tipoQuarto = tipoQuarto;
+    
+    public List<AtendimentoRestaurante> obterAtendimentosRestaurante() throws ClassNotFoundException, SQLException {
+        return AtendimentoRestauranteDAO.obterAtendimentosRestauranteHospede(this.id);
     }
 
     public Quarto getQuarto() throws ClassNotFoundException, SQLException {
@@ -113,14 +92,6 @@ public class Hospedagem {
 
     public void setHospedeResponsavel(Hospede hospedeResponsavel) {
         this.hospedeResponsavel = hospedeResponsavel;
-    }
-
-    public int getIdTipoQuarto() {
-        return idTipoQuarto;
-    }
-
-    public void setIdTipoQuarto(int idTipoQuarto) {
-        this.idTipoQuarto = idTipoQuarto;
     }
 
     public int getIdQuarto() {
@@ -159,4 +130,36 @@ public class Hospedagem {
         HospedagemDAO.alterar(this);
     }
 
+    public LocalDate getDataChegada() {
+        return dataChegada;
+    }
+
+    public void setDataChegada(LocalDate dataChegada) {
+        this.dataChegada = dataChegada;
+    }
+
+    public LocalTime getHoraChegada() {
+        return horaChegada;
+    }
+
+    public void setHoraChegada(LocalTime horaChegada) {
+        this.horaChegada = horaChegada;
+    }
+
+    public LocalDate getDataSaida() {
+        return dataSaida;
+    }
+
+    public void setDataSaida(LocalDate dataSaida) {
+        this.dataSaida = dataSaida;
+    }
+
+    public LocalTime getHoraSaida() {
+        return horaSaida;
+    }
+
+    public void setHoraSaida(LocalTime horaSaida) {
+        this.horaSaida = horaSaida;
+    }
+    
 }

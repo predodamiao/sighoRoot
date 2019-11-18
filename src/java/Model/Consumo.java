@@ -2,26 +2,30 @@ package Model;
 
 import DAO.ConsumoDAO;
 import java.sql.SQLException;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 public class Consumo {
 
     private int id;
-    private Date data;
+    private LocalDate data;
+    private LocalTime hora;
     private int quantidade;
-    private Funcionario funcionarioResponsavel;
+    private Funcionario funcionarioSolicitante;
     private Hospedagem hospedagem;
     private ItemConsumo itemConsumido;
+    
     private int idFuncionario;
     private int idHospedagem;
     private int idItemConsumido;
 
-    public Consumo(int id, Date data, int quantidade, Funcionario funcionarioResponsavel, Hospedagem hospedagem, ItemConsumo itemConsumido) {
+    public Consumo(int id, LocalDate data, LocalTime hora, int quantidade, Funcionario funcionarioSolicitante, Hospedagem hospedagem, ItemConsumo itemConsumido) {
         this.id = id;
         this.data = data;
+        this.hora = hora;
         this.quantidade = quantidade;
-        this.funcionarioResponsavel = funcionarioResponsavel;
+        this.funcionarioSolicitante = funcionarioSolicitante;
         this.hospedagem = hospedagem;
         this.itemConsumido = itemConsumido;
     }
@@ -42,11 +46,11 @@ public class Consumo {
         this.id = id;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
@@ -58,15 +62,15 @@ public class Consumo {
         this.quantidade = quantidade;
     }
 
-    public Funcionario getFuncionarioResponsavel() throws ClassNotFoundException, SQLException {
-        if ((this.idFuncionario != 0) && (this.funcionarioResponsavel == null)) {
-            this.funcionarioResponsavel = Funcionario.obterFuncionario(this.idFuncionario);
+    public Funcionario getFuncionarioSolicitante() throws ClassNotFoundException, SQLException {
+        if ((this.idFuncionario != 0) && (this.funcionarioSolicitante == null)) {
+            this.funcionarioSolicitante = Funcionario.obterFuncionario(this.idFuncionario);
         }
-        return funcionarioResponsavel;
+        return funcionarioSolicitante;
     }
 
-    public void setFuncionarioResponsavel(Funcionario funcionarioResponsavel) {
-        this.funcionarioResponsavel = funcionarioResponsavel;
+    public void setFuncionarioSolicitante(Funcionario funcionarioSolicitante) {
+        this.funcionarioSolicitante = funcionarioSolicitante;
     }
 
     public Hospedagem getHospedagem() throws ClassNotFoundException, SQLException {
@@ -116,6 +120,10 @@ public class Consumo {
     public void setIdItemConsumido(int idItemConsumido) {
         this.idItemConsumido = idItemConsumido;
     }
+    
+    public float getPrecoConsumo(){
+        return this.itemConsumido.getPrecoVenda() * this.quantidade;
+    }
 
     public void gravar() throws SQLException, ClassNotFoundException {
         ConsumoDAO.gravar(this);
@@ -127,5 +135,13 @@ public class Consumo {
 
     public void alterar() throws SQLException, ClassNotFoundException {
         ConsumoDAO.alterar(this);
+    }
+
+    public LocalTime getHora() {
+        return hora;
+    }
+
+    public void setHora(LocalTime hora) {
+        this.hora = hora;
     }
 }

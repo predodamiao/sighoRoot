@@ -26,7 +26,7 @@ public enum TipoPagamento {
     }
 
     public static List<TipoPagamento> obterTiposPagamento() {
-        ArrayList<TipoPagamento> tipos = new ArrayList<TipoPagamento>();
+        ArrayList<TipoPagamento> tipos = new ArrayList<>();
         tipos.addAll(Arrays.asList(TipoPagamento.values()));
         return tipos;
     }
