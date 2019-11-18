@@ -63,7 +63,6 @@ public class ManterQuartoController extends HttpServlet {
         int identificacao = Integer.parseInt(request.getParameter("identificacao"));
         int quantidadeCamasCasal = Integer.parseInt(request.getParameter("quantidadeCamasCasal"));
         int quantidadeCamasSolteiro = Integer.parseInt(request.getParameter("quantidadeCamasSolteiro"));
-        Boolean ocupado = request.getParameter("ocupado") != null;
         int idTipoQuarto = 0;
 
         if (!operacao.equals("Excluir")) {
@@ -74,7 +73,7 @@ public class ManterQuartoController extends HttpServlet {
             if (idTipoQuarto != 0) {
                 tipoQuarto = TipoQuarto.obterTipoQuarto(idTipoQuarto);
             }
-            Quarto quarto = new Quarto(identificacao, quantidadeCamasCasal, quantidadeCamasSolteiro, ocupado, tipoQuarto);
+            Quarto quarto = new Quarto(identificacao, quantidadeCamasCasal, quantidadeCamasSolteiro, tipoQuarto);
             if (operacao.equals("Incluir")) {
                 quarto.gravar();
             } else if (operacao.equals("Excluir")) {

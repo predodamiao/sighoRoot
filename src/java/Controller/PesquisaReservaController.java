@@ -1,7 +1,8 @@
 package Controller;
 
-import Model.Solicitacao;
+import Model.Reserva;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,7 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class PesquisaSolicitacaoController extends HttpServlet {
+/**
+ *
+ * @author Pedro Henrique
+ */
+public class PesquisaReservaController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -26,8 +31,8 @@ public class PesquisaSolicitacaoController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         try {
-            request.setAttribute("solicitacoes", Solicitacao.obterSolicitacoes());
-            RequestDispatcher view = request.getRequestDispatcher("/pesquisaSolicitacao.jsp");
+            request.setAttribute("reservas", Reserva.obterReservas());
+            RequestDispatcher view = request.getRequestDispatcher("/pesquisaReserva.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException | SQLException e) {
             throw new ServletException(e);
@@ -49,7 +54,7 @@ public class PesquisaSolicitacaoController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisaSolicitacaoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaReservaController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -67,7 +72,7 @@ public class PesquisaSolicitacaoController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisaSolicitacaoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaReservaController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -7,8 +7,8 @@ import Model.TipoPagamento;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -67,7 +67,8 @@ public class ManterPagamentoController extends HttpServlet {
     public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException {
         String operacao = request.getParameter("operacao");
         int id = Integer.parseInt(request.getParameter("id"));
-        Date data = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data"));
+        LocalDate data = LocalDate.parse(request.getParameter("data"));
+        LocalTime hora = LocalTime.parse(request.getParameter("hora"));
         float valor = Float.parseFloat(request.getParameter("valor"));
         int parcelas = Integer.parseInt(request.getParameter("parcelas"));
 
@@ -94,7 +95,7 @@ public class ManterPagamentoController extends HttpServlet {
             if (idTipoPagamento != null) {
                 tipo = TipoPagamento.obterTipoPagamento(idTipoPagamento);
             }
-            Pagamento pagamento = new Pagamento(id, valor, data, parcelas, tipo, momento, hospedagem);
+            Pagamento pagamento = new Pagamento(id, valor, data, hora, parcelas, tipo, momento, hospedagem);
             if (operacao.equals("Incluir")) {
                 pagamento.gravar();
             } else if (operacao.equals("Excluir")) {

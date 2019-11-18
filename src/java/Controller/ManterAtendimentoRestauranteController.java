@@ -1,16 +1,15 @@
 package Controller;
 
+import Model.AtendimentoRestaurante;
 import Model.Funcionario;
 import Model.Hospedagem;
 import Model.OpcaoRestaurante;
-import Model.Servico;
-import Model.Solicitacao;
-import Model.StatusSolicitacao;
+import Model.StatusAtendimentoRestaurante;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -19,7 +18,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ManterSolicitacaoController extends HttpServlet {
+/**
+ *
+ * @author Pedro Henrique
+ */
+public class ManterAtendimentoRestauranteController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -49,17 +52,16 @@ public class ManterSolicitacaoController extends HttpServlet {
             request.setAttribute("operacao", operacao);
             request.setAttribute("hospedagens", Hospedagem.obterHospedagens());
             request.setAttribute("funcionarios", Funcionario.obterFuncionarios());
-            request.setAttribute("servicos", Servico.obterServicos());
             request.setAttribute("opcoes", OpcaoRestaurante.obterOpcoesRestaurante());
-            request.setAttribute("status", StatusSolicitacao.obterStatusSolicitacoes());
+            request.setAttribute("status", StatusAtendimentoRestaurante.obterStatusAtendimentosRestaurante());
 
             if (!operacao.equals("Incluir")) {
-                int idSolicitacao = Integer.parseInt(request.getParameter("id"));
-                Solicitacao solicitacao = Solicitacao.obterSolicitacao(idSolicitacao);
-                request.setAttribute("solicitacao", solicitacao);
+                int idAtendimento = Integer.parseInt(request.getParameter("id"));
+                AtendimentoRestaurante prestacao = AtendimentoRestaurante.obterAtendimentoRestaurante(idAtendimento);
+                request.setAttribute("prestacao", prestacao);
             }
 
-            RequestDispatcher view = request.getRequestDispatcher("/manterSolicitacao.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("/manterAtendimentoRestaurante.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
             throw e;
@@ -71,21 +73,20 @@ public class ManterSolicitacaoController extends HttpServlet {
     public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException {
         String operacao = request.getParameter("operacao");
         int id = Integer.parseInt(request.getParameter("id"));
-        Date data = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data"));
+        LocalDate data = LocalDate.parse(request.getParameter("data"));
+        LocalTime hora = LocalTime.parse(request.getParameter("hora"));
         int quantidade = Integer.parseInt(request.getParameter("quantidade"));
 
         int idHospedagem = 0;
         int idFuncionario = 0;
         String idStatus = null;
-        int codigoServico = 0;
-        int codigoOpcao = 0;
+        int codigoAtendimento = 0;
 
         if (!operacao.equals("Excluir")) {
             idHospedagem = Integer.parseInt(request.getParameter("hospedagem"));
             idFuncionario = Integer.parseInt(request.getParameter("funcionarioSolicitante"));
             idStatus = request.getParameter("status");
-            codigoServico = Integer.parseInt(request.getParameter("servico"));
-            codigoOpcao = Integer.parseInt(request.getParameter("opcao"));
+            codigoAtendimento = Integer.parseInt(request.getParameter("servico"));
         }
         try {
             Hospedagem hospedagem = null;
@@ -96,28 +97,24 @@ public class ManterSolicitacaoController extends HttpServlet {
             if (idFuncionario != 0) {
                 funcionario = Funcionario.obterFuncionario(idFuncionario);
             }
-            StatusSolicitacao status = null;
+            StatusAtendimentoRestaurante status = null;
             if (idStatus != null) {
-                status = StatusSolicitacao.obterStatusSolicitacao(idStatus);
-            }
-            Servico servico = null;
-            if (codigoServico != 0) {
-                servico = Servico.obterServico(codigoServico);
+                status = StatusAtendimentoRestaurante.obterStatusAtendimentoRestaurante(idStatus);
             }
             OpcaoRestaurante opcao = null;
-            if (codigoOpcao != 0) {
-                opcao = OpcaoRestaurante.obterOpcaoRestaurante(codigoOpcao);
+            if (codigoAtendimento != 0) {
+                opcao = OpcaoRestaurante.obterOpcaoRestaurante(codigoAtendimento);
             }
-            System.out.println("ID: "+id);
-            Solicitacao solicitacao = new Solicitacao(id, data, quantidade, status, funcionario, hospedagem, servico, opcao);
+
+            AtendimentoRestaurante atendimento = new AtendimentoRestaurante(id, data, hora, quantidade, status, funcionario, hospedagem, opcao);
             if (operacao.equals("Incluir")) {
-                solicitacao.gravar();
+                atendimento.gravar();
             } else if (operacao.equals("Excluir")) {
-                solicitacao.excluir();
+                atendimento.excluir();
             } else if (operacao.equals("Editar")) {
-                solicitacao.alterar();
+                atendimento.alterar();
             }
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaSolicitacaoController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaAtendimentoRestauranteController");
             view.forward(request, response);
         } catch (IOException e) {
             throw new ServletException(e);
@@ -139,11 +136,11 @@ public class ManterSolicitacaoController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManterSolicitacaoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterAtendimentoRestauranteController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ManterSolicitacaoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterAtendimentoRestauranteController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
-            Logger.getLogger(ManterSolicitacaoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterAtendimentoRestauranteController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -161,11 +158,11 @@ public class ManterSolicitacaoController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManterSolicitacaoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterAtendimentoRestauranteController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ManterSolicitacaoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterAtendimentoRestauranteController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
-            Logger.getLogger(ManterSolicitacaoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterAtendimentoRestauranteController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

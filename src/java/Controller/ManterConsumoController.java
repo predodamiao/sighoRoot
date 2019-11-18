@@ -7,8 +7,8 @@ import Model.ItemConsumo;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -65,7 +65,8 @@ public class ManterConsumoController extends HttpServlet {
     public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException {
         String operacao = request.getParameter("operacao");
         int id = Integer.parseInt(request.getParameter("id"));
-        Date data = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data"));
+        LocalDate data = LocalDate.parse(request.getParameter("data"));
+        LocalTime hora = LocalTime.parse(request.getParameter("hora"));
         int quantidade = Integer.parseInt(request.getParameter("quantidade"));
 
         int idHospedagem = 0;
@@ -90,7 +91,7 @@ public class ManterConsumoController extends HttpServlet {
             if (idFuncionario != 0) {
                 funcionario = Funcionario.obterFuncionario(idFuncionario);
             }
-            Consumo consumo = new Consumo(id, data, quantidade, funcionario, hospedagem, item);
+            Consumo consumo = new Consumo(id, data, hora, quantidade, funcionario, hospedagem, item);
             if (operacao.equals("Incluir")) {
                 consumo.gravar();
             } else if (operacao.equals("Excluir")) {

@@ -1,8 +1,10 @@
 package Controller;
 
-import Model.Acompanhante;
-import Model.Hospedagem;
+import Model.Hospede;
+import Model.Reserva;
+import Model.TipoQuarto;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,7 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ManterAcompanhanteController extends HttpServlet {
+public class ManterReservaController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,13 +45,14 @@ public class ManterAcompanhanteController extends HttpServlet {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            request.setAttribute("hospedagens", Hospedagem.obterHospedagens());
+            request.setAttribute("hospedes", Hospede.obterHospedes());
+            request.setAttribute("tiposQuarto", TipoQuarto.obterTiposQuarto());
             if (!operacao.equals("Incluir")) {
-                int idAcompanhante = Integer.parseInt(request.getParameter("id"));
-                Acompanhante acompanhante = Acompanhante.obterAcompanhante(idAcompanhante);
-                request.setAttribute("acompanhante", acompanhante);
+                int idReserva = Integer.parseInt(request.getParameter("id"));
+                Reserva reserva = Reserva.obterReserva(idReserva);
+                request.setAttribute("reserva", reserva);
             }
-            RequestDispatcher view = request.getRequestDispatcher("/manterAcompanhante.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("/manterReserva.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
             throw e;
@@ -58,30 +61,39 @@ public class ManterAcompanhanteController extends HttpServlet {
         }
     }
 
-    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException, IOException {
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, ServletException, ParseException, IOException {
         String operacao = request.getParameter("operacao");
         int id = Integer.parseInt(request.getParameter("id"));
-        String nome = request.getParameter("nome");
-        Date dataNascimento = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataNascimento"));
-        Boolean ocupaCama = request.getParameter("ocupaCama") != null;
-        int idHospedagem = 0;
-        if (!operacao.equals("Excluir")) {
-            idHospedagem = Integer.parseInt(request.getParameter("hospedagem"));
+        Date dataEstimadaChegada = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataEstimadaChegada"));
+        Date dataEstimadaSaida = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataEstimadaSaida"));
+
+        int idHospede = 0;
+        int idTipoQuarto = 0;
+        
+        
+        if(!operacao.equals("Excluir")){
+        idHospede = Integer.parseInt(request.getParameter("hospede"));
+        idTipoQuarto = Integer.parseInt(request.getParameter("tipoQuarto"));
         }
         try {
-            Hospedagem hospedagem = null;
-            if (idHospedagem != 0) {
-                hospedagem = Hospedagem.obterHospedagem(idHospedagem);
+            Hospede hospede = null;
+            if (idHospede != 0) {
+                hospede = Hospede.obterHospede(idHospede);
             }
-            Acompanhante acompanhante = new Acompanhante(id, nome, dataNascimento, ocupaCama, hospedagem);
+            TipoQuarto tipoQuarto = null;
+            if (idTipoQuarto != 0) {
+                tipoQuarto = TipoQuarto.obterTipoQuarto(idTipoQuarto);
+            }
+
+            Reserva reserva = new Reserva(id, dataEstimadaChegada, dataEstimadaSaida, tipoQuarto, hospede);
             if (operacao.equals("Incluir")) {
-                acompanhante.gravar();
+                reserva.gravar();
             } else if (operacao.equals("Excluir")) {
-                acompanhante.excluir();
+                reserva.excluir();
             } else if (operacao.equals("Editar")) {
-                acompanhante.alterar();
+                reserva.alterar();
             }
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaAcompanhanteController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaReservaController");
             view.forward(request, response);
         } catch (IOException e) {
             throw new ServletException(e);
@@ -103,11 +115,11 @@ public class ManterAcompanhanteController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManterAcompanhanteController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterReservaController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ManterAcompanhanteController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterReservaController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
-            Logger.getLogger(ManterAcompanhanteController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterReservaController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -125,11 +137,11 @@ public class ManterAcompanhanteController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManterAcompanhanteController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterReservaController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ManterAcompanhanteController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterReservaController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
-            Logger.getLogger(ManterAcompanhanteController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterReservaController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
