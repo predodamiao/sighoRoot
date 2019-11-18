@@ -43,8 +43,6 @@ public class OpcaoRestauranteDAO {
         OpcaoRestaurante item = null;
         try {
             conexao = BD.getConexao();
-            comando = conexao.createStatement();
-            System.out.println("select * from opcaoRestaurante where id ='" + codOpcao + "'");
             ResultSet rs = comando.executeQuery("select * from opcaoRestaurante where id ='" + codOpcao + "'");
             rs.first();
             item = instanciarOpcaoRestaurante(rs);

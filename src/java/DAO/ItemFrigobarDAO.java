@@ -118,7 +118,6 @@ public class ItemFrigobarDAO {
             }
 
             stringSQL = stringSQL + " where id = " + item.getId();
-            System.out.println("Linha: " + stringSQL);
             comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);

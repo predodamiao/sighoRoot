@@ -121,7 +121,6 @@ public class HospedeDAO {
                     + "passaporte = '" + hospede.getPassaporte() + "'";
 
             stringSQL = stringSQL + " where id = " + hospede.getId();
-            System.out.println("linha: " + stringSQL);
             comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);

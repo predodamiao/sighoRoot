@@ -56,7 +56,7 @@ public class TipoQuartoDAO {
         TipoQuarto tipo = new TipoQuarto(rs.getInt("id"),
                 rs.getString("nome"),
                 rs.getString("descricao"),
-                rs.getFloat("preco"));
+                rs.getFloat("diaria"));
         return tipo;
     }
 
@@ -65,11 +65,11 @@ public class TipoQuartoDAO {
         PreparedStatement comando = null;
         try {
             conexao = BD.getConexao();
-            comando = conexao.prepareStatement("insert into tipoQuarto (id, nome, descricao, preco) values (?,?,?,?)");
+            comando = conexao.prepareStatement("insert into tipoQuarto (id, nome, descricao, diaria) values (?,?,?,?)");
             comando.setInt(1, tipo.getId());
             comando.setString(2, tipo.getNome());
             comando.setString(3, tipo.getDescricao());
-            comando.setFloat(4, tipo.getPreco());
+            comando.setFloat(4, tipo.getDiaria());
             comando.executeUpdate();
         } finally {
             fecharConexao(conexao, comando);
@@ -105,15 +105,13 @@ public class TipoQuartoDAO {
             stringSQL = "update tipoQuarto set "
                     + "nome = '" + tipo.getNome() + "', "
                     + "descricao = '" + tipo.getDescricao() + "', "
-                    + "preco = " + tipo.getPreco();
+                    + "diaria = " + tipo.getDiaria();
 
             stringSQL = stringSQL + " where id = " + tipo.getId();
-            System.out.println("Linha: " + stringSQL);
             comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);
         }
-
     }
-
+    
 }

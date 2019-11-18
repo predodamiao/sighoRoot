@@ -57,7 +57,6 @@ public class QuartoDAO {
         Quarto quarto = new Quarto(rs.getInt("identificacao"),
                 rs.getInt("quantidadeCamasCasal"),
                 rs.getInt("quantidadeCamasSolteiro"),
-                rs.getBoolean("ocupado"),
                 null);
         quarto.setIdTipoQuarto(rs.getInt("tipoQuarto"));
         return quarto;
@@ -68,15 +67,14 @@ public class QuartoDAO {
         PreparedStatement comando = null;
         try {
             conexao = BD.getConexao();
-            comando = conexao.prepareStatement("insert into quarto (identificacao, quantidadeCamasCasal, quantidadeCamasSolteiro, ocupado, tipoQuarto) values (?,?,?,?,?)");
+            comando = conexao.prepareStatement("insert into quarto (identificacao, quantidadeCamasCasal, quantidadeCamasSolteiro, ocupado, tipoQuarto) values (?,?,?,?)");
             comando.setInt(1, quarto.getIdentificacao());
             comando.setInt(2, quarto.getQuantidadeCamasCasal());
             comando.setInt(3, quarto.getQuantidadeCamasSolteiro());
-            comando.setBoolean(4, quarto.isOcupado());
             if (quarto.getTipo() == null) {
-                comando.setNull(5, Types.INTEGER);
+                comando.setNull(4, Types.INTEGER);
             } else {
-                comando.setInt(5, quarto.getTipo().getId());
+                comando.setInt(4, quarto.getTipo().getId());
             }
             comando.executeUpdate();
         } finally {
@@ -113,7 +111,6 @@ public class QuartoDAO {
             stringSQL = "update quarto set "
                     + "quantidadeCamasCasal = " + quarto.getQuantidadeCamasCasal() + ", "
                     + "quantidadeCamasSolteiro = " + quarto.getQuantidadeCamasSolteiro() + ", "
-                    + "ocupado = " + quarto.isOcupado() + ", "
                     + "tipoQuarto = ";
             if (quarto.getTipo() == null) {
                 stringSQL = stringSQL + null;
@@ -122,7 +119,6 @@ public class QuartoDAO {
             }
 
             stringSQL = stringSQL + " where identificacao = " + quarto.getIdentificacao();
-            System.out.println("Linha: " + stringSQL);
             comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);

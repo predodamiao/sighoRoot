@@ -11,11 +11,14 @@ import Model.Pagamento;
 import Model.TipoPagamento;
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.JDBCType;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +27,7 @@ public class PagamentoDAO {
     public static List<Pagamento> obterPagamentos() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<Pagamento> pagamentos = new ArrayList<Pagamento>();
+        List<Pagamento> pagamentos = new ArrayList<>();
         Pagamento pagamento = null;
         try {
             conexao = BD.getConexao();
@@ -59,7 +62,8 @@ public class PagamentoDAO {
     public static Pagamento instanciarPagamento(ResultSet rs) throws ClassNotFoundException, SQLException {
         Pagamento pagamento = new Pagamento(rs.getInt("id"),
                 rs.getFloat("valor"),
-                rs.getDate("data"),
+                rs.getObject("data", LocalDate.class),
+                rs.getObject("hora", LocalTime.class),
                 rs.getInt("parcelas"),
                 Enum.valueOf(TipoPagamento.class, rs.getString("tipo")),
                 Enum.valueOf(MomentoPagamento.class, rs.getString("momento")),
@@ -74,17 +78,18 @@ public class PagamentoDAO {
 
         try {
             conexao = BD.getConexao();
-            comando = conexao.prepareStatement("insert into pagamento (id, valor, data, parcelas, tipo, momento, idHospedagem) values (?,?,?,?,?,?,?)");
+            comando = conexao.prepareStatement("insert into pagamento (id, valor, data, parcelas, tipo, momento, idHospedagem) values (?,?,?,?,?,?,?,?)");
             comando.setInt(1, pagamento.getId());
             comando.setFloat(2, pagamento.getValor());
-            comando.setDate(3, new java.sql.Date(pagamento.getData().getTime()));
-            comando.setInt(4, pagamento.getQuantidadeParcelas());
-            comando.setString(5, pagamento.getTipo().toString());
-            comando.setString(6, pagamento.getMomento().toString());
+            comando.setObject(3, pagamento.getData());
+            comando.setObject(4, pagamento.getHora(), JDBCType.TIME);
+            comando.setInt(5, pagamento.getQuantidadeParcelas());
+            comando.setString(6, pagamento.getTipo().toString());
+            comando.setString(7, pagamento.getMomento().toString());
             if (pagamento.getHospedagem() == null) {
-                comando.setNull(7, Types.INTEGER);
+                comando.setNull(8, Types.INTEGER);
             } else {
-                comando.setInt(7, pagamento.getHospedagem().getId());
+                comando.setInt(8, pagamento.getHospedagem().getId());
             }
             comando.executeUpdate();
         } finally {
@@ -109,17 +114,6 @@ public class PagamentoDAO {
 
     }
 
-    /*
-    
-    private float valor;
-    private Date data;
-    private int quantidadeParcelas;
-    private TipoPagamento tipo;
-    private MomentoPagamento momento;
-    private Hospedagem hospedagem;
-    private int idHospedagem;
-    
-     */
     public static void alterar(Pagamento pagamento) throws SQLException, ClassNotFoundException {
 
         Connection conexao = null;
@@ -131,7 +125,8 @@ public class PagamentoDAO {
             comando = conexao.createStatement();
             stringSQL = "update pagamento set "
                     + "valor = " + pagamento.getValor() + ", "
-                    + "data = '" + new java.sql.Date(pagamento.getData().getTime()) + "', "
+                    + "data = '" + pagamento.getData() + "', "
+                    + "hora = '" + pagamento.getHora() + "', "
                     + "parcelas = " + pagamento.getQuantidadeParcelas() + ", "
                     + "tipo = '" + pagamento.getTipo().toString() + "', "
                     + "momento = '" + pagamento.getMomento().toString() + "', "
@@ -148,6 +143,25 @@ public class PagamentoDAO {
             fecharConexao(conexao, comando);
         }
 
+    }
+
+    public static List<Pagamento> obterPagamentosHospede(int id) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        List<Pagamento> pagamentos = new ArrayList<>();
+        Pagamento pagamento = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from pagamento where idHospedagem = " + id);
+            while (rs.next()) {
+                pagamento = instanciarPagamento(rs);
+                pagamentos.add(pagamento);
+            }
+        } finally {
+            DAO.fecharConexao(conexao, comando);
+        }
+        return pagamentos;
     }
 
 }
