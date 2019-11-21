@@ -4,11 +4,9 @@ import Model.Hospede;
 import Model.Reserva;
 import Model.TipoQuarto;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -64,16 +62,15 @@ public class ManterReservaController extends HttpServlet {
     public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, ServletException, ParseException, IOException {
         String operacao = request.getParameter("operacao");
         int id = Integer.parseInt(request.getParameter("id"));
-        Date dataEstimadaChegada = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataEstimadaChegada"));
-        Date dataEstimadaSaida = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataEstimadaSaida"));
+        LocalDate dataEstimadaChegada = LocalDate.parse(request.getParameter("dataEstimadaChegada"));
+        LocalDate dataEstimadaSaida = LocalDate.parse(request.getParameter("dataEstimadaSaida"));
 
         int idHospede = 0;
         int idTipoQuarto = 0;
-        
-        
-        if(!operacao.equals("Excluir")){
-        idHospede = Integer.parseInt(request.getParameter("hospede"));
-        idTipoQuarto = Integer.parseInt(request.getParameter("tipoQuarto"));
+
+        if (!operacao.equals("Excluir")) {
+            idHospede = Integer.parseInt(request.getParameter("hospede"));
+            idTipoQuarto = Integer.parseInt(request.getParameter("tipoQuarto"));
         }
         try {
             Hospede hospede = null;

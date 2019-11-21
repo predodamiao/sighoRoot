@@ -285,17 +285,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="categoriaOpcaoRestaurante">Categoria</label>
-                                                        <select class="form-control" name="categoriaOpcaoRestaurante" id="categoriaOpcaoRestaurante" disabled>
-                                                            <option value="0"></option>
-                                                            <option value="Restaurante" selected>Restaurante</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
 
                                             <div class="card-footer">
                                                 <button type="submit" class="btn btn-fill btn-primary">${operacao}</button>

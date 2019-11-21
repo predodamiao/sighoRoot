@@ -1,6 +1,5 @@
 package Controller;
 
-import Model.CategoriaServico;
 import Model.OpcaoRestaurante;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -63,16 +62,11 @@ public class ManterOpcaoRestauranteController extends HttpServlet {
         String nome = request.getParameter("nome");
         String descricao = request.getParameter("descricao");
         float preco = Float.parseFloat(request.getParameter("preco"));
-        String idCategoria = request.getParameter("categoriaItemConsumo");
         Float acrescimo = Float.parseFloat(request.getParameter("acrescimo"));
         int tempoPreparo = Integer.parseInt(request.getParameter("tempoPreparo"));
 
         try {
-            CategoriaServico categoria = null;
-            if (idCategoria != null) {
-                categoria = CategoriaServico.obterCategoriaServico(idCategoria);
-            }
-            OpcaoRestaurante opcao = new OpcaoRestaurante(codigo, nome, descricao, preco, categoria, acrescimo, tempoPreparo);
+            OpcaoRestaurante opcao = new OpcaoRestaurante(codigo, nome, descricao, preco, acrescimo, tempoPreparo);
             if (operacao.equals("Incluir")) {
                 opcao.gravar();
             } else if (operacao.equals("Excluir")) {

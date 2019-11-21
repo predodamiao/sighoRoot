@@ -256,22 +256,6 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="telefone">Telefone</label>
-                                                        <input class="form-control" type="text" name="telefone" id="telefone" value="${funcionario.telefone}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="email">E-mail</label>
-                                                        <input class="form-control" type="email" name="email" id="email" value="${funcionario.email}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
                                                         <label for="rg">RG</label>
                                                         <input class="form-control" type="text" name="rg" id="rg" value="${funcionario.rg}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                                                     </div>
@@ -282,6 +266,22 @@
                                                     <div class="form-group">
                                                         <label for="cpf">CPF</label>
                                                         <input class="form-control" type="text" name="cpf" id="cpf" value="${funcionario.cpf}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="telefone">Telefone</label>
+                                                        <input class="form-control" type="text" name="telefone" id="telefone" value="${funcionario.telefone}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="email">E-mail</label>
+                                                        <input class="form-control" type="email" name="email" id="email" value="${funcionario.email}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                                                     </div>
                                                 </div>
                                             </div>

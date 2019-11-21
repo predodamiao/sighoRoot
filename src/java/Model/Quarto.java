@@ -27,6 +27,10 @@ public class Quarto {
         return QuartoDAO.obterQuartos();
     }
 
+    public static List<Quarto> obterQuartosVagos(int tipoQuarto) throws ClassNotFoundException, SQLException {
+        return QuartoDAO.obterQuartosVagos(tipoQuarto);
+    }
+
     public int getIdentificacao() {
         return identificacao;
     }

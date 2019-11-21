@@ -2,10 +2,8 @@ package DAO;
 
 import static DAO.DAO.fecharConexao;
 import Model.CategoriaFuncionario;
-import Model.Consumo;
 import Model.Funcionario;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,7 +16,7 @@ public class FuncionarioDAO {
     public static List<Funcionario> obterFuncionarios() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<Funcionario> funcionarios = new ArrayList<Funcionario>();
+        List<Funcionario> funcionarios = new ArrayList<>();
         Funcionario funcionario = null;
         try {
             conexao = BD.getConexao();

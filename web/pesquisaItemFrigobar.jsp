@@ -240,7 +240,7 @@
                                             <thead class="text-primary">
                                                 <tr style="font-size: 1rem">
                                                     <th>id</th>
-                                                    <th>id Item</th>
+                                                    <th>Item</th>
                                                     <th>Quantidade</th>
                                                     <th colspan="2" class="text-center">Ação</th>
                                                 </tr>
@@ -252,7 +252,7 @@
                                                             <c:out value="${itemFrigobar.id}" />
                                                         </td>
                                                         <td>
-                                                            <c:out value="${itemFrigobar.idItemConsumo}" />
+                                                            <c:out value="${itemFrigobar.item.nome}" />
                                                         </td>
                                                         <td>
                                                             <c:out value="${itemFrigobar.quantidade}" />

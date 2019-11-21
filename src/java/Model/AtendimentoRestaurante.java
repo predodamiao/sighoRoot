@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 
-public class AtendimentoRestaurante{
+public class AtendimentoRestaurante {
 
     private int id;
     private LocalDate data;
@@ -53,7 +53,7 @@ public class AtendimentoRestaurante{
     public void setData(LocalDate data) {
         this.data = data;
     }
-    
+
     public LocalTime getHora() {
         return hora;
     }
@@ -102,7 +102,7 @@ public class AtendimentoRestaurante{
     }
 
     public OpcaoRestaurante getOpcao() throws ClassNotFoundException, SQLException {
-        if (!(this.idOpcao == 0) && (this.opcao == null)) {
+        if ((this.idOpcao != 0) && (this.opcao == null)) {
             this.opcao = OpcaoRestaurante.obterOpcaoRestaurante(this.idOpcao);
         }
 
@@ -136,9 +136,9 @@ public class AtendimentoRestaurante{
     public void setIdOpcao(int idOpcao) {
         this.idOpcao = idOpcao;
     }
-    
-    public float getPrecoAtendimento(){
-        return this.opcao.getPreco() * this.quantidade;
+
+    public float getPrecoAtendimento() throws ClassNotFoundException, SQLException {
+        return this.getOpcao().getPreco() * this.getQuantidade();
     }
 
     public void gravar() throws SQLException, ClassNotFoundException {

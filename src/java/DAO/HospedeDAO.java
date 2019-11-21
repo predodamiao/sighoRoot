@@ -8,7 +8,6 @@ package DAO;
 import static DAO.DAO.fecharConexao;
 import Model.Hospede;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,7 +20,7 @@ public class HospedeDAO {
     public static List<Hospede> obterHospedes() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<Hospede> hospedes = new ArrayList<Hospede>();
+        List<Hospede> hospedes = new ArrayList<>();
         Hospede hospede = null;
         try {
             conexao = BD.getConexao();

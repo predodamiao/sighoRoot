@@ -1,3 +1,4 @@
+
 <!--
 =========================================================
 * * Black Dashboard - v1.0.1
@@ -16,6 +17,7 @@
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -24,7 +26,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" type="image/png" href="./assets/img/favicon.png">
         <title>
-            SIGHO - Hóspede
+            SIGHO - Reserva
         </title>
         <!--     Fonts and icons     -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
@@ -66,13 +68,13 @@
                                 <p>Funcionário</p>
                             </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="PesquisaHospedagemController">
                                 <i class="tim-icons icon-book-bookmark"></i>
                                 <p>Hospedagem</p>
                             </a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="PesquisaHospedeController">
                                 <i class="tim-icons icon-single-02"></i>
                                 <p>Hospede</p>
@@ -233,227 +235,211 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title fa-2x"> HÓSPEDE - ${operacao}</h4>
+                                    <h4 class="card-title fa-2x"> RESERVA - ${operacao}</h4>
                                 </div>
                                 <div class="card-body">
-                                    <form action="ManterHospedeController?acao=confirmarOperacao&operacao=${operacao}" method="post">
+                                    <form action="ManterReservaController?acao=confirmarOperacao&operacao=${operacao}" method="post">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="id">id</label>
-                                                    <input class="form-control" type="number" min="1" step="1" name="id" id="id" value="${hospede.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if>>
+                                                    <input class="form-control" type="number" min="1" step="1" name="id" id="id" value="${hospedagem.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if>>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="rg">RG</label>
-                                                        <input class="form-control" type="text" name="rg" id="rg" value="${hospede.rg}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
+                                                        <label for="dataEstimadaChegada">Chegada Estimada</label>
+                                                        <input class="form-control" type="date" name="dataEstimadaChegada" id="dataEstimadaChegada" value="<c:if test="${operacao != 'Incluir'}">${hospedagem.dataEstimadaChegada}</c:if>" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="cpf">CPF</label>
-                                                        <input class="form-control" type="text" name="cpf" id="cpf" value="${hospede.cpf}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
+                                                        <label for="dataEstimadaSaida">Saída Estimada</label>
+                                                            <input class="form-control" type="date" name="dataEstimadaSaida" id="dataEstimadaSaida" value="${hospedagem.dataEstimadaSaida}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="nome">Nome</label>
-                                                        <input class="form-control" type="text" name="nome" id="nome" value="${hospede.nome}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
-                                                    </div>
+                                                        <label for="hospede">Hóspede Responsável</label>
+                                                        <select class="form-control" name="hospede" id="hospede" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
+                                                        <option value="0" <c:if test="${hospedagem.hospedeResponsavel.id == null}"> selected </c:if>></option>
+                                                        <c:forEach items="${hospedes}" var="hospede">
+                                                            <option value="${hospede.id}" <c:if test="${hospedagem.hospedeResponsavel.id == hospede.id}">selected</c:if>>${hospede.nome}</option>
+                                                        </c:forEach>
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="telefone">Telefone</label>
-                                                        <input class="form-control" type="text" name="telefone" id="telefone" value="${hospede.telefone}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
-                                                    </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tipoQuarto">Tipo de Quarto</label>
+                                                    <select class="form-control" name="tipoQuarto" id="tipoQuarto" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
+                                                        <option value="0" <c:if test="${hospedagem.tipoQuarto.id == null}"> selected </c:if>></option>
+                                                        <c:forEach items="${tiposQuarto}" var="tipoQuarto">
+                                                            <option value="${tipoQuarto.id}" <c:if test="${hospedagem.tipoQuarto.id == tipoQuarto.id}">selected</c:if>>${tipoQuarto.nome}</option>
+                                                        </c:forEach>
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="email">E-mail</label>
-                                                        <input class="form-control" type="email" name="email" id="email" value="${hospede.email}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="dataNascimento">Data de Nascimento</label>
-                                                        <input class="form-control" type="date" name="dataNascimento" id="dataNascimento" value="${hospede.dataNascimento}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="passaporte">Passaporte</label>
-                                                        <input class="form-control" type="text" name="passaporte" id="passaporte" value="${hospede.passaporte}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                    </div>
-
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-fill btn-primary">${operacao}</button>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-fill btn-primary">${operacao}</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                </form>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                Lavínia Beghini e Pedro Henrique Damião
+                            </li>
+                        </ul>
+                        <div class="copyright">
+                            ©
+                            <script>
+                                document.write(new Date().getFullYear())
+                            </script>
+                            SIGHO
+                        </div>
+                    </div>
+                </footer>
             </div>
-            <footer class="footer">
-                <div class="container-fluid">
-                    <ul class="nav">
-                        <li class="nav-item">
-                            Lavínia Beghini e Pedro Henrique Damião
-                        </li>
-                    </ul>
-                    <div class="copyright">
-                        ©
-                        <script>
-                            document.write(new Date().getFullYear())
-                        </script>
-                        SIGHO
-                    </div>
-                </div>
-            </footer>
         </div>
-    </div>
-    <!--   Core JS Files   -->
-    <script src="./assets/js/core/jquery.min.js"></script>
-    <script src="./assets/js/core/popper.min.js"></script>
-    <script src="./assets/js/core/bootstrap.min.js"></script>
-    <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-    <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="./assets/js/black-dashboard.min.js?v=1.0.0"></script>
+        <!--   Core JS Files   -->
+        <script src="./assets/js/core/jquery.min.js"></script>
+        <script src="./assets/js/core/popper.min.js"></script>
+        <script src="./assets/js/core/bootstrap.min.js"></script>
+        <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+        <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
+        <script src="./assets/js/black-dashboard.min.js?v=1.0.0"></script>
 
-    <script>
+        <script>
 
-                            $(document).ready(function () {
-                                var tamanho = $("#sidebar").height();
+                                $(document).ready(function () {
+                                    var tamanho = $("#sidebar").height();
 
-                                $("#content").css('min-height', tamanho);
+                                    $("#content").css('min-height', tamanho);
 
-                                $().ready(function () {
-                                    $sidebar = $('.sidebar');
-                                    $navbar = $('.navbar');
-                                    $main_panel = $('.main-panel');
+                                    $().ready(function () {
+                                        $sidebar = $('.sidebar');
+                                        $navbar = $('.navbar');
+                                        $main_panel = $('.main-panel');
 
-                                    $full_page = $('.full-page');
+                                        $full_page = $('.full-page');
 
-                                    $sidebar_responsive = $('body > .navbar-collapse');
-                                    sidebar_mini_active = true;
-                                    white_color = false;
+                                        $sidebar_responsive = $('body > .navbar-collapse');
+                                        sidebar_mini_active = true;
+                                        white_color = false;
 
-                                    window_width = $(window).width();
+                                        window_width = $(window).width();
 
-                                    fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+                                        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
 
-                                    $('.fixed-plugin a').click(function (event) {
-                                        if ($(this).hasClass('switch-trigger')) {
-                                            if (event.stopPropagation) {
-                                                event.stopPropagation();
-                                            } else if (window.event) {
-                                                window.event.cancelBubble = true;
+                                        $('.fixed-plugin a').click(function (event) {
+                                            if ($(this).hasClass('switch-trigger')) {
+                                                if (event.stopPropagation) {
+                                                    event.stopPropagation();
+                                                } else if (window.event) {
+                                                    window.event.cancelBubble = true;
+                                                }
                                             }
-                                        }
-                                    });
+                                        });
 
-                                    $('.fixed-plugin .background-color span').click(function () {
-                                        $(this).siblings().removeClass('active');
-                                        $(this).addClass('active');
+                                        $('.fixed-plugin .background-color span').click(function () {
+                                            $(this).siblings().removeClass('active');
+                                            $(this).addClass('active');
 
-                                        var new_color = $(this).data('color');
+                                            var new_color = $(this).data('color');
 
-                                        if ($sidebar.length != 0) {
-                                            $sidebar.attr('data', new_color);
-                                        }
+                                            if ($sidebar.length != 0) {
+                                                $sidebar.attr('data', new_color);
+                                            }
 
-                                        if ($main_panel.length != 0) {
-                                            $main_panel.attr('data', new_color);
-                                        }
+                                            if ($main_panel.length != 0) {
+                                                $main_panel.attr('data', new_color);
+                                            }
 
-                                        if ($full_page.length != 0) {
-                                            $full_page.attr('filter-color', new_color);
-                                        }
+                                            if ($full_page.length != 0) {
+                                                $full_page.attr('filter-color', new_color);
+                                            }
 
-                                        if ($sidebar_responsive.length != 0) {
-                                            $sidebar_responsive.attr('data', new_color);
-                                        }
-                                    });
+                                            if ($sidebar_responsive.length != 0) {
+                                                $sidebar_responsive.attr('data', new_color);
+                                            }
+                                        });
 
-                                    $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function () {
-                                        var $btn = $(this);
+                                        $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function () {
+                                            var $btn = $(this);
 
-                                        if (sidebar_mini_active == true) {
-                                            $('body').removeClass('sidebar-mini');
-                                            sidebar_mini_active = false;
-                                            blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
-                                        } else {
-                                            $('body').addClass('sidebar-mini');
-                                            sidebar_mini_active = true;
-                                            blackDashboard.showSidebarMessage('Sidebar mini activated...');
-                                        }
+                                            if (sidebar_mini_active == true) {
+                                                $('body').removeClass('sidebar-mini');
+                                                sidebar_mini_active = false;
+                                                blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
+                                            } else {
+                                                $('body').addClass('sidebar-mini');
+                                                sidebar_mini_active = true;
+                                                blackDashboard.showSidebarMessage('Sidebar mini activated...');
+                                            }
 
-                                        // we simulate the window Resize so the charts will get updated in realtime.
-                                        var simulateWindowResize = setInterval(function () {
-                                            window.dispatchEvent(new Event('resize'));
-                                        }, 180);
+                                            // we simulate the window Resize so the charts will get updated in realtime.
+                                            var simulateWindowResize = setInterval(function () {
+                                                window.dispatchEvent(new Event('resize'));
+                                            }, 180);
 
-                                        // we stop the simulation of Window Resize after the animations are completed
-                                        setTimeout(function () {
-                                            clearInterval(simulateWindowResize);
-                                        }, 1000);
-                                    });
-
-                                    $('.switch-change-color input').on("switchChange.bootstrapSwitch", function () {
-                                        var $btn = $(this);
-
-                                        if (white_color == true) {
-
-                                            $('body').addClass('change-background');
+                                            // we stop the simulation of Window Resize after the animations are completed
                                             setTimeout(function () {
-                                                $('body').removeClass('change-background');
-                                                $('body').removeClass('white-content');
-                                            }, 900);
-                                            white_color = false;
-                                        } else {
+                                                clearInterval(simulateWindowResize);
+                                            }, 1000);
+                                        });
 
-                                            $('body').addClass('change-background');
-                                            setTimeout(function () {
-                                                $('body').removeClass('change-background');
-                                                $('body').addClass('white-content');
-                                            }, 900);
+                                        $('.switch-change-color input').on("switchChange.bootstrapSwitch", function () {
+                                            var $btn = $(this);
 
-                                            white_color = true;
-                                        }
+                                            if (white_color == true) {
+
+                                                $('body').addClass('change-background');
+                                                setTimeout(function () {
+                                                    $('body').removeClass('change-background');
+                                                    $('body').removeClass('white-content');
+                                                }, 900);
+                                                white_color = false;
+                                            } else {
+
+                                                $('body').addClass('change-background');
+                                                setTimeout(function () {
+                                                    $('body').removeClass('change-background');
+                                                    $('body').addClass('white-content');
+                                                }, 900);
+
+                                                white_color = true;
+                                            }
 
 
-                                    });
+                                        });
 
-                                    $('.light-badge').click(function () {
-                                        $('body').addClass('white-content');
-                                    });
+                                        $('.light-badge').click(function () {
+                                            $('body').addClass('white-content');
+                                        });
 
-                                    $('.dark-badge').click(function () {
-                                        $('body').removeClass('white-content');
+                                        $('.dark-badge').click(function () {
+                                            $('body').removeClass('white-content');
+                                        });
                                     });
                                 });
-                            });
-    </script>
+        </script>
 
-</body>
+    </body>
 
 </html>

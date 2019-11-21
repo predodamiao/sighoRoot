@@ -24,7 +24,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" type="image/png" href="./assets/img/favicon.png">
         <title>
-            SIGHO - Pesquisa de Solicitação
+            SIGHO - Pesquisa de Hospedagens Ativas
         </title>
         <!--     Fonts and icons     -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet"/>
@@ -66,7 +66,7 @@
                                 <p>Funcionário</p>
                             </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="PesquisaHospedagemController">
                                 <i class="tim-icons icon-book-bookmark"></i>
                                 <p>Hospedagem</p>
@@ -114,7 +114,7 @@
                                 <p>Serviço</p>
                             </a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="PesquisaSolicitacaoController">
                                 <i class="tim-icons icon-notes"></i>
                                 <p>Solicitação</p>
@@ -232,43 +232,45 @@
                         <div class="col-md-12">
                             <div class="card ">
                                 <div class="card-header">
-                                    <h4 class="card-title fa-2x">Pesquisa de Solicitações</h4>
+                                    <h4 class="card-title fa-2x">Pesquisa de Hospedagens Ativas</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table tablesorter " id="">
                                             <thead class="text-primary">
                                                 <tr style="font-size: 1rem">
-                                                    <th>Data</th>
-                                                    <th>Quantidade</th>
-                                                    <th>Status</th>
-                                                    <th colspan="2" class="text-center">Ação</th>
+                                                    <th>id</th>
+                                                    <th>Data Chegada</th>
+                                                    <th>Hospede Responsável</th>
+                                                    <th>Quarto</th>
+                                                    <th class="text-center">Ação</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${solicitacoes}" var="solicitacao">
+                                                <c:forEach items="${hospedagens}" var="hospedagem">
                                                     <tr>
                                                         <td>
-                                                            <c:out value="${solicitacao.data}" />
+                                                            <c:out value="${hospedagem.id}"/>
                                                         </td>
                                                         <td>
-                                                            <c:out value="${solicitacao.quantidade}" />
+                                                            <c:out value="${hospedagem.dataChegada}"/>
                                                         </td>
                                                         <td>
-                                                            <c:out value="${solicitacao.status}" />
+                                                            <c:out value="${hospedagem.hospedeResponsavel.nome}"/>
+                                                        </td>
+                                                        <td>
+                                                            <c:out value="${hospedagem.quarto.identificacao}"/>
                                                         </td>
                                                         <td class="text-center">
-                                                            <a class="blockquote blockquote-green" href="ManterSolicitacaoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${solicitacao.id}"/>">Editar</a>
+                                                            <a class="blockquote blockquote-green" href="RealizarCheckoutController?acao=prepararOperacao&idHospedagem=<c:out value="${hospedagem.id}"/>">Check-out</a>
                                                         </td>
-                                                        <td class="text-center">
-                                                            <a class="blockquote blockquote-green" href="ManterSolicitacaoController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${solicitacao.id}"/>"/>Excluir</a>
-                                                        </td>
+
+                                                    </tr>
                                                     </tr>
                                                 </c:forEach>
-                                                </tr>
                                             </tbody>
                                         </table>
-                                        <form action="ManterSolicitacaoController?acao=prepararOperacao&operacao=Incluir" method="post">
+                                        <form action="ManterHospedagemController?acao=prepararOperacao&operacao=Incluir" method="post">
                                             <button type="submit" class="btn btn-fill btn-primary">Incluir</button>
                                         </form>
                                     </div>

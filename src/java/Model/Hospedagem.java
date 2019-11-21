@@ -31,7 +31,11 @@ public class Hospedagem {
         this.quarto = quarto;
         this.hospedeResponsavel = hospedeResponsavel;
     }
-    
+
+    public Hospedagem(Hospede hospedeResponsavel) {
+        this.hospedeResponsavel = hospedeResponsavel;
+    }
+
     public Hospedagem(int id, LocalDate dataSaida, LocalTime horaSaida) {
         this.id = id;
         this.dataSaida = dataSaida;
@@ -45,15 +49,15 @@ public class Hospedagem {
     public static List<Hospedagem> obterHospedagens() throws ClassNotFoundException, SQLException {
         return HospedagemDAO.obterHospedagens();
     }
-    
+
     public static List<Hospedagem> obterHospedagensAtivas() throws ClassNotFoundException, SQLException {
         return HospedagemDAO.obterHospedagensAtivas();
     }
-    
-    public void checkout() throws ClassNotFoundException, SQLException{
+
+    public void checkout() throws ClassNotFoundException, SQLException {
         HospedagemDAO.checkout(this);
     }
-    
+
     public List<Pagamento> obterPagamentos() throws ClassNotFoundException, SQLException {
         return PagamentoDAO.obterPagamentosHospede(this.id);
     }
@@ -62,10 +66,10 @@ public class Hospedagem {
         return PrestacaoServicoDAO.obterPrestacoesServicoHospede(this.id);
     }
 
-    public List<Consumo> obterConsumos() {
+    public List<Consumo> obterConsumos() throws ClassNotFoundException, SQLException {
         return ConsumoDAO.obterConsumosHospede(this.id);
     }
-    
+
     public List<AtendimentoRestaurante> obterAtendimentosRestaurante() throws ClassNotFoundException, SQLException {
         return AtendimentoRestauranteDAO.obterAtendimentosRestauranteHospede(this.id);
     }
@@ -161,5 +165,5 @@ public class Hospedagem {
     public void setHoraSaida(LocalTime horaSaida) {
         this.horaSaida = horaSaida;
     }
-    
+
 }

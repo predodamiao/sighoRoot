@@ -27,7 +27,7 @@ public enum MomentoPagamento {
     }
 
     public static List<MomentoPagamento> obterMomentosPagamento() {
-        ArrayList<MomentoPagamento> momentos = new ArrayList<MomentoPagamento>();
+        ArrayList<MomentoPagamento> momentos = new ArrayList<>();
         momentos.addAll(Arrays.asList(MomentoPagamento.values()));
         return momentos;
     }

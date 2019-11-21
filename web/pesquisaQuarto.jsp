@@ -240,7 +240,6 @@
                                             <thead class="text-primary">
                                                 <tr style="font-size: 1rem">
                                                     <th>Identificacao</th>
-                                                    <th>Ocupado</th>
                                                     <th>id Tipo</th>
                                                     <th colspan="2" class="text-center">Ação</th>
                                                 </tr>
@@ -252,10 +251,7 @@
                                                             <c:out value="${quarto.identificacao}" />
                                                         </td>
                                                         <td>
-                                                            <c:out value="${quarto.ocupado}" />
-                                                        </td>
-                                                        <td>
-                                                            <c:out value="${quarto.idTipoQuarto}" />
+                                                            <c:out value="${quarto.tipo.nome}" />
                                                         </td>
                                                         <td class="text-center">
                                                             <a class="blockquote blockquote-green" href="ManterQuartoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${quarto.identificacao}"/>">Editar</a>

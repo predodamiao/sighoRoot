@@ -21,7 +21,7 @@ public class ItemFrigobarDAO {
     public static List<ItemFrigobar> obterItensPadraoFrigobar() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<ItemFrigobar> itensPadroesFrigobar = new ArrayList<ItemFrigobar>();
+        List<ItemFrigobar> itensPadroesFrigobar = new ArrayList<>();
         ItemFrigobar itensPadraoFrigobar = null;
         try {
             conexao = BD.getConexao();
@@ -58,7 +58,7 @@ public class ItemFrigobarDAO {
                 rs.getInt("quantidade"),
                 null);
 
-        item.setIdItemConsumo(rs.getInt("idItem"));
+        item.setIdItemConsumo(rs.getInt("idItemConsumo"));
         return item;
     }
 
@@ -67,7 +67,7 @@ public class ItemFrigobarDAO {
         PreparedStatement comando = null;
         try {
             conexao = BD.getConexao();
-            comando = conexao.prepareStatement("insert into itemFrigobar (id, quantidade, idItem) values (?,?,?)");
+            comando = conexao.prepareStatement("insert into itemFrigobar (id, quantidade, idItemConsumo) values (?,?,?)");
             comando.setInt(1, item.getId());
             comando.setInt(2, item.getQuantidade());
 
@@ -110,7 +110,7 @@ public class ItemFrigobarDAO {
             comando = conexao.createStatement();
             stringSQL = "update itemfrigobar set "
                     + "quantidade = " + item.getQuantidade() + ", "
-                    + "idItem = ";
+                    + "idItemConsumo = ";
             if (item.getItem() == null) {
                 stringSQL = stringSQL + null;
             } else {

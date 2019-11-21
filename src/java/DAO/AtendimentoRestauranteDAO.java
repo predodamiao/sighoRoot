@@ -66,6 +66,7 @@ public class AtendimentoRestauranteDAO {
                 null,
                 null,
                 null);
+        solicitacao.setIdOpcao(rs.getInt("idOpcaoRestaurante"));
         solicitacao.setIdFuncionarioSolicitante(rs.getInt("idFuncionario"));
         solicitacao.setIdHospedagem(rs.getInt("idHospedagem"));
         return solicitacao;
@@ -76,7 +77,7 @@ public class AtendimentoRestauranteDAO {
         PreparedStatement comando = null;
         try {
             conexao = BD.getConexao();
-            comando = conexao.prepareStatement("insert into atendimentoRestaurante (id, data, quantidade, status, idFuncionario, idHospedagem, idServico) values (?,?,?,?,?,?,?,?)");
+            comando = conexao.prepareStatement("insert into atendimentoRestaurante (id, data, hora, quantidade, status, idFuncionario, idHospedagem, idOpcaoRestaurante) values (?,?,?,?,?,?,?,?)");
             comando.setInt(1, atendimento.getId());
             comando.setObject(2, atendimento.getData());
             comando.setObject(3, atendimento.getHora(), JDBCType.TIME);
@@ -147,7 +148,7 @@ public class AtendimentoRestauranteDAO {
             } else {
                 stringSQL = stringSQL + atendimento.getHospedagem().getId();
             }
-            stringSQL = stringSQL + ", idOpcao = ";
+            stringSQL = stringSQL + ", idOpcaoRestaurante = ";
             if (atendimento.getOpcao() == null) {
                 stringSQL = stringSQL + null;
             } else {
@@ -168,6 +169,7 @@ public class AtendimentoRestauranteDAO {
         List<AtendimentoRestaurante> atendimentos = new ArrayList<>();
         AtendimentoRestaurante atendimento = null;
         try {
+
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("select * from atendimentoRestaurante where idHospedagem = " + id);

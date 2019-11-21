@@ -27,7 +27,7 @@ public enum StatusPrestacaoServico {
     }
 
     public static List<StatusPrestacaoServico> obterStatusSolicitacoes() {
-        ArrayList<StatusPrestacaoServico> status = new ArrayList<StatusPrestacaoServico>();
+        ArrayList<StatusPrestacaoServico> status = new ArrayList<>();
         status.addAll(Arrays.asList(StatusPrestacaoServico.values()));
         return status;
     }

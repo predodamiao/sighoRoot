@@ -13,6 +13,14 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%
+
+    pageContext.setAttribute("dataAtual", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+    pageContext.setAttribute("horaAtual", LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
+
+%>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -245,40 +253,12 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="data">Data</label>
-                                                        <input class="form-control" type="date" name="data" id="data" value="${consumo.data}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="quantidade">Quantidade</label>
-                                                        <input class="form-control" min="1" step="1" type="number" name="quantidade" id="quantidade" value="${consumo.quantidade}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="hospedagem">Hospedagem</label>
-                                                        <select class="form-control" name="hospedagem" id="hospedagem" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
-                                                        <option value="0" <c:if test="${consumo.hospedagem.id == null}"> selected </c:if>></option>
-                                                        <c:forEach items="${hospedagens}" var="hospedagem">
-                                                            <option value="${hospedagem.id}" <c:if test="${consumo.hospedagem.id == hospedagem.id}">selected</c:if>>${hospedagem.id}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="">Item</label>
-                                                    <select class="form-control" name="item" id="item" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
+                                                        <label for="">Item</label>
+                                                        <select class="form-control" name="item" id="item" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                                                         <option value="0" <c:if test="${consumo.itemConsumido.codigo == null}"> selected </c:if>></option>
                                                         <c:forEach items="${itens}" var="item">
                                                             <option value="${item.codigo}" <c:if test="${consumo.itemConsumido.codigo == item.codigo}">selected</c:if>>${item.nome}</option>
@@ -290,11 +270,49 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
+                                                    <label for="quantidade">Quantidade</label>
+                                                    <input class="form-control" min="1" step="1" type="number" name="quantidade" id="quantidade" value="${consumo.quantidade}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="data">Data</label>
+                                                        <input class="form-control" type="date" name="data" id="data" value="<c:if test="${operacao == 'Incluir'}"><c:out value="${dataAtual}"/></c:if>${consumo.data}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="data">Hora</label>
+                                                            <input class="form-control" type="time" name="hora" id="hora" value="<c:if test="${operacao == 'Incluir'}"><c:out value="${horaAtual}"/></c:if>${consumo.hora}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="hospedagem">Hospedagem</label>
+                                                            <select class="form-control" name="hospedagem" id="hospedagem" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
+                                                        <option value="0" <c:if test="${consumo.hospedagem.id == null}"> selected </c:if>></option>
+                                                        <c:forEach items="${hospedagens}" var="hospedagem">
+                                                            <option value="${hospedagem.id}" <c:if test="${consumo.hospedagem.id == hospedagem.id}">selected</c:if>>${hospedagem.id}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
                                                     <label for="">Funcionario Solicitante</label>
                                                     <select class="form-control" name="funcionarioSolicitante" id="funcionarioSolicitante" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
-                                                        <option value="0" <c:if test="${consumo.funcionarioResponsavel.id == null}"> selected </c:if>></option>
+                                                        <option value="0" <c:if test="${consumo.funcionarioSolicitante.id == null}"> selected </c:if>></option>
                                                         <c:forEach items="${funcionarioSolicitante}" var="funcionario">
-                                                            <option value="${funcionario.id}" <c:if test="${consumo.funcionarioResponsavel.id == funcionario.id}">selected</c:if>>${funcionario.nome}</option>
+                                                            <option value="${funcionario.id}" <c:if test="${consumo.funcionarioSolicitante.id == funcionario.id}">selected</c:if>>${funcionario.nome}</option>
                                                         </c:forEach>
                                                     </select>
                                                 </div>
@@ -450,6 +468,26 @@
                                         });
                                     });
                                 });
+
+
+
+                                var data = new Date();
+
+// Guarda cada pedaço em uma variável
+                                var dia = data.getDate();           // 1-31
+                                var mes = data.getMonth() + 1;          // 0-11 (zero=janeiro)
+                                var ano4 = data.getFullYear();       // 4 dígitos
+                                var hora = data.getHours();          // 0-23
+                                var min = data.getMinutes();        // 0-59
+
+
+                                var data = ano4 + '-' + mes + '-' + dia;
+                                var hora = hora + ':' + min;
+
+                                if (document.getElementById('data').value == "")
+                                    document.getElementById('data').value = data;
+
+
         </script>
 
     </body>

@@ -28,7 +28,7 @@ public enum CategoriaServico {
     }
 
     public static List<CategoriaServico> obterCategoriasServico() {
-        ArrayList<CategoriaServico> categorias = new ArrayList<CategoriaServico>();
+        ArrayList<CategoriaServico> categorias = new ArrayList<>();
         categorias.addAll(Arrays.asList(CategoriaServico.values()));
         return categorias;
     }

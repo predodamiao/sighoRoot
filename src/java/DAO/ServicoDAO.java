@@ -21,7 +21,7 @@ public class ServicoDAO {
     public static List<Servico> obterServicos() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<Servico> servicos = new ArrayList<Servico>();
+        List<Servico> servicos = new ArrayList<>();
         Servico servico = null;
         try {
             conexao = BD.getConexao();
@@ -108,7 +108,7 @@ public class ServicoDAO {
             stringSQL = "update servico set "
                     + "nome = '" + servico.getNome() + "', "
                     + "descricao = '" + servico.getDescricao() + "', "
-                    + "preco = " + servico.getPreco()+ ","
+                    + "preco = " + servico.getPreco() + ","
                     + "categoria = '" + servico.getCategoria().toString() + "'";
 
             stringSQL = stringSQL + " where id = " + servico.getCodigo();

@@ -24,7 +24,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" type="image/png" href="./assets/img/favicon.png">
         <title>
-            SIGHO - Pesquisa de Consumo
+            SIGHO - Pesquisa de Prestação de Serviço
         </title>
         <!--     Fonts and icons     -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet"/>
@@ -54,7 +54,7 @@
                                 <p>Acompanhante</p>
                             </a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="PesquisaConsumoController">
                                 <i class="tim-icons icon-basket-simple"></i>
                                 <p>Consumo</p>
@@ -114,7 +114,7 @@
                                 <p>Serviço</p>
                             </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="PesquisaSolicitacaoController">
                                 <i class="tim-icons icon-notes"></i>
                                 <p>Solicitação</p>
@@ -232,47 +232,43 @@
                         <div class="col-md-12">
                             <div class="card ">
                                 <div class="card-header">
-                                    <h4 class="card-title fa-2x">Pesquisa de Consumos</h4>
+                                    <h4 class="card-title fa-2x">Pesquisa de Prestações de Serviço</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table tablesorter " id="">
                                             <thead class="text-primary">
                                                 <tr style="font-size: 1rem">
-                                                    <th>id</th>
                                                     <th>Data</th>
                                                     <th>Quantidade</th>
-                                                    <th>Item Consumido</th>
+                                                    <th>Status</th>
                                                     <th colspan="2" class="text-center">Ação</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${consumos}" var="consumo">
+                                                <c:forEach items="${solicitacoes}" var="solicitacao">
                                                     <tr>
                                                         <td>
-                                                            <c:out value="${consumo.id}" />
+                                                            <c:out value="${solicitacao.data}" />
                                                         </td>
                                                         <td>
-                                                            <c:out value="${consumo.data}" />
+                                                            <c:out value="${solicitacao.quantidade}" />
                                                         </td>
                                                         <td>
-                                                            <c:out value="${consumo.quantidade}" />
-                                                        </td>
-                                                        <td>
-                                                            <c:out value="${consumo.itemConsumido.nome}" />
+                                                            <c:out value="${solicitacao.status}" />
                                                         </td>
                                                         <td class="text-center">
-                                                            <a class="blockquote blockquote-green"  href="ManterConsumoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${consumo.id}"/>">Editar</a>
+                                                            <a class="blockquote blockquote-green" href="ManterPrestacaoServicoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${solicitacao.id}"/>">Editar</a>
                                                         </td>
                                                         <td class="text-center">
-                                                            <a class="blockquote blockquote-green"  href="ManterConsumoController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${consumo.id}"/>"/>Excluir</a>
+                                                            <a class="blockquote blockquote-green" href="ManterPrestacaoServicoController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${solicitacao.id}"/>"/>Excluir</a>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <form action="ManterConsumoController?acao=prepararOperacao&operacao=Incluir" method="post">
+                                        <form action="ManterPrestacaoServicoController?acao=prepararOperacao&operacao=Incluir" method="post">
                                             <button type="submit" class="btn btn-fill btn-primary">Incluir</button>
                                         </form>
                                     </div>

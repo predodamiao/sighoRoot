@@ -4,13 +4,20 @@ import DAO.OpcaoRestauranteDAO;
 import java.sql.SQLException;
 import java.util.List;
 
-public class OpcaoRestaurante extends Servico {
+public class OpcaoRestaurante {
 
+    private int codigo;
+    private String nome;
+    private String descricao;
+    private float preco;
     private float acrescimo;
     private int tempoPreparo;
 
-    public OpcaoRestaurante(int codigo, String nome, String descricao, float precoVenda, CategoriaServico categoria, float acrescimo, int tempoPreparo) {
-        super(codigo, nome, descricao, precoVenda, CategoriaServico.RESTAURANTE);
+    public OpcaoRestaurante(int codigo, String nome, String descricao, float preco, float acrescimo, int tempoPreparo) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.preco = preco;
         this.acrescimo = acrescimo;
         this.tempoPreparo = tempoPreparo;
     }
@@ -21,6 +28,38 @@ public class OpcaoRestaurante extends Servico {
 
     public static List<OpcaoRestaurante> obterOpcoesRestaurante() throws ClassNotFoundException, SQLException {
         return OpcaoRestauranteDAO.obterOpcoesRestaurante();
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public float getPreco() {
+        return preco;
+    }
+
+    public void setPreco(float preco) {
+        this.preco = preco;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public float getAcrescimo() {
@@ -39,17 +78,14 @@ public class OpcaoRestaurante extends Servico {
         this.tempoPreparo = tempoPreparo;
     }
 
-    @Override
     public void gravar() throws SQLException, ClassNotFoundException {
         OpcaoRestauranteDAO.gravar(this);
     }
 
-    @Override
     public void excluir() throws SQLException, ClassNotFoundException {
         OpcaoRestauranteDAO.excluir(this);
     }
 
-    @Override
     public void alterar() throws SQLException, ClassNotFoundException {
         OpcaoRestauranteDAO.alterar(this);
     }

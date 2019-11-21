@@ -78,7 +78,7 @@ public class PrestacaoServicoDAO {
             conexao = BD.getConexao();
             comando = conexao.prepareStatement("insert into prestacaoServico (id, data, status, idFuncionario, idHospedagem, idServico) values (?,?,?,?,?,?,?)");
             comando.setInt(1, prestacao.getId());
-             comando.setObject(2, prestacao.getData());
+            comando.setObject(2, prestacao.getData());
             comando.setObject(3, prestacao.getHora(), JDBCType.TIME);
             comando.setString(4, prestacao.getStatus().toString());
             if (prestacao.getFuncionarioSolicitante() == null) {

@@ -20,7 +20,7 @@ public class ItemConsumoDAO {
     public static List<ItemConsumo> obterItensConsumo() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<ItemConsumo> itensConsumo = new ArrayList<ItemConsumo>();
+        List<ItemConsumo> itensConsumo = new ArrayList<>();
         ItemConsumo itemConsumo = null;
         try {
             conexao = BD.getConexao();

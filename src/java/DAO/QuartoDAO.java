@@ -21,7 +21,7 @@ public class QuartoDAO {
     public static List<Quarto> obterQuartos() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<Quarto> quartos = new ArrayList<Quarto>();
+        List<Quarto> quartos = new ArrayList<>();
         Quarto quarto = null;
         try {
             conexao = BD.getConexao();
@@ -58,7 +58,7 @@ public class QuartoDAO {
                 rs.getInt("quantidadeCamasCasal"),
                 rs.getInt("quantidadeCamasSolteiro"),
                 null);
-        quarto.setIdTipoQuarto(rs.getInt("tipoQuarto"));
+        quarto.setIdTipoQuarto(rs.getInt("idtipoQuarto"));
         return quarto;
     }
 
@@ -67,7 +67,7 @@ public class QuartoDAO {
         PreparedStatement comando = null;
         try {
             conexao = BD.getConexao();
-            comando = conexao.prepareStatement("insert into quarto (identificacao, quantidadeCamasCasal, quantidadeCamasSolteiro, ocupado, tipoQuarto) values (?,?,?,?)");
+            comando = conexao.prepareStatement("insert into quarto (identificacao, quantidadeCamasCasal, quantidadeCamasSolteiro, idtipoQuarto) values (?,?,?,?)");
             comando.setInt(1, quarto.getIdentificacao());
             comando.setInt(2, quarto.getQuantidadeCamasCasal());
             comando.setInt(3, quarto.getQuantidadeCamasSolteiro());
@@ -111,7 +111,7 @@ public class QuartoDAO {
             stringSQL = "update quarto set "
                     + "quantidadeCamasCasal = " + quarto.getQuantidadeCamasCasal() + ", "
                     + "quantidadeCamasSolteiro = " + quarto.getQuantidadeCamasSolteiro() + ", "
-                    + "tipoQuarto = ";
+                    + "idtipoQuarto = ";
             if (quarto.getTipo() == null) {
                 stringSQL = stringSQL + null;
             } else {
@@ -124,5 +124,24 @@ public class QuartoDAO {
             fecharConexao(conexao, comando);
         }
 
+    }
+
+    public static List<Quarto> obterQuartosVagos(int tipoQuarto) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        List<Quarto> quartos = new ArrayList<>();
+        Quarto quarto = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from quarto where idTipoQuarto = " + tipoQuarto);
+            while (rs.next()) {
+                quarto = instanciarQuarto(rs);
+                quartos.add(quarto);
+            }
+        } finally {
+            DAO.fecharConexao(conexao, comando);
+        }
+        return quartos;
     }
 }

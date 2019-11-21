@@ -8,12 +8,12 @@ package DAO;
 import static DAO.DAO.fecharConexao;
 import Model.Reserva;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,12 +22,12 @@ public class ReservaDAO {
     public static List<Reserva> obterReservas() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<Reserva> reservas = new ArrayList<Reserva>();
+        List<Reserva> reservas = new ArrayList<>();
         Reserva reserva = null;
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from reserva");
+            ResultSet rs = comando.executeQuery("select * from reserva order by dataEstimadaChegada");
             while (rs.next()) {
                 reserva = instanciarReserva(rs);
                 reservas.add(reserva);
@@ -56,12 +56,12 @@ public class ReservaDAO {
 
     public static Reserva instanciarReserva(ResultSet rs) throws ClassNotFoundException, SQLException {
         Reserva reserva = new Reserva(rs.getInt("id"),
-                rs.getDate("dataEstimadaChegada"),
-                rs.getDate("dataEstimadaSaida"),
+                rs.getObject("dataEstimadaChegada", LocalDate.class),
+                rs.getObject("dataEstimadaSaida", LocalDate.class),
                 null,
                 null);
-        reserva.setIdTipoQuarto(rs.getInt("tipoQuarto"));
-        reserva.setIdHospedeResponsavel(rs.getInt("hospedeResponsavel"));
+        reserva.setIdTipoQuarto(rs.getInt("idtipoQuarto"));
+        reserva.setIdHospedeResponsavel(rs.getInt("idhospedeResponsavel"));
         return reserva;
     }
 
@@ -70,10 +70,10 @@ public class ReservaDAO {
         PreparedStatement comando = null;
         try {
             conexao = BD.getConexao();
-            comando = conexao.prepareStatement("insert into Reserva (id, dataEstimadaChegada, dataEstimadaSaida, tipoQuarto,  hospedeResponsavel) values (?,?,?,?,?)");
+            comando = conexao.prepareStatement("insert into Reserva (id, dataEstimadaChegada, dataEstimadaSaida, idtipoQuarto, idhospedeResponsavel) values (?,?,?,?,?)");
             comando.setInt(1, reserva.getId());
-            comando.setDate(2, new java.sql.Date(reserva.getDataEstimadaChegada().getTime()));
-            comando.setDate(3, new java.sql.Date(reserva.getDataEstimadaSaida().getTime()));
+            comando.setObject(2, reserva.getDataEstimadaChegada());
+            comando.setObject(3, reserva.getDataEstimadaSaida());
             if (reserva.getTipoQuarto() == null) {
                 comando.setNull(4, Types.INTEGER);
             } else {
@@ -117,15 +117,15 @@ public class ReservaDAO {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "update Reserva set "
-                    + "dataEstimadaChegada = '" + new java.sql.Date(reserva.getDataEstimadaChegada().getTime()) + "', "
-                    + "dataEstimadaSaida = '" + new java.sql.Date(reserva.getDataEstimadaSaida().getTime()) + "', "
-                    + "hospedeResponsavel = ";
+                    + "dataEstimadaChegada = '" + reserva.getDataEstimadaChegada() + "', "
+                    + "dataEstimadaSaida = '" + reserva.getDataEstimadaSaida() + "', "
+                    + "idhospedeResponsavel = ";
             if (reserva.getHospedeResponsavel() == null) {
                 stringSQL = stringSQL + null;
             } else {
                 stringSQL = stringSQL + reserva.getHospedeResponsavel().getId();
             }
-            stringSQL = stringSQL + ", tipoQuarto = ";
+            stringSQL = stringSQL + ", idtipoQuarto = ";
             if (reserva.getTipoQuarto() == null) {
                 stringSQL = stringSQL + null;
             } else {

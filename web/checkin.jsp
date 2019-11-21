@@ -1,7 +1,6 @@
 <!--
 =========================================================
 * * Black Dashboard - v1.0.1
-
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/black-dashboard
@@ -25,7 +24,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" type="image/png" href="./assets/img/favicon.png">
         <title>
-            SIGHO - Acompanhante
+            SIGHO - Check-in
         </title>
         <!--     Fonts and icons     -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
@@ -49,13 +48,13 @@
                         </a>
                     </div>
                     <ul class="nav">
-                        <li class="active">
+                        <li>
                             <a href="PesquisaAcompanhanteController">
                                 <i class="tim-icons icon-single-02"></i>
                                 <p>Acompanhante</p>
                             </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="PesquisaConsumoController">
                                 <i class="tim-icons icon-basket-simple"></i>
                                 <p>Consumo</p>
@@ -234,59 +233,15 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title fa-2x"> ACOMPANHANTE - ${operacao}</h4>
+                                    <h4 class="card-title fa-2x"> Realizar Check-In</h4>
                                 </div>
+
+
                                 <div class="card-body">
-                                    <form  action="ManterAcompanhanteController?acao=confirmarOperacao&operacao=${operacao}" method="post">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="id">id</label>
-                                                    <input type="number" min="1" step="1" class="form-control" name="id" id="id" value="${acompanhante.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if>>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="nome">Nome</label>
-                                                        <input type="text"  class="form-control" name="nome" id="nome" value="${acompanhante.nome}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="dataNascimento">Data de Nascimento</label>
-                                                        <input type="date"  class="form-control" name="dataNascimento" id="dataNascimento" value="${acompanhante.dataNascimento}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="ocupaCama">Ocupa Cama?</label>
-                                                        <input type="checkbox"  class="form-control" name="ocupaCama" value="ocupaCama" id="ocupaCama" <c:if test="${acompanhante.ocupaCama == true}">checked</c:if> <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="hospedagem">Hospedagem</label>
-                                                            <select name="hospedagem"  class="form-control" id="hospedagem" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
-                                                        <option value="0" <c:if test="${acompanhante.hospedagem.id == null}">selected</c:if>></option>
-                                                        <c:forEach items="${hospedagens}" var="hospedagem">
-                                                            <option value="${hospedagem.id}" <c:if test="${acompanhante.hospedagem.id == hospedagem.id}">selected</c:if>>${hospedagem.id}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer">
-                                            <button type="submit" class="btn btn-fill btn-primary">${operacao}</button>
-                                        </div>
-                                    </form>
+                                    <a class="btn btn-fill btn-primary" href="PesquisaHospedagensAtivasController" role="button">Com Reserva</a>
+                                    <c:forEach items="${tiposQuarto}" var="tipo">
+                                        <a class="btn btn-fill btn-primary" href="RealizarCheckinController?acao=checkinSemReserva&tipoQuarto=${tipo.id}" role="button">${tipo.nome} - R$ ${tipo.diaria}</a>
+                                    </c:forEach>
                                 </div>
 
                             </div>
@@ -433,6 +388,26 @@
                                         });
                                     });
                                 });
+
+
+
+                                var data = new Date();
+
+// Guarda cada pedaço em uma variável
+                                var dia = data.getDate();           // 1-31
+                                var mes = data.getMonth() + 1;          // 0-11 (zero=janeiro)
+                                var ano4 = data.getFullYear();       // 4 dígitos
+                                var hora = data.getHours();          // 0-23
+                                var min = data.getMinutes();        // 0-59
+
+
+                                var data = ano4 + '-' + mes + '-' + dia;
+                                var hora = hora + ':' + min;
+
+                                if (document.getElementById('data').value == "")
+                                    document.getElementById('data').value = data;
+
+
         </script>
 
     </body>

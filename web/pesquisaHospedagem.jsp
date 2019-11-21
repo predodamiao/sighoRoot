@@ -232,7 +232,7 @@
                         <div class="col-md-12">
                             <div class="card ">
                                 <div class="card-header">
-                                    <h4 class="card-title fa-2x">Pesquisa de Hóspedes</h4>
+                                    <h4 class="card-title fa-2x">Pesquisa de Hospedagens</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -240,9 +240,9 @@
                                             <thead class="text-primary">
                                                 <tr style="font-size: 1rem">
                                                     <th>id</th>
-                                                    <th>Data Estimada Chegada</th>
-                                                    <th>id Hospede Responsável</th>
-                                                    <th>id Quarto</th>
+                                                    <th>Data Chegada</th>
+                                                    <th>Hospede Responsável</th>
+                                                    <th>Quarto</th>
                                                     <th colspan="2" class="text-center">Ação</th>
                                                 </tr>
                                             </thead>
@@ -253,13 +253,13 @@
                                                             <c:out value="${hospedagem.id}"/>
                                                         </td>
                                                         <td>
-                                                            <c:out value="${hospedagem.dataEstimadaChegada}"/>
+                                                            <c:out value="${hospedagem.dataChegada}"/>
                                                         </td>
                                                         <td>
-                                                            <c:out value="${hospedagem.idHospedeResponsavel}"/>
+                                                            <c:out value="${hospedagem.hospedeResponsavel.nome}"/>
                                                         </td>
                                                         <td>
-                                                            <c:out value="${hospedagem.idQuarto}"/>
+                                                            <c:out value="${hospedagem.quarto.identificacao}"/>
                                                         </td>
                                                         <td class="text-center">
                                                             <a class="blockquote blockquote-green" href="ManterHospedagemController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${hospedagem.id}"/>">Editar</a>

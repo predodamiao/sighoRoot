@@ -13,6 +13,14 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%
+
+    pageContext.setAttribute("dataAtual", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+    pageContext.setAttribute("horaAtual", LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
+
+%>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -249,7 +257,15 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="data">Data</label>
-                                                        <input class="form-control" type="date" name="data" id="data" value="${pagamento.data}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
+                                                        <input class="form-control" type="date" name="data" id="data" value="<c:if test="${operacao == 'Incluir'}"><c:out value="${dataAtual}"/></c:if>${pagamento.data}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="data">Hora</label>
+                                                            <input class="form-control" type="time" name="hora" id="hora" value="<c:if test="${operacao == 'Incluir'}"><c:out value="${horaAtual}"/></c:if>${pagamento.hora}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                                                     </div>
                                                 </div>
                                             </div>
@@ -257,7 +273,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="hospedagem">Hospedagem</label>
-                                                        <select class="form-control" name="hospedagem" id="hospedagem" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
+                                                            <select class="form-control" name="hospedagem" id="hospedagem" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                                                         <option value="0" <c:if test="${pagamento.hospedagem.id == null}"> selected </c:if>></option>
                                                         <c:forEach items="${hospedagens}" var="hospedagem">
                                                             <option value="${hospedagem.id}" <c:if test="${pagamento.hospedagem.id == hospedagem.id}">selected</c:if>>${hospedagem.id}</option>
@@ -458,6 +474,23 @@
                                         });
                                     });
                                 });
+
+                                var data = new Date();
+
+// Guarda cada pedaço em uma variável
+                                var dia = data.getDate();           // 1-31
+                                var mes = data.getMonth() + 1;          // 0-11 (zero=janeiro)
+                                var ano4 = data.getFullYear();       // 4 dígitos
+                                var hora = data.getHours();          // 0-23
+                                var min = data.getMinutes();        // 0-59
+
+
+                                var data = ano4 + '-' + mes + '-' + dia;
+                                var hora = hora + ':' + min;
+
+                                if (document.getElementById('data').value == "")
+                                    document.getElementById('data').value = data;
+
         </script>
 
     </body>

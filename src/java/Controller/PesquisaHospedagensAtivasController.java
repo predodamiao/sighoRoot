@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class PesquisaHospedagensAtivas extends HttpServlet {
+public class PesquisaHospedagensAtivasController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -49,7 +49,7 @@ public class PesquisaHospedagensAtivas extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisaHospedagensAtivas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaHospedagensAtivasController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -67,7 +67,7 @@ public class PesquisaHospedagensAtivas extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisaHospedagensAtivas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaHospedagensAtivasController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

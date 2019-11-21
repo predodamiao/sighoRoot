@@ -242,14 +242,14 @@
                                                 <div class="form-group">
                                                     <label for="id">id</label>
                                                     <input class="form-control" min="1" step="1" id="id" name="id" type="number" value="${tipoQuarto.id}" class="form-control" <c:if test="${operacao != 'Incluir'}"> readonly </c:if>>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="nome">Nome</label>
-                                                    <input class="form-control" type="text" name="nome" id="nome" value="${tipoQuarto.nome}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="nome">Nome</label>
+                                                        <input class="form-control" type="text" name="nome" id="nome" value="${tipoQuarto.nome}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                                                     </div>
                                                 </div>
                                             </div>
@@ -266,11 +266,11 @@
                                                     <div class="form-group">
                                                         <label for="preco">Preço</label>
                                                         <input class="form-control" type="number" step="0.01" min="0.00" name="preco" id="preco" value="${tipoQuarto.preco}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="card-footer">
-                                            <button type="submit" class="btn btn-fill btn-primary">Save</button>
+                                            <div class="card-footer">
+                                                <button type="submit" class="btn btn-fill btn-primary">${operacao}</button>
                                         </div>
                                     </form>
                                 </div>

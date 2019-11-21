@@ -22,6 +22,7 @@ public class Pagamento {
         this.id = id;
         this.valor = valor;
         this.data = data;
+        this.hora = hora;
         this.quantidadeParcelas = parcelas;
         this.tipo = tipo;
         this.momento = momento;

@@ -6,11 +6,7 @@
 package DAO;
 
 import static DAO.DAO.fecharConexao;
-import Model.AtendimentoRestaurante;
-import Model.Consumo;
 import Model.Hospedagem;
-import Model.Pagamento;
-import Model.PrestacaoServico;
 import java.sql.Connection;
 import java.sql.JDBCType;
 import java.sql.PreparedStatement;
@@ -68,8 +64,8 @@ public class HospedagemDAO {
                 rs.getObject("horaSaida", LocalTime.class),
                 null,
                 null);
-        hospedagem.setIdQuarto(rs.getInt("quarto"));
-        hospedagem.setIdHospedeResponsavel(rs.getInt("hospedeResponsavel"));
+        hospedagem.setIdQuarto(rs.getInt("idquarto"));
+        hospedagem.setIdHospedeResponsavel(rs.getInt("idhospedeResponsavel"));
         return hospedagem;
     }
 
@@ -78,19 +74,19 @@ public class HospedagemDAO {
         PreparedStatement comando = null;
         try {
             conexao = BD.getConexao();
-            comando = conexao.prepareStatement("insert into hospedagem (id, dataChegada, horaChegada, quarto, hospedeResponsavel) values (?,?,?,?)");
+            comando = conexao.prepareStatement("insert into hospedagem (id, dataChegada, horaChegada, idquarto, idhospedeResponsavel) values (?,?,?,?,?)");
             comando.setInt(1, hospedagem.getId());
             comando.setObject(2, hospedagem.getDataChegada());
             comando.setObject(3, hospedagem.getHoraChegada(), JDBCType.TIME);
             if (hospedagem.getQuarto() == null) {
-                comando.setNull(3, Types.INTEGER);
-            } else {
-                comando.setInt(3, hospedagem.getQuarto().getIdentificacao());
-            }
-            if (hospedagem.getHospedeResponsavel() == null) {
                 comando.setNull(4, Types.INTEGER);
             } else {
-                comando.setInt(4, hospedagem.getHospedeResponsavel().getId());
+                comando.setInt(4, hospedagem.getQuarto().getIdentificacao());
+            }
+            if (hospedagem.getHospedeResponsavel() == null) {
+                comando.setNull(5, Types.INTEGER);
+            } else {
+                comando.setInt(5, hospedagem.getHospedeResponsavel().getId());
             }
             comando.executeUpdate();
         } finally {
@@ -129,13 +125,13 @@ public class HospedagemDAO {
                     + "horaChegada = '" + hospedagem.getHoraChegada() + "', "
                     + "dataSaida = '" + hospedagem.getDataSaida() + "', "
                     + "horaSaida = '" + hospedagem.getHoraSaida() + "', "
-                    + "hospedeResponsavel = ";
+                    + "idhospedeResponsavel = ";
             if (hospedagem.getHospedeResponsavel() == null) {
                 stringSQL = stringSQL + null;
             } else {
                 stringSQL = stringSQL + hospedagem.getHospedeResponsavel().getId();
             }
-            stringSQL = stringSQL + ", quarto = ";
+            stringSQL = stringSQL + ", idquarto = ";
             if (hospedagem.getQuarto() == null) {
                 stringSQL = stringSQL + null;
             } else {
@@ -150,7 +146,7 @@ public class HospedagemDAO {
 
     }
 
-    public static List<Hospedagem> obterHospedagensAtivas() throws ClassNotFoundException, SQLException{
+    public static List<Hospedagem> obterHospedagensAtivas() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         List<Hospedagem> hospedagens = new ArrayList<>();
@@ -158,7 +154,7 @@ public class HospedagemDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from hospedagem where dataSaida = '"+ null +"'");
+            ResultSet rs = comando.executeQuery("select * from hospedagem where dataSaida is " + null);
             while (rs.next()) {
                 hospedagem = instanciarHospedagem(rs);
                 hospedagens.add(hospedagem);
@@ -168,9 +164,9 @@ public class HospedagemDAO {
         }
         return hospedagens;
     }
-    
-    public static void checkout(Hospedagem hospedagem) throws ClassNotFoundException, SQLException{
-        
+
+    public static void checkout(Hospedagem hospedagem) throws ClassNotFoundException, SQLException {
+
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
@@ -181,13 +177,13 @@ public class HospedagemDAO {
             stringSQL = "update hospedagem set "
                     + "dataSaida = '" + hospedagem.getDataChegada() + "', "
                     + "horaSaida = '" + hospedagem.getHoraChegada() + "' ";
-            
+
             stringSQL = stringSQL + " where id = " + hospedagem.getId();
             comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);
         }
-        
+
     }
 
 }

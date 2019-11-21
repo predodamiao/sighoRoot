@@ -11,11 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Pedro Henrique
- */
-public class PesquisaAtendimentoRestaurante extends HttpServlet {
+public class PesquisaAtendimentoRestauranteController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -27,7 +23,7 @@ public class PesquisaAtendimentoRestaurante extends HttpServlet {
      * @throws IOException if an I/O error occurs
      * @throws java.sql.SQLException
      */
-     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         try {
             request.setAttribute("prestacoes", AtendimentoRestaurante.obterAtendimentosRestaurante());
@@ -50,11 +46,11 @@ public class PesquisaAtendimentoRestaurante extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         try {
-             processRequest(request, response);
-         } catch (SQLException ex) {
-             Logger.getLogger(PesquisaAtendimentoRestaurante.class.getName()).log(Level.SEVERE, null, ex);
-         }
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(PesquisaAtendimentoRestauranteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -68,11 +64,11 @@ public class PesquisaAtendimentoRestaurante extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         try {
-             processRequest(request, response);
-         } catch (SQLException ex) {
-             Logger.getLogger(PesquisaAtendimentoRestaurante.class.getName()).log(Level.SEVERE, null, ex);
-         }
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(PesquisaAtendimentoRestauranteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

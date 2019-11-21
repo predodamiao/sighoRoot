@@ -65,7 +65,7 @@ public class ConsumoDAO {
                 null,
                 null);
         consumo.setIdFuncionario(rs.getInt("idFuncionario"));
-        consumo.setIdItemConsumido(rs.getInt("idItem"));
+        consumo.setIdItemConsumido(rs.getInt("idItemConsumo"));
         consumo.setIdHospedagem(rs.getInt("idHospedagem"));
         return consumo;
     }
@@ -75,7 +75,7 @@ public class ConsumoDAO {
         PreparedStatement comando = null;
         try {
             conexao = BD.getConexao();
-            comando = conexao.prepareStatement("insert into consumo (id, data, hora, quantidade, idFuncionario, idHospedagem, idItem) values (?,?,?,?,?,?,?)");
+            comando = conexao.prepareStatement("insert into consumo (id, data, hora, quantidade, idFuncionario, idHospedagem, idItemConsumo) values (?,?,?,?,?,?,?)");
             comando.setInt(1, consumo.getId());
             comando.setObject(2, consumo.getData());
             comando.setObject(3, consumo.getHora(), JDBCType.TIME);
@@ -142,7 +142,7 @@ public class ConsumoDAO {
             } else {
                 stringSQL = stringSQL + consumo.getFuncionarioSolicitante().getId();
             }
-            stringSQL = stringSQL + ", idItem = ";
+            stringSQL = stringSQL + ", idItemConsumo = ";
             if (consumo.getItemConsumido() == null) {
                 stringSQL = stringSQL + null;
             } else {
@@ -157,8 +157,23 @@ public class ConsumoDAO {
 
     }
 
-    public static List<Consumo> obterConsumosHospede(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static List<Consumo> obterConsumosHospede(int id) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        List<Consumo> consumos = new ArrayList<>();
+        Consumo consumo = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from consumo where idHospedagem = " + id);
+            while (rs.next()) {
+                consumo = instanciarConsumo(rs);
+                consumos.add(consumo);
+            }
+        } finally {
+            DAO.fecharConexao(conexao, comando);
+        }
+        return consumos;
     }
 
 }

@@ -70,11 +70,10 @@ public class ManterHospedagemController extends HttpServlet {
 
         int idHospede = 0;
         int idQuarto = 0;
-        
-        
-        if(!operacao.equals("Excluir")){
-        idHospede = Integer.parseInt(request.getParameter("hospede"));
-        idQuarto = Integer.parseInt(request.getParameter("quarto"));
+
+        if (!operacao.equals("Excluir")) {
+            idHospede = Integer.parseInt(request.getParameter("hospede"));
+            idQuarto = Integer.parseInt(request.getParameter("quarto"));
         }
         try {
             Hospede hospede = null;

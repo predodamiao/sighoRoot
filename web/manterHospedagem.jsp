@@ -13,6 +13,14 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%
+
+    pageContext.setAttribute("dataAtual", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+    pageContext.setAttribute("horaAtual", LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
+
+%>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -248,50 +256,26 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="dataEstimadaChegada">Chegada Estimada</label>
-                                                        <input class="form-control" type="date" name="dataEstimadaChegada" id="dataEstimadaChegada" value="${hospedagem.dataEstimadaChegada}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
+                                                        <label for="dataChegada">Data Chegada</label>
+                                                        <input class="form-control" type="date" name="dataChegada" id="dataChegada" value="<c:if test="${operacao == 'Incluir'}"><c:out value="${dataAtual}"/></c:if>${hospedagem.dataChegada}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="dataChegada">Chegada</label>
-                                                        <input class="form-control" type="date" name="dataChegada" id="dataChegada" value="${hospedagem.dataChegada}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
+                                                        <label for="horaChegada">Hora Chegada</label>
+                                                            <input class="form-control" type="time" name="horaChegada" id="horaChegada" value="<c:if test="${operacao == 'Incluir'}"><c:out value="${horaAtual}"/></c:if>${hospedagem.horaChegada}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="dataEstimadaSaida">Saída Estimada</label>
-                                                        <input class="form-control" type="date" name="dataEstimadaSaida" id="dataEstimadaSaida" value="${hospedagem.dataEstimadaSaida}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="dataSaida">Saída</label>
-                                                        <input class="form-control" type="date" name="dataSaida" id="dataSaida" value="${hospedagem.dataSaida}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="checked">Checked</label>
-                                                        <input class="form-control" type="checkbox" name="checked" id="checked" <c:if test="${hospedagem.checked == true}">checked</c:if> <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="hospede">Hóspede Responsável</label>
-                                                            <select class="form-control" name="hospede" id="hospede" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
+                                                <input class="form-control" type="hidden" name="dataSaida" id="dataSaida" value="${hospedagem.dataSaida}">
+                                        <input class="form-control" type="hidden" name="horaSaida" id="horaSaida" value="${hospedagem.horaSaida}">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="hospede">Hóspede Responsável</label>
+                                                    <select class="form-control" name="hospede" id="hospede" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                                                         <option value="0" <c:if test="${hospedagem.hospedeResponsavel.id == null}"> selected </c:if>></option>
                                                         <c:forEach items="${hospedes}" var="hospede">
                                                             <option value="${hospede.id}" <c:if test="${hospedagem.hospedeResponsavel.id == hospede.id}">selected</c:if>>${hospede.nome}</option>
@@ -303,20 +287,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="">Tipo de Quarto</label>
-                                                    <select class="form-control" name="tipoQuarto" id="tipoQuarto" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
-                                                        <option value="0" <c:if test="${hospedagem.tipoQuarto.id == null}"> selected </c:if>></option>
-                                                        <c:forEach items="${tiposQuarto}" var="tipoQuarto">
-                                                            <option value="${tipoQuarto.id}" <c:if test="${hospedagem.tipoQuarto.id == tipoQuarto.id}">selected</c:if>>${tipoQuarto.nome}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="">Quarto</label>
+                                                    <label for="quarto">Quarto</label>
                                                     <select class="form-control" name="quarto" id="quarto" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                                                         <option value="0" <c:if test="${hospedagem.quarto.identificacao == null}"> selected </c:if>></option>
                                                         <c:forEach items="${quartos}" var="quarto">
@@ -476,6 +447,24 @@
                                         });
                                     });
                                 });
+
+                                var data = new Date();
+
+// Guarda cada pedaço em uma variável
+                                var dia = data.getDate();           // 1-31
+                                var mes = data.getMonth() + 1;          // 0-11 (zero=janeiro)
+                                var ano4 = data.getFullYear();       // 4 dígitos
+                                var hora = data.getHours();          // 0-23
+                                var min = data.getMinutes();        // 0-59
+
+
+                                var data = ano4 + '-' + mes + '-' + dia;
+                                var hora = hora + ':' + min;
+
+                                if (document.getElementById('dataChegada').value == "")
+                                    document.getElementById('dataChegada').value = data;
+
+
         </script>
 
     </body>

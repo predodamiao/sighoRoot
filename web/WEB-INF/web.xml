@@ -1,12 +1,8 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <servlet>
         <servlet-name>PesquisaHospedeController</servlet-name>
         <servlet-class>Controller.PesquisaHospedeController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>PesquisaAcompanhanteController</servlet-name>
-        <servlet-class>Controller.PesquisaAcompanhanteController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisaConsumoController</servlet-name>
@@ -15,10 +11,6 @@
     <servlet>
         <servlet-name>PesquisaFuncionarioController</servlet-name>
         <servlet-class>Controller.PesquisaFuncionarioController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>PesquisaHospedagemController</servlet-name>
-        <servlet-class>Controller.PesquisaHospedagemController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ManterHospedeController</servlet-name>
@@ -50,15 +42,11 @@
     </servlet>
     <servlet>
         <servlet-name>PesquisaSolicitacaoController</servlet-name>
-        <servlet-class>Controller.PesquisaSolicitacaoController</servlet-class>
+        <servlet-class>Controller.PesquisaPrestacaoServicoController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisaTipoQuartoController</servlet-name>
         <servlet-class>Controller.PesquisaTipoQuartoController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ManterAcompanhanteController</servlet-name>
-        <servlet-class>Controller.ManterAcompanhanteController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ManterConsumoController</servlet-name>
@@ -94,7 +82,7 @@
     </servlet>
     <servlet>
         <servlet-name>ManterSolicitacaoController</servlet-name>
-        <servlet-class>Controller.ManterSolicitacaoController</servlet-class>
+        <servlet-class>Controller.ManterPrestacaoServicoController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ManterTipoQuartoController</servlet-name>
@@ -108,13 +96,41 @@
         <servlet-name>ManterServicoController</servlet-name>
         <servlet-class>Controller.ManterServicoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisaReservaController</servlet-name>
+        <servlet-class>Controller.PesquisaReservaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterReservaController</servlet-name>
+        <servlet-class>Controller.ManterReservaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RealizarCheckoutController</servlet-name>
+        <servlet-class>Controller.RealizarCheckoutController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisaAtendimentoRestauranteController</servlet-name>
+        <servlet-class>Controller.PesquisaAtendimentoRestauranteController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisaHospedagensAtivasController</servlet-name>
+        <servlet-class>Controller.PesquisaHospedagensAtivasController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterAtendimentoRestauranteController</servlet-name>
+        <servlet-class>Controller.ManterAtendimentoRestauranteController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RealizarCheckinController</servlet-name>
+        <servlet-class>Controller.RealizarCheckinController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisaHospedagemController</servlet-name>
+        <servlet-class>Controller.PesquisaHospedagemController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaHospedeController</servlet-name>
         <url-pattern>/PesquisaHospedeController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>PesquisaAcompanhanteController</servlet-name>
-        <url-pattern>/PesquisaAcompanhanteController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PesquisaConsumoController</servlet-name>
@@ -123,10 +139,6 @@
     <servlet-mapping>
         <servlet-name>PesquisaFuncionarioController</servlet-name>
         <url-pattern>/PesquisaFuncionarioController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>PesquisaHospedagemController</servlet-name>
-        <url-pattern>/PesquisaHospedagemController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ManterHospedeController</servlet-name>
@@ -159,10 +171,6 @@
     <servlet-mapping>
         <servlet-name>PesquisaTipoQuartoController</servlet-name>
         <url-pattern>/PesquisaTipoQuartoController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ManterAcompanhanteController</servlet-name>
-        <url-pattern>/ManterAcompanhanteController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ManterConsumoController</servlet-name>
@@ -211,6 +219,38 @@
     <servlet-mapping>
         <servlet-name>ManterServicoController</servlet-name>
         <url-pattern>/ManterServicoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaReservaController</servlet-name>
+        <url-pattern>/PesquisaReservaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterReservaController</servlet-name>
+        <url-pattern>/ManterReservaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RealizarCheckoutController</servlet-name>
+        <url-pattern>/RealizarCheckoutController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaAtendimentoRestauranteController</servlet-name>
+        <url-pattern>/PesquisaAtendimentoRestauranteController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaHospedagensAtivasController</servlet-name>
+        <url-pattern>/PesquisaHospedagensAtivasController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterAtendimentoRestauranteController</servlet-name>
+        <url-pattern>/ManterAtendimentoRestauranteController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RealizarCheckinController</servlet-name>
+        <url-pattern>/RealizarCheckinController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaHospedagemController</servlet-name>
+        <url-pattern>/PesquisaHospedagemController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

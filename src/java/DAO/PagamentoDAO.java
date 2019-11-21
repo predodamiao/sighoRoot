@@ -10,7 +10,6 @@ import Model.MomentoPagamento;
 import Model.Pagamento;
 import Model.TipoPagamento;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.JDBCType;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -78,7 +77,7 @@ public class PagamentoDAO {
 
         try {
             conexao = BD.getConexao();
-            comando = conexao.prepareStatement("insert into pagamento (id, valor, data, parcelas, tipo, momento, idHospedagem) values (?,?,?,?,?,?,?,?)");
+            comando = conexao.prepareStatement("insert into pagamento (id, valor, data, hora, parcelas, tipo, momento, idHospedagem) values (?,?,?,?,?,?,?,?)");
             comando.setInt(1, pagamento.getId());
             comando.setFloat(2, pagamento.getValor());
             comando.setObject(3, pagamento.getData());

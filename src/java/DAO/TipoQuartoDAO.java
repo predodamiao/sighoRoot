@@ -113,5 +113,5 @@ public class TipoQuartoDAO {
             fecharConexao(conexao, comando);
         }
     }
-    
+
 }

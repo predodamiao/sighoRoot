@@ -2,19 +2,20 @@ package Model;
 
 import DAO.ReservaDAO;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.*;
 
 public class Reserva {
 
     private int id;
-    private Date dataEstimadaChegada;
-    private Date dataEstimadaSaida;
+    private LocalDate dataEstimadaChegada;
+    private LocalDate dataEstimadaSaida;
     private TipoQuarto tipoQuarto;
     private Hospede hospedeResponsavel;
     private int idTipoQuarto;
     private int idHospedeResponsavel;
 
-    public Reserva(int id,Date dataEstimadaChegada, Date dataEstimadaSaida, TipoQuarto tipoQuarto, Hospede hospedeResponsavel) {
+    public Reserva(int id, LocalDate dataEstimadaChegada, LocalDate dataEstimadaSaida, TipoQuarto tipoQuarto, Hospede hospedeResponsavel) {
         this.id = id;
         this.dataEstimadaChegada = dataEstimadaChegada;
         this.dataEstimadaSaida = dataEstimadaSaida;
@@ -22,7 +23,7 @@ public class Reserva {
         this.hospedeResponsavel = hospedeResponsavel;
     }
 
-    public static Reserva obterReserva(int codReserva) throws ClassNotFoundException, SQLException{
+    public static Reserva obterReserva(int codReserva) throws ClassNotFoundException, SQLException {
         return ReservaDAO.obterReserva(codReserva);
     }
 
@@ -30,19 +31,19 @@ public class Reserva {
         return ReservaDAO.obterReservas();
     }
 
-    public Date getDataEstimadaChegada() {
+    public LocalDate getDataEstimadaChegada() {
         return dataEstimadaChegada;
     }
 
-    public void setDataEstimadaChegada(Date dataEstimadaChegada) {
+    public void setDataEstimadaChegada(LocalDate dataEstimadaChegada) {
         this.dataEstimadaChegada = dataEstimadaChegada;
     }
 
-    public Date getDataEstimadaSaida() {
+    public LocalDate getDataEstimadaSaida() {
         return dataEstimadaSaida;
     }
 
-    public void setDataEstimadaSaida(Date dataEstimadaSaida) {
+    public void setDataEstimadaSaida(LocalDate dataEstimadaSaida) {
         this.dataEstimadaSaida = dataEstimadaSaida;
     }
 

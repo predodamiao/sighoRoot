@@ -87,36 +87,9 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title fa-3x text-center"> CRUD's</h4>
+                                    <h4 class="card-title fa-3x text-center">Recepção</h4>
                                 </div>
                                 <div class="card-body">
-
-                                    <div class="row">
-                                        <div class="font-icon-list col-sm-3" onClick="window.location.href = 'PesquisaAcompanhanteController'">
-                                            <div class="font-icon-detail fa-2x">
-                                                <i class="tim-icons icon-single-02"></i>
-                                                <p>Acompanhante</p>
-                                            </div>
-                                        </div>
-                                        <div class="font-icon-list col-md-3" onClick="window.location.href = 'PesquisaConsumoController'">
-                                            <div class="font-icon-detail fa-2x">
-                                                <i class="tim-icons icon-basket-simple"></i>
-                                                <p>Consumo</p>
-                                            </div>
-                                        </div>
-                                        <div class="font-icon-list col-md-3" onClick="window.location.href = 'PesquisaFuncionarioController'">
-                                            <div class="font-icon-detail fa-2x">
-                                                <i class="tim-icons icon-single-02"></i>
-                                                <p>Funcionario</p>
-                                            </div>
-                                        </div>
-                                        <div class="font-icon-list col-md-3" onClick="window.location.href = 'PesquisaHospedagemController'">
-                                            <div class="font-icon-detail fa-2x">
-                                                <i class="tim-icons icon-book-bookmark"></i>
-                                                <p>Hospedagem</p>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="row">
                                         <div class="font-icon-list col-md-3" onClick="window.location.href = 'PesquisaHospedeController'">
                                             <div class="font-icon-detail fa-2x">
@@ -124,6 +97,69 @@
                                                 <p>Hóspede</p>
                                             </div>
                                         </div>
+                                        <div class="font-icon-list col-md-3" onClick="window.location.href = 'PesquisaReservaController'">
+                                            <div class="font-icon-detail fa-2x">
+                                                <i class="tim-icons icon-delivery-fast"></i>
+                                                <p>Reserva</p>
+                                            </div>
+                                        </div>
+                                        <div class="font-icon-list col-md-3" onClick="window.location.href = 'PesquisaReservaController'">
+                                            <div class="font-icon-detail fa-2x">
+                                                <i class="tim-icons icon-basket-simple"></i>
+                                                <p>Check-In</p>
+                                            </div>
+                                        </div>
+                                        <div class="font-icon-list col-md-3" onClick="window.location.href = 'PesquisaHospedagensAtivasController'">
+                                            <div class="font-icon-detail fa-2x">
+                                                <i class="tim-icons icon-single-02"></i>
+                                                <p>Check-out</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title fa-3x text-center">Controle Hospedagens</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="font-icon-list col-md-3" onClick="window.location.href = 'PesquisaConsumoController'">
+                                            <div class="font-icon-detail fa-2x">
+                                                <i class="tim-icons icon-basket-simple"></i>
+                                                <p>Consumo</p>
+                                            </div>
+                                        </div>                                        
+                                        <div class="font-icon-list col-md-3" onClick="window.location.href = 'PesquisaPrestacaoServicoController'">
+                                            <div class="font-icon-detail fa-2x">
+                                                <i class="tim-icons icon-delivery-fast"></i>
+                                                <p>Prestação Servico</p>
+                                            </div>
+                                        </div>
+                                        <div class="font-icon-list col-md-3" onClick="window.location.href = 'PesquisaAtendimentoRestauranteController'">
+                                            <div class="font-icon-detail fa-2x">
+                                                <i class="tim-icons icon-delivery-fast"></i>
+                                                <p>Atendimento Restaurante</p>
+                                            </div>
+                                        </div>
+                                        <div class="font-icon-list col-md-3" onClick="window.location.href = 'PesquisaPagamentoController'">
+                                            <div class="font-icon-detail fa-2x">
+                                                <i class="tim-icons icon-wallet-43"></i>
+                                                <p>Pagamento</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title fa-3x text-center">Opções Gerenciais</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
                                         <div class="font-icon-list col-md-3" onClick="window.location.href = 'PesquisaItemConsumoController'">
                                             <div class="font-icon-detail fa-2x">
                                                 <i class="tim-icons icon-bag-16"></i>
@@ -143,88 +179,36 @@
                                                 <p>Opção do Restaurante</p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="font-icon-list col-md-3" onClick="window.location.href = 'PesquisaPagamentoController'">
-                                            <div class="font-icon-detail fa-2x">
-                                                <i class="tim-icons icon-wallet-43"></i>
-                                                <p>Pagamento</p>
-                                            </div>
-                                        </div>
-
                                         <div class="font-icon-list col-md-3"onClick="window.location.href = 'PesquisaQuartoController'">
                                             <div class="font-icon-detail fa-2x">
                                                 <i class="tim-icons icon-key-25"></i>
                                                 <p>Quarto</p>
                                             </div>
                                         </div>
-                                        <div class="font-icon-list col-md-3" onClick="window.location.href = 'PesquisaServicoController'">
-                                            <div class="font-icon-detail fa-2x">
-                                                <i class="tim-icons icon-delivery-fast"></i>
-                                                <p>Serviço</p>
-                                            </div>
-                                        </div>
-                                        <div class="font-icon-list col-md-3" onClick="window.location.href = 'PesquisaSolicitacaoController'">
-                                            <div class="font-icon-detail fa-2x">
-                                                <i class="tim-icons icon-notes"></i>
-                                                <p>Solicitação</p>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-4"></div>
+                                        <div class="font-icon-list col-md-4" onClick="window.location.href = 'PesquisaServicoController'">
+                                            <div class="font-icon-detail fa-2x">
+                                                <i class="tim-icons icon-delivery-fast"></i>
+                                                <p>Servico</p>
+                                            </div>
+                                        </div>
                                         <div class="font-icon-list col-md-4" onClick="window.location.href = 'PesquisaTipoQuartoController'">
                                             <div class="font-icon-detail fa-2x">
                                                 <i class="tim-icons icon-bullet-list-67"></i>
                                                 <p>Tipo de Quarto</p>
                                             </div>
                                         </div>
-                                        <div class="col-md-4"></div>
-
-                                    </div>
-
-
-
-
-
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title fa-3x text-center">Relatórios</h4>
-                                </div>
-                                <div class="card-body">
-
-                                    <div class="row">
-                                        <div class="font-icon-list col-md-3" onClick="window.alert('Função não implementada')">
+                                        <div class="font-icon-list col-md-4" onClick="window.location.href = 'PesquisaFuncionarioController'">
                                             <div class="font-icon-detail fa-2x">
-                                                <i class="tim-icons icon-coins"></i>
-                                                <p>Faturamento</p>
-                                            </div>
-                                        </div>
-                                        <div class="font-icon-list col-md-3" onClick="window.alert('Função não implementada')">
-                                            <div class="font-icon-detail fa-2x">
-                                                <i class="tim-icons icon-key-25"></i>
-                                                <p>Quartos Ocupados</p>
-                                            </div>
-                                        </div>
-                                        <div class="font-icon-list col-md-3" onClick="window.alert('Função não implementada')">
-                                            <div class="font-icon-detail fa-2x">
-                                                <i class="tim-icons icon-lock-circle"></i>
-                                                <p>Pessoas Hospedadas</p>
-                                            </div>
-                                        </div>
-                                        <div class="font-icon-list col-md-3" onClick="window.alert('Função não implementada')">
-                                            <div class="font-icon-detail fa-2x">
-                                                <i class="tim-icons icon-calendar-60"></i>
-                                                <p>Reservas</p>
+                                                <i class="tim-icons icon-bullet-list-67"></i>
+                                                <p>Funcionario</p>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
-
 
                         </div>
 

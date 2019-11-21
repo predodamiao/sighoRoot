@@ -13,6 +13,14 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%
+
+    pageContext.setAttribute("dataAtual", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+    pageContext.setAttribute("horaAtual", LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
+
+%>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -20,19 +28,19 @@
 <html lang="pt-br">
 
     <head>
-        <meta charset="iso-8859-1"/>
+        <meta charset="iso-8859-1" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" type="image/png" href="./assets/img/favicon.png">
         <title>
-            SIGHO - Pesquisa de Acompanhante
+            SIGHO - Solicitação
         </title>
         <!--     Fonts and icons     -->
-        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
         <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
         <!-- Nucleo Icons -->
-        <link href="./assets/css/nucleo-icons.css" rel="stylesheet"/>
+        <link href="./assets/css/nucleo-icons.css" rel="stylesheet" />
         <!-- CSS Files -->
-        <link href="./assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet"/>
+        <link href="./assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
     </head>
 
     <body class="">
@@ -48,7 +56,7 @@
                         </a>
                     </div>
                     <ul class="nav">
-                        <li class="active">
+                        <li>
                             <a href="PesquisaAcompanhanteController">
                                 <i class="tim-icons icon-single-02"></i>
                                 <p>Acompanhante</p>
@@ -114,7 +122,7 @@
                                 <p>Serviço</p>
                             </a>
                         </li>
-                        <li>
+                        <li class="prestacao">
                             <a href="PesquisaSolicitacaoController">
                                 <i class="tim-icons icon-notes"></i>
                                 <p>Solicitação</p>
@@ -126,6 +134,9 @@
                                 <p>Tipo de Quarto</p>
                             </a>
                         </li>
+
+
+
 
 
                     </ul>
@@ -169,10 +180,12 @@
                         </li>
 
 
+
                     </ul>
                 </div>
 
             </div>
+
 
 
             <div class="main-panel" data="green">
@@ -187,12 +200,9 @@
                                     <span class="navbar-toggler-bar bar3"></span>
                                 </button>
                             </div>
-                            <a class="navbar-brand" href="index.jsp" style="margin-top:15px;"><h6 class="fa-4x"
-                                                                                                  style="color:#FFFFFF">
-                                    SIGHO</h6></a>
+                            <a class="navbar-brand" href="index.jsp" style="margin-top:15px;"><h6 class="fa-4x" style="color:#FFFFFF">SIGHO</h6></a>
                         </div>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-                                aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-bar navbar-kebab"></span>
                             <span class="navbar-toggler-bar navbar-kebab"></span>
                             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -213,8 +223,7 @@
                         </div>
                     </div>
                 </nav>
-                <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal"
-                     aria-hidden="true">
+                <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -230,57 +239,98 @@
                 <div class="content" id="content">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card ">
+                            <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title fa-2x">PESQUISA DE ACOMPANHANTES</h4>
+                                    <h4 class="card-title fa-2x">SOLICITAÇÃO - ${operacao}</h4>
                                 </div>
                                 <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table tablesorter " id="">
-                                            <thead class="text-primary">
-                                                <tr style="font-size: 1rem">
-                                                    <th>id</th>
-                                                    <th>Nome</th>
-                                                    <th>Data de Nascimento</th>
-                                                    <th>id da Hospedagem</th>
-                                                    <th colspan="2" class="text-center">Ação</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <c:forEach items="${acompanhantes}" var="acompanhante">
-                                                    <tr>
-                                                        <td>
-                                                            <c:out value="${acompanhante.id}" />
-                                                        </td>
-                                                        <td>
-                                                            <c:out value="${acompanhante.nome}" />
-                                                        </td>
-                                                        <td>
-                                                            <c:out value="${acompanhante.dataNascimento}" />
-                                                        </td>
-                                                        <td>
-                                                            <c:out value="${acompanhante.idHospedagem}" />
-                                                        </td>
-                                                        <td class="text-center">
-                                                            <a class="blockquote blockquote-green" href="ManterAcompanhanteController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${acompanhante.id}"/>">Editar</a>
-                                                        </td>
-                                                        <td class="text-center">
-                                                            <a class="blockquote blockquote-green" href="ManterAcompanhanteController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${acompanhante.id}"/>"/>Excluir</a>
-                                                        </td>
-                                                    </tr>
+                                    <form action="ManterSolicitacaoController?acao=confirmarOperacao&operacao=${operacao}" method="post">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="id">id</label>
+                                                    <input class="form-control" type="number" min="1" step="1" name="id" id="id" value="${prestacao.id}"<c:if test="${operacao != 'Incluir'}"> readonly </c:if>>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="servico">Serviço</label>
+                                                        <select class="form-control" name="servico" id="servico" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
+                                                        <option value="0" <c:if test="${prestacao.servico.codigo == null}"> selected </c:if>></option>
+                                                        <c:forEach items="${servicos}" var="servico">
+                                                            <option value="${servico.codigo}" <c:if test="${prestacao.servico.codigo == servico.codigo}">selected</c:if>>${servico.nome}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
 
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="data">Data</label>
+                                                    <input class="form-control" type="date" name="data" id="data" value="<c:if test="${operacao == 'Incluir'}"><c:out value="${dataAtual}"/></c:if>${prestacao.data}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="hora">Hora</label>
+                                                            <input class="form-control" type="time" name="hora" id="hora" value="<c:if test="${operacao == 'Incluir'}"><c:out value="${horaAtual}"/></c:if>${prestacao.hora}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="hospedagem">Hospedagem</label>
+                                                            <select class="form-control" name="hospedagem" id="hospedagem" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
+                                                        <option value="0" <c:if test="${prestacao.hospedagem.id == null}"> selected </c:if>></option>
+                                                        <c:forEach items="${hospedagens}" var="hospedagem">
+                                                            <option value="${hospedagem.id}" <c:if test="${prestacao.hospedagem.id == hospedagem.id}"> selected </c:if>>${hospedagem.id}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="funcionarioSolicitante">Funcionário Solicitante</label>
+                                                    <select class="form-control" name="funcionarioSolicitante" id="funcionarioSolicitante" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
+                                                        <option value="0" <c:if test="${prestacao.funcionarioSolicitante.id == null}"> selected </c:if>></option>
+                                                        <c:forEach items="${funcionarios}" var="funcionario">
+                                                            <option value="${funcionario.id}" <c:if test="${prestacao.funcionarioSolicitante.id == funcionario.id}"> selected </c:if>>${funcionario.nome}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="status">Status</label>
+                                                    <select class="form-control" name="status" id="status" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
+                                                        <option value="0" <c:if test="${prestacao.status.id == null}"> selected </c:if>></option>
+                                                        <c:forEach items="${status}" var="status">
+                                                            <option value="${status.nomeStatus}" <c:if test="${prestacao.status.id == status.id}"> selected </c:if>>${status.nomeStatus}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                                    </tr>
-                                                </c:forEach>
-                                            </tbody>
-                                        </table>
-                                        <form action="ManterAcompanhanteController?acao=prepararOperacao&operacao=Incluir" method="post">
-                                            <button type="submit" class="btn btn-fill btn-primary">Incluir</button>
-                                        </form>
-                                    </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-fill btn-primary">${operacao}</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <footer class="footer">
@@ -308,6 +358,7 @@
         <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
         <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
         <script src="./assets/js/black-dashboard.min.js?v=1.0.0"></script>
+
         <script>
 
                                 $(document).ready(function () {
@@ -421,6 +472,23 @@
                                         });
                                     });
                                 });
+
+                                var data = new Date();
+
+// Guarda cada pedaço em uma variável
+                                var dia = data.getDate();           // 1-31
+                                var mes = data.getMonth() + 1;          // 0-11 (zero=janeiro)
+                                var ano4 = data.getFullYear();       // 4 dígitos
+                                var hora = data.getHours();          // 0-23
+                                var min = data.getMinutes();        // 0-59
+
+
+                                var data = ano4 + '-' + mes + '-' + dia;
+                                var hora = hora + ':' + min;
+
+                                if (document.getElementById('data').value == "")
+                                    document.getElementById('data').value = data;
+
         </script>
 
     </body>

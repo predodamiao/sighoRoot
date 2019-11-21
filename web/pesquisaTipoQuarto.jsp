@@ -241,7 +241,7 @@
                                                 <tr style="font-size: 1rem">
                                                     <th>id</th>
                                                     <th>Nome</th>
-                                                    <th>Preço</th>
+                                                    <th>Diária</th>
                                                     <th colspan="2" class="text-center">Ação</th>
                                                 </tr>
                                             </thead>
@@ -255,7 +255,7 @@
                                                             <c:out value="${tipoQuarto.nome}" />
                                                         </td>
                                                         <td>
-                                                            R$ <c:out value="${tipoQuarto.preco}" />
+                                                            R$ <c:out value="${tipoQuarto.diaria}" />
                                                         </td>
                                                         <td class="text-center">
                                                             <a class="blockquote blockquote-green" href="ManterTipoQuartoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${tipoQuarto.id}"/>">Editar</a>

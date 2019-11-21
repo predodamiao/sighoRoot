@@ -6,7 +6,6 @@
 package DAO;
 
 import static DAO.DAO.fecharConexao;
-import Model.CategoriaServico;
 import Model.OpcaoRestaurante;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,7 +20,7 @@ public class OpcaoRestauranteDAO {
     public static List<OpcaoRestaurante> obterOpcoesRestaurante() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<OpcaoRestaurante> itensRestaurante = new ArrayList<OpcaoRestaurante>();
+        List<OpcaoRestaurante> itensRestaurante = new ArrayList<>();
         OpcaoRestaurante itemRestaurante = null;
         try {
             conexao = BD.getConexao();
@@ -43,7 +42,8 @@ public class OpcaoRestauranteDAO {
         OpcaoRestaurante item = null;
         try {
             conexao = BD.getConexao();
-            ResultSet rs = comando.executeQuery("select * from opcaoRestaurante where id ='" + codOpcao + "'");
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from opcaorestaurante where id = " + codOpcao);
             rs.first();
             item = instanciarOpcaoRestaurante(rs);
         } finally {
@@ -57,7 +57,6 @@ public class OpcaoRestauranteDAO {
                 rs.getString("nome"),
                 rs.getString("descricao"),
                 rs.getFloat("preco"),
-                Enum.valueOf(CategoriaServico.class, rs.getString("categoria")),
                 rs.getFloat("acrescimo"),
                 rs.getInt("tempoPreparo"));
         return opcao;
@@ -68,14 +67,13 @@ public class OpcaoRestauranteDAO {
         PreparedStatement comando = null;
         try {
             conexao = BD.getConexao();
-            comando = conexao.prepareStatement("insert into opcaoRestaurante (id, nome, descricao, preco, categoria, acrescimo, tempoPreparo) values (?,?,?,?,?,?,?)");
+            comando = conexao.prepareStatement("insert into opcaoRestaurante (id, nome, descricao, preco, acrescimo, tempoPreparo) values (?,?,?,?,?,?)");
             comando.setInt(1, opcao.getCodigo());
             comando.setString(2, opcao.getNome());
             comando.setString(3, opcao.getDescricao());
             comando.setFloat(4, opcao.getPreco());
-            comando.setString(5, opcao.getCategoria().toString());
-            comando.setFloat(6, opcao.getAcrescimo());
-            comando.setInt(7, opcao.getTempoPreparo());
+            comando.setFloat(5, opcao.getAcrescimo());
+            comando.setInt(6, opcao.getTempoPreparo());
             comando.executeUpdate();
         } finally {
             fecharConexao(conexao, comando);
@@ -112,7 +110,6 @@ public class OpcaoRestauranteDAO {
                     + "nome = '" + opcao.getNome() + "', "
                     + "descricao = '" + opcao.getDescricao() + "', "
                     + "preco = " + opcao.getPreco() + ", "
-                    + "categoria = '" + opcao.getCategoria().toString() + "', "
                     + "acrescimo = " + opcao.getAcrescimo() + ", "
                     + "tempoPreparo = " + opcao.getTempoPreparo();
 

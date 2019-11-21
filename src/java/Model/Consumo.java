@@ -15,7 +15,7 @@ public class Consumo {
     private Funcionario funcionarioSolicitante;
     private Hospedagem hospedagem;
     private ItemConsumo itemConsumido;
-    
+
     private int idFuncionario;
     private int idHospedagem;
     private int idItemConsumido;
@@ -120,9 +120,9 @@ public class Consumo {
     public void setIdItemConsumido(int idItemConsumido) {
         this.idItemConsumido = idItemConsumido;
     }
-    
-    public float getPrecoConsumo(){
-        return this.itemConsumido.getPrecoVenda() * this.quantidade;
+
+    public float getPrecoConsumo() throws ClassNotFoundException, SQLException {
+        return ((this.getItemConsumido().getPrecoVenda()) * (this.getQuantidade()));
     }
 
     public void gravar() throws SQLException, ClassNotFoundException {

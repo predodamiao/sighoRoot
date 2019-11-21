@@ -233,7 +233,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title fa-2x"> NOME CRUD - AÇÃO</h4>
+                                    <h4 class="card-title fa-2x"> QUARTO - ${operacao}</h4>
                                 </div>
                                 <div class="card-body">
                                     <form  action="ManterQuartoController?acao=confirmarOperacao&operacao=${operacao}" method="post">
@@ -242,30 +242,6 @@
                                                 <div class="form-group">
                                                     <label for="identificacao">Identificação</label>
                                                     <input class="form-control" type="text" name="identificacao" id="identificacao" value="${quarto.identificacao}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if>>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="quantidadeCamasSolteiro">Quantidade de Camas de Solteiro</label>
-                                                        <input class="form-control" min="0" step="1" max="10" type="number" name="quantidadeCamasSolteiro" id="quantidadeCamasSolteiro" value="${quarto.quantidadeCamasSolteiro}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="quantidadeCamasCasal">Quantidade de Camas de Casal</label>
-                                                        <input class="form-control" type="number" min="0" step="1" max="10" name="quantidadeCamasCasal" id="quantidadeCamasCasal"value="${quarto.quantidadeCamasCasal}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="ocupado">Ocupado</label>
-                                                        <input class="form-control" type="checkbox" name="ocupado" id="ocupado" value="$quarto.ocupado" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                                                     </div>
                                                 </div>
                                             </div>
@@ -282,9 +258,25 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="quantidadeCamasSolteiro">Quantidade de Camas de Solteiro</label>
+                                                    <input class="form-control" min="0" step="1" max="10" type="number" name="quantidadeCamasSolteiro" id="quantidadeCamasSolteiro" value="${quarto.quantidadeCamasSolteiro}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="quantidadeCamasCasal">Quantidade de Camas de Casal</label>
+                                                        <input class="form-control" type="number" min="0" step="1" max="10" name="quantidadeCamasCasal" id="quantidadeCamasCasal"value="${quarto.quantidadeCamasCasal}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                        <div class="card-footer">
-                                            <button type="submit" class="btn btn-fill btn-primary">${operacao}</button>
+                                            <div class="card-footer">
+                                                <button type="submit" class="btn btn-fill btn-primary">${operacao}</button>
                                         </div>
                                     </form>
                                 </div>
