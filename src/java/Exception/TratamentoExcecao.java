@@ -28,7 +28,7 @@ public class TratamentoExcecao extends HttpServlet {
 
         request.setAttribute("codigoStatus", codigoStatus);
         request.setAttribute("nomeServlet", nomeServlet);
-        request.setAttribute("nomeExcecao", excecao.getClass().getName());
+        request.setAttribute("tipoExcecao", excecao.getClass().getName());
         request.setAttribute("uriRequisicao", uriRequisicao);
         request.setAttribute("mensagem", excecao.getMessage());
 
