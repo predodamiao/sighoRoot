@@ -254,16 +254,16 @@
         },
         placement: function () {
             var self = this,
-                    offsetAmt = this.settings.offset.y,
-                    css = {
-                        display: 'inline-block',
-                        margin: '0px auto',
-                        position: this.settings.position ? this.settings.position : (this.settings.element === 'body' ? 'fixed' : 'absolute'),
-                        transition: 'all .5s ease-in-out',
-                        zIndex: this.settings.z_index
-                    },
-                    hasAnimation = false,
-                    settings = this.settings;
+                offsetAmt = this.settings.offset.y,
+                css = {
+                    display: 'inline-block',
+                    margin: '0px auto',
+                    position: this.settings.position ? this.settings.position : (this.settings.element === 'body' ? 'fixed' : 'absolute'),
+                    transition: 'all .5s ease-in-out',
+                    zIndex: this.settings.z_index
+                },
+                hasAnimation = false,
+                settings = this.settings;
 
             $('[data-notify-position="' + this.settings.placement.from + '-' + this.settings.placement.align + '"]:not([data-closing="true"])').each(function () {
                 offsetAmt = Math.max(offsetAmt, parseInt($(this).css(settings.placement.from)) + parseInt($(this).outerHeight()) + parseInt(settings.spacing));
@@ -356,8 +356,8 @@
         },
         close: function () {
             var self = this,
-                    posX = parseInt(this.$ele.css(this.settings.placement.from)),
-                    hasAnimation = false;
+                posX = parseInt(this.$ele.css(this.settings.placement.from)),
+                hasAnimation = false;
 
             this.$ele.attr('data-closing', 'true').addClass(this.settings.animate.exit);
             self.reposition(posX);
@@ -386,8 +386,8 @@
         },
         reposition: function (posX) {
             var self = this,
-                    notifies = '[data-notify-position="' + this.settings.placement.from + '-' + this.settings.placement.align + '"]:not([data-closing="true"])',
-                    $elements = this.$ele.nextAll(notifies);
+                notifies = '[data-notify-position="' + this.settings.placement.from + '-' + this.settings.placement.align + '"]:not([data-closing="true"])',
+                $elements = this.$ele.nextAll(notifies);
             if (this.settings.newest_on_top === true) {
                 $elements = this.$ele.prevAll(notifies);
             }
