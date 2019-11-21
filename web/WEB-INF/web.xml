@@ -166,8 +166,8 @@
         <url-pattern>/PesquisaQuartoController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PesquisaSolicitacaoController</servlet-name>
-        <url-pattern>/PesquisaSolicitacaoController</url-pattern>
+        <servlet-name>PesquisaPrestacaoServicoController</servlet-name>
+        <url-pattern>/PesquisaPrestacaoServicoController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PesquisaTipoQuartoController</servlet-name>
@@ -206,8 +206,8 @@
         <url-pattern>/ManterPagamentoController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ManterSolicitacaoController</servlet-name>
-        <url-pattern>/ManterSolicitacaoController</url-pattern>
+        <servlet-name>ManterPrestacaoServicoController</servlet-name>
+        <url-pattern>/ManterPrestacaoServicoController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ManterTipoQuartoController</servlet-name>
