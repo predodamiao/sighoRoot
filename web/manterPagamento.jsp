@@ -27,493 +27,477 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<head>
-    <meta charset="iso-8859-1"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
-    <title>
-        SIGHO - Pagamento
-    </title>
-    <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet"/>
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <!-- Nucleo Icons -->
-    <link href="./assets/css/nucleo-icons.css" rel="stylesheet"/>
-    <!-- CSS Files -->
-    <link href="./assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet"/>
-</head>
+    <head>
+        <meta charset="iso-8859-1"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+        <title>
+            SIGHO - Pagamento
+        </title>
+        <!--     Fonts and icons     -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet"/>
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+        <!-- Nucleo Icons -->
+        <link href="./assets/css/nucleo-icons.css" rel="stylesheet"/>
+        <!-- CSS Files -->
+        <link href="./assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet"/>
+    </head>
 
-<body class="">
-<div class="wrapper">
-    <div class="sidebar" data="green" id="sidebar">
-        <div class="sidebar-wrapper">
-            <div class="logo">
-                <a href="javascript:void(0)" class="simple-text fa-2x logo-mini">
-                    <i class="tim-icons icon-puzzle-10"></i>
-                </a>
-                <a href="javascript:void(0)" class="simple-text logo-normal">
-                    Recepção
-                </a>
-            </div>
-            <ul class="nav">
-                <li>
-                    <a href="PesquisaHospedeController">
-                        <i class="tim-icons icon-single-02"></i>
-                        <p>Hóspede</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="PesquisaReservaController">
-                        <i class="tim-icons icon-delivery-fast"></i>
-                        <p>Reserva</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="RealizarCheckinController?acao=prepararCheckin">
-                        <i class="tim-icons icon-basket-simple"></i>
-                        <p>Check-In</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="PesquisaHospedagensAtivasController">
-                        <i class="tim-icons icon-single-02"></i>
-                        <p>Check-out</p>
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-
-        <div class="sidebar-wrapper">
-            <div class="logo">
-                <a href="javascript:void(0)" class="simple-text fa-2x logo-mini">
-                    <i class="tim-icons icon-puzzle-10"></i>
-                </a>
-                <a href="javascript:void(0)" class="simple-text logo-normal">
-                    Controle
-                </a>
-            </div>
-            <ul class="nav">
-                <li>
-                    <a href="PesquisaConsumoController">
-                        <i class="tim-icons icon-basket-simple"></i>
-                        <p>Consumo</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="PesquisaPrestacaoServicoController">
-                        <i class="tim-icons icon-delivery-fast"></i>
-                        <p>Prestação Servico</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="PesquisaAtendimentoRestauranteController">
-                        <i class="tim-icons icon-molecule-40"></i>
-                        <p>Atendimento Restaurante</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="PesquisaPagamentoController">
-                        <i class="tim-icons icon-wallet-43"></i>
-                        <p>Pagamento</p>
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-
-
-        <div class="sidebar-wrapper">
-            <div class="logo">
-                <a href="javascript:void(0)" class="simple-text fa-2x logo-mini">
-                    <i class="tim-icons icon-puzzle-10"></i>
-                </a>
-                <a href="javascript:void(0)" class="simple-text logo-normal">
-                    Gerencia
-                </a>
-            </div>
-            <ul class="nav">
-                <li>
-                    <a href="PesquisaItemConsumoController">
-                        <i class="tim-icons icon-bag-16"></i>
-                        <p>Item de Consumo</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="PesquisaItemFrigobarController">
-                        <i class="tim-icons icon-app"></i>
-                        <p>Item do Frigobar</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="PesquisaOpcaoRestauranteController">
-                        <i class="tim-icons icon-molecule-40"></i>
-                        <p>Opção do Restaurante</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="PesquisaTipoQuartoController">
-                        <i class="tim-icons icon-bullet-list-67"></i>
-                        <p>Tipo de Quarto</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="PesquisaQuartoController">
-                        <i class="tim-icons icon-key-25"></i>
-                        <p>Quarto</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="PesquisaServicoController">
-                        <i class="tim-icons icon-delivery-fast"></i>
-                        <p>Servico</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="PesquisaFuncionarioController">
-                        <i class="tim-icons icon-single-02"></i>
-                        <p>Funcionário</p>
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-
-        <br>
-
-
-    </div>
-
-
-    <div class="main-panel" data="green">
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent" data="green">
-            <div class="container-fluid">
-                <div class="navbar-wrapper">
-                    <div class="navbar-toggle d-inline">
-                        <button type="button" class="navbar-toggler">
-                            <span class="navbar-toggler-bar bar1"></span>
-                            <span class="navbar-toggler-bar bar2"></span>
-                            <span class="navbar-toggler-bar bar3"></span>
-                        </button>
+    <body class="">
+        <div class="wrapper">
+            <div class="sidebar" data="green" id="sidebar">
+                <div class="sidebar-wrapper">
+                    <div class="logo">
+                        <a href="javascript:void(0)" class="simple-text fa-2x logo-mini">
+                            <i class="tim-icons icon-puzzle-10"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="simple-text logo-normal">
+                            Recepção
+                        </a>
                     </div>
-                    <a class="navbar-brand" href="index.jsp" style="margin-top:15px;"><h6 class="fa-4x"
-                                                                                          style="color:#FFFFFF">
-                        SIGHO</h6></a>
-                </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-bar navbar-kebab"></span>
-                    <span class="navbar-toggler-bar navbar-kebab"></span>
-                    <span class="navbar-toggler-bar navbar-kebab"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navigation">
-                    <ul class="navbar-nav ml-auto">
-
-                        <li class="dropdown nav-item">
-                            <a href="#">
-                                <div class="photo">
-                                    <img src="./assets/img/anime3.png" alt="Profile Photo">
-                                </div>
+                    <ul class="nav">
+                        <li>
+                            <a href="PesquisaHospedeController">
+                                <i class="tim-icons icon-single-02"></i>
+                                <p>Hóspede</p>
                             </a>
-
                         </li>
-                        <li class="separator d-lg-none"></li>
+                        <li>
+                            <a href="PesquisaReservaController">
+                                <i class="tim-icons icon-delivery-fast"></i>
+                                <p>Reserva</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="RealizarCheckinController?acao=prepararCheckin">
+                                <i class="tim-icons icon-basket-simple"></i>
+                                <p>Check-In</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="PesquisaHospedagensAtivasController">
+                                <i class="tim-icons icon-single-02"></i>
+                                <p>Check-out</p>
+                            </a>
+                        </li>
+
                     </ul>
                 </div>
+
+                <div class="sidebar-wrapper">
+                    <div class="logo">
+                        <a href="javascript:void(0)" class="simple-text fa-2x logo-mini">
+                            <i class="tim-icons icon-puzzle-10"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="simple-text logo-normal">
+                            Controle
+                        </a>
+                    </div>
+                    <ul class="nav">
+                        <li>
+                            <a href="PesquisaConsumoController">
+                                <i class="tim-icons icon-basket-simple"></i>
+                                <p>Consumo</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="PesquisaPrestacaoServicoController">
+                                <i class="tim-icons icon-delivery-fast"></i>
+                                <p>Prestação Servico</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="PesquisaAtendimentoRestauranteController">
+                                <i class="tim-icons icon-molecule-40"></i>
+                                <p>Atendimento Restaurante</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="PesquisaPagamentoController">
+                                <i class="tim-icons icon-wallet-43"></i>
+                                <p>Pagamento</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+                <div class="sidebar-wrapper">
+                    <div class="logo">
+                        <a href="javascript:void(0)" class="simple-text fa-2x logo-mini">
+                            <i class="tim-icons icon-puzzle-10"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="simple-text logo-normal">
+                            Gerencia
+                        </a>
+                    </div>
+                    <ul class="nav">
+                        <li>
+                            <a href="PesquisaItemConsumoController">
+                                <i class="tim-icons icon-bag-16"></i>
+                                <p>Item de Consumo</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="PesquisaItemFrigobarController">
+                                <i class="tim-icons icon-app"></i>
+                                <p>Item do Frigobar</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="PesquisaOpcaoRestauranteController">
+                                <i class="tim-icons icon-molecule-40"></i>
+                                <p>Opção do Restaurante</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="PesquisaTipoQuartoController">
+                                <i class="tim-icons icon-bullet-list-67"></i>
+                                <p>Tipo de Quarto</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="PesquisaQuartoController">
+                                <i class="tim-icons icon-key-25"></i>
+                                <p>Quarto</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="PesquisaServicoController">
+                                <i class="tim-icons icon-delivery-fast"></i>
+                                <p>Servico</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="PesquisaFuncionarioController">
+                                <i class="tim-icons icon-single-02"></i>
+                                <p>Funcionário</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <br>
+
+
             </div>
-        </nav>
-        <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <i class="tim-icons icon-simple-remove"></i>
+
+
+            <div class="main-panel" data="green">
+                <!-- Navbar -->
+                <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent" data="green">
+                    <div class="container-fluid">
+                        <div class="navbar-wrapper">
+                            <div class="navbar-toggle d-inline">
+                                <button type="button" class="navbar-toggler">
+                                    <span class="navbar-toggler-bar bar1"></span>
+                                    <span class="navbar-toggler-bar bar2"></span>
+                                    <span class="navbar-toggler-bar bar3"></span>
+                                </button>
+                            </div>
+                            <a class="navbar-brand" href="index.jsp" style="margin-top:15px;"><h6 class="fa-4x"
+                                                                                                  style="color:#FFFFFF">
+                                    SIGHO</h6></a>
+                        </div>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-bar navbar-kebab"></span>
+                            <span class="navbar-toggler-bar navbar-kebab"></span>
+                            <span class="navbar-toggler-bar navbar-kebab"></span>
                         </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Navbar -->
-        <div class="content" id="content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title fa-2x"> PAGAMENTO - ${operacao}</h4>
-                        </div>
-                        <div class="card-body">
-                            <form action="ManterPagamentoController?acao=confirmarOperacao&operacao=${operacao}"
-                                  method="post">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="id">id</label>
-                                            <input class="form-control" type="number" min="1" step="1" name="id" id="id"
-                                                   value="${pagamento.id}" <c:if test="${operacao != 'Incluir'}">
-                                                   readonly </c:if>>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="data">Data</label>
-                                            <input class="form-control" type="date" name="data" id="data"
-                                                   value="<c:if test="${operacao == 'Incluir'}"><c:out value="${dataAtual}"/></c:if>${pagamento.data}"
-                                            <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="data">Hora</label>
-                                            <input class="form-control" type="time" name="hora" id="hora"
-                                                   value="<c:if test="${operacao == 'Incluir'}"><c:out value="${horaAtual}"/></c:if>${pagamento.hora}"
-                                            <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="hospedagem">Hospedagem</label>
-                                            <select class="form-control" name="hospedagem" id="hospedagem" <c:if
-                                                    test="${operacao == 'Excluir'}"> disabled </c:if>>
-                                                <option value="0" <c:if
-                                                        test="${pagamento.hospedagem.id == null}"> selected </c:if>></option>
-                                                <c:forEach items="${hospedagens}" var="hospedagem">
-                                                    <option value="${hospedagem.id}"
-                                                            <c:if test="${pagamento.hospedagem.id == hospedagem.id}">selected</c:if>>${hospedagem.id}</option>
-                                                </c:forEach>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="tipo">Tipo de Pagamento</label>
-                                            <select class="form-control" name="tipo" id="tipo" <c:if
-                                                    test="${operacao == 'Excluir'}"> disabled </c:if>>
-                                                <option value="0" <c:if
-                                                        test="${pagamento.tipo.id == null}"> selected </c:if>></option>
-                                                <c:forEach items="${tipos}" var="tipo">
-                                                    <option value="${tipo.nomeTipo}"
-                                                            <c:if test="${pagamento.tipo.id == tipo.id}">selected </c:if>>${tipo.nomeTipo}</option>
-                                                </c:forEach>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="momento">Momento do Pagamento</label>
-                                            <select class="form-control" name="momento" id="momento" <c:if
-                                                    test="${operacao == 'Excluir'}"> disabled </c:if>>
-                                                <option value="0" <c:if
-                                                        test="${pagamento.momento.id == null}"> selected </c:if>></option>
-                                                <c:forEach items="${momentos}" var="momento">
-                                                    <option value="${momento.nomeMomento}"
-                                                            <c:if test="${pagamento.momento.id == momento.id}">selected </c:if>>${momento.nomeMomento}</option>
-                                                </c:forEach>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="valor">Valor</label>
-                                            <input class="form-control" type="number" name="valor" step="0.01"
-                                                   min="0.00" id="valor" value="${pagamento.valor}" <c:if
-                                                    test="${operacao == 'Excluir'}"> readonly </c:if>>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="parcelas">Parcelas</label>
-                                            <input class="form-control" type="number" min="1" max="12" step="1"
-                                                   name="parcelas" id="parcelas" value="${pagamento.quantidadeParcelas}"
-                                            <c:if test="${operacao == 'Excluir'}"> readonly </c:if>>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="collapse navbar-collapse" id="navigation">
+                            <ul class="navbar-nav ml-auto">
 
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-fill btn-primary">${operacao}</button>
-                                </div>
-                            </form>
+                                <li class="dropdown nav-item">
+                                    <a href="#">
+                                        <div class="photo">
+                                            <img src="./assets/img/anime3.png" alt="Profile Photo">
+                                        </div>
+                                    </a>
+
+                                </li>
+                                <li class="separator d-lg-none"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal"
+                     aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <i class="tim-icons icon-simple-remove"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- End Navbar -->
+                <div class="content" id="content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title fa-2x"> PAGAMENTO - ${operacao}</h4>
+                                </div>
+                                <div class="card-body">
+                                    <form action="ManterPagamentoController?acao=confirmarOperacao&operacao=${operacao}"
+                                          method="post">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="id">id</label>
+                                                    <input class="form-control" type="number" min="1" step="1" name="id" id="id"
+                                                           value="${pagamento.id}" <c:if test="${operacao != 'Incluir'}">
+                                                               readonly </c:if> required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="data">Data</label>
+                                                        <input class="form-control" type="date" name="data" id="data"
+                                                               value="<c:if test="${operacao == 'Incluir'}"><c:out value="${dataAtual}"/></c:if>${pagamento.data}"
+                                                        <c:if test="${operacao == 'Excluir'}"> readonly </c:if> required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="data">Hora</label>
+                                                        <input class="form-control" type="time" name="hora" id="hora"
+                                                               value="<c:if test="${operacao == 'Incluir'}"><c:out value="${horaAtual}"/></c:if>${pagamento.hora}"
+                                                        <c:if test="${operacao == 'Excluir'}"> readonly </c:if> required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="hospedagem">Hospedagem</label>
+                                                        <select class="form-control" name="hospedagem" id="hospedagem" <c:if
+                                                                test="${operacao == 'Excluir'}"> disabled </c:if>>
+                                                        <option value="0" <c:if
+                                                                    test="${pagamento.hospedagem.id == null}"> selected </c:if>></option>
+                                                        <c:forEach items="${hospedagens}" var="hospedagem">
+                                                            <option value="${hospedagem.id}"
+                                                                    <c:if test="${pagamento.hospedagem.id == hospedagem.id}">selected</c:if>>${hospedagem.id}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tipo">Tipo de Pagamento</label>
+                                                    <select class="form-control" name="tipo" id="tipo" <c:if
+                                                                test="${operacao == 'Excluir'}"> disabled </c:if> required>
+                                                        <option value="0" <c:if
+                                                                    test="${pagamento.tipo.id == null}"> selected </c:if>></option>
+                                                        <c:forEach items="${tipos}" var="tipo">
+                                                            <option value="${tipo.nomeTipo}"
+                                                                    <c:if test="${pagamento.tipo.id == tipo.id}">selected </c:if>>${tipo.nomeTipo}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="momento">Momento do Pagamento</label>
+                                                    <select class="form-control" name="momento" id="momento" <c:if
+                                                                test="${operacao == 'Excluir'}"> disabled </c:if> required>
+                                                        <option value="0" <c:if
+                                                                    test="${pagamento.momento.id == null}"> selected </c:if>></option>
+                                                        <c:forEach items="${momentos}" var="momento">
+                                                            <option value="${momento.nomeMomento}"
+                                                                    <c:if test="${pagamento.momento.id == momento.id}">selected </c:if>>${momento.nomeMomento}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="valor">Valor</label>
+                                                    <input class="form-control" type="number" name="valor" step="0.01"
+                                                           min="0.00" id="valor" value="${pagamento.valor}" <c:if
+                                                               test="${operacao == 'Excluir'}"> readonly </c:if> required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="parcelas">Parcelas</label>
+                                                        <input class="form-control" type="number" min="1" max="12" step="1"
+                                                               name="parcelas" id="parcelas" value="${pagamento.quantidadeParcelas}"
+                                                        <c:if test="${operacao == 'Excluir'}"> readonly </c:if> required>
+                                                    </div>
+                                                </div>
+                                            </div>
 
+                                            <div class="card-footer">
+                                                <button type="submit" class="btn btn-fill btn-primary">${operacao}</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                Lavínia Beghini e Pedro Henrique Damião
+                            </li>
+                        </ul>
+                        <div class="copyright">
+                            ©
+                            <script>
+                                document.write(new Date().getFullYear())
+                            </script>
+                            SIGHO
+                        </div>
+                    </div>
+                </footer>
             </div>
         </div>
-        <footer class="footer">
-            <div class="container-fluid">
-                <ul class="nav">
-                    <li class="nav-item">
-                        Lavínia Beghini e Pedro Henrique Damião
-                    </li>
-                </ul>
-                <div class="copyright">
-                    ©
-                    <script>
-                        document.write(new Date().getFullYear())
-                    </script>
-                    SIGHO
-                </div>
-            </div>
-        </footer>
-    </div>
-</div>
-<!--   Core JS Files   -->
-<script src="./assets/js/core/jquery.min.js"></script>
-<script src="./assets/js/core/popper.min.js"></script>
-<script src="./assets/js/core/bootstrap.min.js"></script>
-<script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-<!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="./assets/js/black-dashboard.min.js?v=1.0.0"></script>
+        <!--   Core JS Files   -->
+        <script src="./assets/js/core/jquery.min.js"></script>
+        <script src="./assets/js/core/popper.min.js"></script>
+        <script src="./assets/js/core/bootstrap.min.js"></script>
+        <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+        <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
+        <script src="./assets/js/black-dashboard.min.js?v=1.0.0"></script>
 
-<script>
+        <script>
 
-    $(document).ready(function () {
-        var tamanho = $("#sidebar").height();
+                                $(document).ready(function () {
+                                    var tamanho = $("#sidebar").height();
 
-        $("#content").css('min-height', tamanho);
+                                    $("#content").css('min-height', tamanho);
 
-        $().ready(function () {
-            $sidebar = $('.sidebar');
-            $navbar = $('.navbar');
-            $main_panel = $('.main-panel');
+                                    $().ready(function () {
+                                        $sidebar = $('.sidebar');
+                                        $navbar = $('.navbar');
+                                        $main_panel = $('.main-panel');
 
-            $full_page = $('.full-page');
+                                        $full_page = $('.full-page');
 
-            $sidebar_responsive = $('body > .navbar-collapse');
-            sidebar_mini_active = true;
-            white_color = false;
+                                        $sidebar_responsive = $('body > .navbar-collapse');
+                                        sidebar_mini_active = true;
+                                        white_color = false;
 
-            window_width = $(window).width();
+                                        window_width = $(window).width();
 
-            fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+                                        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
 
-            $('.fixed-plugin a').click(function (event) {
-                if ($(this).hasClass('switch-trigger')) {
-                    if (event.stopPropagation) {
-                        event.stopPropagation();
-                    } else if (window.event) {
-                        window.event.cancelBubble = true;
-                    }
-                }
-            });
+                                        $('.fixed-plugin a').click(function (event) {
+                                            if ($(this).hasClass('switch-trigger')) {
+                                                if (event.stopPropagation) {
+                                                    event.stopPropagation();
+                                                } else if (window.event) {
+                                                    window.event.cancelBubble = true;
+                                                }
+                                            }
+                                        });
 
-            $('.fixed-plugin .background-color span').click(function () {
-                $(this).siblings().removeClass('active');
-                $(this).addClass('active');
+                                        $('.fixed-plugin .background-color span').click(function () {
+                                            $(this).siblings().removeClass('active');
+                                            $(this).addClass('active');
 
-                var new_color = $(this).data('color');
+                                            var new_color = $(this).data('color');
 
-                if ($sidebar.length != 0) {
-                    $sidebar.attr('data', new_color);
-                }
+                                            if ($sidebar.length != 0) {
+                                                $sidebar.attr('data', new_color);
+                                            }
 
-                if ($main_panel.length != 0) {
-                    $main_panel.attr('data', new_color);
-                }
+                                            if ($main_panel.length != 0) {
+                                                $main_panel.attr('data', new_color);
+                                            }
 
-                if ($full_page.length != 0) {
-                    $full_page.attr('filter-color', new_color);
-                }
+                                            if ($full_page.length != 0) {
+                                                $full_page.attr('filter-color', new_color);
+                                            }
 
-                if ($sidebar_responsive.length != 0) {
-                    $sidebar_responsive.attr('data', new_color);
-                }
-            });
+                                            if ($sidebar_responsive.length != 0) {
+                                                $sidebar_responsive.attr('data', new_color);
+                                            }
+                                        });
 
-            $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function () {
-                var $btn = $(this);
+                                        $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function () {
+                                            var $btn = $(this);
 
-                if (sidebar_mini_active == true) {
-                    $('body').removeClass('sidebar-mini');
-                    sidebar_mini_active = false;
-                    blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
-                } else {
-                    $('body').addClass('sidebar-mini');
-                    sidebar_mini_active = true;
-                    blackDashboard.showSidebarMessage('Sidebar mini activated...');
-                }
+                                            if (sidebar_mini_active == true) {
+                                                $('body').removeClass('sidebar-mini');
+                                                sidebar_mini_active = false;
+                                                blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
+                                            } else {
+                                                $('body').addClass('sidebar-mini');
+                                                sidebar_mini_active = true;
+                                                blackDashboard.showSidebarMessage('Sidebar mini activated...');
+                                            }
 
-                // we simulate the window Resize so the charts will get updated in realtime.
-                var simulateWindowResize = setInterval(function () {
-                    window.dispatchEvent(new Event('resize'));
-                }, 180);
+                                            // we simulate the window Resize so the charts will get updated in realtime.
+                                            var simulateWindowResize = setInterval(function () {
+                                                window.dispatchEvent(new Event('resize'));
+                                            }, 180);
 
-                // we stop the simulation of Window Resize after the animations are completed
-                setTimeout(function () {
-                    clearInterval(simulateWindowResize);
-                }, 1000);
-            });
+                                            // we stop the simulation of Window Resize after the animations are completed
+                                            setTimeout(function () {
+                                                clearInterval(simulateWindowResize);
+                                            }, 1000);
+                                        });
 
-            $('.switch-change-color input').on("switchChange.bootstrapSwitch", function () {
-                var $btn = $(this);
+                                        $('.switch-change-color input').on("switchChange.bootstrapSwitch", function () {
+                                            var $btn = $(this);
 
-                if (white_color == true) {
+                                            if (white_color == true) {
 
-                    $('body').addClass('change-background');
-                    setTimeout(function () {
-                        $('body').removeClass('change-background');
-                        $('body').removeClass('white-content');
-                    }, 900);
-                    white_color = false;
-                } else {
+                                                $('body').addClass('change-background');
+                                                setTimeout(function () {
+                                                    $('body').removeClass('change-background');
+                                                    $('body').removeClass('white-content');
+                                                }, 900);
+                                                white_color = false;
+                                            } else {
 
-                    $('body').addClass('change-background');
-                    setTimeout(function () {
-                        $('body').removeClass('change-background');
-                        $('body').addClass('white-content');
-                    }, 900);
+                                                $('body').addClass('change-background');
+                                                setTimeout(function () {
+                                                    $('body').removeClass('change-background');
+                                                    $('body').addClass('white-content');
+                                                }, 900);
 
-                    white_color = true;
-                }
+                                                white_color = true;
+                                            }
 
 
-            });
+                                        });
 
-            $('.light-badge').click(function () {
-                $('body').addClass('white-content');
-            });
+                                        $('.light-badge').click(function () {
+                                            $('body').addClass('white-content');
+                                        });
 
-            $('.dark-badge').click(function () {
-                $('body').removeClass('white-content');
-            });
-        });
-    });
+                                        $('.dark-badge').click(function () {
+                                            $('body').removeClass('white-content');
+                                        });
+                                    });
+                                });
 
-    var data = new Date();
+        </script>
 
-    // Guarda cada pedaço em uma variável
-    var dia = data.getDate();           // 1-31
-    var mes = data.getMonth() + 1;          // 0-11 (zero=janeiro)
-    var ano4 = data.getFullYear();       // 4 dígitos
-    var hora = data.getHours();          // 0-23
-    var min = data.getMinutes();        // 0-59
-
-
-    var data = ano4 + '-' + mes + '-' + dia;
-    var hora = hora + ':' + min;
-
-    if (document.getElementById('data').value == "")
-        document.getElementById('data').value = data;
-
-</script>
-
-</body>
+    </body>
 
 </html>

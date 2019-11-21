@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <servlet>
         <servlet-name>PesquisaHospedeController</servlet-name>
         <servlet-class>Controller.PesquisaHospedeController</servlet-class>
@@ -129,6 +128,10 @@
         <servlet-name>PesquisaHospedagemController</servlet-name>
         <servlet-class>Controller.PesquisaHospedagemController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TratamentoExcecao</servlet-name>
+        <servlet-class>Exception.TratamentoExcecao</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaHospedeController</servlet-name>
         <url-pattern>/PesquisaHospedeController</url-pattern>
@@ -253,9 +256,21 @@
         <servlet-name>PesquisaHospedagemController</servlet-name>
         <url-pattern>/PesquisaHospedagemController</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TratamentoExcecao</servlet-name>
+        <url-pattern>/TratamentoExcecao</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/TratamentoExcecao</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/TratamentoExcecao</location>
+    </error-page>
 </web-app>

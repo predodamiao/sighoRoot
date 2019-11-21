@@ -24,7 +24,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" type="image/png" href="./assets/img/favicon.png">
         <title>
-            SIGHO - Quarto
+            SIGHO - Pesquisa de Consumo
         </title>
         <!--     Fonts and icons     -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet"/>
@@ -232,70 +232,21 @@
                 <div class="content" id="content">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card">
+                            <div class="card ">
                                 <div class="card-header">
-                                    <h4 class="card-title fa-2x"> QUARTO - ${operacao}</h4>
+                                    <h4 class="card-title fa-2x">ALGO DE ERRADO NÃO ESTÁ CERTO</h4>
                                 </div>
                                 <div class="card-body">
-                                    <form action="ManterQuartoController?acao=confirmarOperacao&operacao=${operacao}"
-                                          method="post">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="identificacao">Identificação</label>
-                                                    <input class="form-control" type="text" name="identificacao"
-                                                           id="identificacao" value="${quarto.identificacao}" <c:if
-                                                               test="${operacao != 'Incluir'}"> readonly </c:if> required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="tipoQuarto">Tipo de Quarto</label>
-                                                        <select class="form-control" name="tipoQuarto" id="tipoQuarto" <c:if
-                                                                test="${operacao == 'Excluir'}"> disabled </c:if> required>
-                                                        <option value="0" <c:if
-                                                                    test="${quarto.tipo.id == null}"> selected </c:if>></option>
-                                                        <c:forEach items="${tiposQuarto}" var="tipoQuarto">
-                                                            <option value="${tipoQuarto.id}"
-                                                                    <c:if test="${quarto.tipo.id == tipoQuarto.id}">selected</c:if>>${tipoQuarto.nome}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="quantidadeCamasSolteiro">Quantidade de Camas de Solteiro</label>
-                                                    <input class="form-control" min="0" step="1" max="10" type="number"
-                                                           name="quantidadeCamasSolteiro" id="quantidadeCamasSolteiro"
-                                                           value="${quarto.quantidadeCamasSolteiro}" <c:if
-                                                               test="${operacao == 'Excluir'}"> readonly </c:if> required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="quantidadeCamasCasal">Quantidade de Camas de Casal</label>
-                                                        <input class="form-control" type="number" min="0" step="1" max="10"
-                                                               name="quantidadeCamasCasal" id="quantidadeCamasCasal"
-                                                               value="${quarto.quantidadeCamasCasal}" <c:if
-                                                            test="${operacao == 'Excluir'}"> readonly </c:if> required>
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                            <div class="card-footer">
-                                                <button type="submit" class="btn btn-fill btn-primary">${operacao}</button>
-                                        </div>
-                                    </form>
+                                    <p>Código do Status: ${codigoStatus}</p>
+                                    <p>Nome do Servlet: ${nomeServlet}</p>
+                                    <p>Tipo de Exceção: ${tipoExcecao}</p>
+                                    <p>URI da Requisição: ${uriRequisicao}</p>
+                                    <p>Mensagem: ${mensagem}</p>
+
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <footer class="footer">
@@ -323,7 +274,6 @@
         <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
         <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
         <script src="./assets/js/black-dashboard.min.js?v=1.0.0"></script>
-
         <script>
 
                                 $(document).ready(function () {
