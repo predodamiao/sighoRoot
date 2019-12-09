@@ -9,9 +9,9 @@
 
 **Índice**
 
-[1. Introdução](#1-Introducao)
+[1. Introdução](#1-Introdução)
 
-[1.1  Propósito](#11-Proposito)
+[1.1  Propósito](#11-Propósito)
 
 [1.2  Escopo](#Escopo)
 
@@ -29,33 +29,33 @@
 
 [6. Especificações de Casos de Uso](#6-Especificações-de-Casos-de-Uso)
 
-[1.  Caso de uso 01: Cadastrar Tipo de Quarto](#1-Caso-de-uso-01-Cadastrar-Tipo-de-Quarto)
+>[Caso de uso 01: Cadastrar Tipo de Quarto](#Caso-de-uso-01-Cadastrar-Tipo-de-Quarto)
 
-[2.  Caso de uso 02: Cadastrar Quarto](#2-Caso-de-uso-02-Cadastrar-Quarto)
+>[Caso de uso 02: Cadastrar Quarto](#Caso-de-uso-02-Cadastrar-Quarto)
 
-[3.  Caso de uso 03: Cadastrar Funcionário](#3-Caso-de-uso-03-Cadastrar-Funcionário)
+>[Caso de uso 03: Cadastrar Funcionário](#Caso-de-uso-03-Cadastrar-Funcionário)
 
-[4.  Caso de uso 04: Cadastrar Hóspede](#4-Caso-de-uso-04-Cadastrar-Hóspede)
+>[Caso de uso 04: Cadastrar Hóspede](#Caso-de-uso-04-Cadastrar-Hóspede)
 
-[5.  Caso de uso 05: Cadastrar Item de Consumo](#5-Caso-de-uso-05-Cadastrar-Item-de-Consumo)
+>[Caso de uso 05: Cadastrar Item de Consumo](#Caso-de-uso-05-Cadastrar-Item-de-Consumo)
 
-[6.  Caso de uso 06: Cadastrar Serviço](#6-Caso-de-uso-06-Cadastrar-Serviço)
+>[Caso de uso 06: Cadastrar Serviço](#Caso-de-uso-06-Cadastrar-Serviço)
 
-[7.  Caso de uso 07: Cadastrar Opção de Restaurante](#7-Caso-de-uso-07-Cadastrar-Opção-de-Restaurante)
+>[Caso de uso 07: Cadastrar Opção de Restaurante](#Caso-de-uso-07-Cadastrar-Opção-de-Restaurante)
 
-[8.  Caso de uso 08: Realizar Reserva](#8-Caso-de-uso-08-Realizar-Reserva)
+>[Caso de uso 08: Realizar Reserva](#Caso-de-uso-08-Realizar-Reserva)
 
-[9.  Caso de uso 09: Cadastrar Realizar Check-In](#9-Caso-de-uso-09-Cadastrar-Realizar-Check-In)
+>[Caso de uso 09: Cadastrar Realizar Check-In](#Caso-de-uso-09-Cadastrar-Realizar-Check-In)
 
-[10.  Caso de uso 10: Cadastrar Consumo de Itens](#10-Caso-de-uso-10-Cadastrar-Consumo-de-Itens)
+>[Caso de uso 10: Cadastrar Consumo de Itens](#Caso-de-uso-10-Cadastrar-Consumo-de-Itens)
 
-[11.  Caso de uso 11: Cadastrar Solicitação de Serviço](#11-Caso-de-uso-11-Cadastrar-Solicitação-de-Serviço)
+>[Caso de uso 11: Cadastrar Solicitação de Serviço](#Caso-de-uso-11-Cadastrar-Solicitação-de-Serviço)
 
-[12.  Caso de uso 12: Cadastrar Solicitação de Opção do Restaurante](#12-Caso-de-uso-12-Cadastrar-Solicitação-de-Opção-do-Restaurante)
+>[Caso de uso 12: Cadastrar Solicitação de Opção do Restaurante](#Caso-de-uso-12-Cadastrar-Solicitação-de-Opção-do-Restaurante)
 
-[13.  Caso de uso 13: Realizar Check-out](#13-Caso-de-uso-13-Realizar-Check-out)
+>[Caso de uso 13: Realizar Check-out](#Caso-de-uso-13-Realizar-Check-out)
 
-[14.  Caso de uso 14: Cadastrar Pagamento](#14-Caso-de-uso-14-Cadastrar-Pagamento)
+>[Caso de uso 14: Cadastrar Pagamento](#Caso-de-uso-14-Cadastrar-Pagamento)
 
 [7. Diagrama de Classes](#7-Diagrama-de-Classes)
 
