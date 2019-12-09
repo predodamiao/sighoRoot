@@ -11,9 +11,9 @@
 
 [1. Introdução](#1-Introdução)
 
-[1.1  Propósito](#11-Propósito)
+>[1.1  Propósito](#11-Propósito)
 
-[1.2  Escopo](#Escopo)
+>[1.2  Escopo](#Escopo)
 
 [2. Descrição Geral](#2-Descrição-Geral)
 
@@ -21,9 +21,9 @@
 
 [4. Requisitos Específicos](#4-Requisitos-Específicos)
 
-[4.1. Requisitos Funcionais](#41-Requisitos-Funcionais)
+>[4.1. Requisitos Funcionais](#41-Requisitos-Funcionais)
 
-[4.2 Requisitos Não-Funcionais](#42-Requisitos-Não-Funcionais)
+>[4.2 Requisitos Não-Funcionais](#42-Requisitos-Não-Funcionais)
 
 [5. Diagrama de Casos de Uso](#5-Diagrama-de-Casos-de-Uso)
 
