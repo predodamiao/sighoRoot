@@ -9,57 +9,57 @@
 
 **Índice**
 
-[1. Introdução  2](#1.-Introducao)
+[1. Introdução](#1-Introducao)
 
-[1.1  Propósito:  2](#1.1-Proposito)
+[1.1  Propósito](#11-Proposito)
 
-[1.2  Escopo:  2](#Escopo)
+[1.2  Escopo](#Escopo)
 
-[2. Descrição Geral:  2](#_Toc26253669)
+[2. Descrição Geral](#2-Descrição-Geral)
 
-[3. Funções do produto:  2](#_Toc26253670)
+[3. Funções do produto](#3-Funções-do-produto)
 
-[4. Requisitos Específicos:  3](#_Toc26253671)
+[4. Requisitos Específicos](#4-Requisitos-Específicos)
 
-[4.1  . Requisitos Funcionais  3](#_Toc26253672)
+[4.1. Requisitos Funcionais](#4.1-Requisitos-Funcionais)
 
-[4.2 Requisitos Não-Funcionais  6](#_Toc26253673)
+[4.2 Requisitos Não-Funcionais](#4.2-Requisitos-Não-Funcionais)
 
-[5. Diagrama de Casos de Uso  7](#_Toc26253674)
+[5. Diagrama de Casos de Uso](#5-Diagrama-de-Casos-de-Uso)
 
-[6. Especificações de Casos de Uso:  8](#_Toc26253675)
+[6. Especificações de Casos de Uso](#6-Especificações-de-Casos-de-Uso)
 
-[1.  Caso de uso 01: Cadastrar Tipo de Quarto  8](#_Toc26253676)
+[1.  Caso de uso 01: Cadastrar Tipo de Quarto](#1-Caso-de-uso-01-Cadastrar-Tipo-de-Quarto)
 
-[2.  Caso de uso 02: Cadastrar Quarto  10](#_Toc26253677)
+[2.  Caso de uso 02: Cadastrar Quarto](#2-Caso-de-uso-02-Cadastrar-Quarto)
 
-[3.  Caso de uso 03: Cadastrar Funcionário  12](#_Toc26253678)
+[3.  Caso de uso 03: Cadastrar Funcionário](#3-Caso-de-uso-03-Cadastrar-Funcionário)
 
-[4.  Caso de uso 04: Cadastrar Hóspede  14](#_Toc26253679)
+[4.  Caso de uso 04: Cadastrar Hóspede](#4-Caso-de-uso-04-Cadastrar-Hóspede)
 
-[5.  Caso de uso 05: Cadastrar Item de Consumo  16](#_Toc26253680)
+[5.  Caso de uso 05: Cadastrar Item de Consumo](#5-Caso-de-uso-05-Cadastrar-Item-de-Consumo)
 
-[6.  Caso de uso 06: Cadastrar Serviço  18](#_Toc26253681)
+[6.  Caso de uso 06: Cadastrar Serviço](#6-Caso-de-uso-06-Cadastrar-Serviço)
 
-[7.  Caso de uso 07: Cadastrar Opção de Restaurante  20](#_Toc26253682)
+[7.  Caso de uso 07: Cadastrar Opção de Restaurante](#7-Caso-de-uso-07-Cadastrar-Opção-de-Restaurante)
 
-[8.  Caso de uso 08: Realizar Reserva  22](#_Toc26253683)
+[8.  Caso de uso 08: Realizar Reserva](#8-Caso-de-uso-08-Realizar-Reserva)
 
-[9.  Caso de uso 09: Cadastrar Realizar Check-In  24](#_Toc26253684)
+[9.  Caso de uso 09: Cadastrar Realizar Check-In](#9-Caso-de-uso-09-Cadastrar-Realizar-Check-In)
 
-[10.  Caso de uso 10: Cadastrar Consumo de Itens  26](#_Toc26253685)
+[10.  Caso de uso 10: Cadastrar Consumo de Itens](#10-Caso-de-uso-10-Cadastrar-Consumo-de-Itens)
 
-[11.  Caso de uso 11: Cadastrar Solicitação de Serviço  28](#_Toc26253686)
+[11.  Caso de uso 11: Cadastrar Solicitação de Serviço](#11-Caso-de-uso-11-Cadastrar-Solicitação-de-Serviço)
 
-[12.  Caso de uso 12: Cadastrar Solicitação de Opção do Restaurante  30](#_Toc26253687)
+[12.  Caso de uso 12: Cadastrar Solicitação de Opção do Restaurante](#12-Caso-de-uso-12-Cadastrar-Solicitação-de-Opção-do-Restaurante)
 
-[13.  Caso de uso 13: Realizar Check-out  32](#_Toc26253688)
+[13.  Caso de uso 13: Realizar Check-out](#13-Caso-de-uso-13-Realizar-Check-out)
 
-[14.  Caso de uso 14: Cadastrar Pagamento  34](#_Toc26253689)
+[14.  Caso de uso 14: Cadastrar Pagamento](#14-Caso-de-uso-14-Cadastrar-Pagamento)
 
-[7. Diagrama de Classes  36](#_Toc26253690)
+[7. Diagrama de Classes](#7-Diagrama-de-Classes)
 
-[8.  Diagrama Entidade Relacionamento  37](#_Toc26253691)
+[8.  Diagrama Entidade Relacionamento](#8-Diagrama-Entidade-Relacionamento)
 
   
 
