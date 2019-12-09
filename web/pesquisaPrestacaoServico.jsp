@@ -242,7 +242,6 @@
                                             <thead class="text-primary">
                                                 <tr style="font-size: 1rem">
                                                     <th>Data</th>
-                                                    <th>Quantidade</th>
                                                     <th>Status</th>
                                                     <th colspan="2" class="text-center">Ação</th>
                                                 </tr>
@@ -252,9 +251,6 @@
                                                     <tr>
                                                         <td>
                                                             <c:out value="${solicitacao.data}"/>
-                                                        </td>
-                                                        <td>
-                                                            <c:out value="${solicitacao.quantidade}"/>
                                                         </td>
                                                         <td>
                                                             <c:out value="${solicitacao.status}"/>

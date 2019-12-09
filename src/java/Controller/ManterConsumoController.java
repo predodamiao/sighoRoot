@@ -45,7 +45,7 @@ public class ManterConsumoController extends HttpServlet {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            request.setAttribute("hospedagens", Hospedagem.obterHospedagens());
+            request.setAttribute("hospedagens", Hospedagem.obterHospedagensAtivas());
             request.setAttribute("itens", ItemConsumo.obterItensConsumo());
             request.setAttribute("funcionarioSolicitante", Funcionario.obterFuncionarios());
             if (!operacao.equals("Incluir")) {

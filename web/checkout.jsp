@@ -239,7 +239,7 @@
                                 <div class="card-body">
 
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 blockquote" style="margin:3%; padding: 2%; max-width: 44%;">
                                             <h4 class="card-title fa-2x text-center"> Lista Despesas</h4>
 
 
@@ -392,14 +392,14 @@
                                                         <c:forEach items="${solicitacoes}" var="solicitacao">
                                                             <tr>
                                                                 <td>
-                                                                    <c:out value="${solicitacao.codigo}"/>
+                                                                    <c:out value="${solicitacao.data}"/>
                                                                 </td>
                                                                 <td>
-                                                                    <c:out value="${solicitacao.nome}"/>
+                                                                    <c:out value="${solicitacao.servico.nome}"/>
                                                                 </td>
                                                                 <td>
                                                                     R$ <fmt:formatNumber type="number" maxFractionDigits="3"
-                                                                                      value="${solicitacao.preco}"/>
+                                                                                      value="${solicitacao.servico.preco}"/>
                                                                 </td>
                                                             </tr>
                                                         </c:forEach>
@@ -420,7 +420,7 @@
 
                                         </div>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 blockquote" style="margin:3%; padding: 2%; max-width: 44%;">
                                             <h4 class="card-title fa-2x text-center"> Lista Pagamentos</h4>
                                             <div class="table-responsive">
                                                 <table class="table tablesorter " id="">
@@ -459,9 +459,27 @@
                                             <h4 class="card-title"> Falta: <fmt:formatNumber type="number" maxFractionDigits="2"
                                                               value="${totalDiarias + totalSolicitacoes + totalAtendimentos + totalConsumos - totalPagamentos}"/></h4>
 
+
+
+
+
+
                                             <form class="text-center"
                                                   action="RealizarCheckoutController?acao=confirmarOperacao&idHospedagem=${hospedagem.id}"
                                                   method="POST">
+                                                <c:if test="${(totalDiarias + totalSolicitacoes + totalAtendimentos + totalConsumos - totalPagamentos)>0}">
+
+                                                    <a class="btn btn-fill btn-primary"
+                                                       href="ManterPagamentoController?acao=prepararOperacao&operacao=Incluir&hospedagem=${hospedagem.id}&preco=${(totalDiarias + totalSolicitacoes + totalAtendimentos + totalConsumos - totalPagamentos)}"
+                                                       role="button">Pagar valor Faltante</a>                                               
+
+                                                    <br>
+
+                                                </c:if>
+
+
+
+
                                                 <button type="submit" class="btn btn-fill btn-primary"
                                                         <c:if test="${(totalDiarias + totalSolicitacoes + totalAtendimentos + totalConsumos - totalPagamentos)>0}">disabled</c:if>>
                                                     Realizar Check-out

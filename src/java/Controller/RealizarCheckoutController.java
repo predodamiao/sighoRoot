@@ -54,6 +54,10 @@ public class RealizarCheckoutController extends HttpServlet {
             Period periodo = Period.between(hospedagem.getDataChegada(), LocalDate.now());
 
             int quantidadeDiarias = periodo.getDays();
+            
+            if(quantidadeDiarias == 0){
+                quantidadeDiarias = 1;
+            }
 
             request.setAttribute("quantidadeDiarias", quantidadeDiarias);
 

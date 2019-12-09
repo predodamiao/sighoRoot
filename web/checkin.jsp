@@ -239,7 +239,7 @@
 
 
                                 <div class="card-body">
-                                    <a class="btn btn-fill btn-primary" href="PesquisaHospedagensAtivasController"
+                                    <a class="btn btn-fill btn-primary" href="PesquisaReservaController"
                                        role="button">Com Reserva</a>
                                     <c:forEach items="${tiposQuarto}" var="tipo">
                                         <a class="btn btn-fill btn-primary"

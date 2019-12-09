@@ -46,7 +46,7 @@ public class ManterPrestacaoServicoController extends HttpServlet {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            request.setAttribute("hospedagens", Hospedagem.obterHospedagens());
+            request.setAttribute("hospedagens", Hospedagem.obterHospedagensAtivas());
             request.setAttribute("funcionarios", Funcionario.obterFuncionarios());
             request.setAttribute("servicos", Servico.obterServicos());
             request.setAttribute("status", StatusPrestacaoServico.obterStatusSolicitacoes());
@@ -109,7 +109,7 @@ public class ManterPrestacaoServicoController extends HttpServlet {
             } else if (operacao.equals("Editar")) {
                 prestacao.alterar();
             }
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaSolicitacaoController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaPrestacaoServicoController");
             view.forward(request, response);
         } catch (IOException e) {
             throw new ServletException(e);

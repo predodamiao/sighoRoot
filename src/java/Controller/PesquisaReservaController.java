@@ -3,6 +3,9 @@ package Controller;
 import Model.Reserva;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -26,7 +29,30 @@ public class PesquisaReservaController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         try {
-            request.setAttribute("reservas", Reserva.obterReservas());
+            
+            List<Reserva> todasReservas = Reserva.obterReservas();
+            
+            List<Reserva> reservas = new ArrayList<>(); 
+            
+            LocalDate hoje = LocalDate.now();
+            
+            LocalDate dataEstimadaChegada = null;
+            
+            for(Reserva reserva : todasReservas){
+                
+                dataEstimadaChegada = reserva.getDataEstimadaChegada();
+                
+                if(hoje.isEqual(dataEstimadaChegada)){
+                    reservas.add(reserva);
+                }
+                
+                if(hoje.isBefore(dataEstimadaChegada)){
+                    reservas.add(reserva);
+                }
+                
+            }
+           
+            request.setAttribute("reservas", reservas);
             RequestDispatcher view = request.getRequestDispatcher("/pesquisaReserva.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException | SQLException e) {

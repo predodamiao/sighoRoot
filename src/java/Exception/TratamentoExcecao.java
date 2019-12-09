@@ -28,10 +28,11 @@ public class TratamentoExcecao extends HttpServlet {
 
         request.setAttribute("codigoStatus", codigoStatus);
         request.setAttribute("nomeServlet", nomeServlet);
-        request.setAttribute("tipoExcecao", excecao.getClass().getName());
         request.setAttribute("uriRequisicao", uriRequisicao);
-        request.setAttribute("mensagem", excecao.getMessage());
-
+        if (excecao != null) {
+            request.setAttribute("tipoExcecao", excecao.getClass().getName());
+            request.setAttribute("mensagem", excecao.getMessage());
+        }
         RequestDispatcher view = request.getRequestDispatcher("/erro.jsp");
         view.forward(request, response);
 

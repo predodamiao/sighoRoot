@@ -272,9 +272,9 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="preco">Preço</label>
+                                                        <label for="diaria">Diária</label>
                                                         <input class="form-control" type="number" step="0.01" min="0.00"
-                                                               name="preco" id="preco" value="${tipoQuarto.preco}" <c:if
+                                                               name="diaria" id="diaria" value="${tipoQuarto.diaria}" <c:if
                                                             test="${operacao == 'Excluir'}"> readonly </c:if> required>
                                                     </div>
                                                 </div>

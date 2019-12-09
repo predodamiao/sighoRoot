@@ -241,7 +241,6 @@
                                         <table class="table tablesorter " id="">
                                             <thead class="text-primary">
                                                 <tr style="font-size: 1rem">
-                                                    <th>id</th>
                                                     <th>Nome</th>
                                                     <th>Preço</th>
                                                     <th>Tipo</th>
@@ -251,9 +250,6 @@
                                             <tbody>
                                                 <c:forEach items="${servicos}" var="servico">
                                                     <tr>
-                                                        <td>
-                                                            <c:out value="${servico.codigo}"/>
-                                                        </td>
                                                         <td>
                                                             <c:out value="${servico.nome}"/>
                                                         </td>

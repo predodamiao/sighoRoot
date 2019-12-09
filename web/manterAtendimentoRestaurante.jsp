@@ -55,17 +55,49 @@
                         <a href="javascript:void(0)" class="simple-text fa-2x logo-mini">
                             <i class="tim-icons icon-puzzle-10"></i>
                         </a>
-                        <a href="javascript:void(0)" class="simple-text fa-2x logo-normal">
-                            CRUDS
+                        <a href="javascript:void(0)" class="simple-text logo-normal">
+                            Recepção
                         </a>
                     </div>
                     <ul class="nav">
                         <li>
-                            <a href="PesquisaAcompanhanteController">
+                            <a href="PesquisaHospedeController">
                                 <i class="tim-icons icon-single-02"></i>
-                                <p>Acompanhante</p>
+                                <p>Hóspede</p>
                             </a>
                         </li>
+                        <li>
+                            <a href="PesquisaReservaController">
+                                <i class="tim-icons icon-delivery-fast"></i>
+                                <p>Reserva</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="RealizarCheckinController?acao=prepararCheckin">
+                                <i class="tim-icons icon-basket-simple"></i>
+                                <p>Check-In</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="PesquisaHospedagensAtivasController">
+                                <i class="tim-icons icon-single-02"></i>
+                                <p>Check-out</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="sidebar-wrapper">
+                    <div class="logo">
+                        <a href="javascript:void(0)" class="simple-text fa-2x logo-mini">
+                            <i class="tim-icons icon-puzzle-10"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="simple-text logo-normal">
+                            Controle
+                        </a>
+                    </div>
+                    <ul class="nav">
                         <li>
                             <a href="PesquisaConsumoController">
                                 <i class="tim-icons icon-basket-simple"></i>
@@ -73,23 +105,38 @@
                             </a>
                         </li>
                         <li>
-                            <a href="PesquisaFuncionarioController">
-                                <i class="tim-icons icon-single-02"></i>
-                                <p>Funcionário</p>
+                            <a href="PesquisaPrestacaoServicoController">
+                                <i class="tim-icons icon-delivery-fast"></i>
+                                <p>Prestação Servico</p>
                             </a>
                         </li>
                         <li>
-                            <a href="PesquisaHospedagemController">
-                                <i class="tim-icons icon-book-bookmark"></i>
-                                <p>Hospedagem</p>
+                            <a href="PesquisaAtendimentoRestauranteController">
+                                <i class="tim-icons icon-molecule-40"></i>
+                                <p>Atendimento Restaurante</p>
                             </a>
                         </li>
                         <li>
-                            <a href="PesquisaHospedeController">
-                                <i class="tim-icons icon-single-02"></i>
-                                <p>Hospede</p>
+                            <a href="PesquisaPagamentoController">
+                                <i class="tim-icons icon-wallet-43"></i>
+                                <p>Pagamento</p>
                             </a>
                         </li>
+
+                    </ul>
+                </div>
+
+
+                <div class="sidebar-wrapper">
+                    <div class="logo">
+                        <a href="javascript:void(0)" class="simple-text fa-2x logo-mini">
+                            <i class="tim-icons icon-puzzle-10"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="simple-text logo-normal">
+                            Gerencia
+                        </a>
+                    </div>
+                    <ul class="nav">
                         <li>
                             <a href="PesquisaItemConsumoController">
                                 <i class="tim-icons icon-bag-16"></i>
@@ -109,9 +156,9 @@
                             </a>
                         </li>
                         <li>
-                            <a href="PesquisaPagamentoController">
-                                <i class="tim-icons icon-wallet-43"></i>
-                                <p>Pagamento</p>
+                            <a href="PesquisaTipoQuartoController">
+                                <i class="tim-icons icon-bullet-list-67"></i>
+                                <p>Tipo de Quarto</p>
                             </a>
                         </li>
                         <li>
@@ -123,66 +170,21 @@
                         <li>
                             <a href="PesquisaServicoController">
                                 <i class="tim-icons icon-delivery-fast"></i>
-                                <p>Serviço</p>
-                            </a>
-                        </li>
-                        <li class="solicitacao">
-                            <a href="PesquisaSolicitacaoController">
-                                <i class="tim-icons icon-notes"></i>
-                                <p>Solicitação</p>
+                                <p>Servico</p>
                             </a>
                         </li>
                         <li>
-                            <a href="PesquisaTipoQuartoController">
-                                <i class="tim-icons icon-bullet-list-67"></i>
-                                <p>Tipo de Quarto</p>
+                            <a href="PesquisaFuncionarioController">
+                                <i class="tim-icons icon-single-02"></i>
+                                <p>Funcionário</p>
                             </a>
                         </li>
-
 
                     </ul>
                 </div>
 
                 <br>
 
-                <div class="sidebar-wrapper">
-                    <div class="logo">
-                        <a href="javascript:void(0)" class="simple-text fa-2x logo-mini">
-                            <i class="tim-icons icon-paper"></i>
-                        </a>
-                        <a href="javascript:void(0)" class="simple-text fa-1.5x logo-normal">
-                            RELATÓRIOS
-                        </a>
-                    </div>
-                    <ul class="nav">
-                        <li>
-                            <a onClick="window.alert('Função não implementada')">
-                                <i class="tim-icons icon-coins"></i>
-                                <p>Faturamento</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a onClick="window.alert('Função não implementada')">
-                                <i class="tim-icons icon-key-25"></i>
-                                <p>Quartos Ocupados</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a onClick="window.alert('Função não implementada')">
-                                <i class="tim-icons icon-lock-circle"></i>
-                                <p>Pessoas Hospedadas</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a onClick="window.alert('Função não implementada')">
-                                <i class="tim-icons icon-calendar-60"></i>
-                                <p>Reservas</p>
-                            </a>
-                        </li>
-
-
-                    </ul>
-                </div>
 
             </div>
 
@@ -247,7 +249,7 @@
                                     <h4 class="card-title fa-2x">ATENDIMENTO RESTAURANTE - ${operacao}</h4>
                                 </div>
                                 <div class="card-body">
-                                    <form action="ManterSolicitacaoController?acao=confirmarOperacao&operacao=${operacao}"
+                                    <form action="ManterAtendimentoRestauranteController?acao=confirmarOperacao&operacao=${operacao}"
                                           method="post">
                                         <div class="row">
                                             <div class="col-md-6">
@@ -266,11 +268,11 @@
                                                         <select class="form-control" name="opcao" id="opcao" <c:if
                                                                 test="${operacao == 'Excluir'}"> disabled </c:if> required>
                                                         <option value="0" <c:if
-                                                                    test="${solicitacao.opcao == null}"> selected </c:if>></option>
+                                                                    test="${atendimento.opcao == null}"> selected </c:if>></option>
                                                         <c:forEach items="${opcoes}" var="opcao">
                                                             <option value="${opcao.codigo}"
-                                                                    <c:if test="${solicitacao.opcao != null}">
-                                                                        <c:if test="${solicitacao.opcao.codigo == opcao.codigo}">selected</c:if>
+                                                                    <c:if test="${atendimento.opcao != null}">
+                                                                        <c:if test="${atendimento.opcao.codigo == opcao.codigo}">selected</c:if>
                                                                     </c:if>>${opcao.nome}</option>
                                                         </c:forEach>
                                                     </select>
@@ -292,7 +294,7 @@
                                                     <div class="form-group">
                                                         <label for="data">Data</label>
                                                         <input class="form-control" type="date" name="data" id="data"
-                                                               value="<c:if test="${operacao == 'Incluir'}"><c:out value="${dataAtual}"/></c:if>${atendimento.data}"
+                                                               max="<c:out value="${dataAtual}"/>" value="<c:if test="${operacao == 'Incluir'}"><c:out value="${dataAtual}"/></c:if>${atendimento.data}"
                                                         <c:if test="${operacao == 'Excluir'}"> readonly </c:if> required>
                                                     </div>
                                                 </div>
@@ -315,10 +317,10 @@
                                                         <select class="form-control" name="hospedagem" id="hospedagem" <c:if
                                                                 test="${operacao == 'Excluir'}"> disabled </c:if> required>
                                                         <option value="0" <c:if
-                                                                    test="${solicitacao.hospedagem.id == null}"> selected </c:if>></option>
+                                                                    test="${atendimento.hospedagem.id == null}"> selected </c:if>></option>
                                                         <c:forEach items="${hospedagens}" var="hospedagem">
                                                             <option value="${hospedagem.id}" <c:if
-                                                                        test="${solicitacao.hospedagem.id == hospedagem.id}"> selected </c:if>>${hospedagem.id}</option>
+                                                                        test="${atendimento.hospedagem.id == hospedagem.id}"> selected </c:if>>${hospedagem.quarto.identificacao}</option>
                                                         </c:forEach>
                                                     </select>
                                                 </div>
@@ -332,10 +334,10 @@
                                                             id="funcionarioSolicitante" <c:if
                                                                 test="${operacao == 'Excluir'}"> disabled </c:if>>
                                                         <option value="0" <c:if
-                                                                    test="${solicitacao.funcionarioSolicitante.id == null}"> selected </c:if>></option>
+                                                                    test="${atendimento.funcionarioSolicitante.id == null}"> selected </c:if>></option>
                                                         <c:forEach items="${funcionarios}" var="funcionario">
                                                             <option value="${funcionario.id}" <c:if
-                                                                        test="${solicitacao.funcionarioSolicitante.id == funcionario.id}"> selected </c:if>>${funcionario.nome}</option>
+                                                                        test="${atendimento.funcionarioSolicitante.id == funcionario.id}"> selected </c:if>>${funcionario.nome}</option>
                                                         </c:forEach>
                                                     </select>
                                                 </div>
@@ -348,10 +350,10 @@
                                                     <select class="form-control" name="status" id="status" <c:if
                                                                 test="${operacao == 'Excluir'}"> disabled </c:if> required>
                                                         <option value="0" <c:if
-                                                                    test="${solicitacao.status.id == null}"> selected </c:if>></option>
+                                                                    test="${atendimento.status.id == null}"> selected </c:if>></option>
                                                         <c:forEach items="${status}" var="status">
                                                             <option value="${status.nomeStatus}" <c:if
-                                                                        test="${solicitacao.status.id == status.id}"> selected </c:if>>${status.nomeStatus}</option>
+                                                                        test="${atendimento.status.id == status.id}"> selected </c:if>>${status.nomeStatus}</option>
                                                         </c:forEach>
                                                     </select>
                                                 </div>

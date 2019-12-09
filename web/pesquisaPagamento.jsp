@@ -241,7 +241,6 @@
                                         <table class="table tablesorter " id="">
                                             <thead class="text-primary">
                                                 <tr style="font-size: 1rem">
-                                                    <th>id</th>
                                                     <th>Valor</th>
                                                     <th>Data</th>
                                                     <th colspan="2" class="text-center">Ação</th>
@@ -250,9 +249,6 @@
                                             <tbody>
                                                 <c:forEach items="${pagamentos}" var="pagamento">
                                                     <tr>
-                                                        <td>
-                                                            <c:out value="${pagamento.id}"/>
-                                                        </td>
                                                         <td>
                                                             R$ <c:out value="${pagamento.valor}"/>
                                                         </td>

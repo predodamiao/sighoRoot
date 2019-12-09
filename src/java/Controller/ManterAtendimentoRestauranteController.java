@@ -50,15 +50,15 @@ public class ManterAtendimentoRestauranteController extends HttpServlet {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            request.setAttribute("hospedagens", Hospedagem.obterHospedagens());
+            request.setAttribute("hospedagens", Hospedagem.obterHospedagensAtivas());
             request.setAttribute("funcionarios", Funcionario.obterFuncionarios());
             request.setAttribute("opcoes", OpcaoRestaurante.obterOpcoesRestaurante());
             request.setAttribute("status", StatusAtendimentoRestaurante.obterStatusAtendimentosRestaurante());
 
             if (!operacao.equals("Incluir")) {
                 int idAtendimento = Integer.parseInt(request.getParameter("id"));
-                AtendimentoRestaurante prestacao = AtendimentoRestaurante.obterAtendimentoRestaurante(idAtendimento);
-                request.setAttribute("prestacao", prestacao);
+                AtendimentoRestaurante atendimento = AtendimentoRestaurante.obterAtendimentoRestaurante(idAtendimento);
+                request.setAttribute("atendimento", atendimento);
             }
 
             RequestDispatcher view = request.getRequestDispatcher("/manterAtendimentoRestaurante.jsp");
@@ -86,7 +86,7 @@ public class ManterAtendimentoRestauranteController extends HttpServlet {
             idHospedagem = Integer.parseInt(request.getParameter("hospedagem"));
             idFuncionario = Integer.parseInt(request.getParameter("funcionarioSolicitante"));
             idStatus = request.getParameter("status");
-            codigoAtendimento = Integer.parseInt(request.getParameter("servico"));
+            codigoAtendimento = Integer.parseInt(request.getParameter("opcao"));
         }
         try {
             Hospedagem hospedagem = null;

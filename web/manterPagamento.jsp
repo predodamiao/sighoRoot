@@ -287,7 +287,7 @@
                                                                     test="${pagamento.hospedagem.id == null}"> selected </c:if>></option>
                                                         <c:forEach items="${hospedagens}" var="hospedagem">
                                                             <option value="${hospedagem.id}"
-                                                                    <c:if test="${pagamento.hospedagem.id == hospedagem.id}">selected</c:if>>${hospedagem.id}</option>
+                                                                    <c:if test="${pagamento.hospedagem.id == hospedagem.id}">selected</c:if>>${hospedagem.quarto.identificacao}</option>
                                                         </c:forEach>
                                                     </select>
                                                 </div>

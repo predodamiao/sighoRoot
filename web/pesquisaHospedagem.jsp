@@ -241,7 +241,6 @@
                                         <table class="table tablesorter " id="">
                                             <thead class="text-primary">
                                                 <tr style="font-size: 1rem">
-                                                    <th>id</th>
                                                     <th>Data Chegada</th>
                                                     <th>Hospede Responsável</th>
                                                     <th>Quarto</th>
@@ -251,9 +250,6 @@
                                             <tbody>
                                                 <c:forEach items="${hospedagens}" var="hospedagem">
                                                     <tr>
-                                                        <td>
-                                                            <c:out value="${hospedagem.id}"/>
-                                                        </td>
                                                         <td>
                                                             <c:out value="${hospedagem.dataChegada}"/>
                                                         </td>

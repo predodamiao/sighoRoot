@@ -43,9 +43,23 @@ public class ManterPagamentoController extends HttpServlet {
 
     public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, ClassNotFoundException, SQLException {
         try {
+
+            String preco = request.getParameter("preco");
+            String idHospedagem = request.getParameter("hospedagem");
+
+            if (preco != null && idHospedagem != null) {
+
+                Hospedagem hospedagem = Hospedagem.obterHospedagem(Integer.parseInt(idHospedagem));
+
+                Pagamento pagamento = new Pagamento(0, Float.parseFloat(preco), null, null, 1, null, MomentoPagamento.CHECKOUT, hospedagem);
+
+                request.setAttribute("pagamento", pagamento);
+
+            }
+
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            request.setAttribute("hospedagens", Hospedagem.obterHospedagens());
+            request.setAttribute("hospedagens", Hospedagem.obterHospedagensAtivas());
             request.setAttribute("momentos", MomentoPagamento.obterMomentosPagamento());
             request.setAttribute("tipos", TipoPagamento.obterTiposPagamento());
 
@@ -65,6 +79,7 @@ public class ManterPagamentoController extends HttpServlet {
     }
 
     public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ParseException, ClassNotFoundException, SQLException, ServletException {
+
         String operacao = request.getParameter("operacao");
         int id = Integer.parseInt(request.getParameter("id"));
         LocalDate data = LocalDate.parse(request.getParameter("data"));
@@ -103,8 +118,15 @@ public class ManterPagamentoController extends HttpServlet {
             } else if (operacao.equals("Editar")) {
                 pagamento.alterar();
             }
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaPagamentoController");
-            view.forward(request, response);
+
+            if (momento == MomentoPagamento.CHECKOUT) {
+                RequestDispatcher view = request.getRequestDispatcher("RealizarCheckoutController?acao=prepararOperacao&idHospedagem="+hospedagem.getId());
+                view.forward(request, response);
+            } else {
+                RequestDispatcher view = request.getRequestDispatcher("PesquisaPagamentoController");
+                view.forward(request, response);
+            }
+
         } catch (IOException e) {
             throw new ServletException(e);
         }

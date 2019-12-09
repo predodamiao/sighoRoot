@@ -265,7 +265,7 @@
                                                         <label for="rg">RG</label>
                                                         <input class="form-control" type="text" name="rg" id="rg"
                                                                value="${hospede.rg}" <c:if test="${operacao == 'Excluir'}">
-                                                            readonly </c:if> required>
+                                                            readonly </c:if>>
                                                     </div>
                                                 </div>
                                             </div>
@@ -275,7 +275,7 @@
                                                         <label for="cpf">CPF</label>
                                                         <input class="form-control" type="text" name="cpf" id="cpf"
                                                                value="${hospede.cpf}" maxlength="14" <c:if test="${operacao == 'Excluir'}">
-                                                            readonly </c:if> required>
+                                                            readonly </c:if>>
                                                     </div>
                                                 </div>
                                             </div>

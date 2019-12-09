@@ -261,11 +261,11 @@
                                                         </td>
                                                         <td class="text-center">
                                                             <a class="blockquote blockquote-green"
-                                                               href="ManterAtendimentoRestauranteController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${solicitacao.id}"/>">Editar</a>
+                                                               href="ManterAtendimentoRestauranteController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${atendimento.id}"/>">Editar</a>
                                                         </td>
                                                         <td class="text-center">
                                                             <a class="blockquote blockquote-green"
-                                                               href="ManterAtendimentoRestauranteController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${solicitacao.id}"/>"/>Excluir</a>
+                                                               href="ManterAtendimentoRestauranteController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${atendimento.id}"/>"/>Excluir</a>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>

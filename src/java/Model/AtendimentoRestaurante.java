@@ -23,6 +23,7 @@ public class AtendimentoRestaurante {
     public AtendimentoRestaurante(int id, LocalDate data, LocalTime hora, int quantidade, StatusAtendimentoRestaurante status, Funcionario funcionario, Hospedagem hospedagem, OpcaoRestaurante opcao) {
         this.id = id;
         this.data = data;
+        this.hora = hora;
         this.quantidade = quantidade;
         this.status = status;
         this.funcionarioSolicitante = funcionario;
@@ -138,7 +139,12 @@ public class AtendimentoRestaurante {
     }
 
     public float getPrecoAtendimento() throws ClassNotFoundException, SQLException {
-        return this.getOpcao().getPreco() * this.getQuantidade();
+        
+        if(this.funcionarioSolicitante != null){
+            return (this.getOpcao().getPreco()+this.getOpcao().getAcrescimo()) * this.getQuantidade();
+        }
+        
+        return this.getOpcao().getPreco() * this.getQuantidade();  
     }
 
     public void gravar() throws SQLException, ClassNotFoundException {

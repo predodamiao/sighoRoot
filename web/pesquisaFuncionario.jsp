@@ -241,7 +241,6 @@
                                         <table class="table tablesorter " id="">
                                             <thead class="text-primary">
                                                 <tr style="font-size: 1rem">
-                                                    <th>id</th>
                                                     <th>CPF</th>
                                                     <th>Nome</th>
                                                     <th>Data Admissão</th>
@@ -251,9 +250,6 @@
                                             <tbody>
                                                 <c:forEach items="${funcionarios}" var="funcionario">
                                                     <tr>
-                                                        <td>
-                                                            <c:out value="${funcionario.id}"/>
-                                                        </td>
                                                         <td>
                                                             <c:out value="${funcionario.nome}"/>
                                                         </td>

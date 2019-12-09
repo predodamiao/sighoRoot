@@ -242,7 +242,7 @@
                                             <thead class="text-primary">
                                                 <tr style="font-size: 1rem">
                                                     <th>Identificacao</th>
-                                                    <th>id Tipo</th>
+                                                    <th>Tipo</th>
                                                     <th colspan="2" class="text-center">Ação</th>
                                                 </tr>
                                             </thead>

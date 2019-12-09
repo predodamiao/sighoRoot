@@ -145,7 +145,7 @@
                                              onClick="window.location.href = 'PesquisaPrestacaoServicoController'">
                                             <div class="font-icon-detail fa-2x">
                                                 <i class="tim-icons icon-delivery-fast"></i>
-                                                <p>Prestação Servico</p>
+                                                <p>Prestação de Servico</p>
                                             </div>
                                         </div>
                                         <div class="font-icon-list col-md-3"
@@ -195,10 +195,10 @@
                                             </div>
                                         </div>
                                         <div class="font-icon-list col-md-3"
-                                             onClick="window.location.href = 'PesquisaQuartoController'">
+                                             onClick="window.location.href = 'PesquisaTipoQuartoController'">
                                             <div class="font-icon-detail fa-2x">
-                                                <i class="tim-icons icon-key-25"></i>
-                                                <p>Quarto</p>
+                                                <i class="tim-icons icon-bullet-list-67"></i>
+                                                <p>Tipo de Quarto</p>
                                             </div>
                                         </div>
                                     </div>
@@ -207,21 +207,21 @@
                                              onClick="window.location.href = 'PesquisaServicoController'">
                                             <div class="font-icon-detail fa-2x">
                                                 <i class="tim-icons icon-delivery-fast"></i>
-                                                <p>Servico</p>
+                                                <p>Serviço</p>
                                             </div>
                                         </div>
                                         <div class="font-icon-list col-md-4"
-                                             onClick="window.location.href = 'PesquisaTipoQuartoController'">
+                                             onClick="window.location.href = 'PesquisaQuartoController'">
                                             <div class="font-icon-detail fa-2x">
-                                                <i class="tim-icons icon-bullet-list-67"></i>
-                                                <p>Tipo de Quarto</p>
+                                                <i class="tim-icons icon-key-25"></i>
+                                                <p>Quarto</p>
                                             </div>
                                         </div>
                                         <div class="font-icon-list col-md-4"
                                              onClick="window.location.href = 'PesquisaFuncionarioController'">
                                             <div class="font-icon-detail fa-2x">
                                                 <i class="tim-icons icon-single-02"></i>
-                                                <p>Funcionario</p>
+                                                <p>Funcionário</p>
                                             </div>
                                         </div>
                                     </div>

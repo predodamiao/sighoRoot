@@ -241,7 +241,6 @@
                                         <table class="table tablesorter " id="">
                                             <thead class="text-primary">
                                                 <tr style="font-size: 1rem">
-                                                    <th>id</th>
                                                     <th>Nome</th>
                                                     <th>Diária</th>
                                                     <th colspan="2" class="text-center">Ação</th>
@@ -250,9 +249,6 @@
                                             <tbody>
                                                 <c:forEach items="${tiposQuarto}" var="tipoQuarto">
                                                     <tr>
-                                                        <td>
-                                                            <c:out value="${tipoQuarto.id}"/>
-                                                        </td>
                                                         <td>
                                                             <c:out value="${tipoQuarto.nome}"/>
                                                         </td>

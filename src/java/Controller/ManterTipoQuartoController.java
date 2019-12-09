@@ -61,7 +61,7 @@ public class ManterTipoQuartoController extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         String nome = request.getParameter("nome");
         String descricao = request.getParameter("descricao");
-        Float preco = Float.parseFloat(request.getParameter("preco"));
+        Float preco = Float.parseFloat(request.getParameter("diaria"));
 
         try {
 

@@ -300,7 +300,7 @@
                                                         <label for="data">Hora</label>
                                                         <input class="form-control" type="time" name="hora" id="hora"
                                                                value="<c:if test="${operacao == 'Incluir'}"><c:out value="${horaAtual}"/></c:if>${consumo.hora}"
-                                                        <c:if test="${operacao == 'Excluir'}"> readonly </c:if> required>
+                                                        <c:if test="${operacao == 'Excluir'}"> readonly </c:if> max="<c:out value="${dataAtual}"/>" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -314,7 +314,7 @@
                                                                     test="${consumo.hospedagem.id == null}"> selected </c:if>></option>
                                                         <c:forEach items="${hospedagens}" var="hospedagem">
                                                             <option value="${hospedagem.id}"
-                                                                    <c:if test="${consumo.hospedagem.id == hospedagem.id}">selected</c:if>>${hospedagem.id}</option>
+                                                                    <c:if test="${consumo.hospedagem.id == hospedagem.id}">selected</c:if>>${hospedagem.quarto.identificacao}</option>
                                                         </c:forEach>
                                                     </select>
                                                 </div>
