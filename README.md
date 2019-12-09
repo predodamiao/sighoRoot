@@ -21,9 +21,9 @@
 
 [4. Requisitos Específicos](#4-Requisitos-Específicos)
 
-[4.1. Requisitos Funcionais](#4.1-Requisitos-Funcionais)
+[4.1. Requisitos Funcionais](#41-Requisitos-Funcionais)
 
-[4.2 Requisitos Não-Funcionais](#4.2-Requisitos-Não-Funcionais)
+[4.2 Requisitos Não-Funcionais](#42-Requisitos-Não-Funcionais)
 
 [5. Diagrama de Casos de Uso](#5-Diagrama-de-Casos-de-Uso)
 
@@ -909,6 +909,6 @@ Este caso de uso é iniciado pelo Funcionário quando ele requisita ao sistema u
 
   ![Diagram de Classes](https://raw.githubusercontent.com/predodamiao/sigho/master/documentacao/diagramaDeClasses.jpg)
 
-# 8.   Diagrama Entidade Relacionamento
+# 8. Diagrama Entidade Relacionamento
 
 ![Diagrama Entidade Relacionamento](https://raw.githubusercontent.com/predodamiao/sigho/master/documentacao/diagramaEntidadeRelacionamento.png)
