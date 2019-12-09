@@ -1,5 +1,6 @@
 
 
+
 # SISTEMA DE GERENCIAMENTO DE HOTÉIS
 
 ## SIGHO
@@ -322,7 +323,7 @@ O sistema deve totalizar automaticamente os gastos de consumo do hóspede, que f
 
 # 5. Diagrama de Casos de Uso
 
-  
+  ![Diagrama de Casos de Uso](https://raw.githubusercontent.com/predodamiao/sigho/master/documentacao/diagramaCasoDeUso.jpg)
 
 # 6. Especificações de Casos de Uso:
 
@@ -370,7 +371,7 @@ Este caso de uso é iniciado pelo Funcionário quando ele requisita ao sistema u
 
 **Telas:**
 
-  
+![Tela de Cadastro de Tipo de Quarto](https://raw.githubusercontent.com/predodamiao/sigho/master/documentacao/UC01.png)
 
 ## Caso de uso 02: Cadastrar Quarto
 
@@ -418,7 +419,7 @@ Ao menos um tipo de quarto deve estar cadastrado no sistema.
 
 **Telas:**
 
-  
+  ![Tela de Cadastro de Quarto](https://raw.githubusercontent.com/predodamiao/sigho/master/documentacao/UC02.png)
 
 ## Caso de uso 03: Cadastrar Funcionário
 
@@ -464,7 +465,7 @@ Este caso de uso é iniciado pelo Funcionário quando ele requisita ao sistema u
 
 **Telas:**
 
-  
+  ![Tela de Cadastro de Funcionário](https://raw.githubusercontent.com/predodamiao/sigho/master/documentacao/UC03.png)
 
 ## Caso de uso 04: Cadastrar Hóspede
 
@@ -510,7 +511,7 @@ Este caso de uso é iniciado pelo Funcionário o pelo Hóspede quando ele requis
 
 **Telas:**
 
-  
+  ![Tela de Cadastro de Hóspede](https://raw.githubusercontent.com/predodamiao/sigho/master/documentacao/UC04.png)
 
 ## Caso de uso 05: Cadastrar Item de Consumo
 
@@ -558,7 +559,7 @@ Este caso de uso é iniciado pelo Funcionário quando ele requisita ao sistema u
 
 **Telas:**
 
-  
+  ![Tela de Cadastro de Item de Consumo](https://raw.githubusercontent.com/predodamiao/sigho/master/documentacao/UC05.png)
 
 ## Caso de uso 06: Cadastrar Serviço
 
@@ -606,7 +607,7 @@ Este caso de uso é iniciado pelo Funcionário quando ele requisita ao sistema u
 
 **Telas:**
 
-  
+  ![Tela de Cadastro de Serviço](https://raw.githubusercontent.com/predodamiao/sigho/master/documentacao/UC06.png)
 
 ## Caso de uso 07: Cadastrar Opção de Restaurante
 
@@ -654,7 +655,7 @@ Este caso de uso é iniciado pelo Funcionário quando ele requisita ao sistema u
 
 **Telas:**
 
-  
+  ![Tela de Cadastro de Opção de Restaurante](https://raw.githubusercontent.com/predodamiao/sigho/master/documentacao/UC07.png)
 
 ## Caso de uso 08: Realizar Reserva
 
@@ -689,7 +690,7 @@ Este caso de uso é iniciado pelo Funcionário ou pelo Hóspede quando ele requi
 
 **Telas:**
 
-  
+  ![Tela de Realização de Reserva](https://raw.githubusercontent.com/predodamiao/sigho/master/documentacao/UC08.png)
 
 ## Caso de uso 09: Cadastrar Realizar Check-In
 
@@ -724,7 +725,10 @@ Este caso de uso é iniciado pelo Funcionário quando ele requisita ao sistema u
 
 **Telas:**
 
-  
+  ![Tela Inicial de Realização de Check-in ](https://raw.githubusercontent.com/predodamiao/sigho/master/documentacao/UC0901.png)
+
+
+![Tela de Cadastro de Hospedagem](https://raw.githubusercontent.com/predodamiao/sigho/master/documentacao/UC0902.png)
 
 ## Caso de uso 10: Cadastrar Consumo de Itens
 
@@ -759,7 +763,7 @@ Este caso de uso é iniciado pelo Funcionário quando ele requisita ao sistema u
 
 **Telas:**
 
-  
+  ![Tela de Cadastro de Consumo](https://raw.githubusercontent.com/predodamiao/sigho/master/documentacao/UC10.png)
 
 ## Caso de uso 11: Cadastrar Solicitação de Serviço
 
@@ -794,7 +798,7 @@ Este caso de uso é iniciado pelo Funcionário quando ele requisita ao sistema u
 
 **Telas:**
 
-  
+  ![Tela de Cadastro de Prestação de Serviço](https://raw.githubusercontent.com/predodamiao/sigho/master/documentacao/UC11.png)
 
 ## Caso de uso 12: Cadastrar Solicitação de Opção do Restaurante
 
@@ -829,7 +833,7 @@ Este caso de uso é iniciado pelo Funcionário quando ele requisita ao sistema u
 
 **Telas:**
 
-  
+  ![Tela de Cadastro de Atendimento do Restaurante](https://raw.githubusercontent.com/predodamiao/sigho/master/documentacao/UC12.png)
 
 ## Caso de uso 13: Realizar Check-out
 
@@ -862,7 +866,7 @@ Este caso de uso é iniciado pelo Funcionário quando ele requisita ao sistema o
 
 **Telas:**
 
-  
+  ![Tela de Realização do Check-out](https://raw.githubusercontent.com/predodamiao/sigho/master/documentacao/UC13.png)
 
 ## Caso de uso 14: Cadastrar Pagamento
 
@@ -899,10 +903,12 @@ Este caso de uso é iniciado pelo Funcionário quando ele requisita ao sistema u
 
 **Telas:**
 
-  
+  ![Tela do Cadastro de Pagamento](https://raw.githubusercontent.com/predodamiao/sigho/master/documentacao/UC14.png)
 
 # 7. Diagrama de Classes
 
-  
+  ![Diagram de Classes](https://raw.githubusercontent.com/predodamiao/sigho/master/documentacao/diagramaDeClasses.jpg)
 
 # 8.   Diagrama Entidade Relacionamento
+
+![Diagrama Entidade Relacionamento](https://raw.githubusercontent.com/predodamiao/sigho/master/documentacao/diagramaEntidadeRelacionamento.png)
